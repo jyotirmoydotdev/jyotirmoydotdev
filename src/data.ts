@@ -3,20 +3,20 @@ import { File, Folder, Github, Linkedin, Twitter, User2Icon } from "lucide-react
 export const about = [
     {
         title : "About",
-        url: "#about"
+        url: "/"
     },
     {
-        title : "Experiences",
-        url: "#experiences"
+        title : "Experiences (2)",
+        url: "/#experiences"
     },
     {
-        title : "Educations",
-        url: "#educations"
+        title : "Projects (3)",
+        url: "/#projects"
     },
     {
-        title : "Skills",
-        url: "#skills"
-    },
+        title : "Educations (2)",
+        url: "/#educations"
+    }
 ]
 
 export const projects = [

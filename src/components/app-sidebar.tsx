@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ArrowUpRight, Command, Mail } from "lucide-react"
-import { Label } from "@/components/ui/label"
+import { ArrowUpRight, Mail } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +15,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { Switch } from "@/components/ui/switch"
 import { ModeToggle } from "./mode-toggle"
 import { Button } from "./ui/button"
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -24,13 +22,11 @@ import { useRouter } from "next/navigation"
 import { about, blogs, sidebar_data as data, projects } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
-import { Separator } from "./ui/separator"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   // Note: I'm using state to show active item.
   // IRL you should use the url/router.
   const [activeItem, setActiveItem] = React.useState(data.navMain[0])
-  const [mails, setMails] = React.useState(data.mails)
   const router = useRouter()
   const { setOpen, setOpenMobile } = useSidebar()
   const isMobile = useIsMobile()
