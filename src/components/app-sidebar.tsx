@@ -125,6 +125,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <div className="text-base font-medium text-foreground">
               {activeItem.title}
             </div>
+            <div className="text-sm font-medium text-foreground">
+              <Button variant={'link'} size={'sm'} asChild>
+                <Link href={activeItem.url}>
+                  View all
+                </Link>
+              </Button>
+            </div>
           </div>
           <SidebarInput
             value={search}

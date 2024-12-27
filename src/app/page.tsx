@@ -1,7 +1,7 @@
 'use client'
 
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { projects, sidebar_data as data } from '@/data'
 import { ExternalLink, Folder, Github } from 'lucide-react'
@@ -11,6 +11,7 @@ import localFont from "next/font/local";
 import { BiLogoGoLang, BiLogoDocker, BiLogoTypescript, BiLogoPostgresql, BiLogoReact } from "react-icons/bi";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiSolidity } from "react-icons/si";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const baloo = localFont({
@@ -21,8 +22,9 @@ const baloo = localFont({
 
 export default function Home() {
   const router = useRouter()
+  const isMobile = useIsMobile()
   return (
-    <div className="p-5">
+    <div className="p-5 relative">
       <div className="grid grid-cols-1 md:grid-cols-2 relative">
         <div className="">
           <header className="flex flex-col gap-2">
@@ -74,7 +76,7 @@ export default function Home() {
       </div>
 
       <div className="pt-8" id="experiences">
-        <div className="text-lg font-bold py-2">Experiences</div>
+        <div className="text-lg font-bold py-2 text-orange-400">Experiences</div>
         <Separator />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 pt-6">
           <div className="text-gray-500">Jan 2024 - Apr 2024</div>
@@ -124,7 +126,7 @@ export default function Home() {
       </div>
 
       <div className="pt-8" id="projects">
-        <div className="text-lg font-bold py-2 inline-flex justify-between items-center w-full">
+        <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
           Projects
           <div className="flex w-full justify-end py-4">
             <Button variant={'link'} size={'default'} asChild>
@@ -191,7 +193,7 @@ export default function Home() {
 
       <div className="pt-8" id="educations">
         {/* <Separator /> */}
-        <div className="text-lg font-bold pt-6 pb-4">Educations</div>
+        <div className="text-lg font-bold pt-6 pb-4 text-orange-400">Educations</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
           <div className="flex flex-col gap-2">
             <Link href={"https://www.cuchd.in"} className="flex gap-2 items-center py-2 hover:text-orange-500 transition-colors">
@@ -238,6 +240,13 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      
+      <div className=" sticky bottom-4 flex justify-end w-full">
+        <Button size={isMobile?'icon':"sm"} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white">
+          <span className=" hidden sm:block">Download</span>
+          <span className=" block sm:hidden"><ArrowDown/></span>
+        </Button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { File, Folder, Github, Linkedin, Twitter, User2Icon } from "lucide-react"
+import { SiLeetcode } from "react-icons/si"
 
 export const about = [
     {
@@ -71,6 +72,11 @@ export const sidebar_data = {
             url: 'https://github.com/jyotirmoydotdev',
             name: 'Github | Jyotirmoy Barman | @jyotirmoydotdev',
             icon: Github
+        },
+        {
+            url: 'https://leetcode.com/jyotirmoydotdev',
+            name: 'Leetcode | Jyotirmoy Barman | @jyotirmoydotdev',
+            icon: SiLeetcode
         },
         {
             url: 'https://x.com/jyotirmoydotdev',
