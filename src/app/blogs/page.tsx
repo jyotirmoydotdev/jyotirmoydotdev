@@ -1,21 +1,22 @@
 import { blogs } from '@/data'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
     return (
-        <div className='p-5 relative '>
+        <div className='p-5 relative w-full md:w-1/2 '>
             <div className="flex flex-col gap-2">
                 {
                     blogs.map((blog, i) => (
-                        <div key={i} className="flex flex-row gap-3 py-4 items-center">
-                            <span className=' font-medium'>{blog.title}</span>
-                            <span className=' size-1 bg-gray-500 rounded-full'></span>
-                            <span className=' text-black/50 dark:text-white/50 flex gap-2 items-center'>
-                                {blog.readTime} 
+                        <Link href={blog.url} key={i} className="gap-1 py-4 flex flex-col group/blog active:pl-2 hover:pl-2 transition-all ">
+                            <span className=' font-medium group-hover/blog:text-orange-500 dark:group-hover/blog:text-orange-400'>{blog.title}</span>
+                            <span className=' line-clamp-1 text-gray-500 text-sm'>{blog.description}</span>
+                            <div className="flex items-center gap-2 text-sm text-black/50 dark:text-gray-500">
+                                <span>{blog.readTime}</span>
                                 <span className=' size-1 bg-gray-500 rounded-full'></span>
-                                {blog.date}
-                            </span>
-                        </div>
+                                <span>{blog.date}</span>
+                            </div>
+                        </Link>
                     ))
                 }
             </div>

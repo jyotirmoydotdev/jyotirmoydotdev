@@ -1,7 +1,7 @@
 'use client'
 
 import { Separator } from "@/components/ui/separator";
-import { ArrowDown, ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowRight, ArrowUp, ArrowUpRight, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { projects, sidebar_data as data } from '@/data'
 import { ExternalLink, Folder, Github } from 'lucide-react'
@@ -11,7 +11,6 @@ import localFont from "next/font/local";
 import { BiLogoGoLang, BiLogoDocker, BiLogoTypescript, BiLogoPostgresql, BiLogoReact } from "react-icons/bi";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiSolidity } from "react-icons/si";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const baloo = localFont({
@@ -22,7 +21,6 @@ const baloo = localFont({
 
 export default function Home() {
   const router = useRouter()
-  const isMobile = useIsMobile()
   return (
     <div className="p-5 relative">
       <div className="grid grid-cols-1 md:grid-cols-2 relative">
@@ -37,20 +35,17 @@ export default function Home() {
               <span className="text-sm sm:text-lg text-gray-500">Bringing ideas to reality</span>
             </div>
           </header>
-          {/* <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus quisquam hic nam aut porro consequatur laborum veniam, perspiciatis maiores molestiae, nulla excepturi libero illum cumque nemo est repellendus beatae mollitia, at sapiente! Nulla amet voluptatibus sunt repudiandae nesciunt aspernatur architecto?
-          </div> */}
           <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
-          As a passionate developer, I thrive on turning ideas into fully-realized, impactful products. With a strong command of modern technologies like TypeScript, React, Next.js, and Go, I specialize in creating seamless, high-performance applications that deliver real value. Having worked with teams across the globe, I’m well-versed in the dynamics of remote collaboration, ensuring that distance never gets in the way of building something exceptional. Whether it&apos;s designing the user interface or architecting back-end systems, I&apos;m driven by the challenge of bringing innovative solutions to life.
+            As a passionate developer, I thrive on turning ideas into fully-realized, impactful products. With a strong command of modern technologies like TypeScript, React, Next.js, and Go, I specialize in creating seamless, high-performance applications that deliver real value. Having worked with teams across the globe, I’m well-versed in the dynamics of remote collaboration, ensuring that distance never gets in the way of building something exceptional. Whether it&apos;s designing the user interface or architecting back-end systems, I&apos;m driven by the challenge of bringing innovative solutions to life.
           </div>
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start sm:gap-6 items-center">
-            <BiLogoTypescript className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"/>
-            <BiLogoGoLang     className=" hover:rotate-45 transition-all size-[4rem] sm:size-[4.5rem] fill-gray-400 dark:fill-gray-500"/>
-            <RiNextjsFill     className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"/>
-            <BiLogoDocker     className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"/>
-            <BiLogoPostgresql className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"/>
-            <BiLogoReact      className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"/>
-            <SiSolidity       className=" hover:rotate-45 transition-all size-[1.8rem] sm:size-[2.2rem] fill-gray-400 dark:fill-gray-500"/>
+            <BiLogoTypescript className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
+            <BiLogoGoLang className=" hover:rotate-45 transition-all size-[4rem] sm:size-[4.5rem] fill-gray-400 dark:fill-gray-500" />
+            <RiNextjsFill className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
+            <BiLogoDocker className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
+            <BiLogoPostgresql className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
+            <BiLogoReact className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
+            <SiSolidity className=" hover:rotate-45 transition-all size-[1.8rem] sm:size-[2.2rem] fill-gray-400 dark:fill-gray-500" />
           </div>
         </div>
         <div className=" items-center h-full flex justify-center py-4 sm:justify-end">
@@ -86,7 +81,7 @@ export default function Home() {
               <ArrowUpRight className="size-5" />
             </Link>
             <div className="text-gray-500">
-            I contributed to the development of the Loreum platform, working with technologies like React, TypeScript, and GraphQL to help build efficient and user-friendly applications alongside a talented team.
+              I contributed to the development of the Loreum platform, working with technologies like React, TypeScript, and GraphQL to help build efficient and user-friendly applications alongside a talented team.
             </div>
             <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
               <div className="px-2 py-1 rounded-lg bg-muted/50">Ethereum</div>
@@ -210,7 +205,7 @@ export default function Home() {
               </span>
             </div>
             <div className="text-gray-500">
-              Completed a Bachelor of Computer Applications at Chandigarh University with a <span className="text-white">7.23 CGPA</span>. Gained knowledge in data structures, algorithms, and software development. Participated in hackathons and developed projects showcasing problem-solving and coding skills.  
+              Completed a Bachelor of Computer Applications at Chandigarh University with a <span className="text-white">7.23 CGPA</span>. Gained knowledge in data structures, algorithms, and software development. Participated in hackathons and developed projects showcasing problem-solving and coding skills.
             </div>
             <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
               <div className="px-2 py-1 rounded-lg bg-muted/50">Data Structures</div>
@@ -241,11 +236,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
       <div className=" sticky bottom-4 flex justify-end w-full">
-        <Button size={isMobile?'icon':"sm"} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white">
-          <span className=" hidden sm:block">Download</span>
-          <span className=" block sm:hidden"><ArrowDown/></span>
+        <Button size={'icon'} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white" asChild>
+          <Link href={'/'}>
+            <ArrowUp />
+          </Link>
         </Button>
       </div>
     </div>

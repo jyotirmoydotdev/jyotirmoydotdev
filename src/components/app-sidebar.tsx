@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ArrowUpRight, Mail } from "lucide-react"
+import { ArrowUpRight, Folder, Mail } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -142,22 +142,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarContent>
           <SidebarGroup className="px-0">
             <SidebarGroupContent>
-              {/* {mails.map((mail) => (
-                <a
-                  href="#"
-                  key={mail.email}
-                  className="flex flex-col items-start gap-2 whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                >
-                  <div className="flex w-full items-center gap-2">
-                    <span>{mail.name}</span>{" "}
-                    <span className="ml-auto text-xs">{mail.date}</span>
-                  </div>
-                  <span className="font-medium">{mail.subject}</span>
-                  <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
-                    {mail.teaser}
-                  </span>
-                </a>
-              ))} */}
               {
                 (activeItem.title.toLowerCase() === "about") && about.map((item, i) => (
                   <Link
@@ -174,14 +158,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Link
                     key={i}
                     href={item.url}
-                    className="flex flex-col items-start gap-2 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                    className="flex flex-col items-start gap-2 hover:pl-2 group/project transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   >
-                    <span className="font-black">
+                    <span className="font-black flex gap-2 dark:group-hover/project:text-orange-400 group-hover/project:text-orange-500 transition-all ">
+                      <Folder className="size-4"/>
                       {item.title}
                     </span>
                     <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
                       {item.description}
                     </span>
+                    <div className="flex flex-wrap gap-1">
+                      {
+                        item.tags.map((tag, i)=>(
+                          <div key={i} className=" px-2 py-1 text-xs rounded-md bg-gray-500/10 dark:bg-black/20 text-gray-500">{tag}</div>
+                        ))
+                      }
+                    </div>
                   </Link>
                 ))
               }
@@ -190,18 +182,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Link
                     key={i}
                     href={item.url}
-                    className="flex flex-col items-start gap-2 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                    className="group/blogs flex flex-col items-start gap-1.5 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   >
-                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces font-black">
+                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces font-black dark:group-hover/blogs:text-orange-400 group-hover/blogs:text-orange-500 transition-all">
                       {item.title}
                     </span>
                     <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
                       {item.description}
                     </span>
-                    <div className="flex  w-full items-center gap-2 pt-1">
+                    <div className="flex  w-full items-center gap-2 pt-1 text-xs text-gray-500">
                       <span>{item.readTime}</span>
                       {" | "}
-                      <span className="text-xs">{item.date}</span>
+                      <span>{item.date}</span>
                     </div>
                   </Link>
                 ))
