@@ -2,12 +2,15 @@
 
 import { Clipboard } from 'lucide-react';
 import React, { useState } from 'react';
-import { TbBrandGolang } from "react-icons/tb";
+import { TbBrandGolang, TbBrandCpp, TbSql } from "react-icons/tb";
 import { CiText } from "react-icons/ci";
 import { TbJson } from "react-icons/tb";
 import { TiTick } from "react-icons/ti";
 import { SiGnubash } from "react-icons/si";
 import Link from 'next/link';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/mtabs'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const CopyButton = ({ content }: { content: string }) => {
   const [copied, setCopied] = useState(false);
@@ -67,8 +70,12 @@ export const CodeIcon = ({ lang }: { lang: string }) => {
     switch (lang) {
       case "go":
         return <TbBrandGolang className=' size-[2.5rem]' />
+      case "cpp":
+        return <TbBrandCpp className=' size-[1.5rem]' />
       case "json":
         return <TbJson className=' size-[2rem]' />
+      case "sql":
+        return <TbSql className=' size-[2rem]' />
       case "text":
         return <><CiText className=' size-[1rem]' />Text</>
       case "bash":
@@ -84,21 +91,89 @@ export const CodeIcon = ({ lang }: { lang: string }) => {
   );
 };
 
+export const ContentComp = ({ contents }: { contents: (string | string[])[] }) => {
+  const convert = (title: string) => {
+    return `#${title.toLowerCase().replaceAll(" ", "-")}`;
+  };
 
-export const ContentComp = ({ contents }: { contents: { url: string, title: string }[] }) => {
   return (
-    <div className="flex flex-col gap-2 pt-2 text-sm text-gray-500">
-      {
-        contents.map((content, i) => (
-          <Link
-            key={i}
-            href={content.url}
-            className="text-gray-500 hover:text-black pb-1 hover:underline transition-all text-sm hover:pl-2 dark:hover:text-white"
-          >
-            {content.title}
-          </Link>
-        ))
-      }
+    <div className="flex flex-col gap-2 text-sm text-gray-500">
+      {contents.map((content, i) => {
+        if (typeof content === "string") {
+          return (
+            <Link
+              key={i}
+              href={convert(content)}
+              className="text-gray-500 hover:text-black pb-1 hover:underline transition-all text-sm hover:pl-2 dark:hover:text-white"
+            >
+              {content}
+            </Link>
+          );
+        } else if (Array.isArray(content)) {
+          return (
+            <div key={i} className="ml-4 flex flex-col gap-2">
+              {content.map((link, j) => (
+                <Link
+                  key={`${i}-${j}`} // Ensure unique key for nested links
+                  href={convert(link)}
+                  className="text-gray-500 hover:text-black pb-1 hover:underline transition-all text-sm hover:pl-2 dark:hover:text-white"
+                >
+                  {link}
+                </Link>
+              ))}
+            </div>
+          );
+        }
+      })}
     </div>
+  );
+};
+
+export const CodeBlock = ({ codes }: {
+  codes: {
+      language: string,
+      code: string
+  }[]
+}) => {
+  const [code, setCode] = React.useState(codes[0].code)
+  return (
+      <Tabs defaultValue={codes[0].language}>
+          <div className="flex gap-2 items-center ">
+              <CopyButton content={code} />
+              <TabsList>
+                  {
+                      codes.map((code, j) => (
+                          <div
+                              onClick={() => (setCode(code.code))}
+                              key={j}
+                          >
+                              <TabsTrigger
+                                  className=' capitalize' value={code.language}
+                              >
+                                  {code.language}
+                              </TabsTrigger>
+                          </div>
+                      ))
+                  }
+              </TabsList>
+          </div>
+          {
+              codes.map((code, j) => (
+                  <TabsContent value={code.language} key={j}>
+                      <SyntaxHighlighter
+                          language={code.language || 'text'}
+                          style={atomDark}
+                          PreTag="div"
+                          className="font-bold text-xs"
+                          customStyle={{
+                              borderRadius: 10
+                          }}
+                      >
+                          {code.code}
+                      </SyntaxHighlighter>
+                  </TabsContent>
+              ))
+          }
+      </Tabs>
   )
 }

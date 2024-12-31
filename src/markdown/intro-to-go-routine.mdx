@@ -1,0 +1,165 @@
+# Introduction to Go Routine
+
+In this blog, we will understand how to reduce the time taken to fetch data by leveraging Go routines. But before diving into concurrency, we'll first explore how to fetch data one by one. As an example, we'll fetch weather data for a set of cities using the OpenWeatherMap API.
+
+## Get the Free API Key from OpenWeatherMap
+
+Head over to [OpenWeatherMap](https://home.openweathermap.org/users/sign_up) and create an account by filling in a username, name, and password. After registering, you will receive a free API key, which we’ll need to fetch the weather data.
+
+## Fetching Weather Data Without Concurrency
+
+Let's first understand the sequential way of fetching data. Below is the Go code for fetching weather data for multiple cities, one at a time. Make sure to replace the `apikey` variable with your actual API key.
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"time"
+)
+
+var apikey = "your_api_key_here" // Replace with your API key
+
+func fetchWeather(city string) interface{} {
+	var data struct {
+		Main struct {
+			Temp float64 `json:"temp"`
+		} `json:"main"`
+	}
+	url := fmt.Sprintf("http://api.openweathermap.org/data/2.5//weather?q=%s&appid=%s", city, apikey)
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Printf("Error fetching weather for %s: %s\n", city, err)
+		return data
+	}
+	defer resp.Body.Close()
+
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		fmt.Printf("Error decoding weather for %s: %s\n", city, err)
+		return data
+	}
+	return data
+}
+
+func main() {
+	startNow := time.Now()
+
+	cities := []string{"Toronto", "London", "Paris", "Tokyo"}
+
+	for _, city := range cities {
+		data := fetchWeather(city)
+		fmt.Printf("This is the data for %s: %v\n", city, data)
+	}
+
+	fmt.Println("The operation took:", time.Since(startNow))
+}
+```
+
+### Explanation of Sequential Code
+
+We are going to start with the first line, which takes an string or the name of the city, and return a interface{} (interface) 
+
+```go
+func fetchWeather(city string) interface{} {
+	...
+}
+```
+
+In the sequential code, the primary focus is on fetching weather data one city at a time. The `fetchWeather` function is designed to handle the task of connecting to the OpenWeatherMap API, requesting data for a given city, and parsing the response. Inside this function, the URL for the API request is built dynamically using the city name and the API key. A GET request is sent using the `http.Get` method, and the response is checked for errors. If an error occurs, it is logged, and the function returns an empty struct. 
+
+When the response is successful, the JSON body is decoded into a Go struct. This struct is structured to extract specific weather information, such as the temperature. The decoded data is then returned to the caller. The simplicity of this function lies in its clear flow—constructing the request, handling the response, and decoding the data.
+
+The `main` function sets up the process by defining a list of cities whose weather data needs to be fetched. It uses a `for` loop to iterate through this list and calls the `fetchWeather` function for each city in sequence. As each city’s weather data is fetched, it is printed to the console. Finally, the time taken to fetch data for all cities is calculated using the `time.Since` function. This gives an idea of the total processing time for a sequential operation.
+
+While this approach is straightforward and easy to understand, it has a significant drawback: the program waits for each city’s data to be fetched before moving on to the next city. This sequential execution means that the total time taken is the sum of the time required for each individual request. If the API or network is slow, the overall operation becomes time-consuming.
+
+## Fetching Weather Data With Concurrency
+
+Now, let'
+s improve the performance using Go routines and channels. Here's the concurrent version of the same program:
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"sync"
+	"time"
+)
+
+var apikey = "your_api_key_here" // Replace with your API key
+
+func fetchWeather(city string, ch chan<- string, wg *sync.WaitGroup) {
+	defer wg.Done()
+
+	var data struct {
+		Main struct {
+			Temp float64 `json:"temp"`
+		} `json:"main"`
+	}
+	url := fmt.Sprintf("http://api.openweathermap.org/data/2.5//weather?q=%s&appid=%s", city, apikey)
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Printf("Error fetching weather for %s: %s\n", city, err)
+		return
+	}
+	defer resp.Body.Close()
+
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		fmt.Printf("Error decoding weather for %s: %s\n", city, err)
+		return
+	}
+	ch <- fmt.Sprintf("This is the data for %s: %.2f°C", city, data.Main.Temp-273.15) // Convert Kelvin to Celsius
+}
+
+func main() {
+	startNow := time.Now()
+
+	cities := []string{"Toronto", "London", "Paris", "Tokyo"}
+	ch := make(chan string)
+	var wg sync.WaitGroup
+
+	for _, city := range cities {
+		wg.Add(1)
+		go fetchWeather(city, ch, &wg)
+	}
+
+	go func() {
+		wg.Wait()
+		close(ch)
+	}()
+
+	for result := range ch {
+		fmt.Println(result)
+	}
+
+	fmt.Println("The operation took:", time.Since(startNow))
+}
+```
+
+### Explanation of Concurrent Code
+
+In the concurrent version of the code, the focus shifts to improving efficiency by fetching data for multiple cities simultaneously. The `fetchWeather` function is modified to accept a channel and a wait group as additional parameters. The channel is used to send data back to the main function, and the wait group ensures that the main program waits for all concurrent tasks to finish before proceeding.
+
+When the function is called, it starts by deferring the `Done` method of the wait group, signaling that this particular task will complete at some point. The rest of the function remains largely similar to the sequential version: it constructs the API URL, sends the request, and processes the response. However, instead of returning the data directly, the function sends a formatted string containing the weather information to the channel. This allows the main function to process the data asynchronously.
+
+The `main` function is where concurrency is orchestrated. It creates a channel for communication and a wait group to manage the concurrent Go routines. For each city, the wait group counter is incremented, and a Go routine is launched to fetch the weather data. These Go routines run in parallel, each independently fetching data for a city.
+
+Once all Go routines are launched, a separate Go routine is created to monitor the wait group. When all tasks are complete, this routine closes the channel, signaling that no more data will be sent. Meanwhile, the main function listens to the channel in a `for` loop, printing the results as they arrive. This setup allows the program to handle data as it becomes available without waiting for all tasks to complete.
+
+Finally, the time taken for the operation is calculated and printed. By fetching data concurrently, the overall execution time is significantly reduced compared to the sequential approach, as the tasks overlap instead of waiting in a queue.
+
+This concurrent approach demonstrates the power of Go’s lightweight Go routines and synchronization mechanisms. It efficiently utilizes system resources, handles I/O-bound operations like API requests seamlessly, and provides a much faster solution for tasks involving multiple independent operations.
+
+## Benefits of Using Concurrency
+
+- **Improved Performance**: Fetching data in parallel reduces the overall execution time.
+- **Efficient Resource Utilization**: By using Go routines, the program efficiently uses system resources.
+
+## Conclusion
+
+In this blog, we explored how to fetch data from the OpenWeatherMap API both sequentially and concurrently. By using Go routines and channels, we can drastically improve the performance of our programs. Experiment with this approach on other APIs and scenarios to unlock the power of Go's concurrency model!

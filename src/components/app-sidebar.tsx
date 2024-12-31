@@ -19,9 +19,10 @@ import { ModeToggle } from "./mode-toggle"
 import { Button } from "./ui/button"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useRouter } from "next/navigation"
-import { about, blogs, sidebar_data as data, projects } from "@/data"
+import { about, blogs, sidebar_data as data, projects, sidebar_data } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
+import { SidebarOptInForm } from "./sidebar-opt-in-form"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   // Note: I'm using state to show active item.
@@ -56,7 +57,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
                 <Link href="/">
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-[#FF634D] text-sidebar-primary-foreground">
-                    <Image src={'/jyotirmoy.webp'} width={100} height={100} alt="Jyotirmoy Barman" className="rounded-lg" />
+                    <Image src={sidebar_data.logo} width={100} height={100} alt="Jyotirmoy Barman" className="rounded-lg" />
                   </div>
                 </Link>
               </SidebarMenuButton>
@@ -161,7 +162,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     className="flex flex-col items-start gap-2 hover:pl-2 group/project transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   >
                     <span className="font-black flex gap-2 dark:group-hover/project:text-orange-400 group-hover/project:text-orange-500 transition-all ">
-                      <Folder className="size-4"/>
+                      <Folder className="size-4" />
                       {item.title}
                     </span>
                     <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
@@ -169,7 +170,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </span>
                     <div className="flex flex-wrap gap-1">
                       {
-                        item.tags.map((tag, i)=>(
+                        item.tags.map((tag, i) => (
                           <div key={i} className=" px-2 py-1 text-xs rounded-md bg-gray-500/10 dark:bg-black/20 text-gray-500">{tag}</div>
                         ))
                       }
@@ -190,9 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
                       {item.description}
                     </span>
-                    <div className="flex  w-full items-center gap-2 pt-1 text-xs text-gray-500">
-                      <span>{item.readTime}</span>
-                      {" | "}
+                    <div className=" pt-1 text-xs text-gray-500">
                       <span>{item.date}</span>
                     </div>
                   </Link>
@@ -201,6 +200,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+        <SidebarFooter className="">
+          <SidebarOptInForm />
+        </SidebarFooter>
       </Sidebar>
     </Sidebar>
   )

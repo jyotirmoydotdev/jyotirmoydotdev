@@ -52,7 +52,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                           }
                         `}
                     </style>
-                    <div className="custom-syntax-highlighter text-sm  rounded-md">
+                    <div className="custom-syntax-highlighter text-sm rounded-md">
                         <div className="flex items-center w-full justify-between px-2 text-gray-500 pt-1  ">
                             <CodeIcon lang={language}/>
                             <CopyButton content={String(childProps.children).trim()}/>
@@ -74,6 +74,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         },
         h2: ({ children }) => {
             return <h2 id={String(children).toLowerCase().replace(/\s+/g, '-')}>{children}</h2>
+        },
+        h3: ({ children }) => {
+            return <h3 id={String(children).toLowerCase().replace(/\s+/g, '-')}>{children}</h3>
+        },
+        a: ({ children, ...props}) => {
+            return (
+                <a {...props} className='text-white dark:text-blue-400' style={{ textUnderlineOffset:3, WebkitTextFillColor:"#60a5fa"}} >
+                    {children}
+                </a>
+            )
         },
         code: ({ children }) => {
             const parentIsPreTag =

@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/blogs/building-a-json-validation-pipeline-with-go-and-gin/.page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/blogs/.building-a-json-validation-pipeline-with-go-and-gin/.page.tsx", "src/app/blogs/[slug]/.page.tsx", "src/app/blogs/[slug]/.layout.tsx"],
   "exclude": ["node_modules"]
 }

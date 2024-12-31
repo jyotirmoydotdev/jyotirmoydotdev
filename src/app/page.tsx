@@ -3,7 +3,7 @@
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight, ArrowUp, ArrowUpRight, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { projects, sidebar_data as data } from '@/data'
+import { projects, sidebar_data as data, blogs } from '@/data'
 import { ExternalLink, Folder, Github } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button";
@@ -234,6 +234,32 @@ export default function Home() {
               <div className="px-2 py-1 rounded-lg bg-muted/50">Extracurricular Activities</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="pt-8" id="blogs">
+        <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
+          <div className=" flex gap-1"><span>Latest</span><span>Blogs</span></div>
+          <div className="flex w-full justify-end py-4">
+            <Button variant={'link'} size={'default'} asChild>
+              <Link href={'/blogs'}>View all <ArrowRight className=" size-5" /> </Link>
+            </Button>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
+          {
+            blogs.slice(0, 4).map((blog, i) => (
+              <Link href={blog.url} key={i} className="flex flex-col gap-2 group/blog">
+                <div className="py-2  group-hover/blog:text-orange-500 transition-colors">
+                  {blog.title}
+                </div>
+                <div className=" text-gray-500 line-clamp-2 text-sm">{blog.description}</div>
+                <div className="text-gray-500 text-sm">
+                  {blog.date}
+                </div>
+              </Link>
+            ))
+          }
         </div>
       </div>
 
