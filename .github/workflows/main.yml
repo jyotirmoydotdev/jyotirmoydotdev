@@ -42,22 +42,17 @@ jobs:
             });
 
             try {
-              // First try to get channel by username
               const channelResponse = await youtube.channels.list({
                 part: ['id'],
                 forUsername: 'jyotirmoydotdev'
               });
 
               let channelId;
-              
               if (!channelResponse.data.items || channelResponse.data.items.length === 0) {
-                // If username doesn't work, try using a direct channel ID
                 channelId = 'UC8DwWOpAGrGdi5jjIKhPw8g';
               } else {
                 channelId = channelResponse.data.items[0].id;
               }
-
-              console.log('Found channel ID:', channelId);
 
               const uploads = await youtube.search.list({
                 part: ['snippet'],
@@ -72,8 +67,6 @@ jobs:
               }
 
               const video = uploads.data.items[0];
-              console.log('Found latest video:', video.snippet.title);
-
               return {
                 title: video.snippet.title,
                 date: video.snippet.publishedAt,
@@ -89,28 +82,46 @@ jobs:
             const latestVideo = await getLatestVideo();
             const dataPath = path.join(process.cwd(), 'src', 'data.ts');
             
-            // Read existing data or create new array if file doesn't exist
+            if (!fs.existsSync(dataPath)) {
+              throw new Error('data.ts file does not exist');
+            }
+
+            // Read the entire file content
+            let fileContent = fs.readFileSync(dataPath, 'utf8');
+
+            // Find the video array in the file
+            const videoArrayMatch = fileContent.match(/export const video\s*=\s*(\[[\s\S]*?\]);/);
+            if (!videoArrayMatch) {
+              throw new Error('Could not find video array in data.ts');
+            }
+
+            // Parse the existing video array
             let videos = [];
-            if (fs.existsSync(dataPath)) {
-              const fileContent = fs.readFileSync(dataPath, 'utf8');
-              const match = fileContent.match(/export const video = (\[.*?\]);/s);
-              if (match) {
-                videos = JSON.parse(match[1]);
-              }
+            try {
+              // Remove any type annotations before parsing
+              const arrayString = videoArrayMatch[1].replace(/:\s*{[^}]+}/g, '');
+              videos = JSON.parse(arrayString);
+            } catch (error) {
+              console.error('Error parsing existing video array:', error);
+              throw error;
             }
 
             // Add new video if it doesn't exist
             const videoExists = videos.some(v => v.embedUrl === latestVideo.embedUrl);
             if (!videoExists) {
               videos.unshift(latestVideo);
-              console.log('Added new video to data file');
-            } else {
-              console.log('Video already exists in data file');
-            }
+              console.log('Added new video:', latestVideo.title);
 
-            // Write updated data back to file
-            const fileContent = `export const video: {title: string, date: string, embedUrl: string}[] = ${JSON.stringify(videos, null, 2)};`;
-            fs.writeFileSync(dataPath, fileContent);
+              // Replace only the video array in the file content
+              const newVideoArray = `export const video: {title: string, date: string, embedUrl: string}[] = ${JSON.stringify(videos, null, 2)}`;
+              fileContent = fileContent.replace(/export const video\s*=\s*\[[\s\S]*?\];/, newVideoArray);
+
+              // Write the updated content back to the file
+              fs.writeFileSync(dataPath, fileContent);
+              console.log('Successfully updated video array in data.ts');
+            } else {
+              console.log('Video already exists in data.ts');
+            }
           }
 
           updateDataFile().catch(error => {
