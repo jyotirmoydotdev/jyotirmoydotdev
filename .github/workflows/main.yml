@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install googleapis --force
+          npm install googleapis
 
       - name: Fetch Latest Video
         env:
@@ -32,31 +32,57 @@ jobs:
           const path = require('path');
 
           async function getLatestVideo() {
+            if (!process.env.YOUTUBE_API_KEY) {
+              throw new Error('YouTube API key is not set in environment variables');
+            }
+
             const youtube = google.youtube({
               version: 'v3',
               auth: process.env.YOUTUBE_API_KEY
             });
 
-            const response = await youtube.channels.list({
-              part: 'contentDetails',
-              forUsername: 'jyotirmoydotdev'
-            });
+            try {
+              // First try to get channel by username
+              const channelResponse = await youtube.channels.list({
+                part: ['id'],
+                forUsername: 'jyotirmoydotdev'
+              });
 
-            const channelId = response.data.items[0].id;
-            const uploads = await youtube.search.list({
-              part: 'snippet',
-              channelId: channelId,
-              order: 'date',
-              maxResults: 1,
-              type: 'video'
-            });
+              let channelId;
+              
+              if (!channelResponse.data.items || channelResponse.data.items.length === 0) {
+                // If username doesn't work, try using a direct channel ID
+                channelId = 'YOUR_CHANNEL_ID'; // Replace with actual channel ID
+              } else {
+                channelId = channelResponse.data.items[0].id;
+              }
 
-            const video = uploads.data.items[0];
-            return {
-              title: video.snippet.title,
-              date: video.snippet.publishedAt,
-              embedUrl: `https://www.youtube.com/embed/${video.id.videoId}`
-            };
+              console.log('Found channel ID:', channelId);
+
+              const uploads = await youtube.search.list({
+                part: ['snippet'],
+                channelId: channelId,
+                order: 'date',
+                maxResults: 1,
+                type: 'video'
+              });
+
+              if (!uploads.data.items || uploads.data.items.length === 0) {
+                throw new Error('No videos found for the channel');
+              }
+
+              const video = uploads.data.items[0];
+              console.log('Found latest video:', video.snippet.title);
+
+              return {
+                title: video.snippet.title,
+                date: video.snippet.publishedAt,
+                embedUrl: `https://www.youtube.com/embed/${video.id.videoId}`
+              };
+            } catch (error) {
+              console.error('YouTube API Error:', error.response?.data || error.message);
+              throw error;
+            }
           }
 
           async function updateDataFile() {
@@ -77,6 +103,9 @@ jobs:
             const videoExists = videos.some(v => v.embedUrl === latestVideo.embedUrl);
             if (!videoExists) {
               videos.unshift(latestVideo);
+              console.log('Added new video to data file');
+            } else {
+              console.log('Video already exists in data file');
             }
 
             // Write updated data back to file
@@ -84,7 +113,10 @@ jobs:
             fs.writeFileSync(dataPath, fileContent);
           }
 
-          updateDataFile().catch(console.error);
+          updateDataFile().catch(error => {
+            console.error('Failed to update video data:', error);
+            process.exit(1);
+          });
           EOF
 
       - name: Commit and push if changes
