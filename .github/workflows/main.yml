@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install googleapis
+          npm install googleapis --force
 
       - name: Fetch Latest Video
         env:
@@ -52,7 +52,7 @@ jobs:
               
               if (!channelResponse.data.items || channelResponse.data.items.length === 0) {
                 // If username doesn't work, try using a direct channel ID
-                channelId = 'YOUR_CHANNEL_ID'; // Replace with actual channel ID
+                channelId = 'UC8DwWOpAGrGdi5jjIKhPw8g';
               } else {
                 channelId = channelResponse.data.items[0].id;
               }
