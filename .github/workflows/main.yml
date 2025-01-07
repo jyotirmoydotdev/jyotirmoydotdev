@@ -90,7 +90,7 @@ jobs:
             let fileContent = fs.readFileSync(dataPath, 'utf8');
 
             // Find the video array in the file
-            const videoArrayMatch = fileContent.match(/export const video\s*=\s*(\[[\s\S]*?\]);/);
+            const videoArrayMatch = fileContent.match(/export const video(?::\s*{[^}]+})?\s*=\s*(\[[\s\S]*?\]);/);
             if (!videoArrayMatch) {
               throw new Error('Could not find video array in data.ts');
             }
