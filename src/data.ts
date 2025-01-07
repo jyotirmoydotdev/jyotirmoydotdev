@@ -198,4 +198,4 @@ export const blogs: blogsType[] = [
 ]
 
 export const video = [
-]
+];

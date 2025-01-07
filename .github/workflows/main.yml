@@ -90,7 +90,7 @@ jobs:
             let fileContent = fs.readFileSync(dataPath, 'utf8');
 
             // Simplified regex to find video array without type
-            const videoArrayMatch = fileContent.match(/export const video\s*=\s*\[/);
+            const videoArrayMatch = fileContent.match(/export\s+const\s+video\s*=\s*(\[[\s\S]*?\]);/);
             if (!videoArrayMatch) {
               throw new Error('Could not find video array in data.ts');
             }
@@ -98,7 +98,7 @@ jobs:
             // Parse the existing video array
             let videos = [];
             try {
-              videos = JSON.parse(videoArrayMatch[1]);
+              videos = eval(videoArrayMatch[1]);
             } catch (error) {
               console.error('Error parsing existing video array:', error);
               throw error;
