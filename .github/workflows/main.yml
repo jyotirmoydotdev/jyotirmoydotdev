@@ -2,8 +2,8 @@ name: Update Latest YouTube Video
 
 on:
   schedule:
-    - cron: '0 0 * * SUN'  # Runs at 00:00 UTC every Sunday
-  workflow_dispatch:  # Allows manual trigger
+    - cron: '0 0 * * SUN'
+  workflow_dispatch:
 
 jobs:
   update-video:
@@ -89,18 +89,20 @@ jobs:
             // Read the entire file content
             let fileContent = fs.readFileSync(dataPath, 'utf8');
 
-            // Find the video array in the file
-            const videoArrayMatch = fileContent.match(/export const video(?::\s*{[^}]+})?\s*=\s*(\[[\s\S]*?\]);/);
+            // Updated regex pattern to handle multi-line arrays with proper formatting
+            const videoArrayPattern = /export const video:\s*{[^}]+}\[\]\s*=\s*\[\r?\n\s*{[\s\S]*?}\r?\n\]/;
+            const videoArrayMatch = fileContent.match(videoArrayPattern);
+            
             if (!videoArrayMatch) {
+              console.error('Could not find properly formatted video array');
               throw new Error('Could not find video array in data.ts');
             }
 
-            // Parse the existing video array
+            // Parse the existing video array - extract just the array part
             let videos = [];
             try {
-              // Remove any type annotations before parsing
-              const arrayString = videoArrayMatch[1].replace(/:\s*{[^}]+}/g, '');
-              videos = JSON.parse(arrayString);
+              const arrayContent = videoArrayMatch[0].replace(/^[^[]+\[/, '[');
+              videos = JSON.parse(arrayContent);
             } catch (error) {
               console.error('Error parsing existing video array:', error);
               throw error;
@@ -112,9 +114,17 @@ jobs:
               videos.unshift(latestVideo);
               console.log('Added new video:', latestVideo.title);
 
-              // Replace only the video array in the file content
-              const newVideoArray = `export const video: {title: string, date: string, embedUrl: string}[] = ${JSON.stringify(videos, null, 2)}`;
-              fileContent = fileContent.replace(/export const video\s*=\s*\[[\s\S]*?\];/, newVideoArray);
+              // Format the new array with proper indentation
+              const formattedArray = JSON.stringify(videos, null, 2)
+                .replace(/^/gm, '  ') // Add indentation to all lines
+                .replace(/^\s\s\[/, '[') // Remove indentation from first line
+                .replace(/^\s\s\]/, ']'); // Remove indentation from last line
+
+              // Create the new content with type annotation
+              const newVideoArray = `export const video: {title: string, date: string, embedUrl: string}[] = ${formattedArray}`;
+              
+              // Replace the old array with the new one
+              fileContent = fileContent.replace(videoArrayPattern, newVideoArray);
 
               // Write the updated content back to the file
               fs.writeFileSync(dataPath, fileContent);
