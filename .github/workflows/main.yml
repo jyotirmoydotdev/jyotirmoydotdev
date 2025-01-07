@@ -89,20 +89,16 @@ jobs:
             // Read the entire file content
             let fileContent = fs.readFileSync(dataPath, 'utf8');
 
-            // Updated regex pattern to handle multi-line arrays with proper formatting
-            const videoArrayPattern = /export const video:\s*{[^}]+}\[\]\s*=\s*\[\r?\n\s*{[\s\S]*?}\r?\n\]/;
-            const videoArrayMatch = fileContent.match(videoArrayPattern);
-            
+            // Simplified regex to find video array without type
+            const videoArrayMatch = fileContent.match(/export const video = (\[[\s\S]*?\]);/);
             if (!videoArrayMatch) {
-              console.error('Could not find properly formatted video array');
               throw new Error('Could not find video array in data.ts');
             }
 
-            // Parse the existing video array - extract just the array part
+            // Parse the existing video array
             let videos = [];
             try {
-              const arrayContent = videoArrayMatch[0].replace(/^[^[]+\[/, '[');
-              videos = JSON.parse(arrayContent);
+              videos = JSON.parse(videoArrayMatch[1]);
             } catch (error) {
               console.error('Error parsing existing video array:', error);
               throw error;
@@ -114,17 +110,11 @@ jobs:
               videos.unshift(latestVideo);
               console.log('Added new video:', latestVideo.title);
 
-              // Format the new array with proper indentation
-              const formattedArray = JSON.stringify(videos, null, 2)
-                .replace(/^/gm, '  ') // Add indentation to all lines
-                .replace(/^\s\s\[/, '[') // Remove indentation from first line
-                .replace(/^\s\s\]/, ']'); // Remove indentation from last line
-
-              // Create the new content with type annotation
-              const newVideoArray = `export const video: {title: string, date: string, embedUrl: string}[] = ${formattedArray}`;
+              // Create new array string without type annotation
+              const newVideoArray = `export const video = ${JSON.stringify(videos, null, 2)}`;
               
               // Replace the old array with the new one
-              fileContent = fileContent.replace(videoArrayPattern, newVideoArray);
+              fileContent = fileContent.replace(/export const video = \[[\s\S]*?\];/, newVideoArray);
 
               // Write the updated content back to the file
               fs.writeFileSync(dataPath, fileContent);
