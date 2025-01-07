@@ -1,4 +1,4 @@
-import { File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Youtube } from "lucide-react"
+import { File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
 import { SiLeetcode } from "react-icons/si"
 
 // Fist sidebar data
@@ -21,6 +21,12 @@ export const sidebar_data = {
             title: "Blogs",
             url: "/blogs",
             icon: File,
+            isActive: false,
+        },
+        {
+            title: "Videos",
+            url: "/video",
+            icon: Video,
             isActive: false,
         }
     ],
@@ -190,3 +196,5 @@ export const blogs: blogsType[] = [
         ]
     },
 ]
+
+export const video = []
