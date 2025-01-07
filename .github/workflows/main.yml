@@ -1,0 +1,95 @@
+name: Update Latest YouTube Video
+
+on:
+  schedule:
+    - cron: '0 0 * * SUN'  # Runs at 00:00 UTC every Sunday
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  update-video:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install googleapis
+
+      - name: Fetch Latest Video
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          node << 'EOF'
+          const { google } = require('googleapis');
+          const fs = require('fs');
+          const path = require('path');
+
+          async function getLatestVideo() {
+            const youtube = google.youtube({
+              version: 'v3',
+              auth: process.env.YOUTUBE_API_KEY
+            });
+
+            const response = await youtube.channels.list({
+              part: 'contentDetails',
+              forUsername: 'jyotirmoydotdev'
+            });
+
+            const channelId = response.data.items[0].id;
+            const uploads = await youtube.search.list({
+              part: 'snippet',
+              channelId: channelId,
+              order: 'date',
+              maxResults: 1,
+              type: 'video'
+            });
+
+            const video = uploads.data.items[0];
+            return {
+              title: video.snippet.title,
+              date: video.snippet.publishedAt,
+              embedUrl: `https://www.youtube.com/embed/${video.id.videoId}`
+            };
+          }
+
+          async function updateDataFile() {
+            const latestVideo = await getLatestVideo();
+            const dataPath = path.join(process.cwd(), 'src', 'data.ts');
+            
+            // Read existing data or create new array if file doesn't exist
+            let videos = [];
+            if (fs.existsSync(dataPath)) {
+              const fileContent = fs.readFileSync(dataPath, 'utf8');
+              const match = fileContent.match(/export const video = (\[.*?\]);/s);
+              if (match) {
+                videos = JSON.parse(match[1]);
+              }
+            }
+
+            // Add new video if it doesn't exist
+            const videoExists = videos.some(v => v.embedUrl === latestVideo.embedUrl);
+            if (!videoExists) {
+              videos.unshift(latestVideo);
+            }
+
+            // Write updated data back to file
+            const fileContent = `export const video: {title: string, date: string, embedUrl: string}[] = ${JSON.stringify(videos, null, 2)};`;
+            fs.writeFileSync(dataPath, fileContent);
+          }
+
+          updateDataFile().catch(console.error);
+          EOF
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add src/data.ts
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update latest YouTube video" && git push)
