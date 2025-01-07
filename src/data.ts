@@ -197,4 +197,4 @@ export const blogs: blogsType[] = [
     },
 ]
 
-export const video: {title: string, date: string, embedUrl: string}[] = [];
+export const video = [];
