@@ -19,7 +19,7 @@ import { ModeToggle } from "./mode-toggle"
 import { Button } from "./ui/button"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useRouter } from "next/navigation"
-import { about, blogs, sidebar_data as data, projects, sidebar_data } from "@/data"
+import { about, blogs, sidebar_data as data, projects, sidebar_data, video } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
 import { SidebarOptInForm } from "./sidebar-opt-in-form"
@@ -38,6 +38,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const filteredBlogs = blogs.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
+  const filteredVideo = video.filter((item) =>
+    item.title.toLowerCase().includes(search.toLowerCase())
+  )
   return (
     <Sidebar
       collapsible="icon"
@@ -193,6 +196,28 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </span>
                     <div className=" pt-1 text-xs text-gray-500">
                       <span>{item.date}</span>
+                    </div>
+                  </Link>
+                ))
+              }
+              {
+                (activeItem.title.toLocaleLowerCase() === "videos") && filteredVideo.map((item, i) => (
+                  <Link
+                    key={i}
+                    target='_blank'
+                    href={item.embedUrl}
+                    className="group/blogs flex flex-col items-start gap-1.5 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  >
+                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces font-black dark:group-hover/blogs:text-orange-400 group-hover/blogs:text-orange-500 transition-all after:-[]">
+                      {item.title}
+                    </span>
+                    <div className=" pt-1 text-xs text-gray-500">
+                      <span>{new Date(item.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}</span>
+
                     </div>
                   </Link>
                 ))
