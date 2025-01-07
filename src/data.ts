@@ -1,4 +1,4 @@
-import { File, Folder, Github, Linkedin, Twitter, User2Icon } from "lucide-react"
+import { File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Youtube } from "lucide-react"
 import { SiLeetcode } from "react-icons/si"
 
 // Fist sidebar data
@@ -44,6 +44,16 @@ export const sidebar_data = {
             url: 'https://linkedin.com/in/jyotirmoydotdev',
             name: 'Linkedin | Jyotirmoy Barman | @jyotirmoydotdev',
             icon: Linkedin
+        },
+        {
+            url: 'https://www.youtube.com/@Jyotirmoydotdev',
+            name: 'Youtube | Jyotirmoy Barman | @jyotirmoydotdev',
+            icon: Youtube
+        },
+        {
+            url: 'https://www.instagram.com/Jyotirmoydotdev',
+            name: 'Instagram | Jyotirmoy Barman | @jyotirmoydotdev',
+            icon: Instagram
         }
     ]
 }
@@ -78,7 +88,7 @@ export const projects = [
         icon: null,
         title: "MyMeghalaya",
         description: "MyMeghalaya is a website I created to showcase the rich culture and natural beauty of my homeland to the world, inviting everyone to witness its splendor firsthand.",
-        url: "/projects/mymeghalaya",
+        url: "/projects",
         externalUrl: "http://mymeghalaya.in",
         source: null,
         tags: ["Nextjs", "Supabase", "Vercel", "Resend"],
@@ -87,7 +97,7 @@ export const projects = [
         icon: null,
         title: "Openfy",
         description: "Openfy is a self-hosted e-commerce platform built with Go and Gin, providing a flexible and customizable solution for managing products and handling user authentication.",
-        url: "/projects/openfy",
+        url: "/projects",
         externalUrl: null,
         source: "https://github.com/jyotirmoydotdev/openfy",
         tags: ["Go", "Gin", "Pocketbase", "Docker"],
@@ -96,7 +106,7 @@ export const projects = [
         icon: null,
         title: "Blog App",
         description: "Blog application built with Next.js and MongoDB. The app includes a dashboard for managing posts and viewing a list of subscribers.",
-        url: "/projects/blog-app",
+        url: "/projects",
         externalUrl: null,
         source: "https://github.com/jyotirmoydotdev/blog-app",
         tags: ["Nextjs", "MongoDB", "Vercel"]

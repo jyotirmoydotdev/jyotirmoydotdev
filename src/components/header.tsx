@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from './ui/breadcrumb'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Header = () => {
     const path = usePathname();
@@ -14,6 +15,7 @@ const Header = () => {
 
     return (
         <header className="sticky top-0 flex justify-start shrink-0 items-center gap-2 border-b bg-background/50 z-10 backdrop-blur-md p-4">
+            <Image width={100} height={100} alt='Jyotirmoy Barman' className=' sm:hidden rounded-lg size-7' src={'/jyotirmoy.webp'}></Image>
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
