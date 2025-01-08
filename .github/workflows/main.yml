@@ -58,7 +58,6 @@ jobs:
                 part: ['snippet'],
                 channelId: channelId,
                 order: 'date',
-                maxResults: 1,
                 type: 'video'
               });
 
@@ -66,12 +65,17 @@ jobs:
                 throw new Error('No videos found for the channel');
               }
 
-              const video = uploads.data.items[0];
-              return {
-                title: video.snippet.title,
-                date: video.snippet.publishedAt,
-                embedUrl: `https://www.youtube.com/embed/${video.id.videoId}`
-              };
+              const video = uploads.data.items;
+              
+              let allVideo = video.map((item) => ({
+                id: item.id.videoId,
+                title: item.snippet.title,
+                description: item.snippet.description,
+                date: item.snippet.publishedAt,
+              }));
+
+              return allVideo;
+
             } catch (error) {
               console.error('YouTube API Error:', error.response?.data || error.message);
               throw error;
@@ -86,42 +90,15 @@ jobs:
               throw new Error('data.ts file does not exist');
             }
 
-            // Read the entire file content
             let fileContent = fs.readFileSync(dataPath, 'utf8');
 
-            // Simplified regex to find video array without type
-            const videoArrayMatch = fileContent.match(/export\s+const\s+video\s*=\s*(\[[\s\S]*?\]);/);
-            if (!videoArrayMatch) {
-              throw new Error('Could not find video array in data.ts');
-            }
+            const newVideoArray = `export const video : { id:string, title:string, description:string, date:string }[] = ${JSON.stringify(latestVideo, null, 2)};`;
+            
+            fileContent = fileContent.replace(/export\s+const\s+video\s*:\s*\{[\s\S]*?\}\[\]\s*=\s*(\[[\s\S]*?\]);/, newVideoArray);
 
-            // Parse the existing video array
-            let videos = [];
-            try {
-              videos = eval(videoArrayMatch[1]);
-            } catch (error) {
-              console.error('Error parsing existing video array:', error);
-              throw error;
-            }
+            fs.writeFileSync(dataPath, fileContent);
 
-            // Add new video if it doesn't exist
-            const videoExists = videos.some(v => v.embedUrl === latestVideo.embedUrl);
-            if (!videoExists) {
-              videos.unshift(latestVideo);
-              console.log('Added new video:', latestVideo.title);
-
-              // Create new array string without type annotation
-              const newVideoArray = `export const video = ${JSON.stringify(videos, null, 2)}`;
-              
-              // Replace the old array with the new one
-              fileContent = fileContent.replace(/export const video = \[[\s\S]*?\];/, newVideoArray);
-
-              // Write the updated content back to the file
-              fs.writeFileSync(dataPath, fileContent);
-              console.log('Successfully updated video array in data.ts');
-            } else {
-              console.log('Video already exists in data.ts');
-            }
+            console.log('Successfully updated video array in data.ts');
           }
 
           updateDataFile().catch(error => {

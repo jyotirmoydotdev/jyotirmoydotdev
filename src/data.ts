@@ -197,15 +197,5 @@ export const blogs: blogsType[] = [
     },
 ]
 
-export const video = [
-  {
-    "title": "3042  Count Prefix and Suffix Pairs I - Go",
-    "date": "2025-01-08T15:02:38Z",
-    "embedUrl": "https://www.youtube.com/embed/oe4PYLTGVTY"
-  },
-  {
-    "title": "1408. String Matching in an Array",
-    "date": "2025-01-07T17:41:43Z",
-    "embedUrl": "https://www.youtube.com/embed/7_dOHPE-6lo"
-  }
-]
+export const video: { id:string, title:string, description:string, date:string }[] = [
+];
