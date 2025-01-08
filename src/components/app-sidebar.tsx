@@ -205,7 +205,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Link
                     key={i}
                     target='_blank'
-                    href={item.embedUrl}
+                    href={`https://youtu.be/${item.id}`}
                     className="group/blogs flex flex-col items-start gap-1.5 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   >
                     <span className="line-clamp-2 w-[260px] whitespace-break-spaces font-black dark:group-hover/blogs:text-orange-400 group-hover/blogs:text-orange-500 transition-all after:-[]">
