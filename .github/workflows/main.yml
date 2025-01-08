@@ -69,6 +69,7 @@ jobs:
               
               let allVideo = video.map((item) => ({
                 id: item.id.videoId,
+                imgUrl: item.snippet.thumbnails.default.url,
                 title: item.snippet.title,
                 description: item.snippet.description,
                 date: item.snippet.publishedAt,
@@ -92,7 +93,7 @@ jobs:
 
             let fileContent = fs.readFileSync(dataPath, 'utf8');
 
-            const newVideoArray = `export const video : { id:string, title:string, description:string, date:string }[] = ${JSON.stringify(latestVideo, null, 2)};`;
+            const newVideoArray = `export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = ${JSON.stringify(latestVideo, null, 2)};`;
             
             fileContent = fileContent.replace(/export\s+const\s+video\s*:\s*\{[\s\S]*?\}\[\]\s*=\s*(\[[\s\S]*?\]);/, newVideoArray);
 

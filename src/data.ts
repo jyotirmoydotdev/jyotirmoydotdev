@@ -197,17 +197,5 @@ export const blogs: blogsType[] = [
     },
 ]
 
-export const video : { id:string, title:string, description:string, date:string }[] = [
-  {
-    "id": "oe4PYLTGVTY",
-    "title": "3042  Count Prefix and Suffix Pairs I - Go",
-    "description": "",
-    "date": "2025-01-08T15:02:38Z"
-  },
-  {
-    "id": "7_dOHPE-6lo",
-    "title": "1408. String Matching in an Array - Go",
-    "description": "",
-    "date": "2025-01-07T17:41:43Z"
-  }
+export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
 ];
