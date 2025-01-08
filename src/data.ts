@@ -203,4 +203,4 @@ export const video = [
     "date": "2025-01-07T17:41:43Z",
     "embedUrl": "https://www.youtube.com/embed/7_dOHPE-6lo"
   }
-]
+];
