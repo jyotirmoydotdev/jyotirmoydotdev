@@ -199,6 +199,13 @@ export const blogs: blogsType[] = [
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
   {
+    "id": "X2vwqQNiJks",
+    "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
+    "title": "2185. Counting Words With a Given Prefix - Go",
+    "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
+    "date": "2025-01-09T18:52:49Z"
+  },
+  {
     "id": "oe4PYLTGVTY",
     "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
     "title": "3042  Count Prefix and Suffix Pairs I - Go",
