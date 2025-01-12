@@ -199,6 +199,20 @@ export const blogs: blogsType[] = [
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
   {
+    "id": "D_cfXKdYu4M",
+    "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
+    "title": "1400. Construct K Palindrome Strings - Go",
+    "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
+    "date": "2025-01-11T17:52:26Z"
+  },
+  {
+    "id": "5XfjayX8HAE",
+    "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
+    "title": "916. Word Subsets - Go",
+    "description": "",
+    "date": "2025-01-10T15:57:53Z"
+  },
+  {
     "id": "X2vwqQNiJks",
     "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
     "title": "2185. Counting Words With a Given Prefix - Go",
