@@ -199,6 +199,13 @@ export const blogs: blogsType[] = [
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
   {
+    "id": "tOASWm8I7sk",
+    "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
+    "title": "2116. Check if a Parentheses String Can Be Valid - Go",
+    "description": "",
+    "date": "2025-01-12T17:01:47Z"
+  },
+  {
     "id": "D_cfXKdYu4M",
     "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
     "title": "1400. Construct K Palindrome Strings - Go",
@@ -225,12 +232,5 @@ export const video : { id:string, imgUrl:string, title:string, description:strin
     "title": "3042  Count Prefix and Suffix Pairs I - Go",
     "description": "",
     "date": "2025-01-08T15:02:38Z"
-  },
-  {
-    "id": "7_dOHPE-6lo",
-    "imgUrl": "https://i.ytimg.com/vi/7_dOHPE-6lo/default.jpg",
-    "title": "1408. String Matching in an Array - Go",
-    "description": "",
-    "date": "2025-01-07T17:41:43Z"
   }
 ];
