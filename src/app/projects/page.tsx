@@ -9,8 +9,8 @@ import React from 'react'
 const Page = () => {
     const router = useRouter()
     return (
-        <div className="p-5 relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="sm:p-4 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
                 {
                     projects.map((project, i) => (
                             <div 
@@ -18,7 +18,7 @@ const Page = () => {
                                 onClick={()=>{
                                     router.push(project.url)
                                 }}
-                                className="flex flex-col gap-4 p-4 group/project w-full bg-accent/40 border hover:border-orange-50/20 hover:bg-accent/50 hover:scale-105 transition-all rounded-xl"
+                                className="flex flex-col gap-4 p-4 group/project w-full bg-accent/40 border hover:border-orange-50/20 hover:bg-accent/50 sm:hover:scale-105 transition-all sm:rounded-xl"
                             >
                                 <div className="flex justify-between">
                                     <div className="">

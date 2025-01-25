@@ -9,7 +9,7 @@ export default async function Page({
     const { default: Blog } = await import(`@/markdown/${slug}.mdx`)
     return (
         <div className="relative">
-            <div className='p-4 gap-4 flex flex-row justify-start pl-4 sm:pl-8'>
+            <div className='p-4 gap-4 flex flex-row justify-center pl-4 sm:pl-8'>
                 <div className=" w-[92vw] md:max-w-[578.4px] prose dark:prose-invert ">
                     <Blog />
                 </div>

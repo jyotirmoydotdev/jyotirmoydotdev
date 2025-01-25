@@ -1,20 +1,36 @@
+'use client'
+
 import { blogs } from '@/data'
 import Link from 'next/link'
 import React from 'react'
+import { File } from 'lucide-react'
 
 const page = () => {
     return (
-        <div className='p-4'>
-            <div className="flex flex-col gap-2 w-full md:w-2/3">
+        <div className="sm:p-4 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
                 {
                     blogs.map((blog, i) => (
-                        <Link href={blog.url} key={i} className="gap-1 py-2 sm:py-4 flex flex-col group/blog active:pl-2 hover:pl-2 transition-all border-b sm:border-none ">
-                            <span className=' font-medium group-hover/blog:text-orange-500 dark:group-hover/blog:text-orange-400'>{blog.title}</span>
-                            <span className=' line-clamp-2 text-gray-500 text-sm'>{blog.description}</span>
-                            <div className="  text-sm text-black/50 dark:text-gray-500">
-                                <span>{blog.date}</span>
-                            </div>
-                        </Link>
+                            <Link 
+                                key={i} 
+                                href={blog.url}
+                                className="flex flex-col gap-4 p-4 group/project w-full bg-accent/40 border hover:border-orange-50/20 hover:bg-accent/50 sm:hover:scale-105 transition-all sm:rounded-xl"
+                            >
+                                <div className="flex justify-between">
+                                    <div className="">
+                                        <File className='dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors' />
+                                    </div>
+                                </div>
+                                <div className=" line-clamp-2 font-black text-base sm:text-lg font-sans dark:group-hover/project:text-orange-400 group-hover/project:text-orange-500 transition-colors">
+                                    {blog.title}
+                                </div>
+                                <div className="text-xs line-clamp-3 sm:text-sm dark:text-white/80 text-black/80 group-hover/project:text-orange-900 dark:group-hover/project:text-orange-100 transition-colors">
+                                    {blog.description}
+                                </div>
+                                <div className="flex gap-2 flex-wrap text-xs text-black/60 dark:text-white/60">
+                                    <div className=" py-1 px-2 rounded-md bg-muted/90 dark:bg-muted/50 ">{blog.date}</div>
+                                </div>
+                            </Link>
                     ))
                 }
             </div>

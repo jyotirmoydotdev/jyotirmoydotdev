@@ -1,234 +1,84 @@
 "use client"
 
 import * as React from "react"
-import { ArrowUpRight, Folder, Mail } from "lucide-react"
+import {ArrowUpRight } from "lucide-react"
+
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarInput,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
+    Sidebar,
+    SidebarContent,
+    SidebarFooter,
+    SidebarGroup,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+    SidebarRail,
+    useSidebar,
 } from "@/components/ui/sidebar"
-import { ModeToggle } from "./mode-toggle"
-import { Button } from "./ui/button"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { useRouter } from "next/navigation"
-import { about, blogs, sidebar_data as data, projects, sidebar_data, video } from "@/data"
-import Image from "next/image"
-import Link from "next/link"
-import { SidebarOptInForm } from "./sidebar-opt-in-form"
+import Image from "next/image";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import { ModeToggle } from "./mode-toggle";
+import localFont from "next/font/local";
+import { sidebar_data as data } from "@/data"
+
+const baloo = localFont({
+    src: '../fonts/Baloo2-VariableFont_wght.ttf',
+    weight: '800',
+    display: 'swap',
+})
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  // Note: I'm using state to show active item.
-  // IRL you should use the url/router.
-  const [activeItem, setActiveItem] = React.useState(data.navMain[0])
-  const router = useRouter()
-  const { setOpen, setOpenMobile } = useSidebar()
-  const isMobile = useIsMobile()
-  const [search, setSearch] = React.useState("");
-  const filteredProjects = projects.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  );
-  const filteredBlogs = blogs.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  );
-  const filteredVideo = video.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  )
-  return (
-    <Sidebar
-      collapsible="icon"
-      className="overflow-hidden [&>[data-sidebar=sidebar]]:flex-row"
-      {...props}
-    >
-      {/* This is the first sidebar */}
-      {/* We disable collapsible and adjust width to icon. */}
-      {/* This will make the sidebar appear as icons. */}
-      <Sidebar
-        collapsible="none"
-        className="!w-[calc(var(--sidebar-width-icon)_+_1px)] border-r"
-      >
-        <SidebarHeader>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
-                <Link href="/">
-                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-[#FF634D] text-sidebar-primary-foreground">
-                    <Image src={sidebar_data.logo} width={100} height={100} alt="Jyotirmoy Barman" className="rounded-lg" />
-                  </div>
+    const {openMobile, setOpenMobile} = useSidebar()
+    return (
+        <Sidebar collapsible="icon" {...props}>
+            <SidebarHeader>
+                <Link href={"/dashboard"} className="flex gap-2 items-center h-8">
+                    <Image src={'/jyotirmoy.webp'} width={100} height={100} alt="" className="flex aspect-square size-7 items-center justify-center rounded-lg object-contain text-sidebar-primary-foreground" />
+                    <span className={`truncate font-semibold text-xl leading-tight text-white pl-1 pr-5 ${baloo.className}`}> {/**bg-[rgb(237,109,86)] text-white dark:bg-inherit dark:text-[rgb(237,109,86)] */}
+                        Jyotirmoy.dev
+                    </span>
                 </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent className="px-1.5 md:px-0">
-              <SidebarMenu>
-                {data.navMain.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      tooltip={{
-                        children: item.title,
-                        hidden: (isMobile ? true : false),
-                      }}
-                      onClick={() => {
-                        setActiveItem(item)
-                        setOpen(true)
-                        setOpenMobile(false)
-                        if (isMobile) {
-                          router.push(item.url)
+            </SidebarHeader>
+            <SidebarContent>
+                <SidebarGroup>
+                    <SidebarMenu>
+                        {
+                            data.navMain.map((item, i) => (
+                                <SidebarMenuButton onClick={()=>setOpenMobile(!openMobile)} key={i} tooltip={item.title} asChild>
+                                    <Link href={item.url} className="">
+                                        <item.icon />
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            ))
                         }
-                      }}
-                      isActive={activeItem.title === item.title}
-                      className="px-2.5 md:px-2"
-                    >
-                      <item.icon />
-                      {/* <span>{item.title}</span> */}
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>
-          <div className="flex items-center justify-center flex-col gap-2">
-            {
-              data.links.map((link, i) => (
-                <Button key={i} variant={'outline'} size={'icon'} className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative" asChild>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
-                    <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
-                  </a>
-                </Button>
-              ))
-            }
-            <Button variant={'outline'} size={'icon'} className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative" asChild>
-              <a href="mailto:jyotirmoydotdev@gmail.com">
-                <Mail className="scale-100 group-hover/link:scale-0 transition-all" />
-                <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
-              </a>
-            </Button>
-            <ModeToggle />
-          </div>
-        </SidebarFooter>
-      </Sidebar>
-
-      {/* This is the second sidebar */}
-      {/* We disable collapsible and let it fill remaining space */}
-      <Sidebar collapsible="none" className="hidden flex-1 md:flex">
-        <SidebarHeader className="gap-3.5 border-b p-4">
-          <div className="flex w-full items-center justify-between">
-            <div className="text-base font-medium text-foreground">
-              {activeItem.title}
-            </div>
-            <div className="text-sm font-medium text-foreground">
-              <Button variant={'link'} size={'sm'} asChild>
-                <Link href={activeItem.url}>
-                  View all
-                </Link>
-              </Button>
-            </div>
-          </div>
-          <SidebarInput
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Type to search..."
-          />
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup className="px-0">
-            <SidebarGroupContent>
-              {
-                (activeItem.title.toLowerCase() === "about") && about.map((item, i) => (
-                  <Link
-                    key={i}
-                    href={item.url}
-                    className="flex flex-col items-start hover:pl-2 transition-all gap-2 whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                  >
-                    <span className="font-black">{item.title}</span>
-                  </Link>
-                ))
-              }
-              {
-                (activeItem.title.toLocaleLowerCase() === "projects") && filteredProjects.map((item, i) => (
-                  <Link
-                    key={i}
-                    href={item.url}
-                    className="flex flex-col items-start gap-2 hover:pl-2 group/project transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                  >
-                    <span className="font-black flex gap-2 dark:group-hover/project:text-orange-400 group-hover/project:text-orange-500 transition-all ">
-                      <Folder className="size-4" />
-                      {item.title}
-                    </span>
-                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
-                      {item.description}
-                    </span>
-                    <div className="flex flex-wrap gap-1">
-                      {
-                        item.tags.map((tag, i) => (
-                          <div key={i} className=" px-2 py-1 text-xs rounded-md bg-gray-500/10 dark:bg-black/20 text-gray-500">{tag}</div>
+                    </SidebarMenu>
+                </SidebarGroup>
+            </SidebarContent>
+            <SidebarFooter>
+                <SidebarMenu>
+                    {
+                        data.links.map((link, i) => (
+                            <SidebarMenuItem key={i} >
+                                <SidebarMenuButton tooltip={link.social} asChild>
+                                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex gap-2 items-center group/link hover:bg-muted/80 rounded-lg">
+                                        <Button variant={'ghost'} className="size-4 px-0 rounded-none relative">
+                                            <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
+                                            <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
+                                        </Button>
+                                        <span>
+                                            {link.social}
+                                        </span>
+                                    </a>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
                         ))
-                      }
-                    </div>
-                  </Link>
-                ))
-              }
-              {
-                (activeItem.title.toLocaleLowerCase() === "blogs") && filteredBlogs.map((item, i) => (
-                  <Link
-                    key={i}
-                    href={item.url}
-                    className="group/blogs flex flex-col items-start gap-1.5 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                  >
-                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces font-black dark:group-hover/blogs:text-orange-400 group-hover/blogs:text-orange-500 transition-all">
-                      {item.title}
-                    </span>
-                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces text-xs">
-                      {item.description}
-                    </span>
-                    <div className=" pt-1 text-xs text-gray-500">
-                      <span>{item.date}</span>
-                    </div>
-                  </Link>
-                ))
-              }
-              {
-                (activeItem.title.toLocaleLowerCase() === "videos") && filteredVideo.map((item, i) => (
-                  <Link
-                    key={i}
-                    target='_blank'
-                    href={`https://youtu.be/${item.id}`}
-                    className="group/blogs flex flex-col items-start gap-1.5 hover:pl-2 transition-all whitespace-nowrap border-b p-4 text-sm leading-tight last:border-b-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                  >
-                    <span className="line-clamp-2 w-[260px] whitespace-break-spaces font-black dark:group-hover/blogs:text-orange-400 group-hover/blogs:text-orange-500 transition-all after:-[]">
-                      {item.title}
-                    </span>
-                    <div className=" pt-1 text-xs text-gray-500">
-                      <span>{new Date(item.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}</span>
-
-                    </div>
-                  </Link>
-                ))
-              }
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter className="">
-          <SidebarOptInForm />
-        </SidebarFooter>
-      </Sidebar>
-    </Sidebar>
-  )
+                    }
+                    <ModeToggle />
+                </SidebarMenu>
+            </SidebarFooter>
+            <SidebarRail />
+        </Sidebar>
+    )
 }

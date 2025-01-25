@@ -1,4 +1,5 @@
 import { File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
+import { BiLogoGmail } from "react-icons/bi"
 import { SiLeetcode } from "react-icons/si"
 
 // Fist sidebar data
@@ -12,12 +13,6 @@ export const sidebar_data = {
             isActive: true,
         },
         {
-            title: "Projects",
-            url: "/projects",
-            icon: Folder,
-            isActive: false,
-        },
-        {
             title: "Blogs",
             url: "/blogs",
             icon: File,
@@ -28,37 +23,55 @@ export const sidebar_data = {
             url: "/video",
             icon: Video,
             isActive: false,
+        },
+        {
+            title: "Projects",
+            url: "/projects",
+            icon: Folder,
+            isActive: false,
         }
     ],
     links: [
         {
-            url: 'https://github.com/jyotirmoydotdev',
-            name: 'Github | Jyotirmoy Barman | @jyotirmoydotdev',
-            icon: Github
+            url: 'mailto:jyotirmoydotdev@gmail.com',
+            name: 'Gmail | Jyotirmoy Barman | jyotirmoydotdev@gmail.com',
+            social: 'Gmail',
+            icon: BiLogoGmail
         },
         {
-            url: 'https://leetcode.com/jyotirmoydotdev',
-            name: 'Leetcode | Jyotirmoy Barman | @jyotirmoydotdev',
-            icon: SiLeetcode
+            url: 'https://github.com/jyotirmoydotdev',
+            name: 'Github | Jyotirmoy Barman | @jyotirmoydotdev',
+            social: 'Github',
+            icon: Github
         },
         {
             url: 'https://x.com/jyotirmoydotdev',
             name: 'x | Jyotirmoy Barman | @jyotirmoydotdev',
+            social: 'Twitter',
             icon: Twitter
         },
         {
             url: 'https://linkedin.com/in/jyotirmoydotdev',
             name: 'Linkedin | Jyotirmoy Barman | @jyotirmoydotdev',
+            social: 'Linkedin',
             icon: Linkedin
         },
         {
             url: 'https://www.youtube.com/@Jyotirmoydotdev',
             name: 'Youtube | Jyotirmoy Barman | @jyotirmoydotdev',
+            social: 'Youtube',
             icon: Youtube
+        },
+        {
+            url: 'https://leetcode.com/jyotirmoydotdev',
+            name: 'Leetcode | Jyotirmoy Barman | @jyotirmoydotdev',
+            social: 'Leetcode',
+            icon: SiLeetcode
         },
         {
             url: 'https://www.instagram.com/Jyotirmoydotdev',
             name: 'Instagram | Jyotirmoy Barman | @jyotirmoydotdev',
+            social: 'Instagram',
             icon: Instagram
         }
     ]

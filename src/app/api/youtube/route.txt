@@ -1,0 +1,51 @@
+import {google} from "googleapis"
+import { NextResponse } from "next/server";
+
+export async function GET() {
+    const youtube = google.youtube({
+        version: 'v3',
+        auth: process.env.YOUTUBE_API_KEY
+    });
+
+    try {
+        const channelResponse = await youtube.channels.list({
+            part: ['id'],
+            forUsername: 'jyotirmoydotdev'
+        });
+
+        let channelId;
+        if (!channelResponse.data.items || channelResponse.data.items.length === 0) {
+            channelId = 'UC8DwWOpAGrGdi5jjIKhPw8g';
+        } else {
+            channelId = channelResponse.data.items[0].id;
+        }
+
+        const uploads = await youtube.search.list({
+            part: ['snippet'],
+            channelId: channelId,
+            order: 'date',
+            type: 'video'
+        });
+
+        if (!uploads.data.items || uploads.data.items.length === 0) {
+            return NextResponse.json({
+                data: "No videos found for the channel"
+            })
+        }
+
+        //const video = uploads.data.items[0];
+        // return NextResponse.json({
+        //     title: video.snippet.title,
+        //     date: video.snippet.publishedAt,
+        //     embedUrl: `https://www.youtube.com/embed/${video.id.videoId}`
+        // })
+        return NextResponse.json({
+            uploads
+        })
+    } catch (error) {
+        return NextResponse.json({
+            data: "YouTube API Error",
+            error : error
+        })
+    }
+}

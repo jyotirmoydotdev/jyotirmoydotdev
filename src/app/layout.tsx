@@ -45,9 +45,10 @@ export default function RootLayout({
           <SidebarProvider
             style={
               {
-                "--sidebar-width": "350px",
+                "--sidebar-width": "250px",
               } as React.CSSProperties
             }
+            defaultOpen={true}
           >
             <AppSidebar />
             <SidebarInset>

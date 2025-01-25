@@ -3,7 +3,7 @@
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight, ArrowUp, ArrowUpRight, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { projects, sidebar_data as data, blogs } from '@/data'
+import { projects, sidebar_data as data } from '@/data'
 import { ExternalLink, Folder, Github } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,7 @@ const baloo = localFont({
 export default function Home() {
   const router = useRouter()
   return (
-    <div className="p-5 relative">
+    <div className="p-4 relative max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 relative">
         <div className="">
           <header className="flex flex-col gap-2">
@@ -237,7 +237,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="pt-8" id="blogs">
+      {/* <div className="pt-8" id="blogs">
         <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
           <div className=" flex gap-1"><span>Latest</span><span>Blogs</span></div>
           <div className="flex w-full justify-end py-4">
@@ -261,7 +261,7 @@ export default function Home() {
             ))
           }
         </div>
-      </div>
+      </div> */}
 
       <div className=" sticky bottom-4 flex justify-end w-full">
         <Button size={'icon'} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white" asChild>
