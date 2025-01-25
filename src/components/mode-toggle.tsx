@@ -26,7 +26,7 @@ export function ModeToggle() {
             <span className="sr-only">Toggle theme</span>
           </Button>
           {
-            open && <span>{theme}</span>
+            open && <span>{theme?theme:'system'}</span>
           }
         </div>
       </DropdownMenuTrigger>

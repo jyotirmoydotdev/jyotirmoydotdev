@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, ChevronRight } from "lucide-react"
 
 import {
     Sidebar,
@@ -29,7 +29,7 @@ const baloo = localFont({
 })
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const {openMobile, setOpenMobile} = useSidebar()
+    const { openMobile, setOpenMobile } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
@@ -45,10 +45,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <SidebarMenu>
                         {
                             data.navMain.map((item, i) => (
-                                <SidebarMenuButton onClick={()=>setOpenMobile(!openMobile)} key={i} tooltip={item.title} asChild>
-                                    <Link href={item.url} className="">
-                                        <item.icon />
-                                        <span>{item.title}</span>
+                                <SidebarMenuButton onClick={() => setOpenMobile(!openMobile)} key={i} tooltip={item.title} asChild>
+                                    <Link href={item.url} className=" flex justify-between group/link">
+                                        <div className=" flex gap-2 items-center">
+                                            <item.icon  className=" size-4"/>
+                                            <span>{item.title}</span>
+                                        </div>
+                                        <div className=" scale-0 transition-all group-hover/link:scale-100">
+                                            <ChevronRight className=" size-4"/>
+                                        </div>
                                     </Link>
                                 </SidebarMenuButton>
                             ))

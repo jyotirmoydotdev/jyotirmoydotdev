@@ -22,7 +22,7 @@ const baloo = localFont({
 export default function Home() {
   const router = useRouter()
   return (
-    <div className="p-4 relative max-w-6xl mx-auto">
+    <div className="p-4 relative max-w-6xl mx-auto dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2]">
       <div className="grid grid-cols-1 md:grid-cols-2 relative">
         <div className="">
           <header className="flex flex-col gap-2">
