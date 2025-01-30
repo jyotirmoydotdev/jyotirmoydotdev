@@ -9,18 +9,22 @@ import {
 import { SidebarInput } from "@/components/ui/sidebar"
 import { useToast } from "@/hooks/use-toast"
 import { MailCheck } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function SidebarOptInForm() {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Please enter a valid email address.");
   const [isLoading, setLoading] = useState(false);
+  const { toast } = useToast()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
 
     if (!email) {
       setMessage("Please enter a valid email address.");
+      toast({
+        description: message,
+      })
       return;
     }
 
@@ -37,23 +41,26 @@ export function SidebarOptInForm() {
       const data = await response.json();
       if (response.ok) {
         setMessage(data.message);
+        toast({
+          description: message,
+        })
         setEmail("");
       } else {
         setMessage(data.error || "Subscription failed.");
+        toast({
+          description: message,
+        })
       }
     } catch (error) {
       setMessage("An unexpected error occurred. Please try again.");
+      toast({
+        description: message,
+      })
       console.log(error)
     } finally {
       setLoading(false)
     }
   };
-  const { toast } = useToast()
-  useEffect(() => {
-    toast({
-      description: message,
-    })
-  }, [message, toast])
 
   return (
     <Card className="bg-orange-500 rounded-none sm:rounded-lg">
