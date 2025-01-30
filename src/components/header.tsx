@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ModeToggle } from './mode-toggle'
+import { Search } from './search'
 
 function Capitalize(str: string): string {
     if (typeof str !== 'string' || str.trim() === '') {
@@ -30,7 +31,7 @@ const Header = () => {
                 <Separator orientation="vertical" className="mr-2 h-4" />
                 <Breadcrumb>
                     <BreadcrumbList className='flex flex-nowrap'>
-                        {paths.slice(1).map((path, index) => {
+                        {paths.slice(1,2).map((path, index) => {
                             const isLast = index === paths.length - 2;
                             const href = `/${paths.slice(1, index + 2).join("/")}`;
 
@@ -53,7 +54,10 @@ const Header = () => {
                     </BreadcrumbList>
                 </Breadcrumb>
             </div>
-            <ModeToggle />
+            <div className=" flex gap-1 justify-center items-center">
+                <Search/>
+                <ModeToggle />
+            </div>
         </header>
     )
 }

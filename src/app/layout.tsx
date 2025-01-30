@@ -25,6 +25,7 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 import Header from "@/components/header";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({
   children,
@@ -54,6 +55,7 @@ export default function RootLayout({
             <SidebarInset>
               <Header/>
               {children}
+              <Analytics/>
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>
