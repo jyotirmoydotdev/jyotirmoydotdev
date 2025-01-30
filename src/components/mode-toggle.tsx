@@ -11,11 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useSidebar } from "./ui/sidebar"
 
 export function ModeToggle() {
-  const { setTheme, theme } = useTheme()
-  const {open} = useSidebar()
+  const { setTheme} = useTheme()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,9 +23,6 @@ export function ModeToggle() {
             <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
-          {
-            open && <span>{theme?theme:'system'}</span>
-          }
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

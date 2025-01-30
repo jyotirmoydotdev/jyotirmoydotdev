@@ -22,7 +22,7 @@ const baloo = localFont({
 export default function Home() {
   const router = useRouter()
   return (
-    <div className="p-4 relative max-w-6xl mx-auto dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2]">
+    <div className="p-4 relative max-w-8xl mx-auto dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] border-x">
       <div className="grid grid-cols-1 md:grid-cols-2 relative">
         <div className="">
           <header className="flex flex-col gap-2">
@@ -124,7 +124,7 @@ export default function Home() {
         <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
           Projects
           <div className="flex w-full justify-end py-4">
-            <Button variant={'link'} size={'default'} asChild>
+            <Button variant={'link'} className="text-white" size={'default'} asChild>
               <Link href={'/projects'}>View all <ArrowRight className=" size-5" /> </Link>
             </Button>
           </div>

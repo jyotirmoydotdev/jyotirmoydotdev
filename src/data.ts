@@ -108,8 +108,8 @@ export const projects = [
         title: "MyMeghalaya",
         description: "MyMeghalaya is a website I created to showcase the rich culture and natural beauty of my homeland to the world, inviting everyone to witness its splendor firsthand.",
         url: "/projects",
-        externalUrl: "http://mymeghalaya.in",
-        source: null,
+        externalUrl: null,
+        source: "https://github.com/jyotirmoydotdev/mymeghalaya",
         tags: ["Nextjs", "Supabase", "Vercel", "Resend"],
     },
     {
