@@ -53,7 +53,7 @@ export function SidebarOptInForm() {
     toast({
       description: message,
     })
-  }, [message])
+  }, [message, toast])
 
   return (
     <Card className="bg-orange-500 rounded-none sm:rounded-lg">

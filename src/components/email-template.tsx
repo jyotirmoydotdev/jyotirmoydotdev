@@ -19,20 +19,20 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
             Jyotirmoy.dev
         </div>
         <p style={{ margin: "2rem 0" }}>
-            Thanks {email} for subscribing to The Weekly Dev Dispatch! I'm excited to share my journey with you.
+            Thanks {email} for subscribing to The Weekly Dev Dispatch! I&apos;m excited to share my journey with you.
         </p>
-        <p style={{ margin: "2rem 0" }}>Every week, you'll receive:</p>
+        <p style={{ margin: "2rem 0" }}>Every week, you&apos;ll receive:</p>
         <ol style={{ margin: "2rem 0", paddingLeft: "1rem", listStyleType: "disc" }}>
             <li>New backend development articles and insights from my personal blog 📝</li>
             <li>Latest YouTube tutorials and code-along videos on backend technologies 🎥</li>
-            <li>Updates on my current projects and what I'm building 🚀</li>
+            <li>Updates on my current projects and what I&apos;m building 🚀</li>
         </ol>
         <p style={{ margin: "1rem 0" }}>
             Happy coding,<br />
             Jyotirmoy
         </p>
         <p style={{ margin: "1rem 0" }}>
-            P.S. To ensure you don't miss any updates, please add{" "}
+            P.S. To ensure you don&apos;t miss any updates, please add{" "}
             <a style={{ color: "#3b82f6" }} href="mailto:newsletter@jyotirmoy.dev">
                 newsletter@jyotirmoy.dev
             </a>{" "}
