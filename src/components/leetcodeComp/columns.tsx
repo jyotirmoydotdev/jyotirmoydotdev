@@ -1,0 +1,132 @@
+"use client"
+
+import { ColumnDef } from "@tanstack/react-table"
+import { ColumnHeader } from "./column-header"
+import { ArrowUpRight, FileCheck, FileVideo, FileX } from "lucide-react"
+import Link from "next/link"
+import { leetcodeType } from "@/data"
+
+export const columns: ColumnDef<leetcodeType>[] = [
+  {
+    accessorKey: "id",
+    header: ({ column }) => (<ColumnHeader className="pl-4" column={column} title="No." />),
+    cell: ({ row }) => {
+      return (
+        <span className="pl-4 ">{row.original.id}</span>
+      )
+    },
+  },
+  {
+    accessorKey: "title",
+    header: ({ column }) => (<ColumnHeader column={column} title="Title" />),
+    cell: ({ row }) => {
+      const hasSol = row.original.hasSolution
+      if (hasSol) {
+        return (
+          <div className="flex items-center">
+            <div className="max-w-[130px] sm:max-w-[302px] flex items-center overflow-hidden">
+              <div className="overflow-hidden">
+                <div className="flex items-center">
+                  <div className="truncate" data-state="closed">
+                    <div className="h-5 hover:text-blue-700 dark:hover:text-blue-400">
+                      {row.getValue('title')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      } else {
+        return (
+          <div className="max-w-[500px] truncate">
+            {row.getValue('title')}
+          </div>
+        )
+      }
+    },
+  },
+  {
+    accessorKey: "topicTags",
+    header: ({ column }) => (<ColumnHeader column={column} title="Tags" />),
+    cell: ({ row }) => {
+      const tags: string[] = row.getValue("topicTags");
+      return (
+        <div className="flex space-x-2 font-medium text-xs">
+          {tags?.length ? (
+            <>
+              <span className="rounded-sm bg-muted px-1.5 py-0.5">{tags[0]}</span>
+              {tags.length > 1 && (
+                <span className="rounded-sm bg-muted px-1.5 py-0.5">+{tags.length - 1}</span>
+              )}
+            </>
+          ) : (
+            <span className="rounded-sm bg-muted px-1.5 py-0.5">No Tags</span>
+          )}
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      const tags: string[] = row.getValue("topicTags");
+      tags.map((tag) => {
+        if (tag === value as string) {
+          return true
+        }
+      })
+      return false
+    }
+  },
+  {
+    accessorKey: "difficulty",
+    header: ({ column }) => (
+      <ColumnHeader column={column} title="Difficulty" />
+    ),
+    cell: ({ row }) => {
+      const difficulty: string = row.getValue("difficulty")
+      return (
+        <span className={`${(difficulty === "Medium") ? "text-yellow-500" : ((difficulty === "Easy") ? "text-green-500" : "text-red-500")}`}
+        >{difficulty}</span>
+      )
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
+  },
+  {
+    accessorKey: "hasSolution",
+    header: ({ column }) => (
+      <ColumnHeader column={column} title="Solution" />
+    ),
+    cell: ({ row }) => {
+      const hasSol = row.getValue("hasSolution")
+      if (hasSol) {
+        return (
+          <div className="flex gap-2">
+            <FileCheck className="text-blue-400 size-5" />
+            {
+              row.original.hasVideoSolution && <FileVideo className="text-[#b260ea] size-5" />
+            }
+          </div>
+        )
+      } else {
+        return (
+          <FileX className="text-gray-400 size-5" />
+        )
+      }
+    }
+  },
+  {
+    accessorKey: "titleSlug",
+    header: ({ column }) => (
+      <ColumnHeader column={column} title="Leetcode" />
+    ),
+    cell: ({ row }) => {
+      const slug = row.getValue('titleSlug')
+      return (
+        <Link href={`https://leetcode.com/problems/${slug}/description/`} target="_blank">
+          <ArrowUpRight className="text-orange-400 size-5" />
+        </Link>
+      )
+    }
+  },
+]

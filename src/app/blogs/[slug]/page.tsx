@@ -1,4 +1,5 @@
 import Content from "@/components/content"
+import { blogs } from "@/data"
 
 export default async function Page({
     params,
@@ -13,19 +14,14 @@ export default async function Page({
                 <div className=" w-[92vw] md:max-w-[578.4px] prose dark:prose-invert ">
                     <Blog />
                 </div>
-                <Content slug={slug}/>
+                <Content slug={slug} />
             </div>
         </div>
     )
 }
 
 export function generateStaticParams() {
-    return [
-        // { slug: 'intro-to-go-routine' },
-        { slug: 'building-a-json-validation-pipeline-with-go-and-gin' },
-        { slug: 'use-gin-web-framework-to-build-your-server' },
-        { slug: 'learn-basics-of-sqlite' },
-    ]
+    return blogs.flatMap((blog=>{return {slug: blog.titleSlug}}))
 }
 
 export const dynamicParams = false

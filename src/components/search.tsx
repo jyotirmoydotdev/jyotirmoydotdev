@@ -18,8 +18,9 @@ import {
     CommandSeparator,
 } from "@/components/ui/command"
 import { Button } from "./ui/button"
-import { blogs, projects, video } from "@/data"
+import { blogs, leetcodes, projects, video } from "@/data"
 import Link from "next/link"
+import { SiLeetcode } from "react-icons/si"
 
 export function Search() {
     const [open, setOpen] = React.useState(false)
@@ -56,7 +57,7 @@ export function Search() {
                             <Link href={blog.url} key={i}>
                                 <CommandItem >
                                     <File />
-                                    <span className="line-clamp-1">{blog.title}</span>
+                                    <span className="line-clamp-1 text-xs sm:text-sm">{blog.title}</span>
                                 </CommandItem>
                             </Link>
                         ))}
@@ -67,8 +68,19 @@ export function Search() {
                             <Link href={`/video/${vid.id}`} key={i}>
                                 <CommandItem>
                                     <Video />
-                                    <span className="line-clamp-1">{vid.title}</span>
+                                    <span className="line-clamp-1 text-xs sm:text-sm">{vid.title}</span>
                                 </CommandItem>
+                            </Link>
+                        ))}
+                    </CommandGroup>
+                    <CommandSeparator />
+                    <CommandGroup heading="Leetcode">
+                        {leetcodes.map((leetcode, i) => (
+                            <Link href={`/leetcode/${leetcode.titleSlug}`} key={i}>
+                            <CommandItem key={i}>
+                                <SiLeetcode />
+                                <span className="line-clamp-1 text-xs sm:text-sm">{leetcode.title}</span>
+                            </CommandItem>
                             </Link>
                         ))}
                     </CommandGroup>
@@ -78,7 +90,7 @@ export function Search() {
                             <Link href={project.url} key={i}>
                             <CommandItem key={i}>
                                 <Folder />
-                                <span className="line-clamp-1">{project.title}</span>
+                                <span className="line-clamp-1 text-xs sm:text-sm">{project.title}</span>
                             </CommandItem>
                             </Link>
                         ))}
