@@ -367,40 +367,40 @@ export const leetcodes: leetcodeType[] = [
     },
 ]
 
-export const video: { id: string, imgUrl: string, title: string, description: string, date: string }[] = [
-    {
-        "id": "tOASWm8I7sk",
-        "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
-        "title": "2116. Check if a Parentheses String Can Be Valid - Go",
-        "description": "",
-        "date": "2025-01-12T17:01:47Z"
-    },
-    {
-        "id": "D_cfXKdYu4M",
-        "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
-        "title": "1400. Construct K Palindrome Strings - Go",
-        "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
-        "date": "2025-01-11T17:52:26Z"
-    },
-    {
-        "id": "5XfjayX8HAE",
-        "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
-        "title": "916. Word Subsets - Go",
-        "description": "",
-        "date": "2025-01-10T15:57:53Z"
-    },
-    {
-        "id": "X2vwqQNiJks",
-        "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
-        "title": "2185. Counting Words With a Given Prefix - Go",
-        "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
-        "date": "2025-01-09T18:52:49Z"
-    },
-    {
-        "id": "oe4PYLTGVTY",
-        "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
-        "title": "3042  Count Prefix and Suffix Pairs I - Go",
-        "description": "",
-        "date": "2025-01-08T15:02:38Z"
-    }
+export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
+  {
+    "id": "tOASWm8I7sk",
+    "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
+    "title": "2116. Check if a Parentheses String Can Be Valid - Go",
+    "description": "",
+    "date": "2025-01-12T17:01:47Z"
+  },
+  {
+    "id": "D_cfXKdYu4M",
+    "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
+    "title": "1400. Construct K Palindrome Strings - Go",
+    "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
+    "date": "2025-01-11T17:52:26Z"
+  },
+  {
+    "id": "5XfjayX8HAE",
+    "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
+    "title": "916. Word Subsets - Go",
+    "description": "",
+    "date": "2025-01-10T15:57:53Z"
+  },
+  {
+    "id": "X2vwqQNiJks",
+    "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
+    "title": "2185. Counting Words With a Given Prefix - Go",
+    "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
+    "date": "2025-01-09T18:52:49Z"
+  },
+  {
+    "id": "oe4PYLTGVTY",
+    "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
+    "title": "3042  Count Prefix and Suffix Pairs I - Go",
+    "description": "",
+    "date": "2025-01-08T15:02:38Z"
+  }
 ];
