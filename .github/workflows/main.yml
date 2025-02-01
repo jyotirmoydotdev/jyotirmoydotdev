@@ -85,10 +85,10 @@ jobs:
 
           async function updateDataFile() {
             const latestVideo = await getLatestVideo();
-            const dataPath = path.join(process.cwd(), 'src', 'data.ts');
+            const dataPath = path.join(process.cwd(), 'src', 'data.tsx');
             
             if (!fs.existsSync(dataPath)) {
-              throw new Error('data.ts file does not exist');
+              throw new Error('data.tsx file does not exist');
             }
 
             let fileContent = fs.readFileSync(dataPath, 'utf8');
@@ -99,7 +99,7 @@ jobs:
 
             fs.writeFileSync(dataPath, fileContent);
 
-            console.log('Successfully updated video array in data.ts');
+            console.log('Successfully updated video array in data.tsx');
           }
 
           updateDataFile().catch(error => {
@@ -112,5 +112,5 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add src/data.ts
+          git add src/data.tsx
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update latest YouTube video" && git push)
