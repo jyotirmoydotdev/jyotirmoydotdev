@@ -1,7 +1,7 @@
 'use client'
 
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight, ArrowUp, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { projects, sidebar_data as data } from '@/data'
 import { ExternalLink, Folder, Github } from 'lucide-react'
@@ -11,6 +11,14 @@ import localFont from "next/font/local";
 import { BiLogoGoLang, BiLogoDocker, BiLogoTypescript, BiLogoPostgresql, BiLogoReact } from "react-icons/bi";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiSolidity } from "react-icons/si";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 
 const baloo = localFont({
@@ -21,6 +29,7 @@ const baloo = localFont({
 
 export default function Home() {
   const router = useRouter()
+  const isMobile = useIsMobile()
   return (
     <div className="p-4 relative max-w-8xl mx-auto dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] border-x">
       <div className="grid grid-cols-1 md:grid-cols-2 relative">
@@ -36,7 +45,7 @@ export default function Home() {
             </div>
           </header>
           <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
-            As a passionate developer, I thrive on turning ideas into fully-realized, impactful products. With a strong command of modern technologies like TypeScript, React, Next.js, and Go, I specialize in creating seamless, high-performance applications that deliver real value. Having worked with teams across the globe, I’m well-versed in the dynamics of remote collaboration, ensuring that distance never gets in the way of building something exceptional. Whether it&apos;s designing the user interface or architecting back-end systems, I&apos;m driven by the challenge of bringing innovative solutions to life.
+            I{`'`}m a passionate junior developer who loves turning ideas into tangible projects. With hands-on experience working on personal projects—from building a self-hosted e-commerce platform to developing a blog application—I{`'`}m constantly exploring new technologies and improving my skills. I{`'`}m proficient in tools like React, Next.js, and Go, and I{`'`}m excited to expand my technical toolkit while collaborating with talented teams. I{`'`}m enthusiastic, quick to learn, and always ready to take on challenges that help me grow as a developer.
           </div>
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start sm:gap-6 items-center">
             <BiLogoTypescript className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
@@ -264,11 +273,30 @@ export default function Home() {
       </div> */}
 
       <div className=" sticky bottom-4 flex justify-end w-full">
-        <Button size={'icon'} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white" asChild>
-          <Link href={'/'}>
-            <ArrowUp />
-          </Link>
-        </Button>
+        {
+          isMobile ? (
+            <Button size={'sm'} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white" asChild>
+              <Link href={'/resume.pdf'} target="_blank">
+                <ArrowDown className=" size-3" /> View Full Resume
+              </Link>
+            </Button>
+          ) : (
+            <TooltipProvider delayDuration={50}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Button size={'icon'} className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white" asChild>
+                    <Link href={'/resume.pdf'} target="_blank">
+                      <ArrowDown />
+                    </Link>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="left">
+                  <p>View Full Resume</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )
+        }
       </div>
     </div>
   );
