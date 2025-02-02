@@ -19,10 +19,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-
-
 const baloo = localFont({
-  src: '/fonts/Baloo2-VariableFont_wght.ttf',
+  src: '../fonts/Baloo2-VariableFont_wght.ttf',
   weight: '800',
   display: 'swap',
 })

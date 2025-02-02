@@ -12,13 +12,13 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import Header from "@/components/header";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -26,7 +26,22 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Jyotirmoy Barman",
   description: "Jyotirmoy Barman | jyotirmoy.dev | @jyotirmoydotdev",
+  openGraph: {
+    title: "Jyotirmoy Barman",
+    description: "Hello, I'm Jyotirmoy Barman, visit my site to know more",
+    url: 'https://jyotirmoy.dev/',
+    siteName: "Jyotirmoy Barman",
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@jyotirmoydotdev',
+    title: "Jyotirmoy Barman",
+    description: "Hello, I'm Jyotirmoy Barman, visit my site to know more",
+    creator: '@jyotirmoydotdev',
+  },
 };
+
 
 export default function RootLayout({
   children,
