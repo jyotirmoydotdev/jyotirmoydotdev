@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
 import { BiLogoGmail } from "react-icons/bi"
-import { SiAdventofcode, SiLeetcode } from "react-icons/si"
+import { SiLeetcode } from "react-icons/si"
 
 export const sidebar_data = {
     logo: "/jyotirmoy.webp",
