@@ -1,0 +1,89 @@
+## Solution
+
+- Time Complexity:  ***O(n)***  
+- Space Complexity: ***O(1)***  
+
+```go
+func check(nums []int) bool {
+	count := 0
+
+	for i := range nums {
+		if nums[i] > nums[(i+1)%len(nums)] {
+			count++
+		}
+		if count > 1 {
+			return false
+		}
+	}
+
+	return true
+}
+```
+
+---
+
+## Explanation
+
+The problem asks us to determine if the given array is both sorted and rotated.  
+- A **sorted array** is in non-decreasing order (e.g., `[1, 2, 3]`).
+- A **rotated array** is derived from a sorted array by shifting elements cyclically (e.g., `[3, 1, 2]`).
+
+To check if the array is sorted and rotated:
+1. Iterate through the array.
+2. Count how many times the current element is greater than the next element (cyclically).
+3. If the count exceeds `1`, the array is not sorted and rotated.
+
+---
+
+### Approach
+
+- Use a single loop to traverse the array.
+- Compare each element with the next element in a cyclic manner using the modulo operator.
+- Maintain a counter (`count`) to record how many times the array violates the sorted order.
+- If `count > 1`, return `false`. Otherwise, return `true`.
+
+---
+
+### Example Walkthrough
+
+**Example 1:**  
+Input: `nums = [3, 4, 5, 1, 2]`  
+- Compare `3` with `4` → no violation.  
+- Compare `4` with `5` → no violation.  
+- Compare `5` with `1` → **violation** (increment count to `1`).  
+- Compare `1` with `2` → no violation.  
+- Compare `2` with `3` → no violation.  
+
+Since `count = 1`, return `true`.
+
+---
+
+**Example 2:**  
+Input: `nums = [2, 1, 3, 4]`  
+- Compare `2` with `1` → **violation** (increment count to `1`).  
+- Compare `1` with `3` → no violation.  
+- Compare `3` with `4` → no violation.  
+- Compare `4` with `2` → **violation** (increment count to `2`).  
+
+Since `count = 2`, return `false`.
+
+---
+
+**Example 3:**  
+Input: `nums = [1, 2, 3, 4]`  
+- Compare `1` with `2` → no violation.  
+- Compare `2` with `3` → no violation.  
+- Compare `3` with `4` → no violation.  
+- Compare `4` with `1` → **violation** (increment count to `1`).  
+
+Since `count = 1`, return `true`.
+
+---
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  The algorithm traverses the array once, making the complexity **O(n)**, where `n` is the length of the array.
+
+- **Space Complexity:**  
+  The solution uses a constant amount of extra space, so the complexity is **O(1)**.
