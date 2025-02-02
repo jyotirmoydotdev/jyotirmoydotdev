@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
 import { BiLogoGmail } from "react-icons/bi"
-import { SiLeetcode } from "react-icons/si"
+import { SiAdventofcode, SiLeetcode } from "react-icons/si"
 
 export const sidebar_data = {
     logo: "/jyotirmoy.webp",
@@ -34,7 +34,13 @@ export const sidebar_data = {
             url: "/leetcode",
             icon: SiLeetcode,
             isActive: false,
-        }
+        },
+        // {
+        //     title: "AoC",
+        //     url: "/leetcode",
+        //     icon: SiAdventofcode,
+        //     isActive: false,
+        // }
     ],
     links: [
         {
@@ -350,6 +356,28 @@ export const leetcodes: leetcodeType[] = [
         status: 'Done',
         title: "Special Array I",
         titleSlug: "special-array-i",
+        topicTags: [
+            "Array"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
+        ]
+    },
+    {
+        id: 1752,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Check if Array Is Sorted and Rotated",
+        titleSlug: "check-if-array-is-sorted-and-rotated",
         topicTags: [
             "Array"
         ],
