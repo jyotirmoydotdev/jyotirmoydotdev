@@ -393,6 +393,28 @@ export const leetcodes: leetcodeType[] = [
             ]
         ]
     },
+    {
+        id: 3105,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Longest Strictly Increasing or Strictly Decreasing Subarray",
+        titleSlug: "longest-strictly-increasing-or-strictly-decreasing-subarray",
+        topicTags: [
+            "Array"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
+        ]
+    },
 ]
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [

@@ -19,10 +19,9 @@ export default async function Page({
     return (
         <div className="relative">
             <div className='p-4 gap-4 flex flex-row justify-center pl-4 sm:pl-8'>
-                <div className="">
-                    <div className="flex gap-1 text-2xl font-bold font-sans">
-                        <span>{leetcode.id}.</span>
-                        <span>{leetcode.title}</span>
+                <div className=" max-w-xl">
+                    <div className=" text-2xl font-bold font-sans">
+                        <span>{leetcode.id}.</span>{' '}<span>{leetcode.title}</span>
                     </div>
                     <div className="flex gap-2 pt-4">
                         <span className={`px-1.5 text-sm py-0.5 rounded-md bg-sidebar-accent ${(leetcode.difficulty === 'Easy') ? "text-green-500" :

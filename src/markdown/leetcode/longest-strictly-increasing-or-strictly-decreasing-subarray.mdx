@@ -1,0 +1,99 @@
+## Solution
+
+- Time Complexity:  ***O(n)***  
+- Space Complexity: ***O(1)***  
+
+```go
+func longestMonotonicSubarray(nums []int) int {
+    if len(nums) < 2 {
+        return len(nums)
+    }
+    res := 1
+    inc, dec := 1, 1
+    for i := 0; i < len(nums)-1; i++ {
+        if nums[i] < nums[i+1] {
+            // strictly increasing: increment the increasing counter and reset the decreasing counter
+            inc++
+            dec = 1
+        } else if nums[i] > nums[i+1] {
+            // strictly decreasing: increment the decreasing counter and reset the increasing counter
+            dec++
+            inc = 1
+        } else {
+            // when elements are equal, neither increasing nor decreasing
+            inc, dec = 1, 1
+        }
+        res = max(res, max(inc, dec))
+    }
+    return res
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+```
+
+---
+
+## Explanation
+
+The problem asks us to find the length of the longest contiguous subarray that is either strictly increasing or strictly decreasing.  
+- A **strictly increasing subarray** is one where every element is greater than its previous element (e.g., `[1, 2, 3]`).
+- A **strictly decreasing subarray** is one where every element is less than its previous element (e.g., `[3, 2, 1]`).
+
+The solution maintains two counters:
+- `inc` for the current strictly increasing subarray.
+- `dec` for the current strictly decreasing subarray.
+
+At each step, based on the relationship between consecutive elements, we update these counters and keep track of the maximum length encountered.
+
+---
+
+### Approach
+
+- **Step 1:** Check if the array has less than two elements. If yes, return its length since a single element (or empty array) is trivially monotonic.
+- **Step 2:** Initialize two counters, `inc` and `dec`, to 1 and a variable `res` to keep track of the maximum subarray length found.
+- **Step 3:** Iterate through the array comparing each element with the next:
+  - If the current element is less than the next, it indicates a strictly increasing subarray. Increment `inc` and reset `dec` to 1.
+  - If the current element is greater than the next, it indicates a strictly decreasing subarray. Increment `dec` and reset `inc` to 1.
+  - If the elements are equal, reset both counters to 1 as the monotonicity is broken.
+- **Step 4:** Update `res` with the maximum value between `inc` and `dec` after each comparison.
+- **Step 5:** Return the value of `res` which represents the longest monotonic subarray.
+
+---
+
+### Example Walkthrough
+
+**Example 1:**  
+Input: `nums = [1, 3, 5, 4, 2]`  
+- Start with `inc = 1`, `dec = 1`, `res = 1`.
+- **Iteration 1:** Compare `1` and `3`: `1 < 3` → `inc = 2`, `dec = 1`; update `res = 2`.
+- **Iteration 2:** Compare `3` and `5`: `3 < 5` → `inc = 3`, `dec = 1`; update `res = 3`.
+- **Iteration 3:** Compare `5` and `4`: `5 > 4` → `dec = 2`, `inc = 1`; `res` remains `3`.
+- **Iteration 4:** Compare `4` and `2`: `4 > 2` → `dec = 3`, `inc = 1`; update `res = 3` (the maximum remains 3).
+
+The longest strictly monotonic subarray is of length **3**.
+
+**Example 2:**  
+Input: `nums = [9, 7, 4, 2, 3, 5]`  
+- Start with `inc = 1`, `dec = 1`, `res = 1`.
+- **Iteration 1:** Compare `9` and `7`: `9 > 7` → `dec = 2`, `inc = 1`; update `res = 2`.
+- **Iteration 2:** Compare `7` and `4`: `7 > 4` → `dec = 3`, `inc = 1`; update `res = 3`.
+- **Iteration 3:** Compare `4` and `2`: `4 > 2` → `dec = 4`, `inc = 1`; update `res = 4`.
+- **Iteration 4:** Compare `2` and `3`: `2 < 3` → `inc = 2`, `dec = 1`; `res` remains `4`.
+- **Iteration 5:** Compare `3` and `5`: `3 < 5` → `inc = 3`, `dec = 1`; `res` remains `4`.
+
+The longest strictly monotonic subarray is of length **4**.
+
+---
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  The solution iterates over the array once, making it **O(n)** where `n` is the number of elements in the array.
+  
+- **Space Complexity:**  
+  The solution uses a constant amount of extra space (a few counters and a variable for the result), making it **O(1)**.
