@@ -93,12 +93,32 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             // For inline code, style with proper targeting
             if (!parentIsPreTag) {
                 return (
-                    <code className="inline-code">
-                        {children}
+                    <>
+                    <style>
+                        {`
+                        .inline-code {
+                              color: orange;
+                              background-color: rgba(255, 165, 0, 0.1);
+                              padding: 2px 4px;
+                              border-radius: 4px;
+                              font-family: ui-monospace, monospace;
+                              font-size: 0.95em;
+                          }
+
+                          /* Remove pseudo-elements for inline code globally */
+                          code.inline-code::before,
+                          code.inline-code::after {
+                              content: none !important;
+                              display: none !important;
+                          }
+                        `}
+                    </style>
+                    <code className="inline-code inline-flex items-center">
+                        <span>{children}</span> <CopyButton text='' content={String(children).trim()}/>
                     </code>
+                    </>
                 );
             }
-
             return children;
         },
 

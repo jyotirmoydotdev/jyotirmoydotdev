@@ -1,0 +1,29 @@
+import { SiOllama } from "react-icons/si";
+import Linkwithlogo from '@/components/linkwithlogo'
+import { FaXTwitter } from "react-icons/fa6";
+import { AiOutlineOpenAI } from "react-icons/ai";
+
+# Simple way to run deepseek-r1 locally
+
+Before we begin, let's first understand what <Linkwithlogo text='DeepSeek' url='https://www.deepseek.com' icon={'https://www.deepseek.com/favicon.ico'}/> is. It is a Chinese-origin company established in 2023. Initially focused on building large language models (LLMs), DeepSeek gained prominence when it launched its open-source, low-cost R1 model. This model competed with <Linkwithlogo text='OpenAI-o1' url='https://www.openai.com' icon={{icon:AiOutlineOpenAI}}/> and became a game-changer in the AI industry by enabling anyone to run GPT-like LLMs on their own servers.
+
+DeepSeek-R1 features six dense models along with a base model. In this guide, we will run the most distilled version, which is the 1.5B model (approximately 1.1GB). This model is optimized to run smoothly on most devices.
+
+## Installation
+
+To run DeepSeek-R1 locally, you will need Ollama, an open-source tool that enables running large language models (LLMs) on your local machine.
+
+- Visit the <Linkwithlogo text='Ollama download page ' url='https://ollama.com/download' icon={{icon:SiOllama}}/> and download the application compatible with your system. 
+
+- Launch the application. Then, open your terminal and execute the following command: `ollama run deepseek-r1:1.5b` This command will pull the model and start it. Once running, you will see the prompt **>>>**. You can now enter your text prompts directly.
+
+## Usages
+
+Here are some basic commands to get started:
+
+- To view all available models, type: `/show`
+- To exit the model, type: `/bye`
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/favicon.ico'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

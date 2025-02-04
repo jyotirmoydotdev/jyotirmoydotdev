@@ -1,0 +1,93 @@
+## Solution
+
+- Time Complexity:  ***O(n)***  
+- Space Complexity: ***O(1)***  
+
+```go
+func maxAscendingSum(nums []int) int {
+    sum := nums[0]
+    maxSum := nums[0]
+    for i := 1; i < len(nums); i++ {
+        if nums[i] > nums[i-1] {
+            sum += nums[i]
+        } else {
+            sum = nums[i]
+        }
+        if sum > maxSum {
+            maxSum = sum
+        }
+    }
+    return maxSum
+}
+```
+
+---
+
+## Explanation
+
+The problem requires finding the maximum sum of a strictly ascending subarray within the given array. A subarray is a contiguous part of the array. An ascending subarray means that each element is strictly greater than the one before it.
+
+The solution involves iterating over the array and keeping a running sum of the current ascending subarray. When a number is encountered that is not greater than its previous number, the current subarray ends, and we start a new subarray from that number. During each iteration, we update the maximum sum if the current subarray's sum is greater than the previously recorded maximum.
+
+---
+
+### Approach
+
+- **Step 1:** Initialize two variables: `sum` to keep the running total of the current ascending subarray, and `maxSum` to record the maximum sum found so far. Both are initialized to the first element of the array.
+- **Step 2:** Loop through the array starting from the second element.
+- **Step 3:** For each element, check if it is strictly greater than the previous element.
+  - If **yes**, add the current element to `sum` because the subarray is still ascending.
+  - If **no**, reset `sum` to the current element, as this marks the beginning of a new potential ascending subarray.
+- **Step 4:** Update `maxSum` with the maximum of `maxSum` and `sum` at every iteration.
+- **Step 5:** After completing the iteration through the array, return `maxSum` as the result.
+
+---
+
+### Example Walkthrough
+
+**Example 1:**  
+Input: `[10, 20, 30, 5, 10]`
+
+- **Initialization:**  
+  `sum = 10`, `maxSum = 10`
+  
+- **Iteration:**
+  - For `i = 1` (`20`):
+    - `20 > 10`, so update `sum = 10 + 20 = 30`
+    - Update `maxSum = max(10, 30) = 30`
+  - For `i = 2` (`30`):
+    - `30 > 20`, so update `sum = 30 + 30 = 60`
+    - Update `maxSum = max(30, 60) = 60`
+  - For `i = 3` (`5`):
+    - `5 <= 30`, so reset `sum = 5`
+    - `maxSum` remains `60`
+  - For `i = 4` (`10`):
+    - `10 > 5`, so update `sum = 5 + 10 = 15`
+    - `maxSum` remains `60`
+  
+- **Result:**  
+  The maximum ascending subarray sum is `60`.
+
+**Example 2:**  
+Input: `[10, 20, 30, 40, 50]`
+
+- **Initialization:**  
+  `sum = 10`, `maxSum = 10`
+  
+- **Iteration:**
+  - For each subsequent element, the condition holds as each number is greater than the previous one:
+    - `sum` becomes `10 + 20 = 30`, then `30 + 30 = 60`, then `60 + 40 = 100`, and finally `100 + 50 = 150`.
+    - `maxSum` is updated in each iteration to finally be `150`.
+  
+- **Result:**  
+  The maximum ascending subarray sum is `150`.
+
+---
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  The algorithm processes each element in the array exactly once in a single loop, resulting in a time complexity of ***O(n)***.
+
+- **Space Complexity:**  
+  The solution uses only a constant amount of extra space (for the variables `sum` and `maxSum`), resulting in a space complexity of ***O(1)***.

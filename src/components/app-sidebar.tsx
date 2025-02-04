@@ -35,7 +35,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <Link href={"/"} className="flex gap-2 items-center h-8 pl-0.5">
                     <Image src={'/jyotirmoy.webp'} width={100} height={100} alt="" className="flex aspect-square size-7 items-center justify-center rounded-lg object-contain text-sidebar-primary-foreground" />
                     <span className={`truncate font-semibold text-xl leading-tight text-black dark:text-white pl-1 pr-5 ${baloo.className}`}> {/**bg-[rgb(237,109,86)] text-white dark:bg-inherit dark:text-[rgb(237,109,86)] */}
-                        Jyotirmoy.dev
+                        Jyotirmoy-dev
                     </span>
                 </Link>
             </SidebarHeader>

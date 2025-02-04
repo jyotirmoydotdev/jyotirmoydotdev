@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/mtabs'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const CopyButton = ({ content }: { content: string }) => {
+export const CopyButton = ({ content, text='Copy' }: { content: string, text?:string }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -48,16 +48,16 @@ export const CopyButton = ({ content }: { content: string }) => {
 
   return (
     <button
-      className="flex gap-2 text-xs items-center px-2 py-1.5 bg-blue-500 text-white hover:scale-105 rounded hover:bg-blue-600 transition"
+      className="flex gap-2 text-xs items-center px-2 py-1.5 overflow-hidden text-white hover:scale-105 rounded transition"
       onClick={handleCopy}
     >
-      Copy
+      {text}
       <span className="relative flex items-center">
         <Clipboard
-          className={`size-4 transition-transform duration-300 ${copied ? 'scale-0' : 'scale-100'}`}
+          className={`size-4 text-[#ffa500] transition-transform duration-300 ${copied ? 'scale-0' : 'scale-100'}`}
         />
         <TiTick
-          className={`size-4 absolute transition-transform duration-300 ${copied ? 'scale-100' : 'scale-0'}`}
+          className={`size-4 text-[#ffa500] absolute transition-transform duration-300 ${copied ? 'scale-100' : 'scale-0'}`}
         />
       </span>
     </button>

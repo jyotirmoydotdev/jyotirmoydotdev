@@ -24,24 +24,23 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Jyotirmoy Barman",
-  description: "Jyotirmoy Barman | jyotirmoy.dev | @jyotirmoydotdev",
+  title: "Jyotirmoy Barman - Developer & Creator",
+  description: "Discover the world of Jyotirmoy Barman, a passionate developer crafting innovative web experiences. Explore projects, blogs, and more at jyotirmoy.dev.",
   openGraph: {
-    title: "Jyotirmoy Barman",
-    description: "Hello, I'm Jyotirmoy Barman, visit my site to know more",
+    title: "Jyotirmoy Barman - Developer & Creator",
+    description: "Welcome to the portfolio of Jyotirmoy Barman. Dive into cutting-edge web development projects, insights, and resources.",
     url: 'https://jyotirmoy.dev/',
-    siteName: "Jyotirmoy Barman",
+    siteName: "Jyotirmoy Barman - Portfolio",
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     site: '@jyotirmoydotdev',
-    title: "Jyotirmoy Barman",
-    description: "Hello, I'm Jyotirmoy Barman, visit my site to know more",
+    title: "Jyotirmoy Barman - Developer & Creator",
+    description: "Check out the latest projects and updates from Jyotirmoy Barman, a web developer passionate about creating exceptional digital experiences.",
     creator: '@jyotirmoydotdev',
   },
 };
-
 
 export default function RootLayout({
   children,

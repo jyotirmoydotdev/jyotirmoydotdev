@@ -170,6 +170,18 @@ export const blogs: blogsType[] = [
     //     ]
     // },
     {
+        title: "Simple way to run deepseek-r1 Locally",
+        description: "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool.",
+        url: "/blogs/simple-way-to-run-deepseek-r1-locally",
+        titleSlug: 'simple-way-to-run-deepseek-r1-locally',
+        date: "Feb 4, 2025",
+        content: [
+            "Installation",
+            "Usages",
+            "Wrap up",
+        ]
+    },
+    {
         title: "Learn basics of SQLite",
         description: "SQLite is a lightweight, serverless, and self-contained relational database management system. It's often used in applications that need a local database.",
         url: "/blogs/learn-basics-of-sqlite",
@@ -400,6 +412,28 @@ export const leetcodes: leetcodeType[] = [
         status: 'Done',
         title: "Longest Strictly Increasing or Strictly Decreasing Subarray",
         titleSlug: "longest-strictly-increasing-or-strictly-decreasing-subarray",
+        topicTags: [
+            "Array"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
+        ]
+    },
+    {
+        id: 1800,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Maximum Ascending Subarray Sum",
+        titleSlug: "maximum-ascending-subarray-sum",
         topicTags: [
             "Array"
         ],
