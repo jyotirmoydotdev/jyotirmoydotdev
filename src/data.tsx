@@ -449,6 +449,30 @@ export const leetcodes: leetcodeType[] = [
             ]
         ]
     },
+    {
+        id: 1790,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Check if One String Swap Can Make Strings Equal",
+        titleSlug: "check-if-one-string-swap-can-make-strings-equal",
+        topicTags: [
+            "Hash Table",
+            "String",
+            "Counting",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
+        ]
+    },
 ]
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [

@@ -5,6 +5,13 @@ import { ColumnHeader } from "./column-header"
 import { ArrowUpRight, FileCheck, FileVideo, FileX } from "lucide-react"
 import Link from "next/link"
 import { leetcodeType } from "@/data"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 export const columns: ColumnDef<leetcodeType>[] = [
   {
@@ -54,12 +61,21 @@ export const columns: ColumnDef<leetcodeType>[] = [
       return (
         <div className="flex space-x-2 font-medium text-xs">
           {tags?.length ? (
-            <>
-              <span className="rounded-sm bg-muted px-1.5 py-0.5">{tags[0]}</span>
-              {tags.length > 1 && (
-                <span className="rounded-sm bg-muted px-1.5 py-0.5">+{tags.length - 1}</span>
-              )}
-            </>
+            <TooltipProvider delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger className="flex gap-2">
+                  <span className="rounded-sm bg-muted line-clamp-1 px-1.5 py-0.5">{tags[0]}</span>
+                  {tags.length > 1 && (
+                    <span className="rounded-sm bg-muted px-1.5 py-0.5">+{tags.length - 1}</span>
+                  )}
+                </TooltipTrigger>
+                <TooltipContent className="bg-muted backdrop-blur-sm flex gap-2 px-2 py-2">
+                  {tags.map((tag,i)=>(
+                      <span key={i} className="rounded-sm border px-1.5 py-0.5">{tag}</span>
+                  ))}
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ) : (
             <span className="rounded-sm bg-muted px-1.5 py-0.5">No Tags</span>
           )}

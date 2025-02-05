@@ -1,0 +1,33 @@
+## Solution
+
+- Time Complexity:  ***O(N)***  
+- Space Complexity: ***O(N)***  
+
+```go
+func areAlmostEqual(s1 string, s2 string) bool {
+    if len(s1) != len(s2){
+        return false
+    } else if s1 == s2 {
+        return true
+    }
+    hashS1 := make(map[byte]int)
+    hashS2 := make(map[byte]int)
+    count := 0
+    for i := range s1 {
+        if s1[i] != s2[i] {
+            count++
+            if count > 2 {
+                return false
+            }
+        }
+        hashS1[s1[i]]++
+        hashS2[s2[i]]++
+    }
+    for k, v := range hashS1 {
+        if hashS2[k] != v {
+            return false
+        }
+    }
+    return true
+}
+```
