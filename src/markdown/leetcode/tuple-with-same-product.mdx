@@ -1,0 +1,59 @@
+import { Complex } from "@/components/mdx-comp"
+
+## Solution
+
+```go
+func tupleSameProduct(nums []int) int {
+    productCount := make(map[int]int)
+    n := len(nums)
+
+    for i := 0; i < n; i++ {
+        for j := i+1; j < n; j++ {
+            product := nums[i] * nums[j]
+            productCount[product]++
+        }
+    }
+
+    result := 0
+    
+    for _, n := range productCount {
+        result += (n-1)*n*4
+    }
+
+    return result
+}
+```
+
+<Complex t='n^2' s='n^2'/>
+
+---
+
+## Explanation
+
+The tupleSameProduct function calculates the number of valid tuples based on pairs of numbers that share the same product. Here's a step-by-step breakdown:
+
+### Counting Products
+
+A hash map productCount is created to store the frequency of each product formed by multiplying two different numbers from the **nums** array.
+
+### Iterating Over Pairs
+
+Two nested loops iterate over all unique pairs (i, j) where **i < j**. For each pair, the product is calculated, and the count for that product is incremented in the **productCount** map.
+
+### Calculating the Result
+
+After collecting all product frequencies, the function iterates over the map. For each product with frequency **n**, the formula **(n-1)\*n\*4** is used to calculate the number of valid tuples that can be formed from the pairs that yield this product. The multiplication by 4 accounts for the different tuple orders that can be formed from two distinct pairs sharing the same product.
+
+### Return the Result
+
+The final result, which is the total count of valid tuples, is returned.
+
+---
+
+## Complexity Analysis
+
+- **Time Complexity**
+    The algorithm uses two nested loops to iterate over all unique pairs of elements, which results in **O(n²)** time complexity. In addition, iterating over the keys in the hash map to compute the final result is at most **O(n²)**in the worst case (if every pair produces a unique product), so the overall time complexity remains **O(n²)**.
+
+- **Space Complexity**
+    The space complexity is determined by the hash map **productCount**. In the worst-case scenario, where every pair yields a unique product, the hash map can have **O(n²)** entries. Thus, the space complexity is **O(n²)**.

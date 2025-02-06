@@ -3,7 +3,7 @@ import { BiLogoGmail } from "react-icons/bi"
 import { SiLeetcode } from "react-icons/si"
 
 export const sidebar_data = {
-    logo: "/jyotirmoy.webp",
+    logo: "/logo.png",
     navMain: [
         {
             title: "About",
@@ -235,7 +235,7 @@ export const blogs: blogsType[] = [
 
 export type leetcodeType = {
     id: number,
-    difficulty: string,
+    difficulty: ("Easy" | "Medium" | "Hard"),
     isFavor: boolean,
     status: ("Done" | "Attempt" | "Unattempt"),
     title: string,
@@ -467,10 +467,38 @@ export const leetcodes: leetcodeType[] = [
             'Solution',
             'Explanation',
             [
-                'Approach',
-                'Example Walkthrough',
-                'Complexity Analysis'
-            ]
+                'Check Length Equality and Immediate Equality',
+                'Using Hash Maps and a Counter',
+                'Loop Through the Strings',
+                'Verify Character Frequencies'
+            ],
+            'Complexity Analysis'
+        ]
+    },
+    {
+        id: 1726,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Tuple with Same Product",
+        titleSlug: "tuple-with-same-product",
+        topicTags: [
+            "Array",
+            "Hash Table",
+            "Counting"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Counting Products',
+                'Iterating Over Pairs',
+                'Calculating the Result',
+                'Return the Result'
+            ],
+            'Complexity Analysis'
         ]
     },
 ]

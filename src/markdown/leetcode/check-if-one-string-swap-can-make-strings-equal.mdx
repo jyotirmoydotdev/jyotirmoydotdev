@@ -1,7 +1,6 @@
-## Solution
+import { Complex } from "@/components/mdx-comp"
 
-- Time Complexity:  ***O(N)***  
-- Space Complexity: ***O(N)***  
+## Solution
 
 ```go
 func areAlmostEqual(s1 string, s2 string) bool {
@@ -31,3 +30,87 @@ func areAlmostEqual(s1 string, s2 string) bool {
     return true
 }
 ```
+
+<Complex t='n' s='nlogn'/>
+
+---
+
+## Explanation
+
+The problem asks us to determine if two strings are "almost equal." Two strings are almost equal if they are already identical or if we can make them identical by swapping exactly two characters in one of the strings (either s1 or s2).
+
+### Check Length Equality and Immediate Equality
+
+Before attempting any swaps, we must verify that both strings have the same length. If they don't, it's impossible for them to be made equal, so we return false. Additionally, if the two strings are already identical, we return true immediately, which saves computation time.
+
+```go
+func areAlmostEqual(s1 string, s2 string) bool {
+    if len(s1) != len(s2){
+        return false
+    } else if s1 == s2 {
+        return true
+    }
+    // Continue with further checks...
+}
+```
+
+### Using Hash Maps and a Counter
+
+Next, we use two hash maps (dictionaries) to count the frequency of each character in both strings. We also initialize a counter to track the number of indices where the two strings differ. Since we are allowed to swap only two characters, the counter must not exceed 2.
+
+```go
+func areAlmostEqual(s1 string, s2 string) bool {
+    // Pre-checks as above
+    hashS1 := make(map[byte]int)
+    hashS2 := make(map[byte]int)
+    count := 0
+    // Continue with the loop...
+}
+```
+
+### Loop Through the Strings
+
+Iterate through each character index in the strings. For each index, if the characters at that position are different, increment the counter. If at any point the counter exceeds 2, return false because more than two differences cannot be fixed by a single swap. Simultaneously, update the character counts in both hash maps.
+
+```go
+func areAlmostEqual(s1 string, s2 string) bool {
+    // Pre-checks and initialization...
+    for i := range s1 {
+        if s1[i] != s2[i] {
+            count++
+            if count > 2 {
+                return false
+            }
+        }
+        hashS1[s1[i]]++
+        hashS2[s2[i]]++
+    }
+    // Continue to final check...
+}
+```
+
+### Verify Character Frequencies
+
+After the loop, even if the number of differences is 2 or less, we need to ensure that the overall character counts in both strings are the same. This final check guarantees that a swap can indeed make the strings equal.
+
+```go
+func areAlmostEqual(s1 string, s2 string) bool {
+    // Pre-checks, loop, and hash maps updates...
+    for k, v := range hashS1 {
+        if hashS2[k] != v {
+            return false
+        }
+    }
+    return true
+}
+```
+
+---
+
+## Complexity Analysis
+
+- **Time Complexity:**  
+    The overall time complexity of the algorithm is **O(n)**, where n is the length of the input strings.
+  
+- **Space Complexity:**  
+  The space complexity is determined by the storage used for the hash maps that count the frequency of characters in each string, making it **O(n)**.

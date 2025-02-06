@@ -9,14 +9,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ModeToggle } from './mode-toggle'
 import { Search } from './search'
-
-function Capitalize(str: string): string {
-    if (typeof str !== 'string' || str.trim() === '') {
-        throw new Error('Input must be a non-empty string');
-    }
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase().replace(/-/g, " ");
-}
-
+import { Capitalize } from '@/lib/misc'
 
 const Header = () => {
     const path = usePathname();
@@ -26,7 +19,7 @@ const Header = () => {
     return (
         <header className="sticky top-0 flex justify-between shrink-0 items-center gap-2 border-b bg-background/50 z-10 backdrop-blur-md p-4">
             <div className="flex justify-start items-center gap-2">
-                <Image width={100} height={100} alt='Jyotirmoy Barman' className=' sm:hidden rounded-lg size-7' src={'/jyotirmoy.webp'}></Image>
+                <Image width={100} height={100} alt='Jyotirmoy Barman' className=' sm:hidden rounded-lg size-7' src={'/logo.png'}></Image>
                 <SidebarTrigger className="" />
                 <Separator orientation="vertical" className="mr-2 h-4" />
                 <Breadcrumb>
