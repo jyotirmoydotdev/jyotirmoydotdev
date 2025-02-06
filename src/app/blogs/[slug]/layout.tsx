@@ -25,7 +25,7 @@ export async function generateMetadata({ params }:{params: Promise<{ slug: strin
 
 const Layout = ({children}:{children:ReactNode}) => {
   return (
-    <div className='relative dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] h-full'>
+    <div>
         {children}
     </div>
   )
