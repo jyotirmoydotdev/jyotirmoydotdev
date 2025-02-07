@@ -1,0 +1,564 @@
+import Linkwithlogo from '@/components/linkwithlogo'
+import {CodeCopy} from '@/components/mdx-comp'
+import { FaGitAlt } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+# Build your Golang Proxy Server
+
+Have you ever wondered where your computer is trying to connect? With a proxy, you can intercept your network traffic to see all the servers your computer is reaching out to. While there are many advanced uses for proxies, in this post we'll build a simple proxy in Go that intercepts network connections and logs some useful details.
+
+## Prerequisites
+
+Before you start, make sure you have the following installed on your system:
+
+- <Linkwithlogo text='Go' url='https://go.dev' icon={'https://go.dev/favicon.ico'}/> (version 1.16 or higher recommended)
+- <Linkwithlogo text='Git' url='https://git-scm.com' icon={{icon:FaGitAlt}}/>
+
+---
+
+## Project Setup
+
+- **Create a New Folder**
+    First, create a new folder for your project. You can name it whatever you like; for now, we'll simply call it `proxy`:
+
+    ```bash
+    mkdir proxy
+    cd proxy
+    ```
+
+- **Initialize Git and Go Modules**
+    Initialize your repository with Git and set up your Go module. This helps with version control and dependency management.
+    
+    ```bash
+    git init
+    go mod init github.com/yourusername/proxy
+    ```
+    Replace `github.com/yourusername/proxy` with your desired package name.
+
+- **Project Structure**
+    For this project, we will create two files:
+    
+    - `main.go` - The entry point for our application.
+    - `proxy.go` - Contains the core logic for our proxy server.
+
+    Your project folder should now look like this:
+
+    ```bash
+    .
+    ├── go.mod
+    ├── main.go
+    └── proxy
+        └── proxy.go
+    ```
+
+---
+
+## Writing the Proxy Program
+
+In our proxy program, we split the logic into two parts:
+
+- **Main Server Setup (main.go):**
+    This is the entry point of our application. It sets up the TCP listener on a configurable port, starts a concurrent health check server, and accepts incoming client connections. Each connection is handed off to our proxy logic.
+
+- **Proxy Logic (proxy.go):**
+    This module is responsible for handling incoming connections. It reads the client's request, determines if it's an HTTP request or an HTTPS (CONNECT) request, and then forwards the traffic to the target server accordingly. In addition, it includes a helper function to resolve hostnames to IP addresses, which is useful for logging or other purposes.
+
+Let's break down the code for each part.
+
+## Overview of main.go
+
+In this section, we configure the server port, set up a health check endpoint, and initialize the proxy server to listen for incoming TCP connections. This file serves as the entry point for the proxy application.
+
+### Configuring the Server Port
+
+We determine which port the server should listen on by checking for the `SERVER_PORT` environment variable. This allows you to specify a custom port via a `.env` file or your deployment environment. If the environment variable is not set or is empty, the default port is set to `8080`.
+
+```go
+package main
+
+import (
+	"os"
+)
+
+func main() {
+	// Determine the server port from the environment variable.
+	// If SERVER_PORT is not set, default to port "8080".
+	serverPort, serverPortExist := os.LookupEnv("SERVER_PORT")
+	if !serverPortExist || len(serverPort) == 0 {
+		serverPort = "8080"
+	}
+}
+```
+
+### Implementing a Health Check Endpoint
+
+A health check route is useful for monitoring whether the proxy is up and running. We run a simple health check server on a separate port (`8081`) in a goroutine. This server listens for `/healthCheck `requests and responds with a simple "OK" message, ensuring that the proxy's status can be monitored independently.
+
+```go
+func main() {
+	// Code to determine server port
+	// .....
+
+	// Start the health check server in a separate goroutine.
+	go HealthCheckServer()
+}
+
+func HealthCheckServer() {
+	http.HandleFunc("/healthCheck", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintln(w, "OK")
+	})
+
+	healthCheckPort := "8081"
+	fmt.Println("Health check server is listening on:", healthCheckPort)
+
+	if err := http.ListenAndServe(":"+healthCheckPort, nil); err != nil {
+		fmt.Println("Error starting health check server:", err)
+	}
+}
+```
+
+### Initializing the Proxy Server
+
+The proxy server listens on all network interfaces for incoming TCP connections. When a client connects, the connection is handed off to the `proxy.HandleClient` function (which will be defined separately) for further processing. This design allows the proxy to handle multiple connections concurrently by launching a new goroutine for each client connection.
+
+Here's how the main function sets up the TCP listener and continuously accepts incoming connections:
+
+```go
+func main(){
+	// Previous code to configure the server port and start the health check server
+	// .....
+
+	// Listen on all interfaces (not just localhost)
+	listener, err := net.Listen("tcp", ":"+serverPort)
+	if err != nil {
+		fmt.Println("Error creating listener:", err)
+		return
+	}
+	defer listener.Close()
+
+	fmt.Println("Proxy server is listening on :" + serverPort)
+
+	// Accept incoming client connections in an infinite loop.
+	for {
+		clientConn, err := listener.Accept()
+		if err != nil {
+			fmt.Println("Error accepting connection:", err)
+			continue
+		}
+		// Handle each connection concurrently.
+		go proxy.HandleClient(clientConn)
+	}
+}
+```
+
+This structure lays the foundation for a scalable and robust proxy server, where the main.go file handles server initialization and connection management, and the proxy package handles the detailed request processing logic.
+
+### Full Code (main.go)
+
+```go
+package main
+
+import (
+	"fmt"
+	"net"
+	"net/http"
+	"os"
+
+	"github.com/yourusername/proxy/proxy"
+)
+
+func main() {
+	// Determine server port
+	serverPort, serverPortExist := os.LookupEnv("SERVER_PORT")
+	if !serverPortExist || len(serverPort) == 0 {
+		serverPort = "8080"
+	}
+
+	// Start health check server in a separate goroutine
+	go HealthCheckServer()
+
+	// Listen on all interfaces (not just localhost)
+	listener, err := net.Listen("tcp", ":"+serverPort)
+	if err != nil {
+		fmt.Println("Error creating listener:", err)
+		return
+	}
+	defer listener.Close()
+
+	fmt.Println("Proxy server is listening on :" + serverPort)
+
+	for {
+		clientConn, err := listener.Accept()
+		if err != nil {
+			fmt.Println("Error accepting connection:", err)
+			continue
+		}
+		go proxy.HandleClient(clientConn)
+	}
+}
+
+func HealthCheckServer() {
+	http.HandleFunc("/healthCheck", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintln(w, "OK")
+	})
+
+	healthCheckPort := "8081"
+	fmt.Println("Health check server is listening on:", healthCheckPort)
+
+	if err := http.ListenAndServe(":"+healthCheckPort, nil); err != nil {
+		fmt.Println("Error starting health check server:", err)
+	}
+}
+```
+
+---
+
+## Overview of proxy.go
+
+The `proxy.go` file contains the core logic for handling client requests in our proxy server. It includes functions to resolve domain names, extract host information, and process both HTTP and HTTPS requests. The file also manages the forwarding of client requests and server responses.
+
+### Resolving Host IP Addresses
+
+Before forwarding requests, the proxy needs to resolve the target host to an IP address. The following function, `resolveIP`, achieves this by first removing any `http://` or `https://` prefixes from the target string. It then extracts only the hostname—stripping any path, query, or port information—and performs a DNS lookup using `net.LookupHost`. This returns the IP addresses associated with the hostname, and the function then returns the first resolved IP address.
+
+```go
+// resolveIP resolves the target host to an IP address
+func resolveIP(target string) (string, error) {
+	// Remove "http://" or "https://" if present
+	target = strings.TrimPrefix(target, "http://")
+	target = strings.TrimPrefix(target, "https://")
+
+	// Extract the host from the URL (in case there's a path, query, or port)
+	host := target
+	if strings.Contains(host, "/") {
+		host = strings.Split(host, "/")[0] // Extract hostname without path
+	}
+
+	// Remove port if present (split by ':' and take the first part)
+	if strings.Contains(host, ":") {
+		host = strings.Split(host, ":")[0]
+	}
+
+	// Resolve the IP address of the host
+	ips, err := net.LookupHost(host)
+	if err != nil {
+		return "", fmt.Errorf("failed to resolve IP for %s: %v", host, err)
+	}
+
+	// Return the first resolved IP address
+	return ips[0], nil
+}
+```
+
+### Extracting the Host from an HTTP Request
+
+The function `extractHost` is used to retrieve the target host from an HTTP request line. It does so by splitting the request line into fields and extracting the URL from the second field. It also removes the `http://` prefix if it exists. This helps the proxy determine where to forward the client's request.
+
+```go
+// extractHost extracts the host from an HTTP request line
+func extractHost(requestLine string) string {
+	parts := strings.Fields(requestLine)
+	if len(parts) < 2 {
+		return ""
+	}
+	return strings.TrimPrefix(parts[1], "http://") // Removes "http://" if present
+}
+```
+
+### Handling Client Requests
+
+The `HandleClient` function serves as the entry point for processing each incoming client connection. When a client connects, this function reads the first line of the request using a buffered reader. It then parses the request line to determine the HTTP method (such as GET, POST, or CONNECT) and the target URL or host. Using the `resolveIP` function, it retrieves the IP address of the target, which is printed to the console for logging purposes. If the HTTP method is `CONNECT`, indicating an HTTPS request, the function delegates the handling to `handleHTTPS`; otherwise, it processes the request as a standard HTTP request via `handleHTTP`.
+
+```go
+// HandleClient handles both HTTP and HTTPS proxy requests
+func HandleClient(clientConn net.Conn) {
+	defer clientConn.Close()
+
+	// Read the first request line
+	reader := bufio.NewReader(clientConn)
+	requestLine, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error reading request line:", err)
+		return
+	}
+
+	// Parse the request line
+	requestParts := strings.Fields(requestLine)
+	if len(requestParts) < 2 {
+		fmt.Println("Invalid request line:", requestLine)
+		return
+	}
+
+	method := requestParts[0] // GET, POST, CONNECT
+	target := requestParts[1] // URL or host:port (for CONNECT)
+
+	// Get the IP address of the target
+	ip, err := resolveIP(target)
+	if err != nil {
+		fmt.Println("Error resolving IP:", err)
+		return
+	}
+
+	// Print the full URL of the server
+	fmt.Println("Connecting to:", target, "from IP:", ip)
+
+	// Handle HTTPS (CONNECT method)
+	if method == "CONNECT" {
+		handleHTTPS(clientConn, target)
+		return
+	}
+
+	// Handle HTTP request
+	handleHTTP(clientConn, requestLine, reader)
+}
+```
+
+### Handling HTTPS Traffic
+
+When dealing with HTTPS traffic, the proxy must establish a secure tunnel between the client and the destination server. The `handleHTTPS` function does this by creating a TCP connection to the target server and then sending an HTTP 200 OK response back to the client to indicate that the tunnel is open. It then relays traffic bidirectionally between the client and the destination using the `io.Copy` function, effectively passing encrypted data between the two endpoints without inspecting it.
+
+```go
+// handleHTTPS handles HTTPS requests using the CONNECT method
+func handleHTTPS(clientConn net.Conn, target string) {
+	// Connect to the requested destination
+	destServer, err := net.Dial("tcp", target)
+	if err != nil {
+		fmt.Println("Error connecting to destination server:", err)
+		return
+	}
+	defer destServer.Close()
+
+	// Send HTTP 200 OK to establish a tunnel
+	_, err = clientConn.Write([]byte("HTTP/1.1 200 Connection Established\r\n\r\n"))
+	if err != nil {
+		fmt.Println("Error sending connection established response:", err)
+		return
+	}
+
+	// Now just relay traffic between client and destination
+	go io.Copy(destServer, clientConn)
+	io.Copy(clientConn, destServer)
+}
+```
+
+### Handling HTTP Requests
+
+For standard HTTP requests, the `handleHTTP` function takes charge of forwarding the request and the subsequent response. It first extracts the target host from the request line using the `extractHost` function. It then opens a TCP connection to the destination server, forwards the request line, and relays the remaining parts of the request and response between the client and the server. This allows the proxy to transparently forward HTTP traffic.
+
+```go
+// handleHTTP forwards HTTP requests
+func handleHTTP(clientConn net.Conn, requestLine string, reader *bufio.Reader) {
+	// Extract the target host from the request
+	host := extractHost(requestLine)
+	if host == "" {
+		fmt.Println("Invalid host in request")
+		return
+	}
+
+	// Connect to the target server
+	destServer, err := net.Dial("tcp", host)
+	if err != nil {
+		fmt.Println("Error connecting to destination server:", err)
+		return
+	}
+	defer destServer.Close()
+
+	// Forward request line
+	_, err = destServer.Write([]byte(requestLine))
+	if err != nil {
+		fmt.Println("Error forwarding request line:", err)
+		return
+	}
+
+	// Forward the rest of the request and response
+	go io.Copy(destServer, reader)
+	io.Copy(clientConn, destServer)
+}
+```
+
+In summary, the `proxy.go` file encapsulates the logic for handling both HTTP and HTTPS requests in our proxy server. The file begins with helper functions for resolving IP addresses and extracting host information. It then defines the `HandleClient` function to process incoming client connections, determining the type of request and delegating it to either `handleHTTPS` for secure connections or `handleHTTP` for standard HTTP requests. This modular design allows our proxy to efficiently manage and forward traffic while providing logging and basic error handling.
+
+### Full Code (proxy.go)
+
+```go
+package proxy
+
+import (
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"io"
+	"net"
+	"net/http"
+	"strings"
+)
+
+// resolveIP resolves the target host to an IP address
+func resolveIP(target string) (string, error) {
+	// Remove "http://" or "https://" if present
+	target = strings.TrimPrefix(target, "http://")
+	target = strings.TrimPrefix(target, "https://")
+
+	// Extract the host from the URL (in case there's a path, query, or port)
+	host := target
+	if strings.Contains(host, "/") {
+		host = strings.Split(host, "/")[0] // Extract hostname without path
+	}
+
+	// Remove port if present (split by ':' and take the first part)
+	if strings.Contains(host, ":") {
+		host = strings.Split(host, ":")[0]
+	}
+
+	// Resolve the IP address of the host
+	ips, err := net.LookupHost(host)
+	if err != nil {
+		return "", fmt.Errorf("failed to resolve IP for %s: %v", host, err)
+	}
+
+	// Return the first resolved IP address
+	return ips[0], nil
+}
+
+// extractHost extracts the host from an HTTP request line
+func extractHost(requestLine string) string {
+	parts := strings.Fields(requestLine)
+	if len(parts) < 2 {
+		return ""
+	}
+	return strings.TrimPrefix(parts[1], "http://") // Removes "http://" if present
+}
+
+// HandleClient handles both HTTP and HTTPS proxy requests
+func HandleClient(clientConn net.Conn) {
+	defer clientConn.Close()
+
+	// Read the first request line
+	reader := bufio.NewReader(clientConn)
+	requestLine, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error reading request line:", err)
+		return
+	}
+
+	// Parse the request line
+	requestParts := strings.Fields(requestLine)
+	if len(requestParts) < 2 {
+		fmt.Println("Invalid request line:", requestLine)
+		return
+	}
+
+	method := requestParts[0] // GET, POST, CONNECT
+	target := requestParts[1] // URL or host:port (for CONNECT)
+
+	// Get the IP address of the target
+	ip, err := resolveIP(target)
+	if err != nil {
+		fmt.Println("Error resolving IP:", err)
+		return
+	}
+
+	// Print the full URL of the server
+	fmt.Println("Connecting to:", target, "from IP:", ip)
+
+	// Handle HTTPS (CONNECT method)
+	if method == "CONNECT" {
+		handleHTTPS(clientConn, target)
+		return
+	}
+
+	// Handle HTTP request
+	handleHTTP(clientConn, requestLine, reader)
+}
+
+// handleHTTPS handles HTTPS requests using the CONNECT method
+func handleHTTPS(clientConn net.Conn, target string) {
+	// Connect to the requested destination
+	destServer, err := net.Dial("tcp", target)
+	if err != nil {
+		fmt.Println("Error connecting to destination server:", err)
+		return
+	}
+	defer destServer.Close()
+
+	// Send HTTP 200 OK to establish a tunnel
+	_, err = clientConn.Write([]byte("HTTP/1.1 200 Connection Established\r\n\r\n"))
+	if err != nil {
+		fmt.Println("Error sending connection established response:", err)
+		return
+	}
+
+	// Now just relay traffic between client and destination
+	go io.Copy(destServer, clientConn)
+	io.Copy(clientConn, destServer)
+}
+
+// handleHTTP forwards HTTP requests
+func handleHTTP(clientConn net.Conn, requestLine string, reader *bufio.Reader) {
+	// Extract the target host from the request
+	host := extractHost(requestLine)
+	if host == "" {
+		fmt.Println("Invalid host in request")
+		return
+	}
+
+	// Connect to the target server
+	destServer, err := net.Dial("tcp", host)
+	if err != nil {
+		fmt.Println("Error connecting to destination server:", err)
+		return
+	}
+	defer destServer.Close()
+
+	// Forward request line
+	_, err = destServer.Write([]byte(requestLine))
+	if err != nil {
+		fmt.Println("Error forwarding request line:", err)
+		return
+	}
+
+	// Forward the rest of the request and response
+	go io.Copy(destServer, reader)
+	io.Copy(clientConn, destServer)
+}
+```
+
+---
+
+## Running the Proxy
+
+To start the proxy server, open your terminal and run:
+
+```bash
+go run main.go
+```
+
+You should see output similar to:
+
+```bash
+Proxy server is listening on :8080
+Health check server is listening on: 8081
+```
+
+Next, configure your Wi-Fi settings to route your internet traffic through your proxy.
+
+### Configuring the Proxy on macOS
+
+1. Open **System Preferences** and select **Network**.
+2. Choose your active Wi-Fi connection and click **Advanced…**.
+3. Navigate to the **Proxies** tab.
+4. Enable the **Secure Web Proxy (HTTPS)** option.
+5. Set the **Server** field to <CodeCopy code='localhost'/> and the **Port** field to <CodeCopy code='8080'/>.
+6. Click **OK**, then **Apply** to save your settings.
+
+Your internet traffic will now pass through your proxy, allowing you to intercept and monitor network requests. 
+
+## Stop the Proxy
+
+To disable the proxy, simply terminate the proxy program by pressing `Control + C` and uncheck the **Secure Web Proxy (HTTPS)** option in your network settings.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

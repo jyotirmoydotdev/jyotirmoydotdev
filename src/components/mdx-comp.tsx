@@ -228,3 +228,11 @@ export const Complex = ({t,s}:{t:string,s:string}) => {
       </div>
   )
 }
+
+export const CodeCopy = ({code}:{code:string}) => {
+  return (
+    <span
+    className=' text-[#ffa500] bg-[#ffa5001a] py-[2px] pl-[10px] pr-[4px] font-mono text-[0.95em] items-center inline-flex rounded-sm'
+    >{code} <CopyButton content={code} text=''/> </span>
+  )
+}

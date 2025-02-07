@@ -9,7 +9,7 @@ const Linkwithlogo = (
   }: {
     text: string,
     url: string,
-    icon: string | { icon: IconType }
+    icon: string | { icon: IconType, classname?: string }
   }
 ) => {
   return (
@@ -21,7 +21,7 @@ const Linkwithlogo = (
               backgroundImage: `url(${icon})`
             }}
           /> : 
-          <span className=' self-center'><icon.icon /></span>
+          <span className=' self-center'><icon.icon className={`${icon.classname}`}/></span>
       }
       {text}
     </a>

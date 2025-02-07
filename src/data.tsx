@@ -170,6 +170,38 @@ export const blogs: blogsType[] = [
     //     ]
     // },
     {
+        title: "Build your Golang Proxy Server",
+        description: "Learn to build a robust Go proxy server supporting HTTP and HTTPS, complete with health checks and detailed logging.",
+        url: "/blogs/build-your-golang-proxy-server",
+        titleSlug: 'build-your-golang-proxy-server',
+        date: "Feb 8, 2025",
+        content: [
+            "Prerequisites",
+            "Project Setup",
+            "Writing the Proxy Program",
+            "Overview of main.go",
+            [
+                "Configuring the Server Port",
+                "Implementing a Health Check Endpoint",
+                "Initializing the Proxy Server",
+                "Full Code (main.go)"
+            ],
+            "Overview of proxy.go",
+            [
+                "Resolving Host IP Addresses",
+                "Extracting the Host from an HTTP Request",
+                "Handling Client Requests",
+                "Handling HTTPS Traffic",
+                "Handling HTTP Requests",
+                "Full Code (proxy.go)"
+            ],
+            "Running the Proxy",
+            ["Configuring the Proxy on macOS"],
+            "Stop the Proxy",
+            "Wrap up"
+        ]
+    },
+    {
         title: "Simple way to run deepseek-r1 Locally",
         description: "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool.",
         url: "/blogs/simple-way-to-run-deepseek-r1-locally",
