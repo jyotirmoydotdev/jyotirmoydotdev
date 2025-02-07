@@ -7,7 +7,6 @@ import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHead
 import { ContentComp } from '../mdx-comp';
 import Link from 'next/link';
 import { Separator } from '../ui/separator';
-import { Badge } from '../ui/badge';
 
 const Content = ({ leetcodeDataIndex, leetcodeContent }: { leetcodeDataIndex: number, leetcodeContent: (string | string[])[] }) => {
     const sideBarSize = 300
@@ -64,22 +63,7 @@ const Content = ({ leetcodeDataIndex, leetcodeContent }: { leetcodeDataIndex: nu
                                             return (
                                                 <Link key={i} href={post?.titleSlug} className='max-w-[260px] flex flex-col gap-2 py-2 group/more hover:bg-gray-100/10 hover:pl-2 transition-all rounded-md mt-2'>
                                                     <div className=" font-black group-hover/more:text-orange-400 line-clamp-2 text-sm">
-                                                        {post.id}{". "}{post.title}
-                                                    </div>
-                                                    <div className="text-xs text-gray-500 flex flex-wrap">
-                                                        <div className="flex space-x-2 font-medium text-xs">
-                                                        <Badge variant={'secondary'}>{post.difficulty}</Badge>
-                                                            {post.topicTags?.length ? (
-                                                                <>
-                                                                    <Badge variant={'secondary'}>{post.topicTags[0]}</Badge>
-                                                                    {post.topicTags.length > 1 && (
-                                                                        <Badge variant={'secondary'}>+{post.topicTags.length - 1}</Badge>
-                                                                    )}
-                                                                </>
-                                                            ) : (
-                                                                <Badge variant={'secondary'}>No Tags</Badge>
-                                                            )}
-                                                        </div>
+                                                        {post.id}{". "}{post.title} - <span className=' text-muted-foreground'>{post.difficulty}</span>
                                                     </div>
                                                 </Link>
                                             )

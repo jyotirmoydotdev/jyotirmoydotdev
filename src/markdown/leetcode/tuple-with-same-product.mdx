@@ -1,7 +1,5 @@
 import { Complex } from "@/components/mdx-comp"
 
-## Solution
-
 ```go
 func tupleSameProduct(nums []int) int {
     productCount := make(map[int]int)
@@ -53,7 +51,7 @@ The final result, which is the total count of valid tuples, is returned.
 ## Complexity Analysis
 
 - **Time Complexity**
-    The algorithm uses two nested loops to iterate over all unique pairs of elements, which results in **O(n²)** time complexity. In addition, iterating over the keys in the hash map to compute the final result is at most **O(n²)**in the worst case (if every pair produces a unique product), so the overall time complexity remains **O(n²)**.
+    The algorithm uses two nested loops to iterate over all unique pairs of elements, which results in **O(n²)** time complexity. In addition, iterating over the keys in the hash map to compute the final result is at most **O(n²)** in the worst case (if every pair produces a unique product), so the overall time complexity remains **O(n²)**.
 
 - **Space Complexity**
     The space complexity is determined by the hash map **productCount**. In the worst-case scenario, where every pair yields a unique product, the hash map can have **O(n²)** entries. Thus, the space complexity is **O(n²)**.

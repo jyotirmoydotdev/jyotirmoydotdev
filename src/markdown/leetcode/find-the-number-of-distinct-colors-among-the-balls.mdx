@@ -1,0 +1,73 @@
+import { Complex } from "@/components/mdx-comp"
+
+```go
+func queryResults(limit int, queries [][]int) []int {
+  ans := make([]int, len(queries))
+  ball := make(map[int]int)
+  color := make(map[int]int)
+  for i, q := range queries {
+    x , y := q[0], q[1]
+    if ball[x] != 0 {
+        color[ball[x]]--
+        if color[ball[x]] == 0 {
+            delete(color, ball[x])
+        }
+    }
+    color[y]++
+    ball[x] = y
+    ans[i] = len(color)
+  }
+  return ans
+}
+```
+
+<Complex t='n' s='n'/>
+
+---
+
+## Explanation
+
+In this problem, you are given an integer `limit` and an array of queries. There are `limit + 1` balls (labeled from `0` to `limit`) that are initially uncolored. Each query is of the form `[x, y]`, which means that ball `x` is to be painted with color `y`. After processing each query, the task is to report the number of distinct colors among all balls (note that “uncolored” is not considered a valid color since valid colors start from 1).
+
+### Initial Setup
+
+There are `limit + 1` balls, each initially uncolored. Since the valid color values are guaranteed to be at least 1, a ball with a color value of `0` in our map can be safely assumed to be uncolored.
+
+### Processing Each Query
+
+For each query `[x, y]`:
+
+- Check if Ball is Already Colored:
+
+    - If `ball[x]` is not zero, the ball has been colored before.
+    - The count for the previous color (stored in `ball[x]`) is decreased in the `color` map.
+    - If the frequency of that previous color becomes zero, it is removed from the map. This step ensures that only active colors (colors that are actually on some ball) are counted.
+
+- Update with the New Color:
+
+    - Increase the count for the new color `y` in the `color` map.
+    - Update `ball[x]` with the new color.
+
+- Record the Distinct Colors Count:
+
+    - The number of distinct colors currently used is simply the number of keys in the `color` map, which is appended to the answer list.
+
+This approach guarantees that at every step the answer reflects the exact number of distinct colors among the balls.
+
+**Using two maps enables us to:**
+
+- Quickly update the current state (what color each ball has).
+
+- Efficiently track the count of each color, thereby making it straightforward to determine the number of distinct colors (the number of keys in the `color` map).
+
+This design avoids scanning through all balls after each query, leading to a more efficient solution.
+
+---
+
+## Complexity Analysis
+
+- **Time Complexity:**
+    Each query involves a constant number of operations (hash map lookups, updates, and possibly deletions), which on average run in O(1) time. Given that there are n queries, the overall time complexity is `O(n)`.
+
+- **Space Complexity:**
+    In the worst case, if every query assigns a unique ball a unique color, the ball map will hold at most n entries. Similarly, the color map may hold up to n entries (if each color is unique). Thus, the worst-case space complexity is `O(n)`.

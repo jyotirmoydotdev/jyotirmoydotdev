@@ -501,6 +501,30 @@ export const leetcodes: leetcodeType[] = [
             'Complexity Analysis'
         ]
     },
+    {
+        id: 3160,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Find the Number of Distinct Colors Among the Balls",
+        titleSlug: "find-the-number-of-distinct-colors-among-the-balls",
+        topicTags: [
+            "Array",
+            "Hash Table",
+            "Simulation"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Initial Setup',
+                'Processing Each Query',
+            ],
+            'Complexity Analysis'
+        ]
+    },
 ]
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [

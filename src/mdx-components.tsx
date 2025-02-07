@@ -113,8 +113,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                           }
                         `}
                     </style>
-                    <code className="inline-code inline-flex items-center">
-                        <span>{children}</span> <CopyButton text='' content={String(children).trim()}/>
+                    <code className="inline-code items-center">
+                        <span>{children}</span>
                     </code>
                     </>
                 );
