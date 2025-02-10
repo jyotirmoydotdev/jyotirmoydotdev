@@ -13,7 +13,7 @@ export default async function Page({
     const leetcode = leetcodes[leetcodeindex]
     if (!leetcode){
         return (
-            <>could not found</>
+            <div>could not found</div>
         )
     }
     return (

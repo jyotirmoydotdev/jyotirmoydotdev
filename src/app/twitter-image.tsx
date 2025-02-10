@@ -9,37 +9,35 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  try {
+  const styles = {
+    wrapper: {
+      display: 'flex',
+      flexDirection: 'column' as const,
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '32px',
+      padding: '48px',
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#1a1a1a',
+      backgroundImage: `
+        linear-gradient(#262422 3px, transparent 1px), 
+        linear-gradient(90deg, #262422 3px, transparent 1px)`,
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      backgroundSize: '20px 20px',
+    }
+  }
     return new ImageResponse(
       (
         <div
-          className=' '
-          style={{
-            height: '100%',
-            width: '100%',
-            position:'relative',
-            display: 'flex',
-            textAlign: 'center',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            flexWrap: 'nowrap',
-            backgroundColor: '#F97316',
-            backgroundImage: `
-              linear-gradient(#fb923c 1px, transparent 1px), 
-              linear-gradient(90deg, #fb923c 1px, transparent 1px)`,
-            backgroundSize: '20px 20px',
-
-          }}
+          style={styles.wrapper}
         >
 
           <div
             style={{
               display: 'flex',
               fontSize: 100,
-              fontStyle: 'normal',
-              color: 'white',
-              whiteSpace: 'pre-wrap',
+              color: '#F97316',
             }}
           >
             <b>Jyotirmoy Barman</b>
@@ -59,7 +57,4 @@ export default async function Image() {
         ...size,
       }
     )
-  } catch (error) {
-    console.log(error)
-  }
 }

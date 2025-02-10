@@ -1,4 +1,12 @@
 import React, { ReactNode } from 'react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title:'Projects - Jyotirmoy Barman',
+  alternates:{
+    canonical: `https://jyotirmoy.dev/projects`
+  }
+}
 
 const Layout = ({children}:{children:ReactNode}) => {
   return (

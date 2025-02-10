@@ -1,4 +1,23 @@
 import React, { ReactNode } from 'react'
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: "Blogs - Jyotirmoy Barman",
+  description: "Read the latest insights and tutorials from Jyotirmoy Barman on web development, innovation, and more.",
+  openGraph: {
+    title: "Blog - Jyotirmoy Barman",
+    description: "Dive into deep-dive articles and insights on the latest web development trends and technologies.",
+    url: "https://jyotirmoy.dev/blog",
+  },
+  twitter: {
+    title: "Blog - Jyotirmoy Barman",
+    description: "Check out the latest blog posts by Jyotirmoy Barman on web development and innovative digital experiences.",
+  },
+  alternates:{
+    canonical:'https://jyotirmoy.dev/blogs'
+  }
+};
+
 
 const Layout = ({children}:{children:ReactNode}) => {
   return (

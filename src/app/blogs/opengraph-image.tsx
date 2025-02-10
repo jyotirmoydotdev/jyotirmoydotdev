@@ -40,7 +40,7 @@ export default async function Image() {
               color: '#F97316',
             }}
           >
-            <b>Jyotirmoy Barman</b>
+            <b>Blogs</b>
           </div>
           <div style={{
             fontSize: 40,
@@ -49,7 +49,7 @@ export default async function Image() {
             color: 'white'
           }}
           >
-            Software Engineer / Bringing ideas to reality
+            jyotirmoy.dev
           </div>
         </div>
       ),
