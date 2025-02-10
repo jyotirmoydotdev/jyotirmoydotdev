@@ -2,7 +2,7 @@
 
 import { Clipboard } from 'lucide-react';
 import React, { useState } from 'react';
-import { TbBrandGolang, TbBrandCpp, TbSql } from "react-icons/tb";
+import { TbBrandGolang, TbBrandCpp, TbSql, TbBrandPython } from "react-icons/tb";
 import { CiText } from "react-icons/ci";
 import { TbJson } from "react-icons/tb";
 import { TiTick } from "react-icons/ti";
@@ -70,6 +70,8 @@ export const CodeIcon = ({ lang }: { lang: string }) => {
     switch (lang) {
       case "go":
         return <TbBrandGolang className=' size-[2.5rem]' />
+      case "py":
+        return <><TbBrandPython className=' size-[1.5rem]' /> Python</>
       case "cpp":
         return <TbBrandCpp className=' size-[1.5rem]' />
       case "json":

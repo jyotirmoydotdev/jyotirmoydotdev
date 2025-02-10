@@ -1,0 +1,48 @@
+import { Complex } from "@/components/mdx-comp";
+
+```go
+func clearDigits(s string) string {
+    stack := []byte{}
+    for i := 0; i < len(s); i++ {
+        if s[i] >= 'a' && s[i] <= 'z' {
+            stack = append(stack, s[i])
+        } else {
+            if len(stack) > 0 {
+                stack = stack[:len(stack)-1]
+            }
+        }
+    }
+    return string(stack)
+}
+```
+
+<Complex t='n' s='n'/>
+
+---
+
+## Explanation
+
+The function **`clearDigits`** processes a string by removing every digit it encounters along with the closest non-digit character immediately to its left. It uses a stack (implemented as a slice of bytes) to keep track of the lowercase English letters.
+
+### 1. Iteration and Stack Building
+   The function iterates through each character of the input string:
+   - If the character is a lowercase letter (between `'a'` and `'z'`), it is appended to the stack.
+   - If the character is a digit, the function checks if the stack is not empty and then removes (pops) the last character. This effectively “undoes” the most recent letter addition.
+
+### 2. Edge Case Handling
+   The additional check `if len(stack) > 0` ensures that when a digit is encountered with no preceding letter (i.e., the stack is empty), the function does not attempt to pop from an empty slice.
+
+### 3. Example Walkthrough
+   Consider the input `s = "cb34"`:
+   - **Step 1:** Process `'c'` → Stack becomes `['c']`.
+   - **Step 2:** Process `'b'` → Stack becomes `['c', 'b']`.
+   - **Step 3:** Process `'3'` (a digit) → Remove the last character (`'b'`), leaving `['c']`.
+   - **Step 4:** Process `'4'` (a digit) → Remove the last character (`'c'`), leaving an empty stack.
+   - **Result:** The final returned string is `""`.
+
+## Complexity Analysis
+
+- **Time Complexity:**  
+  The function processes each character in a single pass, resulting in a time complexity of *`O(n)`*, where *n* is the length of the string.
+- **Space Complexity:**  
+  In the worst case, when no digits are present, the stack holds all characters, leading to a space complexity of *`O(n)`*.

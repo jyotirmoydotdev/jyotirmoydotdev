@@ -1,9 +1,25 @@
----
-title: "Efficiently Counting Bad Pairs in an Array"
-date: "2025-02-09"
+import { Complex } from "@/components/mdx-comp";
+
+```go
+func countBadPairs(nums []int) int64 {
+    hash := make(map[int]int)
+    counter := 0
+    
+    for i, num := range nums {
+        diff := num - i
+        counter += i - hash[diff]
+        hash[diff]++
+    }
+    
+    return int64(counter)
+}
+```
+
+<Complex t='n' s='n'/>
+
 ---
 
-import { Complex } from "@/components/mdx-comp";
+## Explanation
 
 In this post, we'll explore an efficient solution to the problem of counting **bad pairs** in an integer array. A pair of indices **(i, j)** is considered a **bad pair** if:
 
@@ -16,51 +32,15 @@ A brute-force solution that checks every possible pair would run in *O(n²)* tim
 
 ## The Key Observation
 
-Notice that the condition for a pair **not** to be bad (i.e., a **good pair**) is:
+Notice that the condition for a pair **not** to be bad (i.e., a **good pair**) is: `nums[j] - nums[i] = j - i`
 
-\[
-\text{nums}[j] - \text{nums}[i] = j - i
-\]
-
-This can be rearranged into:
-
-\[
-\text{nums}[j] - j = \text{nums}[i] - i
-\]
+This can be rearranged into: `nums[j] - nums[i] = j - i`
 
 In other words, two indices **i** and **j** form a good pair if they share the same value of **nums[k] - k**. With this insight, we can count the number of good pairs, and by extension, deduce the number of bad pairs.
 
 For each index **i**, the total number of pairs that can be formed with previous indices is **i**. If **hash[diff]** (where **diff = nums[i] - i**) is the number of previous indices with the same difference, then **hash[diff]** represents the count of good pairs ending at **i**. Consequently, the number of **bad pairs** formed with index **i** is:
 
-{/* \[
-\text{bad\_pairs} = i - \text{hash}[diff]
-\] */}
-
----
-
-## Go Implementation
-
-Below is the Go function that implements this logic:
-
-```go
-func countBadPairs(nums []int) int64 {
-    // Map to track the frequency of each difference (nums[i] - i)
-    hash := make(map[int]int)
-    counter := 0
-    
-    // Iterate over the array, using each index to form pairs with previous indices
-    for i, num := range nums {
-        diff := num - i
-        // Total pairs with previous indices is 'i'
-        // Subtract the count of good pairs (hash[diff]) to get bad pairs
-        counter += i - hash[diff]
-        // Update the frequency map for this difference
-        hash[diff]++
-    }
-    
-    return int64(counter)
-}
-```
+`bad_pairs = i - hash[diff]`
 
 ---
 
@@ -71,6 +51,7 @@ func countBadPairs(nums []int) int64 {
 
 2. **Iterate Over the Array**  
    For each index **i** and its corresponding value **num**, calculate the difference:
+
    ```go
    diff := num - i
    ```
@@ -79,12 +60,14 @@ func countBadPairs(nums []int) int64 {
    - Each new index **i** forms **i** pairs with all previous indices.
    - Among these, the number of **good pairs** is exactly the count of previous indices where **nums[k] - k == diff** (i.e., `hash[diff]`).
    - Hence, the number of **bad pairs** contributed by the current index is:
+
      ```go
      counter += i - hash[diff]
      ```
      
 4. **Update the Map**  
    After processing the current index, increment the count for the current difference:
+
    ```go
    hash[diff]++
    ```
@@ -101,13 +84,3 @@ func countBadPairs(nums []int) int64 {
 
 - **Space Complexity**:  
   The frequency map stores counts for each unique difference **(nums[i] - i)**. In the worst case, where every element results in a unique difference, the space complexity is **O(n)**.
-
----
-
-## Final Thoughts
-
-By transforming the condition for a good pair into a relationship based on the difference **nums[i] - i**, we can avoid checking every pair individually. This not only simplifies the logic but also significantly improves the performance of the solution.
-
-Feel free to leave any questions or comments below if you'd like to discuss this approach further or explore additional optimizations!
-
-Happy coding!

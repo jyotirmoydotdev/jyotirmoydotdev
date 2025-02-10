@@ -5,12 +5,25 @@ import Link from 'next/link'
 import React from 'react'
 import { Calendar } from 'lucide-react'
 import { SidebarOptInForm } from '@/components/sidebar-opt-in-form'
+// import { Input } from '@/components/ui/input'
 
 const page = () => {
     return (
         <div className="sm:p-4 relative">
+            {/* <div className="grid grid-cols-3 gap-4 mb-4">
+                <Input className='bg-muted' placeholder='Search blogs...'/>
+                <div className='flex gap-2 overflow-x-scroll no-scrollbar col-span-2'>
+                    {
+                        alltags.map((tag, i) => (
+                            <div key={i} className=" bg-muted/50 border text-sm text-nowrap px-4 py-1.5 rounded-lg text-muted-foreground">
+                                {tag.label}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
-            <SidebarOptInForm/>
+                <SidebarOptInForm />
                 {
                     blogs.map((blog, i) => (
                         <Link

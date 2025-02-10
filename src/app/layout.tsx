@@ -26,6 +26,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Jyotirmoy Barman - Developer & Creator",
   description: "Discover the world of Jyotirmoy Barman, a passionate developer crafting innovative web experiences. Explore projects, blogs, and more at jyotirmoy.dev.",
+  alternates:{
+    canonical: `https://jyotirmoy.dev`
+  },
   openGraph: {
     title: "Jyotirmoy Barman - Developer & Creator",
     description: "Welcome to the portfolio of Jyotirmoy Barman. Dive into cutting-edge web development projects, insights, and resources.",

@@ -170,6 +170,28 @@ export const blogs: blogsType[] = [
     //     ]
     // },
     {
+        title: "Run Stable Diffusion on Your MacBook M1 Using Python",
+        description: "Turn your MacBook M1 into an art machine with Python, watch your words come to life in vivid images!",
+        url: "/blogs/run-stable-diffusion-on-your-macBook-m1-using-python",
+        titleSlug: 'run-stable-diffusion-on-your-macBook-m1-using-python',
+        date: "Feb 10, 2025",
+        content: [
+            "Project Setup",
+            [
+                'Creating a Virtual Environment',
+                'Adding Dependencies',
+                'Create a Python File',
+            ],
+            "Generate AI Image",
+            [
+                'Code Implementation',
+                'Execution',
+                'Explanation'
+            ],
+            "Wrap up"
+        ]
+    },
+    {
         title: "Build your Golang Proxy Server",
         description: "Learn to build a robust Go proxy server supporting HTTP and HTTPS, complete with health checks and detailed logging.",
         url: "/blogs/build-your-golang-proxy-server",
@@ -553,6 +575,54 @@ export const leetcodes: leetcodeType[] = [
             [
                 'Initial Setup',
                 'Processing Each Query',
+            ],
+            'Complexity Analysis'
+        ]
+    },
+    {
+        id: 2364,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Count Number of Bad Pairs",
+        titleSlug: "count-number-of-bad-pairs",
+        topicTags: [
+            "Array",
+            "Hash Table",
+            "Math",
+            "Counting"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            'The Key Observation',
+            'Step-by-Step Explanation',
+            'Complexity Analysis'
+        ]
+    },
+    {
+        id: 3174,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Clear Digits",
+        titleSlug: "clear-digits",
+        topicTags: [
+            "String",
+            "Stack",
+            "Simulation"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                '1. Iteration and Stack Building',
+                '2. Edge Case Handling',
+                '3. Example Walkthrough',
             ],
             'Complexity Analysis'
         ]

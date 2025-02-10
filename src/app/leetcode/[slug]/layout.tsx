@@ -6,6 +6,9 @@ export async function generateMetadata({ params }:{params: Promise<{ slug: strin
   const slug = (await params).slug
   return {
     title: Capitalize(slug),
+    alternates:{
+      canonical: `https://jyotirmoy.dev/leetcode/${slug}`
+    },
     openGraph: {
         title: Capitalize(slug),
         description: `Read the leetcode question ${Capitalize(slug)}`,

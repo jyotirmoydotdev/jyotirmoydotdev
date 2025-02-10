@@ -1,0 +1,114 @@
+import Linkwithlogo from '@/components/linkwithlogo'
+import { SiHuggingface } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
+
+# Run Stable Diffusion on Your MacBook M1 Using Python
+
+We have all heard about text-to-image models like <Linkwithlogo text='Stable Diffusion' url='https://stability.ai/stable-image' icon={'https://images.squarespace-cdn.com/content/6213c340453c3f502425776e/cfbf5bc5-47d4-4f4a-b133-23bd12a7d7c2/S_AI_Favicon.png'}/> and others. In this post, you will learn how to run one on your computer. For this example, I will use a MacBook M1.
+
+
+## Project Setup
+
+Follow these steps to run this project on your computer. This guide covers settings for both Python.
+
+### Creating a Virtual Environment
+
+Set up and activate a Python virtual environment to handle the required packages:
+
+```bash
+python3 -m venv path/to/venv  
+source path/to/venv/bin/activate  
+```
+
+### Adding Dependencies
+
+After you activate the virtual environment, install the necessary packages:
+
+```bash
+pip install diffusers torch transformers accelerate
+```
+
+### Create a Python File
+
+Open your terminal and past the command. If you are using Visual Studio Code or another text editor, simply create a new file called `synthetic_generation.py`.
+
+```bash
+touch synthetic_generation.py
+```
+
+---
+
+## Generate AI Image
+
+This code shows how to create images using Stable Diffusion on Apple Silicon (M1/M2) with GPU help via Metal Performance Shaders (MPS). The setup is made for quick processing and skips the default NSFW safety check to avoid black images.
+
+### Code Implementation
+
+```py
+# synthetic_generation.py
+
+from diffusers import StableDiffusionPipeline
+import torch
+
+model_id = "CompVis/stable-diffusion-v1-4"
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
+
+# Use Apple's MPS for GPU acceleration
+pipe.to("mps")
+
+# Replace the safety checker with a function that always returns safe results.
+def dummy_safety_checker(images, clip_input, **kwargs):
+    return images, [False] * len(images)
+
+pipe.safety_checker = dummy_safety_checker
+
+# CLIP can handle up to 77 tokens.
+prompt = "Closeup portrait of a person with closed eyes, neon streaks (purple, pink, green, blue) flowing from eyes down face and hand. Freckled skin, dark tousled hair, and soft lighting. Frontal, centered composition on a black background with a hand near the mouth adds intrigue. BREAK anime, bboil artist style, OBdonman, Anime art"
+num_images = 3
+
+for i in range(1, num_images + 1):
+    with torch.no_grad():
+        image = pipe(prompt).images[0]
+    filename = f"person_{i}.png"
+    image.save(filename)
+    print(f"Saved {filename}")
+```
+
+### Execution
+
+When you run the script for the first time, it will download the <Linkwithlogo text='CompVis/stable-diffusion-v1-4' url='https://huggingface.co/CompVis/stable-diffusion-v1-4' icon={{icon:SiHuggingface}}/> model (about 4GB) from Hugging Face.
+
+```bash
+python3 synthetic_generation.py
+```
+
+### Explanation
+
+Below is a simple, step-by-step explanation of the code:
+
+1. **Importing Libraries:**  
+   The code starts by importing the necessary modules from `diffusers` and `torch`.
+
+2. **Loading the Model:**  
+   It downloads the Stable Diffusion model using its identifier and sets the data type to half-precision for faster processing.
+
+3. **Enabling GPU Support:**  
+   The model is moved to use Apple's MPS, which speeds up image generation on a MacBook.
+
+4. **Changing the Safety Checker:**  
+   The default safety check is replaced by a function that simply returns a safe result for each image. This change stops the safety check from causing blank images.
+
+5. **Setting the Prompt:**  
+   A text prompt is defined that describes the image you want to create. Keep in mind that CLIP can only handle up to 77 tokens.
+
+6. **Generating Images:**  
+   The code runs in a loop to create several images. In each loop, it generates an image based on the prompt, saves it with a unique name, and prints a message confirming the save.
+
+7. **Running the Script:**  
+   When you run the script, the model is downloaded (if it isn't already) and the images are generated as explained above.
+
+This guide makes it simple to start using a text-to-image AI model on your MacBook M1 with Python.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
