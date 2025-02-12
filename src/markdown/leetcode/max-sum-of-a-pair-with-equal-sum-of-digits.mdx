@@ -1,0 +1,65 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given a 0-indexed array `nums` consisting of positive integers. You can choose two indices `i` and `j`, such that `i != j`, and the sum of digits of the number `nums[i]` is equal to that of `nums[j]`.
+
+Return the maximum value of `nums[i] + nums[j]` that you can obtain over all possible indices `i` and `j` that satisfy the conditions.
+
+## Store Maximum Value
+
+```go
+func maximumSum(nums []int) int {
+    ans := -1
+    store := make([]int, 82)
+    for _, num := range nums {
+        digitSum := 0
+        for curVal := num; curVal > 0; curVal /= 10 {
+            curDigit := curVal % 10;
+            digitSum += curDigit;
+        }
+
+        if store[digitSum] > 0 {
+            ans = max(ans, store[digitSum] + num)
+        }
+
+        store[digitSum] = max( store[digitSum], num)
+    }
+    return ans
+}
+```
+<Complex t='nlogm' s='1'/>
+
+### Intuition
+
+This approach focuses on efficiently pairing numbers with the same digit sum to maximize their combined value. Instead of keeping all numbers with a given digit sum, we store only the highest number encountered so far for each possible digit sum (0 to 81). For every number, we calculate its digit sum and check if we've already seen a number with the same digit sum. If we have, the sum of the current number and the stored number is a candidate for the maximum sum. We then update the stored value to ensure it always holds the largest number for that digit sum.
+
+### Algorithm
+
+1. **Initialization:**  
+   - Set `ans` to -1. This variable will store the maximum sum found.
+   - Create an array `store` of size 82 (indexes 0 to 81) to keep track of the highest number for each digit sum.
+
+2. **Processing Each Number:**  
+   - For each number `num` in the list:
+     - Initialize `digitSum` to 0.
+     - Use a loop to extract each digit from `num`:
+       - Assign `curVal` the value of `num` and, while `curVal` is greater than 0, compute `curDigit` as `curVal % 10` and add it to `digitSum`.
+       - Divide `curVal` by 10 to process the next digit.
+     - If there is already a number stored at `store[digitSum]` (i.e., it's greater than 0), calculate the potential pair sum: `store[digitSum] + num` and update `ans` if this sum is greater.
+     - Update `store[digitSum]` with the larger of the current `store[digitSum]` or `num`.
+
+3. **Return the Result:**  
+   - After processing all numbers, return `ans`. If no valid pair was found, `ans` remains -1.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  For each number, computing the digit sum involves iterating over its digits, which takes `O(log m)` time (with m representing the value of the number). Since this is done for n numbers, the overall time complexity is `O(n log m)`.
+
+- **Space Complexity:**  
+  The `store` array has a fixed size of 82, meaning the space complexity is `O(1)` regardless of the input size.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

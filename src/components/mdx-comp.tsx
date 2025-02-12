@@ -181,12 +181,12 @@ export const CodeBlock = ({ codes }: {
 }
 
 export const Complex = ({t,s}:{t:string,s:string}) => {
-  const check = (s:string) => {
-    switch (s) {
+  const check = (c:string) => {
+    switch (c) {
       case 'logn':
         return 'Log n'
-      case 'nlogn':
-        return 'N Log N'
+      case 'nlogm':
+        return 'N Log M'
       case '1':
         return '1'
       case 'n':
@@ -205,7 +205,7 @@ export const Complex = ({t,s}:{t:string,s:string}) => {
                   <div className=" border-b border-l border-muted-foreground/50 mx-[1em] sm:mx-[2em] mb-[1.5rem] rounded-bl-md overflow-hidden ">
                       <svg width="130" height="130" className=' w-full h-full' viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
                           <path id="Path" fill="none" stroke="#b6b5b5"  className={`${t==='logn'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 49 1000 C 126.597893 815.457703 1000 783 1000 783 L 1000 784.02356" />
-                          <path id="path1" fill="none" stroke="#b6b5b5" className={`${t==='nlogn'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 C 1 995 64.10157 952.14325 86 921 C 125.304733 865.102051 149.733139 769.359253 176 687 C 247.854172 461.702454 353 0 353 0" />
+                          <path id="path1" fill="none" stroke="#b6b5b5" className={`${t==='nlogm'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 C 1 995 64.10157 952.14325 86 921 C 125.304733 865.102051 149.733139 769.359253 176 687 C 247.854172 461.702454 353 0 353 0" />
                           <path id="Line" fill="none" stroke="#b6b5b5"  className={`${t==='1'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 0 945 L 999 945" />
                           <path id="path2" fill="none" stroke="#b6b5b5" className={`${t==='n'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 L 1000 0" />
                           {/* <path id="path4" fill="none" stroke="#b6b5b5" className={`${t===''?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 945 L 99 945 L 100 891 L 149 891 L 148 696 L 202 694 L 198 0" /> */}
@@ -217,12 +217,12 @@ export const Complex = ({t,s}:{t:string,s:string}) => {
                   <div className="  text-sm sm:text-base italic font-serif">Space Complexity <span className=" font-bold">O({check(s)})</span></div>
                   <div className=" border-b border-l border-muted-foreground/50 mx-[1em] sm:mx-[2em] mb-[1.5rem] rounded-bl-md overflow-hidden ">
                       <svg width="130" height="130" className=' w-full h-full' viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-                      <path id="Path" fill="none" stroke="#b6b5b5"  className={`${t==='logn'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 49 1000 C 126.597893 815.457703 1000 783 1000 783 L 1000 784.02356" />
-                          <path id="path1" fill="none" stroke="#b6b5b5" className={`${t==='nlogn'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 C 1 995 64.10157 952.14325 86 921 C 125.304733 865.102051 149.733139 769.359253 176 687 C 247.854172 461.702454 353 0 353 0" />
-                          <path id="Line" fill="none" stroke="#b6b5b5"  className={`${t==='1'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 0 945 L 999 945" />
-                          <path id="path2" fill="none" stroke="#b6b5b5" className={`${t==='n'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 L 1000 0" />
-                          {/* <path id="path4" fill="none" stroke="#b6b5b5" className={`${t===''?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 945 L 99 945 L 100 891 L 149 891 L 148 696 L 202 694 L 198 0" /> */}
-                          <path id="path3" fill="none" stroke="#b6b5b5" className={`${t==='n^2'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 1000 C 120.525879 994.864197 224 0 224 0 L 224 0" />
+                      <path id="Path" fill="none" stroke="#b6b5b5"      className={`${s==='logn'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 49 1000 C 126.597893 815.457703 1000 783 1000 783 L 1000 784.02356" />
+                          <path id="path1" fill="none" stroke="#b6b5b5" className={`${s==='nlogm'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 C 1 995 64.10157 952.14325 86 921 C 125.304733 865.102051 149.733139 769.359253 176 687 C 247.854172 461.702454 353 0 353 0" />
+                          <path id="Line" fill="none" stroke="#b6b5b5"  className={`${s==='1'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 0 945 L 999 945" />
+                          <path id="path2" fill="none" stroke="#b6b5b5" className={`${s==='n'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 995 L 1000 0" />
+                      {/* <path id="path4" fill="none" stroke="#b6b5b5" className={`${s===''?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 945 L 99 945 L 100 891 L 149 891 L 148 696 L 202 694 L 198 0" /> */}
+                          <path id="path3" fill="none" stroke="#b6b5b5" className={`${s==='n^2'?"stroke-orange-500":"stroke-muted-foreground/50"}`} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" d="M 1 1000 C 120.525879 994.864197 224 0 224 0 L 224 0" />
                       </svg>
                   </div>
               </div>

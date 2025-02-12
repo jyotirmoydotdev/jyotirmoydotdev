@@ -627,6 +627,32 @@ export const leetcodes: leetcodeType[] = [
             'Complexity Analysis'
         ]
     },
+    {
+        id: 2342,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Max Sum of a Pair With Equal Sum of Digits",
+        titleSlug: "max-sum-of-a-pair-with-equal-sum-of-digits",
+        topicTags: [
+            "Array",
+            "Hash Table",
+            "Sorting",
+            "Heap (Priority Queue)",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Store Maximum Value',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
 ]
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
