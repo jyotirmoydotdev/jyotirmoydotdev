@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   title:'Videos - Jyotirmoy Barman',
   alternates:{
     canonical: `https://jyotirmoy.dev/video`
+  },
+  twitter:{
+    site: "@jyotirmoydotdev",
+    creator: "@jyotirmoydotdev",
+    title: "Videos - Jyotirmoy Barman",
+    card: "summary_large_image",
   }
 }
 

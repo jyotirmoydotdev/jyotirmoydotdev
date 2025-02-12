@@ -10,7 +10,10 @@ export const metadata: Metadata = {
     url: "https://jyotirmoy.dev/blog",
   },
   twitter: {
+    card: "summary_large_image",
     title: "Blog - Jyotirmoy Barman",
+    site: "@jyotirmoydotdev",
+    creator: "@jyotirmoydotdev",
     description: "Check out the latest blog posts by Jyotirmoy Barman on web development and innovative digital experiences.",
   },
   alternates:{

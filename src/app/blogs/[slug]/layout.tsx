@@ -11,6 +11,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             url: `https://jyotirmoy.dev/blog/${slug}`,
         },
         twitter: {
+            card: "summary_large_image",
+            site: "@jyotirmoydotdev",
+            creator: "@jyotirmoydotdev",
             title: Capitalize(slug),
         },
         alternates:{

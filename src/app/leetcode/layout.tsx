@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     url: "https://jyotirmoy.dev/leetcode",
   },
   twitter: {
+    card: "summary_large_image",
+    site: "@jyotirmoydotdev",
+    creator: "@jyotirmoydotdev",
     title: "LeetCode Solutions - Jyotirmoy Barman",
     description:"Join Jyotirmoy Barman in conquering LeetCode Solutions. Enhance your coding skills with expert insights, problem-solving strategies, and step-by-step walkthroughs.",
   },
