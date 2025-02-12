@@ -628,6 +628,31 @@ export const leetcodes: leetcodeType[] = [
         ]
     },
     {
+        id: 1910,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Remove All Occurrences of a Substring",
+        titleSlug: "remove-all-occurrences-of-a-substring",
+        topicTags: [
+            "String",
+            "Stack",
+            "Simulation",
+],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Stack',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
+    {
         id: 2342,
         difficulty: "Medium",
         isFavor: false,

@@ -1,0 +1,91 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+Given two strings `s` and `part`, perform the following operation on `s` until **all** occurrences of the substring `part` are removed:
+
+- Find the **leftmost** occurrence of the substring `part` and **remove** it from `s`.
+
+Return `s` after removing all occurrences of `part`.
+
+A **substring** is a contiguous sequence of characters in a string.
+
+**Constraints:**
+
+- `1 <= s.length <= 1000`
+- `1 <= part.length <= 1000`
+- `s` and `part` consists of lowercase English letters.
+
+## Stack
+
+```go
+func removeOccurrences(s string, part string) string {
+	stk := []byte{}
+	strLenght := len(s)
+	partLength := len(part)
+
+	for index := 0; index < strLenght; index++ {
+		stk = append(stk, s[index])
+		if (len(stk) >= partLength && checkMatch(stk, part, partLength)){
+			for j := 0; j < partLength; j++ {
+				stk = stk[:len(stk)-1]
+			}
+		}
+	}
+
+	result := ""
+	for (len(stk)>0){
+		result = string(stk[len(stk)-1]) + result
+		stk = stk[:len(stk)-1]
+	}
+    return result
+}
+
+func checkMatch( stk []byte, part string, partLength int ) bool{
+	temp := stk 
+	for partIndex := partLength - 1; partIndex >= 0; partIndex-- {
+		if temp[len(temp)-1] != part[partIndex] {
+			return false
+		}
+		temp = temp[:len(temp)-1]
+	}
+	return true;
+}
+```
+
+{/* <Complex t='n.m' s='n+m'/> */}
+
+### Intuition
+
+The goal is to remove all occurrences of the substring `part` from the string `s`. Instead of scanning and reconstructing the string multiple times, we simulate the process with a stack. As we iterate through `s`, we push each character onto the stack. After each push, we check if the top of the stack ends with `part`. If it does, we remove (pop) those characters immediately. This way, the removal is done incrementally and efficiently.
+
+### Algorithm
+
+1. **Initialization:**  
+   - Create an empty stack (implemented as a slice of bytes) called `stk`.
+   - Determine the lengths of `s` and `part` (stored in `strLenght` and `partLength` respectively).
+
+2. **Processing Characters:**  
+   - Loop through each character in `s`.
+   - Append the current character to `stk`.
+   - If the size of `stk` is at least as long as `partLength`, call the helper function `checkMatch` to see if the last characters of the stack match `part`.
+   - If a match is found, remove the last `partLength` characters from `stk`.
+
+3. **Constructing the Result:**  
+   - After processing all characters, rebuild the final string by popping all characters from `stk` and concatenating them in reverse order (since the stack's order is from bottom to top).
+
+4. **Helper Function - checkMatch:**  
+   - This function checks if the top of the stack matches `part` by comparing the last `partLength` characters in the stack (in reverse order) with `part`.
+   - It returns `true` if they match; otherwise, `false`.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  In the worst-case scenario, for each of the n characters in `s`, we may perform a check that takes up to m comparisons (where m is the length of `part`). Therefore, the worst-case time complexity is `O(n ⋅ m)`.
+
+- **Space Complexity:**  
+  The stack `stk` can hold up to n characters in the worst case. Additionally, the helper function uses a temporary variable for comparisons. This gives an overall space complexity of `O(n + m)`.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
