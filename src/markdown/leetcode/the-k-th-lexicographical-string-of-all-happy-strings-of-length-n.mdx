@@ -1,0 +1,123 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+A **happy string** is a string that:
+
+- consists only of letters of the set `['a', 'b', 'c']`.
+- `s[i] != s[i + 1]` for all values of `i` from `1` to `s.length - 1` (string is 1-indexed).
+
+For example, strings **"abc"**, **"ac"**, **"b"** and **"abcbabcbcb"** are all happy strings and strings **"aa"**, **"baa"** and **"ababbc"** are not happy strings.
+
+Given two integers `n` and `k`, consider a list of all happy strings of length `n` sorted in lexicographical order.
+
+Return the *kth* string of this list or return an empty string if there are less than `k` happy strings of length `n`.
+
+**Constraints:**
+
+- `1 <= n <= 10`
+- `1 <= k <= 100`
+
+## Combinatorics
+
+```go
+func getHappyString(n int, k int) string {
+	total := 3 * (1 << (n - 1))
+
+	if k > total {
+		return ""
+	}
+
+	result := slices.Repeat([]byte{'a'}, n)
+
+	next_smallest := map[byte]byte{'a': 'b', 'b': 'a', 'c': 'a'}
+	next_greatest := map[byte]byte{'a': 'c', 'b': 'c', 'c': 'b'}
+
+	start_a := 1
+	start_b := start_a + (1 << (n - 1))
+	start_c := start_b + (1 << (n - 1))
+
+	if k < start_b {
+		result[0] = 'a'
+		k -= start_a
+	} else if k < start_c {
+		result[0] = 'b'
+		k -= start_b
+	} else {
+		result[0] = 'c'
+		k -= start_c
+	}
+
+	for char_index := 1; char_index < n; char_index++ {
+		midpoint := 1 << (n - char_index - 1)
+
+		if k < midpoint {
+			result[char_index] = next_smallest[result[char_index-1]]
+		} else {
+			result[char_index] = next_greatest[result[char_index-1]]
+			k -= midpoint
+		}
+	}
+	return string(result)
+}
+```
+
+<Complex t='n' s='1'/>
+
+A “happy string” of length *n* is built using only the letters `a`, `b`, and `c` with the rule that no two consecutive characters are the same. Because the first character can be chosen in 3 ways and each subsequent character has only 2 valid choices (it must differ from its predecessor), the total number of happy strings is:  
+**Total = 3 x 2^(n-1)**
+
+We can partition all happy strings into three groups—those starting with `a`, `b`, or `c`—each containing 2^(n-1) strings. This combinatorial structure lets us “jump directly” to the kth string without generating them all.
+
+### Intuition
+
+1. **Total Count & Grouping:**  
+ Since there are 3·2^(n-1) total happy strings, if the desired index *k* is larger than that, no solution exists.  
+ Next, we divide the set into three equal groups based on the first character:
+   - Group 1: Strings starting with `a` (indices 1 to 2^(n–1))
+   - Group 2: Strings starting with `b` (indices 2^(n–1)+1 to 2×2^(n–1))
+   - Group 3: Strings starting with `c` (indices 2×2^(n–1)+1 to 3×2^(n–1))
+
+2. **Character-by-Character Decision:**  
+ After fixing the first character, each remaining character’s choice depends solely on the previous character. For every position, the remaining possibilities split into two groups (one “smaller” and one “greater” in lexicographic order), each containing 2^(remaining_length–1) strings. By comparing *k* to the midpoint of the current range, we can decide which valid letter to pick and update *k* to the offset within that subgroup.
+
+### Algorithm
+
+1. **Check Validity:**  
+ Compute the total number of happy strings as `total = 3 * (1 << (n - 1))`.  
+ If *k* is greater than this total, return an empty string.
+
+2. **Determine First Character:**  
+ Set three thresholds:
+   - `start_a = 1`
+   - `start_b = start_a + 2^(n–1)`
+   - `start_c = start_b + 2^(n–1)`  
+ Compare *k* with these values:
+   - If *k* is less than `start_b`, the first character is `a`.
+   - If *k* is less than `start_c`, it is `b`.
+   - Otherwise, it is `c`.  
+ Subtract the appropriate starting index from *k* to get its relative position within the chosen group.
+
+3. **Fill in Remaining Characters:**  
+ For each subsequent position (from index 1 to n–1):
+   - Calculate `midpoint = 1 << (n - current_index - 1)`, which is the number of strings for one of the two valid choices.
+   - If *k* is less than the midpoint, choose the lexicographically smaller valid letter (using a mapping based on the previous character).
+   - Otherwise, choose the larger valid letter and subtract `midpoint` from *k*.
+   
+4. **Return the Result:**  
+ After processing all positions, convert the array of characters into a string and return it.
+
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+ The algorithm makes one decision per character position (n positions in total), and each decision is done in constant time.  
+ Thus, the overall time complexity is `O(n)`.
+
+- **Space Complexity:**  
+ Aside from the output string of length *n* and two fixed maps (for valid next-character choices), only a constant number of extra variables are used.  
+ So, the auxiliary space complexity is `O(1)`.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

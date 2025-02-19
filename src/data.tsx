@@ -678,6 +678,30 @@ export const leetcodes: leetcodeType[] = [
             'Wrap up'
         ]
     },
+    {
+        id: 1415,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "The k-th Lexicographical String of All Happy Strings of Length n",
+        titleSlug: "the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
+        topicTags: [
+            "String",
+            "Backtracking",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Combinatorics',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
 ]
 
 export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
