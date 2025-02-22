@@ -11,6 +11,9 @@ import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/mtabs'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { RiJavascriptFill } from 'react-icons/ri';
+import { PiFileCssBold } from "react-icons/pi";
+import { TbFileTypeXml } from "react-icons/tb";
 
 export const CopyButton = ({ content, text='Copy' }: { content: string, text?:string }) => {
   const [copied, setCopied] = useState(false);
@@ -72,6 +75,14 @@ export const CodeIcon = ({ lang }: { lang: string }) => {
         return <TbBrandGolang className=' size-[2.5rem]' />
       case "py":
         return <><TbBrandPython className=' size-[1.5rem]' /> Python</>
+      case "python":
+        return <><TbBrandPython className=' size-[1.5rem]' /> Python</>
+      case "javascript":
+        return <><RiJavascriptFill className=' size-[1.5rem]'/>JavaScript</>
+      case "css":
+        return <><PiFileCssBold className=' size-[1.5rem]'/>CSS</>
+      case "xml":
+        return <><TbFileTypeXml className=' size-[1.5rem]'/></>
       case "cpp":
         return <TbBrandCpp className=' size-[1.5rem]' />
       case "json":

@@ -151,24 +151,6 @@ export type blogsType = {
 }
 
 export const blogs: blogsType[] = [
-    // {
-    //     title: "Introduction to Go Routine",
-    //     description: "In this blog, we will understand how to reduce the time taken to fetch data by leveraging Go routines. But before diving into concurrency, we'll first explore how to fetch data one by one.",
-    //     url: "/blogs/intro-to-go-routine",
-    //     date: "Dec 28, 2024",
-    //     content: [
-    //         "Get the Free API Key from OpenWeatherMap",
-    //         "Fetching Weather Data Without Concurrency",
-    //         [
-    //             "Explanation of Sequential Code"
-    //         ],
-    //         "Fetching Weather Data With Concurrency",
-    //         [
-    //             "Explanation of Concurrent Code",
-    //         ],
-    //         "Benefits of Using Concurrency",
-    //     ]
-    // },
     {
         title: "Run Stable Diffusion on Your MacBook M1 Using Python",
         description: "Turn your MacBook M1 into an art machine with Python, watch your words come to life in vivid images!",
@@ -283,6 +265,189 @@ export const blogs: blogsType[] = [
             "web/assignments.go",
             "web/router.go",
             "Thanks for reading"
+        ]
+    },
+    {
+        title: "How to interact with Smart Contract?",
+        description: "This article will teach you how to interact with a smart contract in the Ethereum blockchain, starting this article we first need to install some dependencies in our computer.",
+        url: "/blogs/how-to-interact-with-smart-contract",
+        titleSlug: "how-to-interact-with-smart-contract",
+        date: "Mar 22, 2023",
+        content: [
+            "Import ethers.js",
+            "Set the provider",
+            "Import the Contract ABI",
+            "Connecting with Contract",
+            "Fetching the DAI balance of an account",
+            "Fetch the Token Details"
+        ]
+    },
+    {
+        title: "Fetch Balance from Ethereum Blockchain",
+        description: "To Fetch the balance of an account in the Ethereum blockchain first we need to install some dependencies on our computer.",
+        url: "/blogs/fetch-balance-from-ethereum-blockchain",
+        titleSlug: "fetch-balance-from-ethereum-blockchain",
+        date: "Mar 17, 2023",
+        content: [
+            "Import Ethers.js",
+            "Connect with a Node Provider",
+            "Get an account address to fetch the balance",
+            "Fetch balance",
+            "Print the Balance in the console",
+            "Full Code"
+        ]
+    },
+    {
+        title: "Blockchain Storage",
+        description: "Learn about IPFS(InterPlanetary File System) and how we store data on blockchain. The blockchain contains some data, such as transactions or other information,",
+        url: "/blogs/blockchain-storage",
+        titleSlug: "blockchain-storage",
+        date: "Feb 27, 2023",
+        content: [
+            "Introduction to blockchain storage",
+            "Traditional storage vs blockchain storage",
+            "Decentralized storage and its benefits",
+            "Distributed ledger technology",
+            "IPFS (InterPlanetary File System)",
+            [
+                "IPFS (InterPlanetary File System)",
+                "Storage of data",
+                "Versioning"
+            ],
+            "Versioning"
+        ]
+    },
+    {
+        title: "Cryptography",
+        description: "Cryptography is a huge topic and constantly evolving as the internet get advances. Here I will explain the topics that will help you understand blockchain better.",
+        url: "/blogs/cryptography",
+        titleSlug: "cryptography",
+        date: "Feb 23, 2023",
+        content: [
+            "Hash Function",
+            "SHA256 Hash Function",
+            "Nonce",
+            "What is Encryption",
+            "Symmetric Key Encryption",
+            "Public Key Cryptography",
+            "Secure Communication",
+            "Digital Signatures",
+            [
+                "Adding a Digital Signature",
+                "Verifying a Digital Signature",   
+            ],
+            "Certificate Authority",
+            [
+                "How does a Certificate Authority work?"
+            ],
+            "What's on the next article?"
+        ]
+    },
+    {
+        title: "Decentralization with Blockchain",
+        description: "How does the internet works? How the internet is centralized? What is Decentralization? Why it matters? Applications and uses of blockchain?",
+        url: "/blogs/decentralization-with-blockchain",
+        titleSlug: "decentralization-with-blockchain",
+        date: "Feb 17, 2023",
+        content: [
+            "How does the internet works?",
+            "How the internet is centralized?",
+            "What is Decentralization?",
+            "Why it matters?",
+            "Applications and uses",
+            "What's on the next article?"
+        ]
+    },
+    {
+        title: "Blockchain Structure",
+        description: "Understand how a blockchain work and what makes a blockchain. Today we are going to see how a blockchain work.",
+        url: "/blogs/blockchain-structure",
+        titleSlug: "blockchain-structure",
+        date: "Feb 12, 2023",
+        content: [
+            "SHA256 Hash",
+            "Block",
+            "Blockchain",
+            "Distributed Blockchain",
+            "Tokens or Transaction",
+            "Coinbase Transactions",
+            "What's on the next article?"
+        ]
+    },
+    {
+        title: "What is Blockchain?",
+        description: "Blockchain is a distributed ledger (ok but what this really mean ?). Let me explain it !",
+        url: "/blogs/what-is-blockchain",
+        titleSlug: "what-is-blockchain",
+        date: "Feb 8, 2023",
+        content: [
+            "Terminology",
+            [
+                "Immutability",
+                "Distribution",
+                "Ledger",
+                "Node ( Host or Peer)",
+            ],
+            "What's on the next article?"
+        ]
+    },
+    {
+        title: "Set up Tailwind in your Project",
+        description: "Tailwind CSS is a utility class framework that helps you make a responsive web design. In this article, I will teach you, how to set up a tailwind in the project.",
+        url: "/blogs/set-up-tailwind-in-your-project",
+        titleSlug: "set-up-tailwind-in-your-project",
+        date: "Jan 19, 2023",
+        content: [
+            "Play CDN ( Method 1)",
+            "Tailwind CLI ( Method 2 )",
+        ],
+    },
+    {
+        title: "Git for Termux",
+        description: "As the internet says git is a version control to track the code changes and there is not any second thought. I am not going to explain it in detail, If you want to read more",
+        url: "/blogs/git-for-termux",
+        titleSlug: "git-for-termux",
+        date: "Jan 26, 2022",
+        content: [
+            "Git",
+            "Installation",
+            [
+                "step 1",
+                "step 2",
+                "What is Github?"
+            ],
+            "Learn",
+            [
+                "Make Repository",
+                "Push and Pull"
+            ],
+            "Command table",
+            "Thanks"
+        ],
+    },
+    {
+        title: "Tmux for Termux",
+        description: "Have you ever wonder how to open multiple sessions in a singel screen in termux. Here is a solution, an open source terminal multiplexer for Linux or Unix operating systems.",
+        url: "/blogs/tmux-for-termux",
+        titleSlug: "tmux-for-termux",
+        date: "Dec 19, 2021",
+        content: [
+            "Installation",
+            "Basic command",
+        ],
+    },
+    {
+        title: "What is Cmatrix",
+        description: "Want to see some animation in termux you can install cmatrix. Cmatrix shows cool matrix scrolling lines animation in terminal , you probably have seen in the Sci-fi movies.",
+        url: "/blogs/what-is-cmatrix",
+        titleSlug: "what-is-cmatrix",
+        date: "Oct 16, 2021",
+        content: [
+            "Install",
+            "Start and stop",
+            "Colours",
+            "More option",
+            "Manual",
         ]
     },
 ]
@@ -638,7 +803,7 @@ export const leetcodes: leetcodeType[] = [
             "String",
             "Stack",
             "Simulation",
-],
+        ],
         hasSolution: true,
         hasVideoSolution: false,
         content: [
@@ -704,40 +869,40 @@ export const leetcodes: leetcodeType[] = [
     },
 ]
 
-export const video : { id:string, imgUrl:string, title:string, description:string, date:string }[] = [
-  {
-    "id": "tOASWm8I7sk",
-    "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
-    "title": "2116. Check if a Parentheses String Can Be Valid - Go",
-    "description": "",
-    "date": "2025-01-12T17:01:47Z"
-  },
-  {
-    "id": "D_cfXKdYu4M",
-    "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
-    "title": "1400. Construct K Palindrome Strings - Go",
-    "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
-    "date": "2025-01-11T17:52:26Z"
-  },
-  {
-    "id": "5XfjayX8HAE",
-    "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
-    "title": "916. Word Subsets - Go",
-    "description": "",
-    "date": "2025-01-10T15:57:53Z"
-  },
-  {
-    "id": "X2vwqQNiJks",
-    "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
-    "title": "2185. Counting Words With a Given Prefix - Go",
-    "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
-    "date": "2025-01-09T18:52:49Z"
-  },
-  {
-    "id": "oe4PYLTGVTY",
-    "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
-    "title": "3042  Count Prefix and Suffix Pairs I - Go",
-    "description": "",
-    "date": "2025-01-08T15:02:38Z"
-  }
+export const video: { id: string, imgUrl: string, title: string, description: string, date: string }[] = [
+    {
+        "id": "tOASWm8I7sk",
+        "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
+        "title": "2116. Check if a Parentheses String Can Be Valid - Go",
+        "description": "",
+        "date": "2025-01-12T17:01:47Z"
+    },
+    {
+        "id": "D_cfXKdYu4M",
+        "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
+        "title": "1400. Construct K Palindrome Strings - Go",
+        "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
+        "date": "2025-01-11T17:52:26Z"
+    },
+    {
+        "id": "5XfjayX8HAE",
+        "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
+        "title": "916. Word Subsets - Go",
+        "description": "",
+        "date": "2025-01-10T15:57:53Z"
+    },
+    {
+        "id": "X2vwqQNiJks",
+        "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
+        "title": "2185. Counting Words With a Given Prefix - Go",
+        "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
+        "date": "2025-01-09T18:52:49Z"
+    },
+    {
+        "id": "oe4PYLTGVTY",
+        "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
+        "title": "3042  Count Prefix and Suffix Pairs I - Go",
+        "description": "",
+        "date": "2025-01-08T15:02:38Z"
+    }
 ];

@@ -1,6 +1,6 @@
 'use client'
 
-import { blogs, leetcodes } from '@/data';
+import { leetcodes } from '@/data';
 import { AlignLeft } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, useSidebar } from '../ui/sidebar';
@@ -65,7 +65,7 @@ const Content = ({ leetcodeDataIndex, leetcodeContent }: { leetcodeDataIndex: nu
                         <Separator  />
                         {
                             Array(2).fill(null).map((_, i) => {
-                                const post = leetcodes.at((leetcodeDataIndex + i + 1) % blogs.length)!
+                                const post = leetcodes.at((leetcodeDataIndex + i + 1) % leetcodes.length)!
                                 return (
                                     <Link key={i} href={post?.titleSlug} className='w-[260px] text-wrap flex flex-col gap-2 py-2 group/more hover:bg-gray-100/10 px-2 transition-all rounded-md mt-2'>
                                         <div className=" font-black group-hover/more:text-orange-400 line-clamp-2 text-sm">
