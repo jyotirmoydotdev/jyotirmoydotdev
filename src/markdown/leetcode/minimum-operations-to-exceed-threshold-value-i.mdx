@@ -1,0 +1,54 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+
+You are given a **0-indexed** integer array `nums`, and an integer `k`.
+
+In one operation, you can remove one occurrence of the smallest element of `nums`.
+
+Return *the **minimum** number of operations needed so that all elements of the array are greater than or equal to* `k`.
+
+**Constraints:**
+
+- `1 <= nums.length <= 50`
+- `1 <= nums[i] <= 109`
+- `1 <= k <= 109`
+- The input is generated such that there is at least one index `i` such that `nums[i] >= k`.
+
+
+## Approach
+
+```go
+func minOperations(nums []int, k int) int {
+    count := 0
+    for i := range nums {
+        if nums[i] < k {
+            count++
+        }
+    }
+    return count
+}
+```
+
+<Complex t='n' s='1'/>
+
+### Intuition
+
+The problem requires us to remove elements from the array until all remaining elements are greater than or equal to `k`. Since we are only allowed to remove the smallest element in each operation, the minimum number of operations corresponds to the count of elements that are strictly less than `k`.  
+
+### Algorithm
+
+1. Initialize a counter `count` to track the number of elements that need to be removed.  
+2. Iterate through `nums`:  
+   - If an element is smaller than `k`, increment `count`.  
+3. Return `count` as the result.  
+
+### Complexity Analysis
+
+- **Time Complexity**: `O(n)` since we iterate through the array once.  
+- **Space Complexity**: `O(1)` because we use only a single variable to track the count.  
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

@@ -867,6 +867,29 @@ export const leetcodes: leetcodeType[] = [
             'Wrap up'
         ]
     },
+    {
+        id: 3065,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Minimum Operations to Exceed Threshold Value I",
+        titleSlug: "minimum-operations-to-exceed-threshold-value-i",
+        topicTags: [
+            "Array",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Approach',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
 ]
 
 export const video: { id: string, imgUrl: string, title: string, description: string, date: string }[] = [
