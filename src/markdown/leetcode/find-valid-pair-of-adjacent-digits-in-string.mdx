@@ -1,0 +1,74 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given a string `s` consisting only of digits. A **valid pair** is defined as two **adjacent** digits in `s` such that:
+
+- The first digit is **not equal** to the second.
+- Each digit in the pair appears in `s` **exactly** as many times as its numeric value.
+
+Return the first **valid pair** found in the string `s` when traversing from left to right. If no valid pair exists, return an empty string.
+
+**Constraints:**
+
+- `2 <= s.length <= 100`
+- `s` only consists of digits from `'1'` to `'9'`.
+
+## Approach
+
+```go
+func findValidPair(s string) string {
+    var cnt [10]int
+    for i := 0; i < len(s); i++ {
+        cnt[s[i]-'0']++
+    }
+    for i := 0; i < len(s)-1; i++ {
+        x := int(s[i] - '0')
+        y := int(s[i+1] - '0')
+        if x != y && cnt[x] == x && cnt[y] == y {
+            return s[i : i+2]
+        }
+    }
+    return ""
+}
+```
+<Complex t='n' s='1'/>
+
+### Intuition
+
+The idea is to first count how many times each digit appears in the string. Once you have the frequency for each digit, you can traverse the string and examine every pair of adjacent digits. For a pair `(a, b)`, if:
+- `a` and `b` are different, and
+- the frequency of digit `a` equals the numeric value of `a`, and
+- the frequency of digit `b` equals the numeric value of `b`,
+  
+then the pair is valid and should be returned immediately. This direct approach works well because the length of the string is relatively small (up to 100), and the digits range from 1 to 9, so frequency counting is efficient.
+
+### Algorithm
+
+1. **Frequency Counting:**  
+   Create an array of size 10 (indexed from 0 to 9) to store the frequency of each digit in the string. Iterate through each character in the string, convert it to its numeric value (by subtracting `'0'`), and increment the corresponding counter.
+
+2. **Traverse Adjacent Pairs:**  
+   Loop through the string from the first character to the second-to-last character. For each index `i`, consider the adjacent digits `s[i]` and `s[i+1]`. Convert these characters to their numeric values.  
+   - Check if the two digits are different.
+   - Check if the frequency of the first digit is equal to its numeric value.
+   - Check if the frequency of the second digit is equal to its numeric value.
+   
+   If all conditions hold, return the substring consisting of these two characters.
+
+3. **Return Empty String:**  
+   If no valid pair is found after checking all adjacent pairs, return an empty string.
+
+### Complexity Analysis
+- **Time Complexity:**  
+  The solution runs in two passes over the string:
+  - One pass to count the frequencies: O(n).
+  - One pass to check adjacent pairs: O(n).  
+  Thus, the overall time complexity is `O(n)`, where n is the length of the string.
+
+- **Space Complexity:**  
+  The space used for counting frequencies is `O(1)` because the frequency array has a fixed size of 10 (constant space regardless of the input size).
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

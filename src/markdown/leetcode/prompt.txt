@@ -1,45 +1,10 @@
-Please provide the solution for [Problem Name/Description] in the following format:
+explain the solution for the leetcode question ___ , i will provide you the code (improve the code if you feel to) and follow the bellow format, return in markdown format
 
-## Solution
+```go 
 
-- Time Complexity:  ***<Time Complexity>***  
-- Space Complexity: ***<Space Complexity>***  
-
-```go
-// Your solution code here in Go
 ```
 
----
-
-## Explanation
-
-[Write a clear explanation of the solution and problem statement here.]
-
----
-
-### Approach
-
-- Step 1: [Describe the first step]
-- Step 2: [Describe the next step]
-- (Add more steps as needed)
-
----
-
-### Example Walkthrough
-
-**Example 1:**  
-Input: [Example input]  
-- [Explain the steps and outcomes]
-
-**Example 2:**  
-Input: [Example input]  
-- [Explain the steps and outcomes]
-
----
-
+## Approach
+### Intuition
+### Algorithm
 ### Complexity Analysis
-
-- **Time Complexity:**  
-  [Explain the time complexity]
-- **Space Complexity:**  
-  [Explain the space complexity]

@@ -110,7 +110,7 @@ export const ContentComp = ({ contents }: { contents: (string | string[])[] }) =
   };
 
   return (
-    <div className="flex flex-col gap-2 text-sm text-gray-500">
+    <div className="flex flex-col gap-2 text-sm text-gray-500 pb-5">
       {contents.map((content, i) => {
         if (typeof content === "string") {
           return (

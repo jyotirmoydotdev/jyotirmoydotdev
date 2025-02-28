@@ -581,25 +581,27 @@ export const leetcodes: leetcodeType[] = [
         ]
     },
     {
-        id: 3151,
-        difficulty: "Easy",
+        id: 1415,
+        difficulty: "Medium",
         isFavor: false,
         status: 'Done',
-        title: "Special Array I",
-        titleSlug: "special-array-i",
+        title: "The k-th Lexicographical String of All Happy Strings of Length n",
+        titleSlug: "the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
         topicTags: [
-            "Array"
+            "String",
+            "Backtracking",
         ],
         hasSolution: true,
         hasVideoSolution: false,
         content: [
-            'Solution',
-            'Explanation',
+            'Question',
+            'Combinatorics',
             [
-                'Approach',
-                'Example Walkthrough',
-                'Complexity Analysis'
-            ]
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
         ]
     },
     {
@@ -609,50 +611,6 @@ export const leetcodes: leetcodeType[] = [
         status: 'Done',
         title: "Check if Array Is Sorted and Rotated",
         titleSlug: "check-if-array-is-sorted-and-rotated",
-        topicTags: [
-            "Array"
-        ],
-        hasSolution: true,
-        hasVideoSolution: false,
-        content: [
-            'Solution',
-            'Explanation',
-            [
-                'Approach',
-                'Example Walkthrough',
-                'Complexity Analysis'
-            ]
-        ]
-    },
-    {
-        id: 3105,
-        difficulty: "Easy",
-        isFavor: false,
-        status: 'Done',
-        title: "Longest Strictly Increasing or Strictly Decreasing Subarray",
-        titleSlug: "longest-strictly-increasing-or-strictly-decreasing-subarray",
-        topicTags: [
-            "Array"
-        ],
-        hasSolution: true,
-        hasVideoSolution: false,
-        content: [
-            'Solution',
-            'Explanation',
-            [
-                'Approach',
-                'Example Walkthrough',
-                'Complexity Analysis'
-            ]
-        ]
-    },
-    {
-        id: 1800,
-        difficulty: "Easy",
-        isFavor: false,
-        status: 'Done',
-        title: "Maximum Ascending Subarray Sum",
-        titleSlug: "maximum-ascending-subarray-sum",
         topicTags: [
             "Array"
         ],
@@ -692,6 +650,97 @@ export const leetcodes: leetcodeType[] = [
                 'Verify Character Frequencies'
             ],
             'Complexity Analysis'
+        ]
+    },
+    {
+        id: 1800,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Maximum Ascending Subarray Sum",
+        titleSlug: "maximum-ascending-subarray-sum",
+        topicTags: [
+            "Array"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
+        ]
+    },
+    {
+        id: 1910,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Remove All Occurrences of a Substring",
+        titleSlug: "remove-all-occurrences-of-a-substring",
+        topicTags: [
+            "String",
+            "Stack",
+            "Simulation",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Stack',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
+    {
+        id: 3151,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Special Array I",
+        titleSlug: "special-array-i",
+        topicTags: [
+            "Array"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
+        ]
+    },
+    {
+        id: 3105,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Longest Strictly Increasing or Strictly Decreasing Subarray",
+        titleSlug: "longest-strictly-increasing-or-strictly-decreasing-subarray",
+        topicTags: [
+            "Array"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Solution',
+            'Explanation',
+            [
+                'Approach',
+                'Example Walkthrough',
+                'Complexity Analysis'
+            ]
         ]
     },
     {
@@ -793,31 +842,6 @@ export const leetcodes: leetcodeType[] = [
         ]
     },
     {
-        id: 1910,
-        difficulty: "Medium",
-        isFavor: false,
-        status: 'Done',
-        title: "Remove All Occurrences of a Substring",
-        titleSlug: "remove-all-occurrences-of-a-substring",
-        topicTags: [
-            "String",
-            "Stack",
-            "Simulation",
-        ],
-        hasSolution: true,
-        hasVideoSolution: false,
-        content: [
-            'Question',
-            'Stack',
-            [
-                'Intuition',
-                'Algorithm',
-                'Complexity Analysis',
-            ],
-            'Wrap up'
-        ]
-    },
-    {
         id: 2342,
         difficulty: "Medium",
         isFavor: false,
@@ -844,21 +868,20 @@ export const leetcodes: leetcodeType[] = [
         ]
     },
     {
-        id: 1415,
-        difficulty: "Medium",
+        id: 3065,
+        difficulty: "Easy",
         isFavor: false,
         status: 'Done',
-        title: "The k-th Lexicographical String of All Happy Strings of Length n",
-        titleSlug: "the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
+        title: "Minimum Operations to Exceed Threshold Value I",
+        titleSlug: "minimum-operations-to-exceed-threshold-value-i",
         topicTags: [
-            "String",
-            "Backtracking",
+            "Array",
         ],
         hasSolution: true,
         hasVideoSolution: false,
         content: [
             'Question',
-            'Combinatorics',
+            'Approach',
             [
                 'Intuition',
                 'Algorithm',
@@ -868,14 +891,16 @@ export const leetcodes: leetcodeType[] = [
         ]
     },
     {
-        id: 3065,
+        id: 3438,
         difficulty: "Easy",
         isFavor: false,
         status: 'Done',
-        title: "Minimum Operations to Exceed Threshold Value I",
-        titleSlug: "minimum-operations-to-exceed-threshold-value-i",
+        title: "Find Valid Pair of Adjacent Digits in String",
+        titleSlug: "find-valid-pair-of-adjacent-digits-in-string",
         topicTags: [
-            "Array",
+            "Hash Table",
+            "String",
+            "Counting",
         ],
         hasSolution: true,
         hasVideoSolution: false,

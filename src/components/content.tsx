@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarMenuItem, useSidebar } from './ui/sidebar';
 import { ContentComp } from './mdx-comp';
 import Link from 'next/link';
+import { SubscribeSm } from './subscribe-sm';
 
 const Content = ({ slug }: { slug: string }) => {
     const BlogDataIndex = blogs.findIndex((blog) => blog.url.includes(slug));
@@ -60,6 +61,7 @@ const Content = ({ slug }: { slug: string }) => {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter className=' fixed -bottom-2'>
+                <SubscribeSm/>
                 <SidebarMenu className=' px-4 pt-4 pb-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input hover:text-accent-foreground  justify-start rounded-t-[0.5rem] bg-sidebar text-sm shadow-none'>
                     <div className=" font-bold text-orange-400">More Blogs</div>
                     {
