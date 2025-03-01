@@ -23,7 +23,7 @@ export default async function Page({
                     <div className=" text-2xl font-bold font-sans">
                         <span>{leetcode.id}.</span>{' '}<span>{leetcode.title}</span>
                     </div>
-                    <div className="flex gap-2 pt-4">
+                    <div className="flex gap-2 pt-4 flex-wrap">
                         <span className={`px-1.5 text-sm py-0.5 rounded-md bg-sidebar-accent ${(leetcode.difficulty === 'Easy') ? "text-green-500" :
                             (leetcode.difficulty === 'Hard') ? "text-red-500" : "text-yellow-500"
                             }`}>{leetcode.difficulty}</span>

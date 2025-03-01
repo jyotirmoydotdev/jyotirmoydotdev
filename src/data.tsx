@@ -334,7 +334,7 @@ export const blogs: blogsType[] = [
             "Digital Signatures",
             [
                 "Adding a Digital Signature",
-                "Verifying a Digital Signature",   
+                "Verifying a Digital Signature",
             ],
             "Certificate Authority",
             [
@@ -915,9 +915,48 @@ export const leetcodes: leetcodeType[] = [
             'Wrap up'
         ]
     },
+    {
+        id: 2460,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Apply Operations to an Array",
+        titleSlug: "apply-operations-to-an-array",
+        topicTags: [
+            "Array",
+            "Two Pointers",
+            "Simulation",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Brute Force Simulation',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'One Pass',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
 ]
 
-export const video: { id: string, imgUrl: string, title: string, description: string, date: string }[] = [
+export type videoType = {
+    id: string,
+    imgUrl: string,
+    title: string,
+    description: string,
+    date: string
+}
+
+export const video: videoType[] = [
     {
         "id": "tOASWm8I7sk",
         "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",

@@ -27,30 +27,18 @@ export const columns: ColumnDef<leetcodeType>[] = [
     accessorKey: "title",
     header: ({ column }) => (<ColumnHeader column={column} title="Title" />),
     cell: ({ row }) => {
-      const hasSol = row.original.hasSolution
-      if (hasSol) {
         return (
-          <div className="flex items-center">
-            <div className="max-w-[130px] sm:max-w-[302px] flex items-center overflow-hidden">
-              <div className="overflow-hidden">
-                <div className="flex items-center">
-                  <div className="truncate" data-state="closed">
-                    <div className="h-5 hover:text-blue-700 dark:hover:text-blue-400">
-                      {row.getValue('title')}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TooltipProvider delayDuration={100}>
+            <Tooltip>
+            <TooltipTrigger className="max-w-[130px] sm:max-w-[302px] truncate h-5 hover:text-blue-700 dark:hover:text-blue-400">
+              {row.getValue('title')}
+            </TooltipTrigger>
+            <TooltipContent className="bg-muted backdrop-blur-sm gap-2 px-2 py-2 text-black dark:text-white ounded-sm border hidden sm:flex">
+              {row.getValue('title')}
+            </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )
-      } else {
-        return (
-          <div className="max-w-[500px] truncate">
-            {row.getValue('title')}
-          </div>
-        )
-      }
     },
   },
   {
@@ -69,7 +57,7 @@ export const columns: ColumnDef<leetcodeType>[] = [
                     <span className="rounded-sm bg-muted px-1.5 py-0.5">+{tags.length - 1}</span>
                   )}
                 </TooltipTrigger>
-                <TooltipContent className="bg-muted backdrop-blur-sm flex gap-2 px-2 py-2">
+                <TooltipContent className="bg-muted backdrop-blur-sm flex gap-2 px-2 py-2 text-black dark:text-white">
                   {tags.map((tag,i)=>(
                       <span key={i} className="rounded-sm border px-1.5 py-0.5">{tag}</span>
                   ))}

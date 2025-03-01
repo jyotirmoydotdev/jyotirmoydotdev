@@ -1,0 +1,156 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given a **0-indexed** array `nums` of size `n` consisting of `non-negative` integers.
+
+You need to apply `n - 1` operations to this array where, in the `i`<sup>th</sup> operation (0-indexed), you will apply the following on the `i`<sup>th</sup> element of `nums`:
+
+- If `nums[i] == nums[i + 1]`, then multiply `nums[i]` by `2` and set `nums[i + 1]` to `0`. Otherwise, you skip this operation.
+
+After performing **all** the operations, **shift** all the `0`'s to the **end** of the array.
+
+- For example, the array `[1,0,2,0,0,1]` after shifting all its `0`'s to the end, is `[1,2,1,0,0,0]`.
+
+Return *the resulting array*.
+
+**Note** that the operations are applied **sequentially**, not all at once.
+
+**Constraints:**
+
+- `2 <= nums.length <= 2000`
+- `0 <= nums[i] <= 1000`
+
+## Brute Force Simulation
+
+```go
+func applyOperations(nums []int) []int {
+    n := len(nums)
+    for i := 0; i < n-1; i++ {
+        if nums[i] == nums[i+1] {
+            nums[i] *= 2
+            nums[i+1] = 0
+        }
+    }
+
+    ans := make([]int, n)
+    j := 0
+    for i := 0; i < n; i++ {
+        if nums[i] != 0 {
+            ans[j] = nums[i]
+            j++
+        }
+    }
+    
+    return ans
+}
+```
+
+<Complex t='n' s='n'/>
+
+The idea behind the solution is to simulate the operations exactly as described. First, we iterate through the array once, checking each pair of adjacent elements. If two adjacent elements are equal, we double the first one and set the second one to zero. Then, we perform a second pass to collect all non-zero values in order while leaving zeros at the end.
+
+### Intuition
+
+- **Pairwise Operation:**  
+  The problem requires checking each pair of adjacent elements. When two consecutive elements are equal, the operation is to double the value of the first and set the next one to zero. This step is a direct simulation of the problem's instructions.
+
+- **Shifting Zeros:**  
+  After applying the operations, some elements become zero. The final step is to rearrange the array so that all non-zero elements maintain their order while all zeros are shifted to the end. This can be achieved by creating a new array (or by modifying the array in-place) where we copy over all non-zero values first.
+
+- **Simple Simulation:**  
+  The approach does not involve any complicated data structures or algorithms. It directly simulates the process with two linear passes through the array, making it straightforward and efficient.
+
+### Algorithm
+
+1. **First Pass – Apply Operations:**  
+   - Iterate through the array from index 0 to `n - 2` (where `n` is the length of the array).
+   - For each index `i`, if `nums[i]` is equal to `nums[i+1]`, then:
+     - Double `nums[i]` (i.e., `nums[i] *= 2`).
+     - Set `nums[i+1]` to zero.
+     
+2. **Second Pass – Shift Non-Zero Values:**  
+   - Create a new array `ans` of the same length as `nums`, initialized with zeros.
+   - Use a pointer `j` to track the position in `ans`.
+   - Iterate through the modified `nums` and copy every non-zero element to `ans` in order.
+   - Since `ans` was pre-filled with zeros, the remaining positions (after all non-zero values have been copied) will naturally be zeros.
+
+3. **Return the Result:**  
+   - The resulting array `ans` will have all the non-zero elements in their original order at the front and zeros at the end.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  - The solution makes two passes through the array.  
+  - The first pass takes \(O(n)\) time, and the second pass also takes \(O(n)\) time.  
+  - Overall, the time complexity is `O(n)`.
+
+- **Space Complexity:**  
+  - The algorithm uses an extra array `ans` of the same size as `nums`.  
+  - Therefore, the space complexity is `O(n)`.
+
+Below is an explanation following the requested format, along with the converted Go code for the one-pass approach.
+
+---
+
+## One Pass
+
+```go
+func applyOperations(nums []int) []int {
+    n := len(nums)
+    writeIndex := 0
+
+    for i := 0; i < n; i++ {
+        if i < n-1 && nums[i] == nums[i+1] && nums[i] != 0 {
+            nums[i] *= 2
+            nums[i+1] = 0
+        }
+        if nums[i] != 0 {
+            if i != writeIndex {
+                nums[i], nums[writeIndex] = nums[writeIndex], nums[i]
+            }
+            writeIndex++
+        }
+    }
+    return nums
+}
+```
+
+<Complex t='n' s='1'/>
+
+### Intuition
+
+In this approach, we process the array in a single pass. The idea is to merge adjacent equal non-zero elements and simultaneously shift all non-zero values forward. As we iterate, if two consecutive non-zero elements are equal, we double the first one and set the second to zero. At the same time, we use a pointer (`writeIndex`) to keep track of the position where the next non-zero element should be placed. This ensures that as we move through the array, non-zero elements are dynamically moved to the front while zeros accumulate at the end.
+
+### Algorithm
+
+1. **Initialize Variables:**
+   - Get the length of the array `n`.
+   - Initialize `writeIndex` to `0` to track the next position for non-zero elements.
+
+2. **Single Pass Through the Array:**
+   - For each index from `0` to `n-1`:
+     - **Merge Adjacent Elements:**
+       - If `index < n - 1` and `nums[index]` is equal to `nums[index+1]` and non-zero, then:
+         - Double `nums[index]`.
+         - Set `nums[index+1]` to zero.
+     - **Shift Non-Zero Elements:**
+       - If `nums[index]` is non-zero:
+         - Swap it with `nums[writeIndex]` (if `index` is not equal to `writeIndex`).
+         - Increment `writeIndex`.
+
+3. **Return the Modified Array:**
+   - The array is modified in place with all non-zero values shifted to the front and zeros at the end.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  The algorithm performs a single traversal through the array, processing each element once. Therefore, the time complexity is `O(n)`.
+
+- **Space Complexity:**  
+  All operations are performed in-place with a constant amount of extra space (only a few integer variables are used). Thus, the space complexity is `O(1)`.
+
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
