@@ -946,6 +946,24 @@ export const leetcodes: leetcodeType[] = [
             'Wrap up'
         ]
     },
+    {
+        id: 1757,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Recyclable and Low Fat Products",
+        titleSlug: "recyclable-and-low-fat-products",
+        topicTags: [
+            "Database",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Selecting rows based on conditions',
+            'Wrap up'
+        ]
+    },
 ]
 
 export type videoType = {
