@@ -1,0 +1,157 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given two 2D integer arrays `nums1` and `nums2`.
+
+- `nums1[i] = [idᵢ, valᵢ]` indicate that the number with the id `idᵢ` has a value equal to `valᵢ`.
+- `nums2[i] = [idᵢ, valᵢ]` indicate that the number with the id `idᵢ` has a value equal to `valᵢ`.
+
+Each array contains **unique** ids and is sorted in **ascending** order by id.
+
+Merge the two arrays into one array that is sorted in ascending order by id, respecting the following conditions:
+
+- Only ids that appear in at least one of the two arrays should be included in the resulting array.
+- Each id should be included **only once** and its value should be the sum of the values of this id in the two arrays. If the id does not exist in one of the two arrays, then assume its value in that array to be `0`.
+
+Return *the resulting array*. The returned array must be sorted in ascending order by id.
+
+**Constraints:**
+
+- `1 <= nums1.length, nums2.length <= 200`
+- `nums1[i].length == nums2[j].length == 2`
+- `1 <= idᵢ, valᵢ <= 1000`
+- Both arrays contain unique ids.
+- Both arrays are in strictly ascending order by id.
+
+## Approach 1: Hash Map
+
+```go
+import "sort"
+
+func mergeArrays(nums1 [][]int, nums2 [][]int) [][]int {
+	hash := make(map[int]int)
+
+	for _, pair := range nums1 {
+		hash[pair[0]] += pair[1]
+	}
+
+	for _, pair := range nums2 {
+		hash[pair[0]] += pair[1]
+	}
+
+	result := make([][]int, 0, len(hash))
+	for id, val := range hash {
+		result = append(result, []int{id, val})
+	}
+
+	sort.Slice(result, func(i, j int) bool {
+		return result[i][0] < result[j][0]
+	})
+
+	return result
+}
+```
+
+### Intuition
+
+Using a hash map (`map[int]int` in Go), we can efficiently store and sum values for each unique `id`. We first insert all pairs from `nums1` into the map. Then, we iterate through `nums2`, updating the sum for existing keys or inserting new keys.
+
+Since the final result must be sorted, we extract the entries from the map into a slice and sort them.
+
+### Algorithm
+
+1. **Create a hash map** to store `{id: sum}`.
+2. **Insert all pairs from `nums1`** into the map.
+3. **Process `nums2`**:
+   - If `id` exists, add the value.
+   - Otherwise, insert the new `{id, value}` pair.
+4. **Extract and sort the result**.
+5. **Return the sorted merged array**.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  - Inserting `N1` elements into the map: **O(N1)**
+  - Inserting `N2` elements into the map: **O(N2)**
+  - Extracting and sorting the map: **O(K log K)** (where `K = N1 + N2` in the worst case)
+  - **Total: O((N1 + N2) log(N1 + N2))**
+  
+- **Space Complexity:**  
+  - The hash map stores at most `N1 + N2` entries → **O(N1 + N2)**
+  - The result array also takes **O(N1 + N2)**
+  - **Total: O(N1 + N2)**
+
+---
+
+## Approach 2: Two Pointers
+
+```go
+func mergeArrays(nums1 [][]int, nums2 [][]int) [][]int {
+	n1, n2 := len(nums1), len(nums2)
+	ptr1, ptr2 := 0, 0
+	mergedArray := [][]int{}
+
+	for ptr1 < n1 && ptr2 < n2 {
+		if nums1[ptr1][0] == nums2[ptr2][0] {
+			mergedArray = append(mergedArray, []int{nums1[ptr1][0], nums1[ptr1][1] + nums2[ptr2][1]})
+			ptr1++
+			ptr2++
+		} else if nums1[ptr1][0] < nums2[ptr2][0] {
+			mergedArray = append(mergedArray, nums1[ptr1])
+			ptr1++
+		} else {
+			mergedArray = append(mergedArray, nums2[ptr2])
+			ptr2++
+		}
+	}
+
+	for ptr1 < n1 {
+		mergedArray = append(mergedArray, nums1[ptr1])
+		ptr1++
+	}
+
+	for ptr2 < n2 {
+		mergedArray = append(mergedArray, nums2[ptr2])
+		ptr2++
+	}
+
+	return mergedArray
+}
+```
+
+### Intuition
+
+Since `nums1` and `nums2` are already sorted, we can merge them efficiently using a **two-pointer technique**, similar to the merge step in Merge Sort. 
+
+We traverse both arrays with two pointers:
+- If `id` is the same in both arrays, we sum their values and move both pointers.
+- If `id` is smaller in `nums1`, we add it and move `ptr1`.
+- If `id` is smaller in `nums2`, we add it and move `ptr2`.
+
+After merging, we append any remaining elements.
+
+### Algorithm
+
+1. **Initialize two pointers** at the start of `nums1` and `nums2`.
+2. **Iterate while neither pointer is at the end**:
+   - If `id` matches in both arrays → sum values, move both pointers.
+   - If `id` in `nums1` is smaller → add to result, move `ptr1`.
+   - If `id` in `nums2` is smaller → add to result, move `ptr2`.
+3. **Append remaining elements** if any array is not fully traversed.
+4. **Return the merged array**.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  - Each element in `nums1` and `nums2` is processed once → **O(N1 + N2)**
+  - Insertions into the list are **O(1)**
+  - **Total: O(N1 + N2)** (optimal)
+
+- **Space Complexity:**  
+  - We only use extra space for the output array **O(N1 + N2)**
+  - **Total: O(N1 + N2)**
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
