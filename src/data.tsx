@@ -972,8 +972,8 @@ export const leetcodes: leetcodeType[] = [
         title: "Merge Two 2D Arrays by Summing Values",
         titleSlug: "merge-two-2d-arrays-by-summing-values",
         topicTags: [
-            "Array ",
-            "Hash Table ",
+            "Array",
+            "Hash Table",
             "Two Pointers",
         ],
         hasSolution: true,
@@ -987,6 +987,31 @@ export const leetcodes: leetcodeType[] = [
                 'Complexity Analysis',
             ],
             'Approach 2: Two Pointers',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
+    {
+        id: 2161,
+        difficulty: "Easy",
+        isFavor: false,
+        status: 'Done',
+        title: "Partition Array According to Given Pivot",
+        titleSlug: "partition-array-according-to-given-pivot",
+        topicTags: [
+            "Array",
+            "Two Pointers",
+            "Simulation",
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Approach 1: Dynamic Slices',
             [
                 'Intuition',
                 'Algorithm',

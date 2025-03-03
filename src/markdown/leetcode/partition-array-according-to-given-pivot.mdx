@@ -1,0 +1,74 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given a **0-indexed** integer array `nums` and an integer `pivot`. Rearrange `nums` such that the following conditions are satisfied:
+
+- Every element less than `pivot` appears before every element greater than `pivot`.
+- Every element equal to `pivot` appears in between the elements less than and greater than `pivot`.
+- The **relative order** of the elements less than `pivot` and the elements greater than `pivot` is maintained.
+    - More formally, consider every `pi`, `pj` where `pi` is the new position of the `iᵗʰ` element and `pj` is the new position of the `jᵗʰ` element. If `i < j` and both elements are smaller (or larger) than `pivot`, then `pi < pj`.
+
+Return `nums` *after the rearrangement.*
+
+**Constraints:**
+
+- `1 <= nums.length <= 105`
+- `-106 <= nums[i] <= 106`
+- `pivot` equals to an element of `nums`.
+
+## Approach 1: Dynamic Slices
+
+```go
+func pivotArray(nums []int, pivot int) []int {
+	left := make([]int, 0, len(nums))
+	mid := make([]int, 0, len(nums))
+	right := make([]int, 0, len(nums))
+
+	for _, num := range nums {
+		switch {
+		case num < pivot:
+			left = append(left, num)
+		case num == pivot:
+			mid = append(mid, num)
+		default:
+			right = append(right, num)
+		}
+	}
+
+	return slices.Concat(left, mid, right)
+}
+```
+
+### Intuition
+
+The problem requires rearranging an array such that:
+1. Elements smaller than the pivot appear first.
+2. Elements equal to the pivot appear next.
+3. Elements greater than the pivot appear last.
+   
+To achieve this, we can iterate through the array and classify each element into one of three separate lists (`left`, `mid`, and `right`). Finally, we concatenate these lists to obtain the desired order while maintaining relative positioning.
+
+### Algorithm
+
+1. Initialize three slices:
+   - `left` for elements less than `pivot`
+   - `mid` for elements equal to `pivot`
+   - `right` for elements greater than `pivot`
+2. Iterate through `nums` and append each element to its respective slice based on comparison with `pivot`.
+3. Concatenate and return the three slices.
+
+### Complexity Analysis
+ 
+- Time Complexity: O(N)
+    - We iterate through `nums` once, processing each element in **O(1)** time.
+    - The final concatenation using `slices.Concat()` is **O(N)**.
+    - Overall, the algorithm runs in **O(N)** time.
+
+- Space Complexity: O(N)
+    - Three separate slices (`left`, `mid`, `right`) store elements temporarily, requiring **O(N)** additional space.
+    - The final result uses the same space, making the overall auxiliary space complexity **O(N)**.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
