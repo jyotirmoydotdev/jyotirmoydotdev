@@ -1,0 +1,48 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+Given an integer `n`, return `true` if it is possible to represent `n` as the sum of distinct powers of three. Otherwise, return `false`.
+
+An integer `y` is a power of three if there exists an integer `x` such that `y == 3x`.
+
+**Constraints:**
+
+- `1 <= n <= 10⁷`
+
+## Approach: Ternary Representation
+
+```go
+func checkPowersOfThree(n int) bool {
+    for n > 0 {
+        if n % 3 == 2 {
+            return false
+        }
+        n /= 3
+    }
+    return true
+}
+```
+
+<Complex t='logn' s='1'/>
+
+### Intuition
+The problem asks whether a given number can be represented as a sum of distinct powers of three. This is similar to how every number has a unique binary representation (using powers of 2). Here, we use a ternary (base-3) representation instead. In a valid representation, each digit should be either 0 or 1. If any digit is 2, it means that a power of three is being used twice, which is not allowed.
+
+### Algorithm
+1. **Loop until `n` becomes 0:**
+   - Calculate `n % 3` to obtain the current digit in the ternary representation.
+   - If the digit is 2, return `false` immediately because it indicates the use of a power of three twice.
+   - Otherwise, perform integer division `n /= 3` to move to the next digit.
+2. **Return `true`** once the loop completes without encountering a digit 2, meaning the number can be written as a sum of distinct powers of three.
+
+### Complexity Analysis
+
+- **Time Complexity:** `O(log₃(n))`
+  Since we continuously divide `n` by 3, the number of iterations is proportional to the logarithm of `n` to the base 3.
+- **Space Complexity:** `O(1)`
+  The algorithm uses a constant amount of extra space regardless of the input size.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

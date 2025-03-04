@@ -1020,6 +1020,29 @@ export const leetcodes: leetcodeType[] = [
             'Wrap up'
         ]
     },
+    {
+        id: 1780,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Check if Number is a Sum of Powers of Three",
+        titleSlug: "check-if-number-is-a-sum-of-powers-of-three",
+        topicTags: [
+            "Math"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Approach: Ternary Representation',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
 ]
 
 export type videoType = {
