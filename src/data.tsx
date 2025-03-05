@@ -1043,6 +1043,29 @@ export const leetcodes: leetcodeType[] = [
             'Wrap up'
         ]
     },
+    {
+        id: 2579,
+        difficulty: "Medium",
+        isFavor: false,
+        status: 'Done',
+        title: "Count Total Number of Colored Cells",
+        titleSlug: "count-total-number-of-colored-cells",
+        topicTags: [
+            "Math"
+        ],
+        hasSolution: true,
+        hasVideoSolution: false,
+        content: [
+            'Question',
+            'Approach: Mathematical Formula',
+            [
+                'Intuition',
+                'Algorithm',
+                'Complexity Analysis',
+            ],
+            'Wrap up'
+        ]
+    },
 ]
 
 export type videoType = {

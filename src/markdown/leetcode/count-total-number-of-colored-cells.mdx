@@ -1,0 +1,94 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+
+There exists an infinitely large two-dimensional grid of uncolored unit cells. You are given a positive integer `n`, indicating that you must do the following routine for `n` minutes:
+
+- At the first minute, color any arbitrary unit cell blue.
+- Every minute thereafter, color blue every uncolored cell that touches a blue cell.
+Below is a pictorial representation of the state of the grid after minutes 1, 2, and 3.
+
+![](https://assets.leetcode.com/uploads/2023/01/10/example-copy-2.png)
+
+Return *the number of **colored cells** at the end of `n` minutes.*
+
+**Constraints:**
+
+- `1 <= n <= 10⁵`
+
+Below is a detailed explanation following the requested format:
+
+## Approach: Mathematical Formula
+
+```go
+func coloredCells(n int) int64 {
+    return int64(2*n*(n-1) + 1)
+}
+```
+
+<Complex t='1' s='1'/>
+
+The idea is to recognize that the process of coloring cells creates a symmetric pattern. Starting from a single blue cell, every minute the “frontier” expands outward. When you analyze the pattern, you’ll see that the number of colored cells after *n* minutes is equivalent to the sum of two squares: one for the cells added in the current minute and one for the “previous” expansion. This can be mathematically derived as:
+
+```txt
+Total = n² + (n-1)²
+```
+
+This expression simplifies to:
+
+```txt
+Total = 2n² - 2n + 1 = 2 x n x (n - 1) + 1
+```
+
+Thus, the solution can be computed in constant time using simple arithmetic.
+
+## Intuition
+
+1. **Expansion Pattern:**  
+   - At minute 1, there is 1 blue cell.
+   - In subsequent minutes, all cells adjacent (touching) any blue cell are colored. This creates a pattern that grows outward in all directions.
+
+2. **Observing the Odd Sequence:**  
+   - The number of colored cells along the “middle” row follows an odd number sequence: 1, 3, 5, …, up to *2n-1*.
+   - The sum of the first *n* odd numbers is *n²*.
+   - The remaining part of the pattern (which is symmetric) contributes *(n-1)²*.
+
+3. **Combining the Two Parts:**
+   - Adding these two parts together gives the total number of colored cells:
+     
+```txt
+n² + (n-1)²
+```
+
+This insight reveals why a simple mathematical formula works to solve the problem in constant time.
+
+
+## Algorithm
+
+1. **Input:**  
+   Receive the integer *n* which represents the number of minutes.
+
+2. **Compute the Two Squares:**  
+   - Calculate *n²* for one half of the pattern.
+   - Calculate *(n-1)²* for the other half.
+
+3. **Sum the Results:**  
+   - The total number of colored cells is *n² + (n-1)²*.
+
+4. **Return the Result:**  
+   - Since the result can be large, cast it to an appropriate integer type (e.g., `int64` in Go).
+
+
+## Complexity Analysis
+
+- **Time Complexity:**  
+  *`O(1)`* - The solution only involves a fixed number of arithmetic operations, regardless of the input size.
+
+- **Space Complexity:**  
+  *`O(1)`* - Only a few variables are used for the calculations, so the space used does not grow with the input.
+
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

@@ -1,10 +1,19 @@
-explain the solution for the leetcode question ___ , i will provide you the code (improve the code if you feel to) and follow the bellow format, return in markdown format
+explain the solution for the leetcode question ___ , i will provide you the code (improve the code only if it nesseary) and follow the bellow format and keep the explanation simple, return in markdown format
 
+
+## Approach: (name)
 ```go 
 
 ```
 
-## Approach
 ### Intuition
+
 ### Algorithm
+
 ### Complexity Analysis
+
+- **Time Complexity:**  
+    `O()` ...
+
+- **Space Complexity:**  
+    `O()` ...

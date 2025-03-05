@@ -1,0 +1,17 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+## Approach: Mathematical Formula
+
+```go
+
+```
+
+<Complex t='1' s='1'/>
+
+
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
