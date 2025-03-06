@@ -1,0 +1,79 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given a **0-indexed** 2D integer matrix `grid` of size `n * n` with values in the range `[1, n²]`. Each integer appears **exactly once** except `a` which appears twice and `b` which is **missing**. The task is to find the repeating and missing numbers `a` and `b`.
+
+Return *a **0-indexed** integer array `ans` of size `2` where `ans[0]` equals to `a` and `ans[1]` equals to `b`*.
+
+
+**Constraints:**
+
+- `2 <= n == grid.length == grid[i].length <= 50`
+- `1 <= grid[i][j] <= n * n`
+- For all `x` that `1 <= x <= n * n` there is exactly one `x` that is not equal to any of the grid members.
+- For all `x` that `1 <= x <= n * n` there is exactly one `x` that is equal to exactly two of the grid members.
+- For all `x` that `1 <= x <= n * n` except two of them there is exatly one pair of `i, j` that `0 <= i, j <= n - 1` and `grid[i][j] == x`.
+
+
+## Approach: Hash Map Counting
+
+```go
+func findMissingAndRepeatedValues(grid [][]int) []int {
+    hash := make(map[int]int)
+    for _, nums := range grid {
+        for _, num := range nums {
+            hash[num]++
+        }
+    }
+
+    n, count, rep, dup := len(grid[0]), 0, 0, 0
+    for i := 1; i <= n*n; i++ {
+        if count == 2 {
+            return []int{dup, rep}
+        }
+        if hash[i] == 2 {
+            dup = i
+            count++
+        }
+        if hash[i] == 0 {
+            rep = i
+            count++
+        }
+    }
+    return []int{dup, rep}
+}
+```
+
+<Complex t='n^2' s='n^2'/>
+
+### Intuition
+
+In an $n \times n$ grid, numbers range from 1 to $n^2$. Every number should appear exactly once except one number that appears twice (the duplicate) and one that is missing. By counting the frequency of each number, we can identify:
+- The number with a frequency of 2 as the duplicate.
+- The number with a frequency of 0 as the missing value.
+
+### Algorithm
+
+1. **Count Frequencies:**  
+   Traverse the grid and use a hash map to count how many times each number appears.
+2. **Identify Special Numbers:**  
+   Loop from 1 to $ n^2 $:
+   - If a number’s count is 2, record it as the duplicate.
+   - If a number’s count is 0, record it as the missing value.
+3. **Return Answer:**  
+   Return an array containing the duplicate and the missing numbers.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  $ O(n^2) $  
+  We traverse each element in the grid (which contains $ n^2 $ elements) and then iterate over the range $ [1, n^2] $ to check counts.
+
+- **Space Complexity:**  
+  $ O(n^2) $  
+  The hash map stores counts for up to $ n^2 $ numbers.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

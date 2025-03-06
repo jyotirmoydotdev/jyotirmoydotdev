@@ -1,0 +1,47 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+```txt
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| teacher_id  | int  |
+| subject_id  | int  |
+| dept_id     | int  |
++-------------+------+
+```
+
+(subject_id, dept_id) is the primary key (combinations of columns with unique values) of this table.
+Each row in this table indicates that the teacher with teacher_id teaches the subject subject_id in the department dept_id.
+
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+
+Return the result table in **any order**.
+
+The result format is shown in the following example.
+
+## Approach: Grouping and Counting Unique Subjects
+```sql
+-- PostgreSQL
+SELECT teacher_id, count(DISTINCT(subject_id)) AS cnt
+FROM Teacher
+GROUP BY teacher_id;
+```
+
+### Intuition
+The task is to compute the number of unique subjects each teacher teaches. Since a teacher may appear multiple times in the table with the same subject (if they teach it in different contexts), we need to count each subject only once per teacher. Using the `DISTINCT` keyword inside the `COUNT` function achieves this by eliminating duplicate subject entries.
+
+### Algorithm
+1. **Group Data:**  
+   Group all records by `teacher_id` so that each group represents one teacher.
+
+2. **Count Unique Subjects:**  
+   For each teacher group, count the distinct `subject_id` values. This ensures that even if a subject appears multiple times for a teacher, it is only counted once.
+
+3. **Return Results:**  
+   The query returns each `teacher_id` along with the count of unique subjects they teach (aliased as `cnt`).
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
