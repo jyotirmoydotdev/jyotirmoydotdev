@@ -1,6 +1,8 @@
 import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
 import { BiLogoGmail } from "react-icons/bi"
-import { SiLeetcode } from "react-icons/si"
+import { IconType } from "react-icons/lib"
+import {  SiLeetcode } from "react-icons/si"
+// import { SiAdventofcode } from "react-icons/si"
 
 export const sidebar_data = {
   logo: "/logo.png",
@@ -18,9 +20,9 @@ export const sidebar_data = {
       isActive: false,
     },
     {
-      title: "Videos",
-      url: "/video",
-      icon: Video,
+      title: "Leetcode",
+      url: "/leetcode",
+      icon: SiLeetcode,
       isActive: false,
     },
     {
@@ -29,18 +31,18 @@ export const sidebar_data = {
       icon: Folder,
       isActive: false,
     },
+    // {
+    //   title: "Advent Of Code",
+    //   url: "/leetcode",
+    //   icon: SiAdventofcode,
+    //   isActive: false,
+    // },
     {
-      title: "Leetcode",
-      url: "/leetcode",
-      icon: SiLeetcode,
+      title: "Videos",
+      url: "/video",
+      icon: Video,
       isActive: false,
     },
-    // {
-    //     title: "AoC",
-    //     url: "/leetcode",
-    //     icon: SiAdventofcode,
-    //     isActive: false,
-    // }
   ],
   links: [
     {
@@ -141,12 +143,23 @@ export const projects = [
   }
 ]
 
+import { FaTerminal , FaEthereum, FaCode} from "react-icons/fa";
+import { RiGeminiFill } from "react-icons/ri";
+
+export const blogCategories: { icon: IconType, classname: string, label: string, value: string }[] = [
+  { icon: FaTerminal, classname: "fill-green-500" ,label: "Backend", value: "backend" },
+  // { icon:  ,label: "Full-Stack", value: "full-stack" },
+  { icon: FaEthereum , classname: "fill-blue-500" ,label: "Blockchain", value: "blockchain" },
+  { icon: RiGeminiFill , classname: "fill-orange-500" ,label: "AI & Machine Learning", value: "ai-machine-learning" },
+  { icon: FaCode, classname: "fill-blue-500" ,label: "Frontend", value: "frontend" },
+]
+
 export type blogsType = {
   title: string,
   description: string,
-  url: string,
   titleSlug: string,
   date: string,
+  category: string,
   content: (string | string[])[],
 }
 
@@ -154,9 +167,9 @@ export const blogs: blogsType[] = [
   {
     title: "Run Stable Diffusion on Your MacBook M1 Using Python",
     description: "Turn your MacBook M1 into an art machine with Python, watch your words come to life in vivid images!",
-    url: "/blogs/run-stable-diffusion-on-your-macBook-m1-using-python",
     titleSlug: 'run-stable-diffusion-on-your-macBook-m1-using-python',
     date: "Feb 10, 2025",
+    category: 'ai-machine-learning',
     content: [
       "Project Setup",
       [
@@ -176,9 +189,9 @@ export const blogs: blogsType[] = [
   {
     title: "Build your Golang Proxy Server",
     description: "Learn to build a robust Go proxy server supporting HTTP and HTTPS, complete with health checks and detailed logging.",
-    url: "/blogs/build-your-golang-proxy-server",
     titleSlug: 'build-your-golang-proxy-server',
     date: "Feb 8, 2025",
+    category: 'backend',
     content: [
       "Prerequisites",
       "Project Setup",
@@ -208,9 +221,9 @@ export const blogs: blogsType[] = [
   {
     title: "Simple way to run deepseek-r1 Locally",
     description: "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool.",
-    url: "/blogs/simple-way-to-run-deepseek-r1-locally",
     titleSlug: 'simple-way-to-run-deepseek-r1-locally',
     date: "Feb 4, 2025",
+    category: 'ai-machine-learning',
     content: [
       "Installation",
       "Usages",
@@ -220,9 +233,9 @@ export const blogs: blogsType[] = [
   {
     title: "Learn basics of SQLite",
     description: "SQLite is a lightweight, serverless, and self-contained relational database management system. It's often used in applications that need a local database.",
-    url: "/blogs/learn-basics-of-sqlite",
     titleSlug: 'learn-basics-of-sqlite',
     date: "Aug 25, 2023",
+    category: 'backend',
     content: [
       "Installation",
       "Opening a Database",
@@ -238,9 +251,9 @@ export const blogs: blogsType[] = [
   {
     title: "Building a JSON Validation Pipeline with Go and Gin",
     description: "Imagine a scenario where we're transmitting crucial data from our website to a database. However, before this information is stored",
-    url: "/blogs/building-a-json-validation-pipeline-with-go-and-gin",
     titleSlug: 'building-a-json-validation-pipeline-with-go-and-gin',
     date: "Aug 19, 2023",
+    category: 'backend',
     content: [
       "Full Code",
       "Import Statements",
@@ -256,9 +269,9 @@ export const blogs: blogsType[] = [
   {
     title: "Use Gin Web Framework to build your server",
     description: "Let's build a simple web service using the Go programming language and the Gin web framework. We will define a basic web server that listens for incoming HTTP requests and responds with JSON data.",
-    url: "/blogs/use-gin-web-framework-to-build-your-server",
     titleSlug: 'use-gin-web-framework-to-build-your-server',
     date: "Aug 19, 2023",
+    category: 'backend',
     content: [
       "Setup",
       "main.go",
@@ -270,9 +283,9 @@ export const blogs: blogsType[] = [
   {
     title: "How to interact with Smart Contract?",
     description: "This article will teach you how to interact with a smart contract in the Ethereum blockchain, starting this article we first need to install some dependencies in our computer.",
-    url: "/blogs/how-to-interact-with-smart-contract",
     titleSlug: "how-to-interact-with-smart-contract",
     date: "Mar 22, 2023",
+    category: 'blockchain',
     content: [
       "Import ethers.js",
       "Set the provider",
@@ -285,9 +298,9 @@ export const blogs: blogsType[] = [
   {
     title: "Fetch Balance from Ethereum Blockchain",
     description: "To Fetch the balance of an account in the Ethereum blockchain first we need to install some dependencies on our computer.",
-    url: "/blogs/fetch-balance-from-ethereum-blockchain",
     titleSlug: "fetch-balance-from-ethereum-blockchain",
     date: "Mar 17, 2023",
+    category: 'blockchain',
     content: [
       "Import Ethers.js",
       "Connect with a Node Provider",
@@ -300,9 +313,9 @@ export const blogs: blogsType[] = [
   {
     title: "Blockchain Storage",
     description: "Learn about IPFS(InterPlanetary File System) and how we store data on blockchain. The blockchain contains some data, such as transactions or other information,",
-    url: "/blogs/blockchain-storage",
     titleSlug: "blockchain-storage",
     date: "Feb 27, 2023",
+    category: 'blockchain',
     content: [
       "Introduction to blockchain storage",
       "Traditional storage vs blockchain storage",
@@ -320,9 +333,9 @@ export const blogs: blogsType[] = [
   {
     title: "Cryptography",
     description: "Cryptography is a huge topic and constantly evolving as the internet get advances. Here I will explain the topics that will help you understand blockchain better.",
-    url: "/blogs/cryptography",
     titleSlug: "cryptography",
     date: "Feb 23, 2023",
+    category: 'blockchain',
     content: [
       "Hash Function",
       "SHA256 Hash Function",
@@ -346,9 +359,9 @@ export const blogs: blogsType[] = [
   {
     title: "Decentralization with Blockchain",
     description: "How does the internet works? How the internet is centralized? What is Decentralization? Why it matters? Applications and uses of blockchain?",
-    url: "/blogs/decentralization-with-blockchain",
     titleSlug: "decentralization-with-blockchain",
     date: "Feb 17, 2023",
+    category: 'blockchain',
     content: [
       "How does the internet works?",
       "How the internet is centralized?",
@@ -361,9 +374,9 @@ export const blogs: blogsType[] = [
   {
     title: "Blockchain Structure",
     description: "Understand how a blockchain work and what makes a blockchain. Today we are going to see how a blockchain work.",
-    url: "/blogs/blockchain-structure",
     titleSlug: "blockchain-structure",
     date: "Feb 12, 2023",
+    category: 'blockchain',
     content: [
       "SHA256 Hash",
       "Block",
@@ -377,9 +390,9 @@ export const blogs: blogsType[] = [
   {
     title: "What is Blockchain?",
     description: "Blockchain is a distributed ledger (ok but what this really mean ?). Let me explain it !",
-    url: "/blogs/what-is-blockchain",
     titleSlug: "what-is-blockchain",
     date: "Feb 8, 2023",
+    category: 'blockchain',
     content: [
       "Terminology",
       [
@@ -394,9 +407,9 @@ export const blogs: blogsType[] = [
   {
     title: "Set up Tailwind in your Project",
     description: "Tailwind CSS is a utility class framework that helps you make a responsive web design. In this article, I will teach you, how to set up a tailwind in the project.",
-    url: "/blogs/set-up-tailwind-in-your-project",
     titleSlug: "set-up-tailwind-in-your-project",
     date: "Jan 19, 2023",
+    category: 'frontend',
     content: [
       "Play CDN ( Method 1)",
       "Tailwind CLI ( Method 2 )",
@@ -405,9 +418,9 @@ export const blogs: blogsType[] = [
   {
     title: "Git for Termux",
     description: "As the internet says git is a version control to track the code changes and there is not any second thought. I am not going to explain it in detail, If you want to read more",
-    url: "/blogs/git-for-termux",
     titleSlug: "git-for-termux",
     date: "Jan 26, 2022",
+    category: 'backend',
     content: [
       "Git",
       "Installation",
@@ -428,9 +441,9 @@ export const blogs: blogsType[] = [
   {
     title: "Tmux for Termux",
     description: "Have you ever wonder how to open multiple sessions in a singel screen in termux. Here is a solution, an open source terminal multiplexer for Linux or Unix operating systems.",
-    url: "/blogs/tmux-for-termux",
     titleSlug: "tmux-for-termux",
     date: "Dec 19, 2021",
+    category: 'backend',
     content: [
       "Installation",
       "Basic command",
@@ -439,9 +452,9 @@ export const blogs: blogsType[] = [
   {
     title: "What is Cmatrix",
     description: "Want to see some animation in termux you can install cmatrix. Cmatrix shows cool matrix scrolling lines animation in terminal , you probably have seen in the Sci-fi movies.",
-    url: "/blogs/what-is-cmatrix",
     titleSlug: "what-is-cmatrix",
     date: "Oct 16, 2021",
+    category: 'backend',
     content: [
       "Install",
       "Start and stop",

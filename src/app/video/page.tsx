@@ -31,7 +31,7 @@ const page = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:p-4 gap-5">
       {
         video.map((vid, i) => (
-          <Link href={`/video/${vid.id}`} key={i} className="flex flex-col gap-2">
+          <Link href={`https://youtu.be/${vid.id}`} key={i} className="flex flex-col gap-2" target='_blank'>
             <div className=" group/vid relative">
               <Button size={'icon'} variant={'secondary'} className="absolute top-4 right-4 transition-all scale-0 group-hover/vid:scale-100"><ArrowUpRight/></Button>
               <Image src={`https://i.ytimg.com/vi/${vid.id}/maxresdefault.jpg`} width={1280} height={720} alt={vid.title} className=' sm:rounded-lg aspect-video'></Image>

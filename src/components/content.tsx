@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { SubscribeSm } from './subscribe-sm';
 
 const Content = ({ slug }: { slug: string }) => {
-    const BlogDataIndex = blogs.findIndex((blog) => blog.url.includes(slug));
+    const BlogDataIndex = blogs.findIndex((blog) => blog.titleSlug.includes(slug));
     const BlogData = blogs[BlogDataIndex]
     const sideBarSize = 300
     const blogSize = 578.4 + 32
@@ -69,7 +69,7 @@ const Content = ({ slug }: { slug: string }) => {
                             const post = blogs.at((BlogDataIndex + i + 1) % blogs.length)!
                             return (
                                 <SidebarMenuItem key={i} >
-                                    <Link key={i} href={post?.url} className='w-[260px] text-wrap flex flex-col gap-2 py-2 group/more dark:hover:bg-gray-100/10 hover:bg-gray-500/10 transition-all rounded-md mt-2 px-2'>
+                                    <Link key={i} href={`/blogs/${post.titleSlug}`} className='w-[260px] text-wrap flex flex-col gap-2 py-2 group/more dark:hover:bg-gray-100/10 hover:bg-gray-500/10 transition-all rounded-md mt-2 px-2'>
                                         <div className=" font-black group-hover/more:text-orange-400 line-clamp-2 text-sm">
                                             {post.title}
                                         </div>

@@ -54,7 +54,7 @@ export function Search() {
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup heading="Blogs">
                         {blogs.map((blog, i) => (
-                            <Link href={blog.url} key={i}>
+                            <Link href={`/blogs/${blog.titleSlug}`} key={i}>
                                 <CommandItem >
                                     <File />
                                     <span className="line-clamp-1 text-xs sm:text-sm">{blog.title}</span>
@@ -79,7 +79,7 @@ export function Search() {
                             <Link href={`/leetcode/${leetcode.titleSlug}`} key={i}>
                             <CommandItem key={i}>
                                 <SiLeetcode />
-                                <span className="line-clamp-1 text-xs sm:text-sm">{leetcode.title}</span>
+                                <span className="line-clamp-1 text-xs sm:text-sm">{leetcode.id}. {leetcode.title}</span>
                             </CommandItem>
                             </Link>
                         ))}

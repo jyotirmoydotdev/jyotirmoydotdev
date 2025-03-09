@@ -108,7 +108,7 @@ export default function RootLayout({
           <SidebarProvider
             style={
               {
-                "--sidebar-width": "250px",
+                "--sidebar-width": "230px",
               } as React.CSSProperties
             }
             defaultOpen={true}
