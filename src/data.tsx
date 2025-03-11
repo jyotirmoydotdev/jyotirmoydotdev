@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
 import { BiLogoGmail } from "react-icons/bi"
 import { IconType } from "react-icons/lib"
-import {  SiLeetcode } from "react-icons/si"
+import { SiLeetcode } from "react-icons/si"
 // import { SiAdventofcode } from "react-icons/si"
 
 export const sidebar_data = {
@@ -113,15 +113,25 @@ export const about = [
   }
 ]
 
-export const projects = [
+export type projectType = {
+  icon: null | IconType,
+  title: string,
+  description: string,
+  url: string,
+  externalUrl: string | null,
+  source: string,
+  tags: string[]
+}
+
+export const projects: projectType[] = [
   {
     icon: null,
-    title: "MyMeghalaya",
-    description: "MyMeghalaya is a website I created to showcase the rich culture and natural beauty of my homeland to the world, inviting everyone to witness its splendor firsthand.",
+    title: "Snippetbox",
+    description: "Snippetbox is a web application developed in Go that allows users to create, view, and share text snippets. This project is built following the Let's Go book by Alex Edwards, which provides a comprehensive guide to building web applications with Go.",
     url: "/projects",
     externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/mymeghalaya",
-    tags: ["Nextjs", "Supabase", "Vercel", "Resend"],
+    source: "https://github.com/jyotirmoydotdev/snippetbox",
+    tags: ["Golang", "MySQL", "Tmpl"]
   },
   {
     icon: null,
@@ -134,24 +144,33 @@ export const projects = [
   },
   {
     icon: null,
+    title: "MyMeghalaya",
+    description: "MyMeghalaya is a website I created to showcase the rich culture and natural beauty of my homeland to the world, inviting everyone to witness its splendor firsthand.",
+    url: "/projects",
+    externalUrl: null,
+    source: "https://github.com/jyotirmoydotdev/mymeghalaya",
+    tags: ["Nextjs", "Supabase", "Vercel", "Resend"],
+  },
+  {
+    icon: null,
     title: "Blog App",
     description: "Blog application built with Next.js and MongoDB. The app includes a dashboard for managing posts and viewing a list of subscribers.",
     url: "/projects",
     externalUrl: null,
     source: "https://github.com/jyotirmoydotdev/blog-app",
     tags: ["Nextjs", "MongoDB", "Vercel"]
-  }
+  },
 ]
 
-import { FaTerminal , FaEthereum, FaCode} from "react-icons/fa";
+import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
 import { RiGeminiFill } from "react-icons/ri";
 
 export const blogCategories: { icon: IconType, classname: string, label: string, value: string }[] = [
-  { icon: FaTerminal, classname: "fill-green-500" ,label: "Backend", value: "backend" },
+  { icon: FaTerminal, classname: "fill-green-500", label: "Backend", value: "backend" },
   // { icon:  ,label: "Full-Stack", value: "full-stack" },
-  { icon: FaEthereum , classname: "fill-blue-500" ,label: "Blockchain", value: "blockchain" },
-  { icon: RiGeminiFill , classname: "fill-orange-500" ,label: "AI & Machine Learning", value: "ai-machine-learning" },
-  { icon: FaCode, classname: "fill-blue-500" ,label: "Frontend", value: "frontend" },
+  { icon: FaEthereum, classname: "fill-blue-500", label: "Blockchain", value: "blockchain" },
+  { icon: RiGeminiFill, classname: "fill-orange-500", label: "AI & Machine Learning", value: "ai-machine-learning" },
+  { icon: FaCode, classname: "fill-blue-500", label: "Frontend", value: "frontend" },
 ]
 
 export type blogsType = {

@@ -45,7 +45,7 @@ const Page = () => {
                             <div className=" font-black text-base sm:text-lg font-sans dark:group-hover/project:text-orange-400 group-hover/project:text-orange-500 transition-colors">
                                 {project.title}
                             </div>
-                            <div className="text-xs sm:text-sm dark:text-white/80 text-black/80 group-hover/project:text-orange-900 dark:group-hover/project:text-orange-100 transition-colors">
+                            <div className="line-clamp-3 text-xs sm:text-sm dark:text-white/80 text-black/80 group-hover/project:text-orange-900 dark:group-hover/project:text-orange-100 transition-colors">
                                 {project.description}
                             </div>
                             <div className="flex gap-2 flex-wrap text-xs text-black/60 dark:text-white/60">
