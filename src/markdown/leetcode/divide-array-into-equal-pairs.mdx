@@ -1,0 +1,67 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given an integer array `nums` consiting of `2 * n` integers.
+
+you need to divide `nums` into `n` pairs such that:
+
+- Each element belongs to **exactly one pair**.
+- The element present in a pair are **equal**.
+
+Return `true` *if nums can be divided into 'n' pairs, otherwise return 'false'*.
+
+**Constraints**:
+
+- `nums.length == 2 * n`
+- `1 <= n <= 500`
+- `1 <= nums[i] <= 500`
+
+## Approach: Hash Map
+
+```go
+func divideArray(nums []int) bool {
+    hash := make(map[int]int)
+    for i := range nums {
+        hash[nums[i]]++
+    }
+    for _, val := range hash {
+        if val % 2 != 0 {
+            return false
+        }
+    }
+    return true 
+}
+```
+
+### Intuition
+
+The main idea is to check if every number in the array appears an even number of times. If a number appears an odd number of times, it cannot be completely paired, so the function returns false. Using a hash map to count occurrences makes it easy to verify this condition.
+
+### Algorithm
+
+1. **Initialize a hash map:**  
+   Create an empty hash map to store the frequency of each number.
+
+2. **Count frequencies:**  
+   Loop through each element in the array and update its count in the hash map.
+
+3. **Check for even counts:**  
+   Iterate over the hash map values. If any count is odd, return false.
+
+4. **Return true:**  
+   If all counts are even, return true, meaning the array can be divided into equal pairs.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  `O(n)`  
+  The algorithm iterates through the array once to build the frequency map and then iterates through the map's values. Both operations are linear with respect to the number of elements.
+
+- **Space Complexity:**  
+  `O(n)`  
+  In the worst case, if all elements are unique, the hash map will store n elements.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

@@ -1146,7 +1146,32 @@ export const leetcodes: leetcodeType[] = [
       'Wrap up'
     ]
   },
-
+  {
+    id: 2206,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Divide Array Into Equal Pairs",
+    titleSlug: "divide-array-into-equal-pairs",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Bit Manipulation",
+      "Counting"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Hash Map',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  }
 ]
 
 export type videoType = {
