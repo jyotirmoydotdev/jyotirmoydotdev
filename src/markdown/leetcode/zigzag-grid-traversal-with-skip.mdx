@@ -1,0 +1,55 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+## Approach: Traversal With Skip
+
+```go
+func zigzagTraversal(grid [][]int) []int {
+	ans := []int{}
+	for i, nums := range grid {
+		if (i % 2) == 0 {
+			for j, num := range nums {
+				if ((i + j) % 2) == 0 {
+					ans = append(ans, num)
+				}
+            }
+		} else {
+            for j := len(nums) - 1; j >= 0; j-- {
+				if ((i + j) % 2) == 0 {
+					ans = append(ans, nums[j])
+				}
+			}
+        }
+	}
+	return ans
+}
+```
+
+<Complex t='n*m' s='1'/>
+
+### Intuition
+The idea is to traverse the grid row by row in a zigzag manner. For even-indexed rows, we move left-to-right; for odd-indexed rows, we traverse right-to-left. Additionally, we only collect numbers from positions where the sum of the row and column indices is even.
+
+### Algorithm
+1. **Traverse Rows:** Loop over each row in the grid using its index `i`.
+2. **Determine Traversal Order:**
+   - If `i` is even, iterate through the row from the beginning (left-to-right).
+   - If `i` is odd, iterate in reverse (right-to-left).
+3. **Skip Based on Condition:** For each element, check if `(i + j) % 2 == 0` (where `j` is the column index). Only if the condition holds, append the element to the answer list.
+4. **Return Result:** After processing all rows, return the list of collected elements.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  `O(n * m)`  
+  Each element in the grid (with `n` rows and `m` columns) is processed exactly once.
+
+- **Space Complexity:**  
+  `O(n * m)` (in the worst-case scenario)  
+  The output list may store almost all the elements of the grid if the condition `(i + j) % 2 == 0` holds for many elements.  
+  Apart from the output, the extra space usage is constant.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

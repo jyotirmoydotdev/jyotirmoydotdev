@@ -1171,6 +1171,31 @@ export const leetcodes: leetcodeType[] = [
       ],
       'Wrap up'
     ]
+  },
+  {
+    id: 3417,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Zigzag Grid Traversal With Skip",
+    titleSlug: "zigzag-grid-traversal-with-skip",
+    topicTags: [
+      "Array",
+      "Matrix",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Traversal With Skip',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
   }
 ]
 
