@@ -1,0 +1,53 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+## Approach: Brute Force Iteration
+
+```go
+func commonFactors(a int, b int) int {
+    counter := 0
+    m := a
+    if b < a {
+        m = b
+    }
+    for i := 1; i <= m; i++ {
+        if a % i == 0 && b % i == 0 {
+            counter++
+        }
+    }
+    return counter
+}
+```
+
+### Intuition
+
+We need to count all the numbers that divide both `a` and `b`. Since a factor of both cannot exceed the smaller number, we iterate from `1` to `min(a, b)` and check if each number is a factor of both.
+
+### Algorithm
+
+1. **Determine the Range:**  
+   Compute `m = min(a, b)` as the upper bound for possible common factors.
+2. **Iterate and Check:**  
+   Loop from `i = 1` to `m`. For each `i`, check:
+   - If `i` divides `a` (`a % i == 0`) **and**
+   - If `i` divides `b` (`b % i == 0`).
+3. **Count Common Factors:**  
+   Increment a counter for each `i` that satisfies both conditions.
+4. **Return the Count:**  
+   After the loop, return the counter which holds the number of common factors.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+    `O(min(a, b))`  
+    The loop runs from 1 to the smaller of the two numbers, making the time complexity proportional to `min(a, b)`.
+
+- **Space Complexity:**  
+    `O(1)`  
+    Only a few extra variables are used (for the counter and the range limit), so the space complexity is constant.
+
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

@@ -1196,6 +1196,31 @@ export const leetcodes: leetcodeType[] = [
       ],
       'Wrap up'
     ]
+  },
+  {
+    id: 2427,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Number of Common Factors",
+    titleSlug: "number-of-common-factors",
+    topicTags: [
+      "Math",
+      "Enumeration",
+      "Number Theory",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Brute Force Iteration',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
   }
 ]
 
