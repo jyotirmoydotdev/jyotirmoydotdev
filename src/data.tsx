@@ -1221,6 +1221,30 @@ export const leetcodes: leetcodeType[] = [
       ],
       'Wrap up'
     ]
+  },
+  {
+    id: 2303,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Calculate Amount Paid in Taxes",
+    titleSlug: "calculate-amount-paid-in-taxes",
+    topicTags: [
+      "Array",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Iterative Simulation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
   }
 ]
 

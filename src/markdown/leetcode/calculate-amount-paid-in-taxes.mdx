@@ -1,0 +1,55 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+## Approach: Iterative Simulation
+
+```go
+func calculateTax(brackets [][]int, income int) float64 {
+    lastUpper := 0
+    result := 0 
+    for _, bracket := range brackets {
+        upper := bracket[0]
+        rate := bracket[1]
+        if income > upper {
+            result += (upper - lastUpper) * rate
+        } else {
+            result += (income - lastUpper) * rate
+            break
+        }
+        lastUpper = upper
+    }
+    return float64(result) / 100
+}
+```
+
+<Complex t='n' s='1'/>
+
+### Intuition
+The solution simulates the tax calculation by iterating through each tax bracket and calculating the tax for the income that falls within that bracket. For each bracket, if the total income exceeds the bracket's upper limit, the full tax for that bracket is applied. Otherwise, only the portion of income within the bracket is taxed.
+
+### Algorithm
+1. **Initialize Variables:**  
+   - `lastUpper` tracks the lower bound of the current tax bracket.
+   - `result` accumulates the total tax (in percentage units).
+
+2. **Iterate Over Tax Brackets:**  
+   - For each bracket, extract the `upper` limit and `rate`.
+   - If the income is greater than the `upper` limit:
+     - Calculate the tax for the entire span of the bracket: `(upper - lastUpper) * rate`.
+   - Otherwise, compute the tax for the remaining income: `(income - lastUpper) * rate` and break out of the loop since no further brackets apply.
+
+3. **Return the Result:**  
+   - Convert the accumulated tax (which is in integer percentage units) to a floating-point number by dividing by 100.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+    `O(n)` where `n` is the number of tax brackets. The algorithm processes each bracket once.
+
+- **Space Complexity:**  
+    `O(1)` as only a fixed number of extra variables are used regardless of the input size.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

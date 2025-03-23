@@ -4,7 +4,7 @@ import { Complex } from "@/components/mdx-comp";
 import { FaXTwitter } from "react-icons/fa6";
 import Linkwithlogo from '@/components/linkwithlogo'
 
-## Approach: Mathematical Formula
+## Approach: 
 
 ```go
 
