@@ -1,0 +1,55 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+## Approach: Simulation
+
+```go
+func numberOfMatches(n int) int {
+	ans := 0
+	for n > 1 {
+		ans += n / 2
+		if n%2 == 0 {
+			n = n / 2
+		} else {
+			n = n/2 + 1
+		}
+	}
+	return ans
+}
+```
+
+<Complex t='logn' s='1'/>
+
+### Intuition
+
+The problem simulates a knockout tournament where, in each round, teams are paired to play matches. Every match eliminates one team. If there's an odd number of teams, one team gets a bye (automatically advances). This process continues until only one team remains.
+
+### Algorithm
+
+1. **Initialize**:  
+   Set a counter `ans` to track the total number of matches played.
+
+2. **Iterate Through Rounds**:  
+   - While more than one team remains (`n > 1`):
+     - Calculate the number of matches in the current round as `n / 2` and add it to `ans`.
+     - Update the number of teams for the next round:
+       - If `n` is even, all teams are paired, so next round has `n / 2` teams.
+       - If `n` is odd, one team gets a bye, so next round has `n / 2 + 1` teams.
+
+3. **Return the Result**:  
+   Once the loop finishes, `ans` contains the total number of matches played.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  `O(log n)`  
+  Each round roughly halves the number of teams, leading to a logarithmic number of iterations.
+
+- **Space Complexity:**  
+  `O(1)`  
+  The algorithm uses only a constant amount of extra space.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

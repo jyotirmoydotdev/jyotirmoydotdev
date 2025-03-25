@@ -60,7 +60,7 @@ export function DataTable<TData, TValue>({ columns, data, random }: DataTablePro
         },
         initialState: {
             pagination: {
-                pageSize: 20
+                pageSize: 50
             },
         },
         onGlobalFilterChange: setGlobalFilter,

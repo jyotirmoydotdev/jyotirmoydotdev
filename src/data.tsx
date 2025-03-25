@@ -1245,6 +1245,30 @@ export const leetcodes: leetcodeType[] = [
       ],
       'Wrap up'
     ]
+  },
+  {
+    id: 1688,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Count of Matches in Tournament",
+    titleSlug: "count-of-matches-in-tournament",
+    topicTags: [
+      "Math",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Iterative Simulation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
   }
 ]
 
