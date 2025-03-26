@@ -1261,7 +1261,30 @@ export const leetcodes: leetcodeType[] = [
     hasVideoSolution: false,
     content: [
       'Question',
-      'Approach: Iterative Simulation',
+      'Approach: Simulation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: 2644,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Find the Maximum Divisibility Score",
+    titleSlug: "find-the-maximum-divisibility-score",
+    topicTags: [
+      "Array",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Brute Force with Optimization',
       [
         'Intuition',
         'Algorithm',

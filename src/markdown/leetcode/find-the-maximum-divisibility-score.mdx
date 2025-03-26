@@ -1,0 +1,64 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given two integer arrays `nums` and `divisors`.
+
+The **divisibility score** of `divisors[i]` is the number of indices `j` such that `nums[j]` is divisible by `divisors[i]`.
+
+Return the integer `divisors[i]` with the **maximum** divisibility score. If multiple integers have the maximum score, return the smallest one.
+
+**Constraints:**
+
+- `1 <= nums.length, divisors.length <= 1000`
+- `1 <= nums[i], divisors[i] <= 10⁹`
+
+## Approach: Brute Force with Optimization
+
+```go
+func maxDivScore(nums []int, divisors []int) int {
+    ans, maxCount := divisors[0], 0
+    for _, d := range divisors {
+        count := 0
+        for _, num := range nums {
+            if num % d == 0 {
+                count++
+            }
+        }
+        if count > maxCount || (count == maxCount && d < ans) {
+            maxCount = count
+            ans = d
+        }
+    }
+    return ans
+}
+```
+
+<Complex t='n*m' s='1'/>
+
+### Intuition
+We need to find the divisor that divides the most numbers in the given array. For each divisor, we count how many numbers in `nums` it divides perfectly. If multiple divisors have the same count, we choose the smallest one.
+
+### Algorithm
+1. **Initialize:**  
+   - Set `ans` to the first divisor.
+   - Set `maxCount` to 0.
+2. **Iterate over Divisors:**  
+   - For each divisor `d`, initialize a counter.
+   - Loop through each number in `nums` and increment the counter if `num % d == 0`.
+3. **Update Answer:**  
+   - If the current divisor's count exceeds `maxCount`, update `ans` and `maxCount`.
+   - If the count is equal to `maxCount` and `d` is smaller than `ans`, update `ans`.
+4. **Return:**  
+   - Return the chosen divisor stored in `ans`.
+
+### Complexity Analysis
+- **Time Complexity:**  
+  `O(n * m)` where `n` is the number of divisors and `m` is the number of numbers in `nums`.  
+- **Space Complexity:**  
+  `O(1)` as only a constant amount of extra space is used.
+
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
