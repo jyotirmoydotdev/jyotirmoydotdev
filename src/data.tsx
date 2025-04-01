@@ -1292,6 +1292,30 @@ export const leetcodes: leetcodeType[] = [
       ],
       'Wrap up'
     ]
+  },
+  {
+    id: 2140,
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Solving Questions With Brainpower",
+    titleSlug: "solving-questions-with-brainpower",
+    topicTags: [
+      "Array",
+      "Dynamic Programming"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Dynamic Programming',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
   }
 ]
 

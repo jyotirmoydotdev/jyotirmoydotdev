@@ -1,0 +1,69 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+You are given a **0-indexed** 2D integer array `questions` where `questions[i] = [pointsᵢ, brainpowerᵢ]`.
+
+The array describes the questions of an exam, where you have to process the questions **in order** (i.e., starting from question `0`) and make a decision whether to **solve** or **skip** each question. Solving question `i` will **earn** you `pointsᵢ` points but you will be **unable** to solve each of the next `brainpowerᵢ` questions. If you skip question `i`, you get to make the decision on the next question.
+
+- For example, given `questions = [[3, 2], [4, 3], [4, 4], [2, 5]]`:
+    - If question `0` is solved, you will earn `3` points but you will be unable to solve questions `1` and `2`.
+    - If instead, question `0` is skipped and question `1` is solved, you will earn `4` points but you will be unable to solve questions `2` and `3`.
+    
+Return *the **maximum** points you can earn for the exam*.
+
+**Constraints:**
+
+- `1 <= questions.length <= 10⁵`
+- `questions[i].length == 2`
+- `1 <= pointsᵢ, brainpowerᵢ <= 10⁵`
+
+## Approach: Dynamic Programming (Bottom-Up)
+
+```go
+func mostPoints(questions [][]int) int64 {
+    n := len(questions)
+    dp := make([]int64, n+1)
+    for i := n - 1; i >= 0; i-- {
+        next := min(i + questions[i][1] + 1, n)
+        take := int64(questions[i][0]) + dp[next]
+        dp[i] = max(dp[i+1], take)
+    }
+    return dp[0]
+}
+```
+
+<Complex t='n' s='n'/>
+
+### Intuition
+The key idea is to use dynamic programming by iterating backwards through the list of questions. For each question, you decide whether to:
+- **Solve** it: Earn the current points and skip the next `brainpower` questions.
+- **Skip** it: Consider the maximum points starting from the next question.
+
+This way, each state `dp[i]` holds the maximum points you can earn starting at question `i`.
+
+### Algorithm
+1. **Initialization:**  
+   Create a DP array `dp` of size `n+1` (where `n` is the number of questions). Initialize `dp[n]` to `0` since there are no questions after the last one.
+2. **Reverse Iteration:**  
+   Loop backwards from the last question to the first.
+3. **Decision Making:**  
+   For each question at index `i`:
+   - **Solve:** Calculate `take = points[i] + dp[i + brainpower[i] + 1]`.  
+     (Use `min` to ensure you don't go out of bounds.)
+   - **Skip:** Use `dp[i+1]` which represents not solving the current question.
+   - **Update:** Set `dp[i]` to the maximum of these two choices.
+4. **Result:**  
+   After processing all questions, `dp[0]` contains the maximum points achievable starting from the first question.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  `O(n)` – We iterate over each question once in reverse order.
+
+- **Space Complexity:**  
+  `O(n)` – We use a DP array of size `n+1` to store the computed results.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
