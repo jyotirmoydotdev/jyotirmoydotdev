@@ -1,0 +1,49 @@
+import { Complex } from "@/components/mdx-comp";
+import { FaXTwitter } from "react-icons/fa6";
+import Linkwithlogo from '@/components/linkwithlogo'
+
+Write a function that reverses a string. The input string is given as an array of characters `s`.
+
+You must do this by modifying the input array [in-place](https://en.wikipedia.org/wiki/In-place_algorithm) with `O(1)` extra memory.
+
+**Constraints:**
+
+-  `1 <= s.length <= 10⁵`
+-  `s[i]` is a [printable ascii character](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+
+## Approach: Two-Pointer Technique
+
+```go
+func reverseString(s []byte) {
+    for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+        s[i], s[j] = s[j], s[i]
+    }
+}
+```
+
+<Complex t='n' s='1'/>
+
+### Intuition
+The idea is to use two pointers—one starting at the beginning and the other at the end of the string—and swap the characters at these pointers. By moving both pointers towards the center, the entire string is reversed in place.
+
+### Algorithm
+1. **Initialize Two Pointers:**  
+   Set pointer `i` at the beginning (index 0) and pointer `j` at the end (index `len(s)-1`) of the byte slice.
+2. **Swap Characters:**  
+   While `i < j`, swap the characters `s[i]` and `s[j]`.
+3. **Move Pointers:**  
+   Increment `i` and decrement `j` after each swap.
+4. **Stop Condition:**  
+   Continue this process until `i` is no longer less than `j`.
+
+### Complexity Analysis
+
+- **Time Complexity:**  
+  `O(n)` – The algorithm performs a single pass through half of the string, which is linear relative to the length of the string.
+
+- **Space Complexity:**  
+  `O(1)` – The reversal is done in-place without using additional data structures.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.

@@ -1316,6 +1316,30 @@ export const leetcodes: leetcodeType[] = [
       ],
       'Wrap up'
     ]
+  },
+  {
+    id: 344,
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Reverse String",
+    titleSlug: "reverse-string",
+    topicTags: [
+      "Two Pointers",
+      "String",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Two-Pointer Technique',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
   }
 ]
 
