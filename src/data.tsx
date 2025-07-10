@@ -1352,39 +1352,103 @@ export type videoType = {
 }
 
 export const video: videoType[] = [
-  {
-    "id": "tOASWm8I7sk",
-    "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
-    "title": "2116. Check if a Parentheses String Can Be Valid - Go",
-    "description": "",
-    "date": "2025-01-12T17:01:47Z"
-  },
-  {
-    "id": "D_cfXKdYu4M",
-    "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
-    "title": "1400. Construct K Palindrome Strings - Go",
-    "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
-    "date": "2025-01-11T17:52:26Z"
-  },
-  {
-    "id": "5XfjayX8HAE",
-    "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
-    "title": "916. Word Subsets - Go",
-    "description": "",
-    "date": "2025-01-10T15:57:53Z"
-  },
-  {
-    "id": "X2vwqQNiJks",
-    "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
-    "title": "2185. Counting Words With a Given Prefix - Go",
-    "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
-    "date": "2025-01-09T18:52:49Z"
-  },
-  {
-    "id": "oe4PYLTGVTY",
-    "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
-    "title": "3042  Count Prefix and Suffix Pairs I - Go",
-    "description": "",
-    "date": "2025-01-08T15:02:38Z"
-  }
+  // {
+  //   "id": "tOASWm8I7sk",
+  //   "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
+  //   "title": "2116. Check if a Parentheses String Can Be Valid - Go",
+  //   "description": "",
+  //   "date": "2025-01-12T17:01:47Z"
+  // },
+  // {
+  //   "id": "D_cfXKdYu4M",
+  //   "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
+  //   "title": "1400. Construct K Palindrome Strings - Go",
+  //   "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
+  //   "date": "2025-01-11T17:52:26Z"
+  // },
+  // {
+  //   "id": "5XfjayX8HAE",
+  //   "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
+  //   "title": "916. Word Subsets - Go",
+  //   "description": "",
+  //   "date": "2025-01-10T15:57:53Z"
+  // },
+  // {
+  //   "id": "X2vwqQNiJks",
+  //   "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
+  //   "title": "2185. Counting Words With a Given Prefix - Go",
+  //   "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
+  //   "date": "2025-01-09T18:52:49Z"
+  // },
+  // {
+  //   "id": "oe4PYLTGVTY",
+  //   "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
+  //   "title": "3042  Count Prefix and Suffix Pairs I - Go",
+  //   "description": "",
+  //   "date": "2025-01-08T15:02:38Z"
+  // }
 ];
+
+export type experienceType = {
+  position: string,
+  company: string,
+  companyUrl: string,
+  description: string,
+  tags: string[],
+  startDate: string,
+  endDate: string,
+  location: string,
+}
+
+export const experience: experienceType[] = [
+  {
+    position: "Technical Associate",
+    company: "Rushlane",
+    companyUrl: "https://rushlane.in",
+    description: "",
+    tags: ["React Native", "Expo", "PHP"],
+    startDate: "June 2025",
+    endDate: "Present",
+    location: "Tura, Meghalaya, India",
+  },
+  {
+    position: "Intern",
+    company: "Rushlane",
+    companyUrl: "https://rushlane.in",
+    description: "",
+    tags: ["React Native", "Expo"],
+    startDate: "Apr 2025",
+    endDate: "May 2025",
+    location: "Tura, Meghalaya, India",
+  },
+  {
+    position: "Ethereum Engineer",
+    company: "Loreum DAO",
+    companyUrl: "https://www.loreum.org",
+    description: "I contributed to the development of the Loreum platform, working with technologies like React, TypeScript, and GraphQL to help build efficient and user-friendly applications alongside a talented team.",
+    tags: ["Ethereum", "TypeScript", "Solidity", "GraphQL"],
+    startDate: "Jan 2024",
+    endDate: "Apr 2024",
+    location: "Remote",
+  },
+  {
+    position: "Technical Writer",
+    company: "DAO Times",
+    companyUrl: "https://daotimes.com",
+    description: "I contributed to DAO Times, researching and writing about the latest in DeFi and NFTs. Worked closely with editors to create informative and engaging content.",
+    tags: ["Article Research", "Proposal Summaries", "Editing and Proofreading"],
+    startDate: "Apr 2023",
+    endDate: "June 2023",
+    location: "Remote",
+  },
+  {
+    position: "Intern",
+    company: "DAO Times",
+    companyUrl: "https://daotimes.com",
+    description: "Assisted in gathering voter feedback on DAO proposals by engaging with participants across various DAOs, evaluating responses, and analyzing insights regarding our latest article on the relevant proposal to support content relevance and audience engagement.",
+    tags: ["Feedback Collection", "Blockchain Research", "Content Analysis"],
+    startDate: "Mar 2023",
+    endDate: "Apr 2023",
+    location: "Remote",
+  },
+]
