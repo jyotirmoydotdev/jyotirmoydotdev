@@ -184,6 +184,19 @@ export type blogsType = {
 
 export const blogs: blogsType[] = [
   {
+    title: "How to Change the Default Permission String for the Location-Access Alert in Expo",
+    description: "Learn how to customize the default permission string for the location access alert in Expo applications, ensuring a better user experience.",
+    titleSlug: "how-to-change-the-default-permission-string-for-the-location-access-alert-in-expo",
+    date: "Jul 19, 2025",
+    category: 'frontend',
+    content:[
+      'The Problem',
+      'The Fix: Clean Prebuild + EAS Build',
+      'Why This Works',
+      'Wrap up'
+    ]
+  },
+  {
     title: "Run Stable Diffusion on Your MacBook M1 Using Python",
     description: "Turn your MacBook M1 into an art machine with Python, watch your words come to life in vivid images!",
     titleSlug: 'run-stable-diffusion-on-your-macBook-m1-using-python',

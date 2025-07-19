@@ -1,0 +1,105 @@
+import Linkwithlogo from '@/components/linkwithlogo'
+import { SiHuggingface } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaApple } from "react-icons/fa6";
+
+# How to Change the Default Permission String for the Location-Access Alert in Expo
+
+When you build an <Linkwithlogo text='Expo' url='https://expo.dev' icon={'https://img.icons8.com/?size=100&id=IpN1evivrDWO&format=png&color=ffffff'}/> app that requests location access, <Linkwithlogo text='iOS' url='http://appstoreconnect.apple.com/' icon={{icon:FaApple}}/> by default shows:
+
+> “Allow $(PRODUCT_NAME) to use your location.”
+
+This vague prompt can trigger App Store rejections if you haven't clearly explained why you need location data. Apple's human-interface guidelines require you to supply a custom purpose string in your Info.plist so users understand what you,re doing with their location.
+
+Below is the end-to-end solution I used—no more default Expo messaging.
+
+---
+
+## The Problem
+
+- **Expo Go** and the old `expo build:ios` both use an un-modifiable, shared binary.
+- Even if you set `ios.infoPlist` in **app.json**, your custom `NS…UsageDescription` keys are ignored.
+- Running `npx expo run:ios` also compiles against Expo Go's binary, so native Info.plist edits never apply.
+
+---
+
+### Required Info.plist Keys
+
+| Key                                                | Purpose                                                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `NSLocationWhenInUseUsageDescription`              | Why you need location **while** the app is in use.                                               |
+| `NSLocationAlwaysAndWhenInUseUsageDescription`     | Why you need location **both** in foreground **and** background (iOS 11+).                       |
+| `NSLocationAlwaysUsageDescription`                 | (Legacy) Why you need location always; still include for pre-iOS 11 or extra clarity.            |
+
+---
+
+## The Fix: Clean Prebuild + EAS Build
+
+1. **Delete any stale native folders**  
+   ```bash
+   rm -rf ios
+   ```
+
+2. **Verify your `app.json`**
+   Make sure you have **all three** keys under `expo.ios.infoPlist`:
+
+   ```jsonc
+   {
+     "expo": {
+       "ios": {
+         "infoPlist": {
+           "NSLocationWhenInUseUsageDescription":          "We need your location to show nearby restaurants.",
+           "NSLocationAlwaysAndWhenInUseUsageDescription": "We also use it in the background to track live deliveries.",
+           "NSLocationAlwaysUsageDescription":             "We use location at all times to keep your delivery status up‑to‑date."
+         }
+       }
+     }
+   }
+   ```
+
+3. **Prebuild a fresh native project**
+   This regenerates `ios/` from your current app.json, including your custom Info.plist keys:
+
+   ```bash
+   npx expo prebuild --platform ios --clean
+   ```
+4. **Inspect in Xcode (optional but recommended)**
+
+   * Open the generated workspace:
+
+     ```bash
+     open ios/YourApp.xcworkspace
+     ```
+   * In the project navigator, select **YourApp → Info.plist**.
+   * Confirm all three keys appear with your custom strings.
+
+5. **Build with EAS**
+
+   ```bash
+   eas build --platform ios
+   ```
+
+6. **Submit & Test**
+
+   ```bash
+   eas submit --platform ios --latest
+   ```
+
+   * This will automatically pick up your most recent EAS build and upload the `.ipa` to App Store Connect.
+   * In App Store Connect, assign it to a TestFlight group and invite your testers.
+   * On your TestFlight build, open the app and trigger a location permission request.
+
+
+---
+
+## Why This Works
+
+* **`--clean`** wipes any cached native project so old Info.plist files don,t linger.
+* **Expo Prebuild** reads your `app.json` and writes those keys into the real `Info.plist`.
+* **EAS Build** produces a custom binary (unlike Expo Go), so iOS displays your exact strings.
+
+With these steps, you'll comply with Apple's guidelines and avoid those frustrating App Store rejections.
+
+## Wrap up
+
+If you found this guide helpful, consider subscribing to my newsletter on <Linkwithlogo text='jyotirmoy.dev/blogs' url='https://jyotirmoy.dev/blogs' icon={'/logo.png'}/> ,  You can also follow me on Twitter <Linkwithlogo text='jyotirmoydotdev' url='https://x.com/jyotirmoydotdev' icon={{icon:FaXTwitter}}/> for updates and more content.
