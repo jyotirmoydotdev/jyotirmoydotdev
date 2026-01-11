@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, Twitter, User2Icon, Video, Youtube } from "lucide-react"
+import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, User2Icon, Youtube } from "lucide-react"
 import { BiLogoGmail } from "react-icons/bi"
 import { IconType } from "react-icons/lib"
 import { SiLeetcode } from "react-icons/si"

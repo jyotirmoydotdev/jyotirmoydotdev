@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { ArrowDown, ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { projects, sidebar_data as data, experience } from "@/data";
 import { ExternalLink, Folder, Github } from "lucide-react";
