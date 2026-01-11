@@ -19,12 +19,12 @@ export const sidebar_data = {
       icon: File,
       isActive: false,
     },
-    {
-      title: "Leetcode",
-      url: "/leetcode",
-      icon: SiLeetcode,
-      isActive: false,
-    },
+    // {
+    //   title: "Leetcode",
+    //   url: "/leetcode",
+    //   icon: SiLeetcode,
+    //   isActive: false,
+    // },
     {
       title: "Projects",
       url: "/projects",
@@ -37,12 +37,12 @@ export const sidebar_data = {
     //   icon: SiAdventofcode,
     //   isActive: false,
     // },
-    {
-      title: "Videos",
-      url: "/video",
-      icon: Video,
-      isActive: false,
-    },
+    // {
+    //   title: "Videos",
+    //   url: "/video",
+    //   icon: Video,
+    //   isActive: false,
+    // },
   ],
   links: [
     {
@@ -52,16 +52,16 @@ export const sidebar_data = {
       icon: BiLogoGmail
     },
     {
+      url: 'https://x.com/jyotirmoydotdev',
+      name: 'x | Jyotirmoy Barman | @jyotirmoydotdev',
+      social: 'Twitter',
+      icon: RiTwitterXLine
+    },
+    {
       url: 'https://github.com/jyotirmoydotdev',
       name: 'Github | Jyotirmoy Barman | @jyotirmoydotdev',
       social: 'Github',
       icon: Github
-    },
-    {
-      url: 'https://x.com/jyotirmoydotdev',
-      name: 'x | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Twitter',
-      icon: Twitter
     },
     {
       url: 'https://linkedin.com/in/jyotirmoydotdev',
@@ -163,7 +163,7 @@ export const projects: projectType[] = [
 ]
 
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
-import { RiGeminiFill } from "react-icons/ri";
+import { RiGeminiFill, RiTwitterXLine } from "react-icons/ri";
 
 export const blogCategories: { icon: IconType, classname: string, label: string, value: string }[] = [
   { icon: FaTerminal, classname: "fill-green-500", label: "Backend", value: "backend" },
@@ -1415,11 +1415,11 @@ export type experienceType = {
 
 export const experience: experienceType[] = [
   {
-    position: "Technical Associate",
+    position: "Software Engineer",
     company: "Rushlane",
-    companyUrl: "https://rushlane.in",
+    companyUrl: "/rushlane",
     description: "",
-    tags: ["React Native", "Expo", "PHP"],
+    tags: ["React Native", "Expo", "Next.js", "Management"],
     startDate: "June 2025",
     endDate: "Present",
     location: "Tura, Meghalaya, India",
@@ -1427,7 +1427,7 @@ export const experience: experienceType[] = [
   {
     position: "Intern",
     company: "Rushlane",
-    companyUrl: "https://rushlane.in",
+    companyUrl: "/rushlane",
     description: "",
     tags: ["React Native", "Expo"],
     startDate: "Apr 2025",
