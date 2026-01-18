@@ -55,15 +55,7 @@ export default function Home() {
             </div>
           </header>
           <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
-            I{`'`}m a passionate junior developer who loves turning ideas into
-            tangible projects. With hands-on experience working on personal
-            projects—from building a self-hosted e-commerce platform to
-            developing a blog application—I{`'`}m constantly exploring new
-            technologies and improving my skills. I{`'`}m proficient in tools
-            like React, Next.js, and Go, and I{`'`}m excited to expand my
-            technical toolkit while collaborating with talented teams. I{`'`}m
-            enthusiastic, quick to learn, and always ready to take on challenges
-            that help me grow as a developer.
+            I'm a software developer with <span className=" font-bold "> 1+ years of experience </span>working with <span className=" font-bold">Go, Solidity, Next.js, and React Native</span>. I've built and shipped a <span className=" font-bold">production-ready application</span> used by a real company, which taught me how to build software that actually matters. I'm highly quality-driven, if something doesn't meet my standards, I refactor it or start over. I learn fast, take full ownership of my work, and always give <span className=" font-bold text-green-500">100% effort</span>. Outside of code, I love traveling and exploring nature because for me, travel isn't about checklists, it's about experiences.
           </div>
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start sm:gap-6 items-center">
             <BiLogoTypescript className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
@@ -96,9 +88,9 @@ export default function Home() {
       </div>
 
       <div className="pt-8" id="experiences">
-        <div className="text-lg font-bold py-2 text-orange-400">
+        <Link href={"/experience"} className="text-lg font-bold py-2 text-orange-400">
           Experiences
-        </div>
+        </Link>
         <Separator />
         <div className="flex flex-col gap-6 pt-6">
           {experience.map((exp, i) => (

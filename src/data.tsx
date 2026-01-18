@@ -119,47 +119,29 @@ export type projectType = {
   description: string,
   url: string,
   externalUrl: string | null,
-  source: string,
+  source: string | null,
   tags: string[]
 }
 
 export const projects: projectType[] = [
   {
     icon: null,
-    title: "Snippetbox",
-    description: "Snippetbox is a web application developed in Go that allows users to create, view, and share text snippets. This project is built following the Let's Go book by Alex Edwards, which provides a comprehensive guide to building web applications with Go.",
-    url: "/projects",
+    title: "Rushlane: Food-in and Grocery",
+    description: "A Food Delivery application built with React Native and wordpress backend.",
+    url: "/projects/rushlane",
     externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/snippetbox",
-    tags: ["Golang", "MySQL", "Tmpl"]
+    source: null,
+    tags: ["React Native", "Wordpress"]
   },
   {
     icon: null,
-    title: "Openfy",
-    description: "Openfy is a self-hosted e-commerce platform built with Go and Gin, providing a flexible and customizable solution for managing products and handling user authentication.",
-    url: "/projects",
-    externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/openfy",
-    tags: ["Go", "Gin", "Pocketbase", "Docker"],
-  },
-  {
-    icon: null,
-    title: "MyMeghalaya",
-    description: "MyMeghalaya is a website I created to showcase the rich culture and natural beauty of my homeland to the world, inviting everyone to witness its splendor firsthand.",
-    url: "/projects",
-    externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/mymeghalaya",
-    tags: ["Nextjs", "Supabase", "Vercel", "Resend"],
-  },
-  {
-    icon: null,
-    title: "Blog App",
-    description: "Blog application built with Next.js and MongoDB. The app includes a dashboard for managing posts and viewing a list of subscribers.",
-    url: "/projects",
-    externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/blog-app",
-    tags: ["Nextjs", "MongoDB", "Vercel"]
-  },
+    title: "Vendogen",
+    description: "A full business software that is built for the next generation entrepreneurs.",
+    url: "/projects/vendogen",
+    externalUrl: "https://vendogen.com",
+    source: null,
+    tags: ["Go", "Next.js"]
+  }
 ]
 
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
@@ -1417,8 +1399,9 @@ export const experience: experienceType[] = [
   {
     position: "Software Engineer",
     company: "Rushlane",
-    companyUrl: "/rushlane",
-    description: "",
+    companyUrl: "/experience/rushlane",
+    description:
+      "Lead the development and maintenance of Rushlane's food delivery mobile app, restaurant dashboard, and delivery application using React Native. As an early-stage startup team member, I also contributed to management, planning, and cross-functional collaboration.",
     tags: ["React Native", "Expo", "Next.js", "Management"],
     startDate: "June 2025",
     endDate: "Present",
@@ -1427,9 +1410,10 @@ export const experience: experienceType[] = [
   {
     position: "Intern",
     company: "Rushlane",
-    companyUrl: "/rushlane",
-    description: "",
-    tags: ["React Native", "Expo"],
+    companyUrl: "/experience/rushlane",
+    description:
+      "Contributed to the pre-development phase of the food delivery app, collaborating with the team to gather requirements and develop features. Enhanced communication and teamwork skills in a fast-paced startup environment.",
+    tags: ["React Native", "Expo", "Soft Skills"],
     startDate: "Apr 2025",
     endDate: "May 2025",
     location: "Tura, Meghalaya, India",
@@ -1438,7 +1422,8 @@ export const experience: experienceType[] = [
     position: "Ethereum Engineer",
     company: "Loreum DAO",
     companyUrl: "https://www.loreum.org",
-    description: "I contributed to the development of the Loreum platform, working with technologies like React, TypeScript, and GraphQL to help build efficient and user-friendly applications alongside a talented team.",
+    description:
+      "Developed decentralized applications for the Loreum platform using React, TypeScript, and GraphQL. Collaborated with a distributed team to deliver efficient, user-friendly blockchain solutions and smart contracts.",
     tags: ["Ethereum", "TypeScript", "Solidity", "GraphQL"],
     startDate: "Jan 2024",
     endDate: "Apr 2024",
@@ -1448,7 +1433,8 @@ export const experience: experienceType[] = [
     position: "Technical Writer",
     company: "DAO Times",
     companyUrl: "https://daotimes.com",
-    description: "I contributed to DAO Times, researching and writing about the latest in DeFi and NFTs. Worked closely with editors to create informative and engaging content.",
+    description:
+      "Researched and authored articles on DeFi and NFTs, working closely with editors to produce clear, engaging, and informative content for the DAO Times audience.",
     tags: ["Article Research", "Proposal Summaries", "Editing and Proofreading"],
     startDate: "Apr 2023",
     endDate: "June 2023",
@@ -1458,7 +1444,8 @@ export const experience: experienceType[] = [
     position: "Intern",
     company: "DAO Times",
     companyUrl: "https://daotimes.com",
-    description: "Assisted in gathering voter feedback on DAO proposals by engaging with participants across various DAOs, evaluating responses, and analyzing insights regarding our latest article on the relevant proposal to support content relevance and audience engagement.",
+    description:
+      "Collected and analyzed voter feedback on DAO proposals, engaging with participants across multiple DAOs to support content relevance and audience engagement for published articles.",
     tags: ["Feedback Collection", "Blockchain Research", "Content Analysis"],
     startDate: "Mar 2023",
     endDate: "Apr 2023",
