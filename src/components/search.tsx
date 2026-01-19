@@ -63,28 +63,6 @@ export function Search() {
                         ))}
                     </CommandGroup>
                     <CommandSeparator />
-                    <CommandGroup heading="Videos">
-                        {video.map((vid, i) => (
-                            <Link href={`/video/${vid.id}`} key={i}>
-                                <CommandItem>
-                                    <Video />
-                                    <span className="line-clamp-1 text-xs sm:text-sm">{vid.title}</span>
-                                </CommandItem>
-                            </Link>
-                        ))}
-                    </CommandGroup>
-                    <CommandSeparator />
-                    <CommandGroup heading="Leetcode">
-                        {leetcodes.map((leetcode, i) => (
-                            <Link href={`/leetcode/${leetcode.titleSlug}`} key={i}>
-                            <CommandItem key={i}>
-                                <SiLeetcode />
-                                <span className="line-clamp-1 text-xs sm:text-sm">{leetcode.id}. {leetcode.title}</span>
-                            </CommandItem>
-                            </Link>
-                        ))}
-                    </CommandGroup>
-                    <CommandSeparator />
                     <CommandGroup heading="Projects">
                         {projects.map((project, i) => (
                             <Link href={project.url} key={i}>
