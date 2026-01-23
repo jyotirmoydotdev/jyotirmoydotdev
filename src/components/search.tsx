@@ -4,8 +4,7 @@ import * as React from "react"
 import {
     File,
     Folder,
-    SearchIcon,
-    Video,
+    SearchIcon
 } from "lucide-react"
 
 import {
@@ -18,9 +17,8 @@ import {
     CommandSeparator,
 } from "@/components/ui/command"
 import { Button } from "./ui/button"
-import { blogs, leetcodes, projects, video } from "@/data"
+import { blogs, projects } from "@/data"
 import Link from "next/link"
-import { SiLeetcode } from "react-icons/si"
 
 export function Search() {
     const [open, setOpen] = React.useState(false)
@@ -66,10 +64,10 @@ export function Search() {
                     <CommandGroup heading="Projects">
                         {projects.map((project, i) => (
                             <Link href={project.url} key={i}>
-                            <CommandItem key={i}>
-                                <Folder />
-                                <span className="line-clamp-1 text-xs sm:text-sm">{project.title}</span>
-                            </CommandItem>
+                                <CommandItem key={i}>
+                                    <Folder />
+                                    <span className="line-clamp-1 text-xs sm:text-sm">{project.title}</span>
+                                </CommandItem>
                             </Link>
                         ))}
                     </CommandGroup>
