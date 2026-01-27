@@ -2,7 +2,9 @@ import React from 'react'
 
 function Page() {
   return (
-    <div>Rushlane</div>
+    <div className='max-w-3xl mx-auto p-4'>
+      Rushlane
+    </div>
   )
 }
 

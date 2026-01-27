@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/separator'
 import { experience } from '@/data'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -8,9 +8,10 @@ function Page() {
     return (
         <div className='p-4'>
             <div  id="experiences">
-                <div className="text-lg font-bold py-2 text-orange-400">
-                    Experiences
-                </div>
+                <Link href={"/"} className="text-lg font-bold py-2 text-orange-400 flex items-center gap-2 hover:underline hover:underline-offset-4 cursor-pointer w-fit mb-4" >
+                    <ArrowLeft/>
+                    About
+                </Link>
                 <Separator />
                 <div className="flex flex-col gap-6 pt-6">
                     {experience.map((exp, i) => (

@@ -135,6 +135,15 @@ export const projects: projectType[] = [
   },
   {
     icon: null,
+    title: "Rushlane Dashboard",
+    description: "A application for restaurant owners to manage their orders and menu",
+    url: "/projects/rushlane-restaurant-dashboard",
+    externalUrl: null,
+    source: null,
+    tags: ["React Native", "Wordpress"]
+  },
+  {
+    icon: null,
     title: "Vendogen",
     description: "A full business software that is built for the next generation entrepreneurs.",
     url: "/projects/vendogen",
@@ -1398,24 +1407,13 @@ export type experienceType = {
 export const experience: experienceType[] = [
   {
     position: "Software Engineer",
-    company: "Rushlane",
+    company: "Rushlane Technologies",
     companyUrl: "/experience/rushlane",
     description:
       "Lead the development and maintenance of Rushlane's food delivery mobile app, restaurant dashboard, and delivery application using React Native. As an early-stage startup team member, I also contributed to management, planning, and cross-functional collaboration.",
     tags: ["React Native", "Expo", "Next.js", "Management"],
-    startDate: "June 2025",
+    startDate: "April 2025",
     endDate: "Present",
-    location: "Tura, Meghalaya, India",
-  },
-  {
-    position: "Intern",
-    company: "Rushlane",
-    companyUrl: "/experience/rushlane",
-    description:
-      "Contributed to the pre-development phase of the food delivery app, collaborating with the team to gather requirements and develop features. Enhanced communication and teamwork skills in a fast-paced startup environment.",
-    tags: ["React Native", "Expo", "Soft Skills"],
-    startDate: "Apr 2025",
-    endDate: "May 2025",
     location: "Tura, Meghalaya, India",
   },
   {
@@ -1436,19 +1434,8 @@ export const experience: experienceType[] = [
     description:
       "Researched and authored articles on DeFi and NFTs, working closely with editors to produce clear, engaging, and informative content for the DAO Times audience.",
     tags: ["Article Research", "Proposal Summaries", "Editing and Proofreading"],
-    startDate: "Apr 2023",
+    startDate: "Mar 2023",
     endDate: "June 2023",
     location: "Remote",
-  },
-  {
-    position: "Intern",
-    company: "DAO Times",
-    companyUrl: "https://daotimes.com",
-    description:
-      "Collected and analyzed voter feedback on DAO proposals, engaging with participants across multiple DAOs to support content relevance and audience engagement for published articles.",
-    tags: ["Feedback Collection", "Blockchain Research", "Content Analysis"],
-    startDate: "Mar 2023",
-    endDate: "Apr 2023",
-    location: "Remote",
-  },
+  }
 ]
