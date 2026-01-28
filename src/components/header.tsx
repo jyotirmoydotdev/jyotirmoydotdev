@@ -19,7 +19,9 @@ const Header = () => {
     return (
         <header className="sticky top-0 flex justify-between shrink-0 items-center gap-2 border-b bg-background/50 z-10 backdrop-blur-md p-4">
             <div className="flex justify-start items-center gap-2">
-                <Image width={100} height={100} alt='Jyotirmoy Barman' className=' sm:hidden rounded-lg size-7' src={'/logo.png'}></Image>
+                <Link href={'/'}>
+                    <Image width={100} height={100} alt='Jyotirmoy Barman' className=' sm:hidden rounded-lg size-7' src={'/logo.png'}></Image>
+                </Link>
                 <SidebarTrigger className="" />
                 <Separator orientation="vertical" className="mr-2 h-4" />
                 <Breadcrumb>

@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react'
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarMenuItem, useSidebar } from './ui/sidebar';
 import { ContentComp } from './mdx-comp';
 import Link from 'next/link';
-import { SubscribeSm } from './subscribe-sm';
 
 const Content = ({ slug }: { slug: string }) => {
     const BlogDataIndex = blogs.findIndex((blog) => blog.titleSlug.includes(slug));

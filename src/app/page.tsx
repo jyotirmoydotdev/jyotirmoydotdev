@@ -94,7 +94,7 @@ export default function Home() {
         <Separator />
         <div className="flex flex-col gap-6 pt-6">
           {experience.map((exp, i) => (
-            <Link key={i} href={exp.companyUrl} className="group/exp">
+            <Link key={i} href={exp.companyUrl} className="group/exp" target="_blank" rel="noopener noreferrer">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 group-hover/exp:bg-accent/40 p-2 transition-all">
                 <div className="text-gray-500 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">
                   {exp.startDate} - {exp.endDate}

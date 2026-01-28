@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, User2Icon, Youtube } from "lucide-react"
+import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, User2Icon } from "lucide-react"
 import { BiLogoGmail } from "react-icons/bi"
 import { IconType } from "react-icons/lib"
 import { SiLeetcode } from "react-icons/si"
@@ -70,12 +70,6 @@ export const sidebar_data = {
       icon: Linkedin
     },
     {
-      url: 'https://www.youtube.com/@Jyotirmoydotdev',
-      name: 'Youtube | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Youtube',
-      icon: Youtube
-    },
-    {
       url: 'https://leetcode.com/jyotirmoydotdev',
       name: 'Leetcode | Jyotirmoy Barman | @jyotirmoydotdev',
       social: 'Leetcode',
@@ -129,15 +123,6 @@ export const projects: projectType[] = [
     title: "Rushlane: Food-in and Grocery",
     description: "A Food Delivery application built with React Native and wordpress backend.",
     url: "/projects/rushlane",
-    externalUrl: null,
-    source: null,
-    tags: ["React Native", "Wordpress"]
-  },
-  {
-    icon: null,
-    title: "Rushlane Dashboard",
-    description: "A application for restaurant owners to manage their orders and menu",
-    url: "/projects/rushlane-restaurant-dashboard",
     externalUrl: null,
     source: null,
     tags: ["React Native", "Wordpress"]
@@ -1408,7 +1393,7 @@ export const experience: experienceType[] = [
   {
     position: "Software Engineer",
     company: "Rushlane Technologies",
-    companyUrl: "/experience/rushlane",
+    companyUrl: "https://www.rushlane.in",
     description:
       "Lead the development and maintenance of Rushlane's food delivery mobile app, restaurant dashboard, and delivery application using React Native. As an early-stage startup team member, I also contributed to management, planning, and cross-functional collaboration.",
     tags: ["React Native", "Expo", "Next.js", "Management"],

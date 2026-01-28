@@ -3,7 +3,6 @@
 import { blogs } from '@/data'
 import React from 'react'
 import { File } from 'lucide-react'
-import { SidebarOptInForm } from '@/components/sidebar-opt-in-form'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
