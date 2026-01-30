@@ -135,6 +135,15 @@ export const projects: projectType[] = [
     externalUrl: "https://vendogen.com",
     source: null,
     tags: ["Go", "Next.js"]
+  },
+  {
+    icon: null,
+    title: "Snippetbox",
+    description: "Snippetbox is a web application developed in Go that allows users to create, view, and share text snippets.",
+    url: "/projects/snippetbox",
+    externalUrl: null,
+    source: "https://github.com/jyotirmoydotdev/snippetbox",
+    tags: ["Golang", "Go tmpl"]
   }
 ]
 
