@@ -138,6 +138,15 @@ export const projects: projectType[] = [
   },
   {
     icon: null,
+    title: "Openfy",
+    description: "Openfy is a self-hosted e-commerce platform built with Go and Gin.",
+    url: "/projects/openfy",
+    externalUrl: null,
+    source: "https://github.com/jyotirmoydotdev/openfy",
+    tags: ["Go", "Gin"]
+  },
+  {
+    icon: null,
     title: "Snippetbox",
     description: "Snippetbox is a web application developed in Go that allows users to create, view, and share text snippets.",
     url: "/projects/snippetbox",
