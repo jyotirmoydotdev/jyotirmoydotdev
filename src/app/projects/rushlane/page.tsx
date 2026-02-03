@@ -53,18 +53,9 @@ function Page() {
         ))}
       </div>
       <div className="">
-        <h2 className="text-xl font-bold mt-8 mb-4">Tech Stack</h2>
-        <div className="flex flex-row gap-4 items-center">
-          <FaReact size={32} />
-          <SiExpo size={32} />
-          <IoLogoVercel size={32} />
-          <RiNextjsFill size={32} />
-          <BiLogoPostgresql size={32} />
-          <FaWordpress size={32} />
-        </div>
-        <h2 className="text-xl font-bold mt-8 mb-4">About the app</h2>
+                <h2 className="text-xl font-bold mt-8 mb-4">About the app</h2>
         <p className="text-gray-700 dark:text-gray-400 mb-4">
-          Rushlane is a food delivery application built for Rushlane Technologies. The app allows users to order food and groceries from local restaurants and have them delivered directly to their doorstep. It is developed using React Native with Expo to ensure seamless cross-platform compatibility. Currently, the app serves over 1,000+ daily active users and is set to expand to more cities in the near future.
+          Rushlane is a food delivery application developed for Rushlane Technologies. The app allows users to order food and groceries from local restaurants and have them delivered directly to their doorstep. Currently, the app serves over 1,000+ daily active users and is set to expand to more cities in the near future.
         </p>
       </div>
     </div>

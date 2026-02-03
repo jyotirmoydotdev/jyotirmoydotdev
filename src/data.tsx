@@ -121,11 +121,11 @@ export const projects: projectType[] = [
   {
     icon: null,
     title: "Rushlane: Food-in and Grocery",
-    description: "A Food Delivery application built with React Native and wordpress backend.",
+    description: "A Food Delivery application build for Rushlane Technologies",
     url: "/projects/rushlane",
     externalUrl: null,
     source: null,
-    tags: ["React Native", "Wordpress"]
+    tags: ["Food Delivery App", "Cross Platform App"]
   },
   {
     icon: null,
@@ -1409,12 +1409,12 @@ export type experienceType = {
 
 export const experience: experienceType[] = [
   {
-    position: "Software Engineer",
+    position: "Technical Associat",
     company: "Rushlane Technologies",
     companyUrl: "https://www.rushlane.in",
     description:
-      "Lead the development and maintenance of Rushlane's food delivery mobile app, restaurant dashboard, and delivery application using React Native. As an early-stage startup team member, I also contributed to management, planning, and cross-functional collaboration.",
-    tags: ["React Native", "Expo", "Next.js", "Management"],
+      "Lead the development and maintenance of Rushlane's food delivery mobile app and restaurant dashboard. As an early-stage startup team member, I also contributed to management, planning, and cross-functional collaboration.",
+    tags: ["Software Engineering", "Management"],
     startDate: "April 2025",
     endDate: "Present",
     location: "Tura, Meghalaya, India",
