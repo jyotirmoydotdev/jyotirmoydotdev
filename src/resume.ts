@@ -1,0 +1,283 @@
+import { FiGithub } from "react-icons/fi";
+import { FaGolang, FaLinkedin, FaXTwitter } from "react-icons/fa6"
+import { IconType } from "react-icons/lib"
+import { SiLeetcode, SiSolidity } from "react-icons/si";
+import { FaDocker, FaInstagram, FaReact } from "react-icons/fa";
+import { RiNextjsFill } from "react-icons/ri";
+import { BiLogoPostgresql } from "react-icons/bi";
+import { BiLogoTypescript } from "react-icons/bi";
+
+interface ResumeType {
+  title: string,
+  role: string,
+  subTitle: string,
+  summary: string,
+  techStack: {
+    icon: IconType,
+    label: string,
+  }[],
+  email: string,
+  phone: string,
+  links: {
+    icon: null | IconType,
+    title: string,
+    label: string,
+    link: string
+  }[],
+  experiences: {
+    title: string,
+    subTitle: string,
+    link: string,
+    location: string,
+    duration: {
+      type: "Full-time" | "Part-time" | "Self-Employed" | "Freelance" | "Internship" | "Trainee"
+      start: string,
+      end: string,
+    }[]
+    description: string,
+    bullets: string[],
+    tags: string[],
+  }[],
+  educations: {
+    title: string,
+    subTitle: string,
+    start: string,
+    end: string,
+    description: string,
+    bullets: string[]
+  }[],
+  skills: {
+    title: string,
+    tags: string[]
+  }[],
+  projects: {
+    status: "Concept" | "In Progress" | "Production"
+    title: string,
+    subTitle: string,
+    link: string,
+    source: string | null,
+    bullets: string[],
+    tags: string[],
+  }[]
+}
+
+export const Resume: ResumeType = {
+  title: "Jyotirmoy Barman",
+  role: "Software Engineer",
+  subTitle: "Bringing Ideas to live",
+  summary: "I'm a software developer with **1+ years of experience** working with **Go, Solidity, Next.js, and React Native**. I've built and shipped a **production-ready application** used by a real company, which taught me how to build software that actually matters. I'm highly quality-driven, if something doesn't meet my standards, I refactor it or start over. I learn fast, take full ownership of my work, and always give **100% effort**. Outside of code, I love traveling and exploring nature because for me, travel isn't about checklists, it's about experiences.",
+  techStack: [
+    {
+      icon: FaGolang,
+      label: "Golang",
+    },
+    {
+      icon: BiLogoPostgresql,
+      label: "Postgres"
+    },
+    {
+      icon: FaDocker,
+      label: "Docker"
+    },
+    {
+      icon: BiLogoTypescript,
+      label: "Typescript",
+    },
+    {
+      icon: RiNextjsFill,
+      label: "Next.js"
+    },
+    {
+      icon: FaReact,
+      label: "React Native"
+    },
+    {
+      icon: SiSolidity,
+      label: "Solidity"
+    }
+  ],
+  email: "jyotirmoydotdev@gmail.com",
+  phone: "(+91) 8798162808",
+  links: [
+    {
+      icon: FiGithub,
+      title: "Github",
+      label: "github/jyotirmoydotdev",
+      link: "https://github.com/jyotirmoydotdev"
+    },
+    {
+      icon: FaLinkedin,
+      title: "LinkedIn",
+      label: "linkedin/jyotirmoydotdev",
+      link: "https://linkedin.com/in/jyotirmoydotdev",
+    },
+    {
+      icon: null,
+      title: "Portfolio",
+      label: "jyotirmoy.dev",
+      link: "https://jyotirmoy.dev"
+    },
+    {
+      icon: FaXTwitter,
+      title: "X",
+      label: "x.com/jyotirmoydotdev",
+      link: "https://x.com/jyotirmoydotdev"
+    },
+    {
+      icon: SiLeetcode,
+      title: "Leetcode",
+      label: "leetcode/jyotirmoydotdev",
+      link: "https://leetcode.com/jyotirmoydotdev"
+    },
+    {
+      icon: FaInstagram,
+      title: "Instagram",
+      label: "instagram/jyotirmoydotdev",
+      link: "https://instagram.com/jyotirmoydotdev"
+    }
+  ],
+  experiences: [
+    {
+      title: "Technical Associate",
+      subTitle: "Rushlane Technologies",
+      link: "https://rushlane.net",
+      location: "Tura, Meghalaya, India",
+      duration: [
+        {
+          type: "Full-time",
+          start: "Jun 2025",
+          end: "Present",
+        },
+        {
+          type: "Internship",
+          start: "Apr 2025",
+          end: "May 2025 (2 mos)"
+        }
+      ],
+      description: "A fast growing food delivery company based in Tura.",
+      bullets: [
+        "Led the development and ongoing maintenance of Rushlane’s food delivery mobile app and restaurant dashboard.",
+        "As an early-stage startup team member, contributed to management, planning, and cross-functional collaboration across product, design, and operations."
+      ],
+      tags: ["Mobile Development", "Management", "Field Operations"]
+    },
+    {
+      title: "Ethereum Engineer",
+      subTitle: "Loreum DAO",
+      link: "https://www.loreum.org/",
+      location: "Remote",
+      duration: [
+        {
+          type: "Freelance",
+          start: "Jan 2024",
+          end: "Apr 2024 (4 mos)",
+        }
+      ],
+      description: "A decentralised autonomous organisation focused on Ethereum development.",
+      bullets: [
+        "Contributed to the development of the chamber module by designing and implementing key features for voting and proposal processing using Solidity and related blockchain technologies.",
+        "Assisted in building an intuitive user interface for the decentralised application, ensuring a seamless user experience through modern web frameworks.",
+        "Collaborated with cross-functional teams in an Agile environment to ensure timely delivery and continuous improvement of the platform."
+      ],
+      tags: ["Solidity", "Ethereum", "React.js"]
+    },
+    {
+      title: "Technical Writer",
+      subTitle: "DAO Times",
+      link: "https://daotimes.com/",
+      location: "Remote",
+      duration: [
+        {
+          type: "Freelance",
+          start: "Mar 2023",
+          end: "June 2023 (4 mos)",
+        }
+      ],
+      description: "A publication covering news and insights in the decentralised autonomous organisation space.",
+      bullets: [
+        "Researched and analysed topics in decentralised finance (DeFi), non-fungible tokens (NFTs), and blockchain technology to produce well-structured technical articles.",
+        "Collaborated with editors and subject matter experts to refine content, ensuring clarity and adherence to publication standards.",
+        "Utilised SEO best practices to improve the discoverability of content and drive audience engagement."
+      ],
+      tags: ["Search Engine Optimization (SEO)", "Technical Publication"]
+    }
+  ],
+  educations: [
+    {
+      title: "Bachelor of Computer Application",
+      subTitle: "Chandigarh University",
+      start: "Jun 2021",
+      end: "Jun 2024",
+      description: "Graduated with a 7.23 CGPA.",
+      bullets: [
+        "Developed a strong foundation in data structures, algorithms, and software development principles.",
+        "Actively participated in hackathons and collaborative projects, demonstrating practical problem-solving skills.",
+      ],
+    },
+    {
+      title: "Higher Secondary Science",
+      subTitle: "Kendriya Vidyalaya",
+      start: "Apr 2020",
+      end: "Feb 2021",
+      description: "",
+      bullets: [
+        "Achieved 75% in the Science stream with a focus on computer science and practical applications."
+      ]
+    }
+  ],
+  skills: [
+    {
+      title: "Programming Language",
+      tags: ["Solidity", "JavaScript", "Typescript", "Golang", "C++", "Python", "HTML", "CSS", "SQL"]
+    },
+    {
+      title: "Libraries & Frameworks",
+      tags: ["React", "Next.js", "React Native", "Gin", "TailwindCss"]
+    },
+    {
+      title: "Tools & Platforms",
+      tags: ["Postgres", "Git", "GitHub", "Vercel", "Docker", "Figma", "AWS", "Postman", "Supabase"]
+    },
+    {
+      title: "Methodologies",
+      tags: ["Agile Development", "RESTful API Design", "Test-Driven Development(TDD)"]
+    }
+  ],
+  projects: [
+    {
+      status: "Production",
+      title: "Rushlane: Food-in & Grocery",
+      subTitle: "A Food Delivery application built with React Native and wordpress backend.",
+      link: "https://jyotirmoy.dev/projects/rushlane",
+      source: null,
+      bullets: [
+        "A food and grocery delivery app for local restaurants using React Native with Expo, enabling seamless cross-platform support.",
+        "Serving 1,000+ daily active users, with active plans to expand into additional cities."
+      ],
+      tags: ["Mobile App", "Cross Platforms"]
+    },
+    {
+      status: "In Progress",
+      title: "Openfy Backend",
+      subTitle: "Openfy is a self-hosted e-commerce platform built with Go and Gin.",
+      link: "https://github.com/jyotirmoydotdev/openfy",
+      source: "https://github.com/jyotirmoydotdev/openfy",
+      bullets: [
+        "Developed using Go and the Gin framework to provide a customisable solution for product management and user authentication.",
+        "Integrated RESTful APIs and database solutions to ensure scalability and security."
+      ],
+      tags: ["Golang", "Gin"]
+    },
+    {
+      status: "Concept",
+      title: "Vendogen",
+      subTitle: "A full business software that is built for the next generation entrepreneurs.",
+      link: "https://vendogen.com",
+      source: null,
+      bullets: [
+        "A multi-tenant, domain-driven, modular monolith platform with capability-based enablement that empowers businesses of all types to launch, connect, and collaborate within a shared ecosystem—leveraging AI-enabled features to drive scalable, exponential growth."
+      ],
+      tags: ["Golang", "Next.js"]
+    }
+  ]
+}

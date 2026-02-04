@@ -24,6 +24,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Resume } from "@/resume";
+import Markdown from 'react-markdown'
 
 const baloo = localFont({
   src: "../fonts/Baloo2-VariableFont_wght.ttf",
@@ -42,29 +44,29 @@ export default function Home() {
             <div
               className={`text-4xl sm:text-6xl text-orange-400 font-extrabold ${baloo.className}`}
             >
-              Jyotirmoy Barman
+              {Resume.title}
             </div>
             <div className="flex gap-2 flex-wrap items-center">
               <span className="text-lg sm:text-2xl font-semibold text-gray-700 dark:text-gray-300">
-                Software Engineer
+                {Resume.role}
               </span>
               {"/"}
               <span className="text-sm sm:text-lg text-gray-500">
-                Bringing ideas to reality
+                {Resume.subTitle}
               </span>
             </div>
           </header>
           <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
-            I&apos;m a software developer with <span className=" font-bold "> 1+ years of experience </span>working with <span className=" font-bold">Go, Solidity, Next.js, and React Native</span>. I&apos;ve built and shipped a <span className=" font-bold">production-ready application</span> used by a real company, which taught me how to build software that actually matters. I&apos;m highly quality-driven, if something doesn&apos;t meet my standards, I refactor it or start over. I learn fast, take full ownership of my work, and always give <span className=" font-bold text-green-500">100% effort</span>. Outside of code, I love traveling and exploring nature because for me, travel isn&apos;t about checklists, it&apos;s about experiences.
+            <Markdown>
+              {Resume.summary}
+            </Markdown>
           </div>
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start sm:gap-6 items-center">
-            <BiLogoTypescript className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
-            <BiLogoGoLang className=" hover:rotate-45 transition-all size-[4rem] sm:size-[4.5rem] fill-gray-400 dark:fill-gray-500" />
-            <RiNextjsFill className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
-            <BiLogoDocker className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
-            <BiLogoPostgresql className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
-            <BiLogoReact className=" hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
-            <SiSolidity className=" hover:rotate-45 transition-all size-[1.8rem] sm:size-[2.2rem] fill-gray-400 dark:fill-gray-500" />
+            {
+              Resume.techStack.map((item, index) => (
+                <item.icon key={index} className="hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
+              ))
+            }
           </div>
         </div>
         <div className=" items-center h-full flex justify-center py-4 sm:justify-end">
@@ -88,28 +90,42 @@ export default function Home() {
       </div>
 
       <div className="pt-8" id="experiences">
-        <Link href={"/experience"} className="text-lg font-bold py-2 text-orange-400">
+        <div className="text-lg font-bold py-2 text-orange-400">
           Experiences
-        </Link>
+        </div>
         <Separator />
         <div className="flex flex-col gap-6 pt-6">
-          {experience.map((exp, i) => (
-            <Link key={i} href={exp.companyUrl} className="group/exp" target="_blank" rel="noopener noreferrer">
+          {Resume.experiences.map((exp, i) => (
+            <Link key={i} href={exp.link} className="group/exp" target="_blank" rel="noopener noreferrer">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 group-hover/exp:bg-accent/40 p-2 transition-all">
-                <div className="text-gray-500 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">
-                  {exp.startDate} - {exp.endDate}
+                <div className="">
+                  {exp.duration.map((item, index) => (
+                    <div className="pb-2" key={index}>
+                      <div className="text-gray-500 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">
+                        {item.start} - {item.end}
+                      </div>
+                      <div className="text-gray-500 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">{item.type}</div>
+                    </div>
+                  ))
+                  }
                 </div>
+
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row gap-2 items-center">
                     <div className="flex gap-2 items-center py-2 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">
-                      {exp.position}, {exp.company}
+                      <span className="underline underline-offset-2">{exp.title}</span>,<span className="font-bold">{exp.subTitle}</span>
                       <ArrowUpRight className="size-5" />
                     </div>
-                    <div className="px-2 py-1 text-xs rounded-lg bg-muted/50 text-gray-700 dark:text-gray-300  w-fit">
+                    <div className="px-2 pt-1 text-xs rounded-lg bg-muted/50 text-gray-700 dark:text-gray-300 w-fit">
                       {exp.location}
                     </div>
                   </div>
                   <div className="text-gray-500 group-hover/exp:text-gray-700 dark:group-hover/exp:text-gray-400">{exp.description}</div>
+                  <div className="flex flex-col gap-2">
+                    {exp.bullets.map((bullet, index) => (
+                      <Markdown className={"dark:group-hover/exp:text-gray-200 dark:text-gray-300 text-gray-600 group-hover/exp:text-gray-800"} key={index}>{bullet}</Markdown>
+                    ))}
+                  </div>
                   <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
                     {exp.tags.map((tag, index) => (
                       <div
