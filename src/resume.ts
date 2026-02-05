@@ -1,13 +1,17 @@
 import { FiGithub } from "react-icons/fi";
-import { FaGolang, FaLinkedin, FaXTwitter } from "react-icons/fa6"
+import { FaGolang, FaXTwitter } from "react-icons/fa6"
+import { FiLinkedin } from "react-icons/fi";
 import { IconType } from "react-icons/lib"
 import { SiLeetcode, SiSolidity } from "react-icons/si";
 import { FaDocker, FaInstagram, FaReact } from "react-icons/fa";
 import { RiNextjsFill } from "react-icons/ri";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { BiLogoTypescript } from "react-icons/bi";
+import { GoPerson } from "react-icons/go";
+import { BiLogoGmail } from "react-icons/bi";
+import { LuPhone } from "react-icons/lu";
 
-interface ResumeType {
+export interface ResumeType {
   title: string,
   role: string,
   subTitle: string,
@@ -19,7 +23,7 @@ interface ResumeType {
   email: string,
   phone: string,
   links: {
-    icon: null | IconType,
+    icon: IconType,
     title: string,
     label: string,
     link: string
@@ -41,20 +45,23 @@ interface ResumeType {
   educations: {
     title: string,
     subTitle: string,
+    link: string,
     start: string,
     end: string,
     description: string,
-    bullets: string[]
+    bullets: string[],
+    tags: string[],
   }[],
   skills: {
     title: string,
     tags: string[]
   }[],
   projects: {
-    status: "Concept" | "In Progress" | "Production"
+    status: "Concept" | "In Progress" | "Production" | "Archive"
     title: string,
     subTitle: string,
-    link: string,
+    path: string | null,
+    link: string | null,
     source: string | null,
     bullets: string[],
     tags: string[],
@@ -100,28 +107,34 @@ export const Resume: ResumeType = {
   phone: "(+91) 8798162808",
   links: [
     {
+      icon: BiLogoGmail,
+      title: "Mail",
+      label: "jyotirmoydotdev@gmail.com",
+      link: "mailto:jyotirmoydotdev@gmail.com"
+    },
+    {
+      icon: LuPhone,
+      title: "Phone",
+      label: "(+91) 8798162808",
+      link: "tel:+918798162808"
+    },
+    {
       icon: FiGithub,
       title: "Github",
       label: "github/jyotirmoydotdev",
       link: "https://github.com/jyotirmoydotdev"
     },
     {
-      icon: FaLinkedin,
+      icon: FiLinkedin,
       title: "LinkedIn",
       label: "linkedin/jyotirmoydotdev",
       link: "https://linkedin.com/in/jyotirmoydotdev",
     },
     {
-      icon: null,
+      icon: GoPerson,
       title: "Portfolio",
       label: "jyotirmoy.dev",
       link: "https://jyotirmoy.dev"
-    },
-    {
-      icon: FaXTwitter,
-      title: "X",
-      label: "x.com/jyotirmoydotdev",
-      link: "https://x.com/jyotirmoydotdev"
     },
     {
       icon: SiLeetcode,
@@ -134,6 +147,12 @@ export const Resume: ResumeType = {
       title: "Instagram",
       label: "instagram/jyotirmoydotdev",
       link: "https://instagram.com/jyotirmoydotdev"
+    },
+    {
+      icon: FaXTwitter,
+      title: "X (Twitter)",
+      label: "x.com/jyotirmoydotdev",
+      link: "https://x.com/jyotirmoydotdev"
     }
   ],
   experiences: [
@@ -206,6 +225,7 @@ export const Resume: ResumeType = {
     {
       title: "Bachelor of Computer Application",
       subTitle: "Chandigarh University",
+      link: "https://www.cuchd.in/",
       start: "Jun 2021",
       end: "Jun 2024",
       description: "Graduated with a 7.23 CGPA.",
@@ -213,16 +233,19 @@ export const Resume: ResumeType = {
         "Developed a strong foundation in data structures, algorithms, and software development principles.",
         "Actively participated in hackathons and collaborative projects, demonstrating practical problem-solving skills.",
       ],
+      tags: ["Data Structures", "Algorithms", "Programming"]
     },
     {
       title: "Higher Secondary Science",
       subTitle: "Kendriya Vidyalaya",
+      link: "http://kvsangathan.nic.in/",
       start: "Apr 2020",
       end: "Feb 2021",
       description: "",
       bullets: [
         "Achieved 75% in the Science stream with a focus on computer science and practical applications."
-      ]
+      ],
+      tags: ["Computer Science", "Academic Excellence", "Extracurricular Activities"]
     }
   ],
   skills: [
@@ -247,8 +270,9 @@ export const Resume: ResumeType = {
     {
       status: "Production",
       title: "Rushlane: Food-in & Grocery",
-      subTitle: "A Food Delivery application built with React Native and wordpress backend.",
-      link: "https://jyotirmoy.dev/projects/rushlane",
+      subTitle: "A Food Delivery application.",
+      path: "/projects/rushlane",
+      link: null,
       source: null,
       bullets: [
         "A food and grocery delivery app for local restaurants using React Native with Expo, enabling seamless cross-platform support.",
@@ -260,7 +284,8 @@ export const Resume: ResumeType = {
       status: "In Progress",
       title: "Openfy Backend",
       subTitle: "Openfy is a self-hosted e-commerce platform built with Go and Gin.",
-      link: "https://github.com/jyotirmoydotdev/openfy",
+      path: null,
+      link: null,
       source: "https://github.com/jyotirmoydotdev/openfy",
       bullets: [
         "Developed using Go and the Gin framework to provide a customisable solution for product management and user authentication.",
@@ -272,12 +297,25 @@ export const Resume: ResumeType = {
       status: "Concept",
       title: "Vendogen",
       subTitle: "A full business software that is built for the next generation entrepreneurs.",
+      path: "/projects/vendogen",
       link: "https://vendogen.com",
       source: null,
       bullets: [
         "A multi-tenant, domain-driven, modular monolith platform with capability-based enablement that empowers businesses of all types to launch, connect, and collaborate within a shared ecosystem—leveraging AI-enabled features to drive scalable, exponential growth."
       ],
       tags: ["Golang", "Next.js"]
+    },
+    {
+      status: "Archive",
+      title: "Snippetbox",
+      subTitle: "Snippetbox is a web application developed in Go that allows users to create, view, and share text snippets.",
+      path: null,
+      link: null,
+      source: "https://github.com/jyotirmoydotdev/snippetbox",
+      bullets: [
+        "Sentence 1"
+      ],
+      tags: ["Golang, Go Tmpl"]
     }
   ]
 }

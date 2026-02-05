@@ -2,21 +2,9 @@
 
 import { Separator } from "@/components/ui/separator";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { projects, sidebar_data as data, experience } from "@/data";
-import { ExternalLink, Folder, Github } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import localFont from "next/font/local";
-import {
-  BiLogoGoLang,
-  BiLogoDocker,
-  BiLogoTypescript,
-  BiLogoPostgresql,
-  BiLogoReact,
-} from "react-icons/bi";
-import { RiNextjsFill } from "react-icons/ri";
-import { SiSolidity } from "react-icons/si";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Tooltip,
@@ -26,6 +14,10 @@ import {
 } from "@/components/ui/tooltip";
 import { Resume } from "@/resume";
 import Markdown from 'react-markdown'
+import ProjectCard from "@/components/project-card";
+import EducationCard from "@/components/education-card";
+import { blogs } from "@/data";
+import { BlogCard } from "@/components/blog-card";
 
 const baloo = localFont({
   src: "../fonts/Baloo2-VariableFont_wght.ttf",
@@ -34,7 +26,6 @@ const baloo = localFont({
 });
 
 export default function Home() {
-  const router = useRouter();
   const isMobile = useIsMobile();
   return (
     <div className="p-4 relative max-w-8xl mx-auto dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] border-x">
@@ -71,7 +62,7 @@ export default function Home() {
         </div>
         <div className=" items-center h-full flex justify-center py-4 sm:justify-end">
           <div className="flex flex-row sm:flex-col gap-2">
-            {data.links.map((link, i) => (
+            {Resume.links.map((link, i) => (
               <Button
                 key={i}
                 variant={"outline"}
@@ -79,10 +70,10 @@ export default function Home() {
                 className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative"
                 asChild
               >
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <Link href={link.link} target="_blank" rel="noopener noreferrer">
                   <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
                   <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
-                </a>
+                </Link>
               </Button>
             ))}
           </div>
@@ -161,60 +152,8 @@ export default function Home() {
         </div>
         {/* <Separator /> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-          {projects.slice(0, 3).map((project, i) => (
-            <div
-              key={i}
-              onClick={() => {
-                router.push(project.url);
-              }}
-              className="flex flex-col gap-4 p-4 group/project w-full bg-accent/40 border hover:border-orange-50/20 hover:bg-accent/50 hover:scale-105 transition-all rounded-xl"
-            >
-              <div className="flex justify-between">
-                <div className="">
-                  <Folder className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors" />
-                </div>
-                <div className="flex gap-4">
-                  {project.source && (
-                    <Link
-                      href={project.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors" />
-                    </Link>
-                  )}
-                  {project.externalUrl ? (
-                    <Link
-                      href={project.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors" />
-                    </Link>
-                  ) : (
-                    <Link href={project.url}>
-                      <ExternalLink className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors" />
-                    </Link>
-                  )}
-                </div>
-              </div>
-              <div className=" font-black text-base sm:text-lg font-sans dark:group-hover/project:text-orange-400 group-hover/project:text-orange-500 transition-colors">
-                {project.title}
-              </div>
-              <div className="text-xs sm:text-sm dark:text-white/80 text-black/80 group-hover/project:text-orange-900 dark:group-hover/project:text-orange-100 transition-colors">
-                {project.description}
-              </div>
-              <div className="flex gap-2 flex-wrap text-xs text-black/60 dark:text-white/60">
-                {project.tags.map((tag, i) => (
-                  <div
-                    key={i}
-                    className=" py-1 px-2 rounded-md bg-muted/90 dark:bg-muted/50 "
-                  >
-                    {tag}
-                  </div>
-                ))}
-              </div>
-            </div>
+          {Resume.projects.slice(0, 3).map((project, i) => (
+            <ProjectCard project={project} key={i} />
           ))}
         </div>
       </div>
@@ -225,75 +164,15 @@ export default function Home() {
           Educations
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-          <div className="flex flex-col gap-2">
-            <Link
-              href={"https://www.cuchd.in"}
-              className="flex gap-2 items-center py-2 hover:text-orange-500 transition-colors"
-            >
-              Chandigarh University
-              <ArrowUpRight className="size-5" />
-            </Link>
-            <div className=" flex flex-col sm:flex-row gap-2 items-start sm:items-center">
-              <span className="text-gray-700 dark:text-gray-300">
-                Bachelor Of Computer Application
-              </span>
-              <div className=" hidden sm:block size-1 bg-gray-500 rounded-full"></div>
-              <span className="text-gray-500">Jul 2021 - Jun 2024</span>
-            </div>
-            <div className="text-gray-500">
-              Completed a Bachelor of Computer Applications at Chandigarh
-              University with a <span className="text-white">7.23 CGPA</span>.
-              Gained knowledge in data structures, algorithms, and software
-              development. Participated in hackathons and developed projects
-              showcasing problem-solving and coding skills.
-            </div>
-            <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
-              <div className="px-2 py-1 rounded-lg bg-muted/50">
-                Data Structures
-              </div>
-              <div className="px-2 py-1 rounded-lg bg-muted/50">Algorithms</div>
-              <div className="px-2 py-1 rounded-lg bg-muted/50">
-                Programming
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Link
-              href={"http://kvsangathan.nic.in"}
-              className="flex gap-2 items-center py-2 hover:text-orange-500 transition-colors"
-            >
-              Kendriya Vidyalaya
-              <ArrowUpRight className="size-5" />
-            </Link>
-            <div className=" flex flex-col sm:flex-row gap-2 items-start sm:items-center">
-              <span className="text-gray-700 dark:text-gray-300">
-                Higher Secondary, Science
-              </span>
-              <div className=" size-1 bg-gray-500 rounded-full hidden sm:block"></div>
-              <span className="text-gray-500">Apr 2020 - Feb 2021</span>
-            </div>
-            <div className="text-gray-500">
-              Completed Higher Secondary Education in Science Stream with{" "}
-              <span className="text-white">75 Percent</span>. Excelled in
-              computer science and participated in extracurricular activities,
-              demonstrating a balance of academic and co-curricular engagement.
-            </div>
-            <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
-              <div className="px-2 py-1 rounded-lg bg-muted/50">
-                Computer Science
-              </div>
-              <div className="px-2 py-1 rounded-lg bg-muted/50">
-                Academic Excellence
-              </div>
-              <div className="px-2 py-1 rounded-lg bg-muted/50">
-                Extracurricular Activities
-              </div>
-            </div>
-          </div>
+          {
+            Resume.educations.map((education, i) => (
+              <EducationCard education={education} key={i} />
+            ))
+          }
         </div>
       </div>
 
-      {/* <div className="pt-8" id="blogs">
+      <div className="pt-8" id="blogs">
         <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
           <div className=" flex gap-1"><span>Latest</span><span>Blogs</span></div>
           <div className="flex w-full justify-end py-4">
@@ -302,22 +181,14 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
           {
-            blogs.slice(0, 4).map((blog, i) => (
-              <Link href={blog.url} key={i} className="flex flex-col gap-2 group/blog">
-                <div className="py-2  group-hover/blog:text-orange-500 transition-colors">
-                  {blog.title}
-                </div>
-                <div className=" text-gray-500 line-clamp-2 text-sm">{blog.description}</div>
-                <div className="text-gray-500 text-sm">
-                  {blog.date}
-                </div>
-              </Link>
+            blogs.slice(0, 3).map((blog, i) => (
+              <BlogCard blog={blog} key={i} />
             ))
           }
         </div>
-      </div> */}
+      </div>
 
       <div className=" sticky bottom-4 flex justify-end w-full">
         {isMobile ? (

@@ -1,11 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { FaGooglePlay } from "react-icons/fa6";
-import { FaApple, FaReact, FaWordpress } from "react-icons/fa";
-import { SiExpo } from "react-icons/si";
-import { IoLogoVercel } from "react-icons/io5";
-import { RiNextjsFill } from "react-icons/ri";
-import { BiLogoPostgresql } from "react-icons/bi";
+import { FaApple } from "react-icons/fa";
 import Link from 'next/link';
 
 function Page() {
@@ -53,7 +49,7 @@ function Page() {
         ))}
       </div>
       <div className="">
-                <h2 className="text-xl font-bold mt-8 mb-4">About the app</h2>
+        <h2 className="text-xl font-bold mt-8 mb-4">About the app</h2>
         <p className="text-gray-700 dark:text-gray-400 mb-4">
           Rushlane is a food delivery application developed for Rushlane Technologies. The app allows users to order food and groceries from local restaurants and have them delivered directly to their doorstep. Currently, the app serves over 1,000+ daily active users and is set to expand to more cities in the near future.
         </p>
