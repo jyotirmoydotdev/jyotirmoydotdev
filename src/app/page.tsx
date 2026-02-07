@@ -18,6 +18,7 @@ import ProjectCard from "@/components/project-card";
 import EducationCard from "@/components/education-card";
 import { blogs } from "@/data";
 import { BlogCard } from "@/components/blog-card";
+import Image from "next/image";
 
 const baloo = localFont({
   src: "../fonts/Baloo2-VariableFont_wght.ttf",
@@ -60,22 +61,25 @@ export default function Home() {
             }
           </div>
         </div>
-        <div className=" items-center h-full flex justify-center py-4 sm:justify-end">
-          <div className="flex flex-row sm:flex-col gap-2">
-            {Resume.links.map((link, i) => (
-              <Button
-                key={i}
-                variant={"outline"}
-                size={"icon"}
-                className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative"
-                asChild
-              >
-                <Link href={link.link} target="_blank" rel="noopener noreferrer">
-                  <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
-                  <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
-                </Link>
-              </Button>
-            ))}
+        <div className=" items-center h-full flex justify-center py-4">
+          <div className="flex sm:flex-row flex-col-reverse gap-4 items-center justify-end">
+            <Image alt="profile photo" src={"/pic.jpg"} unoptimized width={240} height={240} className="rounded-3xl"/>
+            <div className="flex flex-row sm:flex-col gap-2">
+              {Resume.links.map((link, i) => (
+                <Button
+                  key={i}
+                  variant={"outline"}
+                  size={"icon"}
+                  className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative"
+                  asChild
+                >
+                  <Link href={link.link} target="_blank" rel="noopener noreferrer">
+                    <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
+                    <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
+                  </Link>
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

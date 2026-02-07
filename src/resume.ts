@@ -2,14 +2,14 @@ import { FiGithub } from "react-icons/fi";
 import { FaGolang, FaXTwitter } from "react-icons/fa6"
 import { FiLinkedin } from "react-icons/fi";
 import { IconType } from "react-icons/lib"
-import { SiLeetcode, SiSolidity } from "react-icons/si";
-import { FaDocker, FaInstagram, FaReact } from "react-icons/fa";
+import { FaDocker, FaReact } from "react-icons/fa";
 import { RiNextjsFill } from "react-icons/ri";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { BiLogoTypescript } from "react-icons/bi";
 import { GoPerson } from "react-icons/go";
 import { BiLogoGmail } from "react-icons/bi";
 import { LuPhone } from "react-icons/lu";
+import { SiSolidity } from "react-icons/si";
 
 export interface ResumeType {
   title: string,
