@@ -20,8 +20,12 @@ export interface ResumeType {
     icon: IconType,
     label: string,
   }[],
-  email: string,
-  phone: string,
+  resumeLinks: {
+    icon: IconType,
+    title: string,
+    label: string,
+    link: string
+  }[],
   links: {
     icon: IconType,
     title: string,
@@ -103,9 +107,7 @@ export const Resume: ResumeType = {
       label: "Solidity"
     }
   ],
-  email: "jyotirmoydotdev@gmail.com",
-  phone: "(+91) 8798162808",
-  links: [
+  resumeLinks: [
     {
       icon: BiLogoGmail,
       title: "Mail",
@@ -119,6 +121,20 @@ export const Resume: ResumeType = {
       link: "tel:+918798162808"
     },
     {
+      icon: GoPerson,
+      title: "Portfolio",
+      label: "jyotirmoy.dev",
+      link: "https://jyotirmoy.dev"
+    },
+  ],
+  links: [
+    {
+      icon: BiLogoGmail,
+      title: "Mail",
+      label: "jyotirmoydotdev@gmail.com",
+      link: "mailto:jyotirmoydotdev@gmail.com"
+    },
+    {
       icon: FiGithub,
       title: "Github",
       label: "github/jyotirmoydotdev",
@@ -129,24 +145,6 @@ export const Resume: ResumeType = {
       title: "LinkedIn",
       label: "linkedin/jyotirmoydotdev",
       link: "https://linkedin.com/in/jyotirmoydotdev",
-    },
-    {
-      icon: GoPerson,
-      title: "Portfolio",
-      label: "jyotirmoy.dev",
-      link: "https://jyotirmoy.dev"
-    },
-    {
-      icon: SiLeetcode,
-      title: "Leetcode",
-      label: "leetcode/jyotirmoydotdev",
-      link: "https://leetcode.com/jyotirmoydotdev"
-    },
-    {
-      icon: FaInstagram,
-      title: "Instagram",
-      label: "instagram/jyotirmoydotdev",
-      link: "https://instagram.com/jyotirmoydotdev"
     },
     {
       icon: FaXTwitter,
