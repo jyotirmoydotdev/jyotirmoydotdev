@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   generator: "Next.js",
   applicationName: "jyotirmoy.dev",
   referrer: "origin-when-cross-origin",
-  keywords: ["Backend", "Blogs", "Leetcode", "Web Development", "JavaScript"],
+  keywords: ["Backend", "Blogs", "Web Development", "JavaScript"],
   authors: [
     {
       name: "Jyotirmoy Barman",
@@ -108,7 +108,7 @@ export default function RootLayout({
           <SidebarProvider
             style={
               {
-                "--sidebar-width": "230px",
+                "--sidebar-width": "180px",
               } as React.CSSProperties
             }
             defaultOpen={true}

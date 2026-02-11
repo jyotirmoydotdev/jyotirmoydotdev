@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { ColumnHeader } from "./column-header"
 import { ArrowUpRight, FileCheck, FileVideo, FileX } from "lucide-react"
 import Link from "next/link"
-import { leetcodeType } from "@/data"
+import { practiceType } from "@/data"
 import {
   Tooltip,
   TooltipContent,
@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/tooltip"
 
 
-export const columns: ColumnDef<leetcodeType>[] = [
+export const columns: ColumnDef<practiceType>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (<ColumnHeader className="pl-4" column={column} title="No." />),
@@ -122,7 +122,7 @@ export const columns: ColumnDef<leetcodeType>[] = [
   {
     accessorKey: "titleSlug",
     header: ({ column }) => (
-      <ColumnHeader column={column} title="Leetcode" />
+      <ColumnHeader column={column} title="Link" />
     ),
     cell: ({ row }) => {
       const slug = row.getValue('titleSlug')

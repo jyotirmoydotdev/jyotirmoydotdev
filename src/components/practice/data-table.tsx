@@ -111,7 +111,7 @@ export function DataTable<TData, TValue>({ columns, data, random }: DataTablePro
                                         key={row.id}
                                         data-state={row.getIsSelected() && "selected"}
                                         onClick={()=>{
-                                            router.push(`/leetcode/${row.getValue('titleSlug')}`)
+                                            router.push(`/practice/${row.getValue('titleSlug')}`)
                                         }}
                                         className=" cursor-pointer"
                                     >

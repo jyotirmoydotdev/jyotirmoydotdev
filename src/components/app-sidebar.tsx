@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Link href={item.url} className=" flex justify-between group/link">
                     <div className=" flex gap-2 items-center">
                       <item.icon className=" size-4" />
-                      <span className="font-semibold">{item.title}</span>
+                      <span className="font-semibold text-nowrap">{item.title}</span>
                     </div>
                     <div className=" scale-0 transition-all group-hover/link:scale-100">
                       <ChevronRight className=" size-4" />

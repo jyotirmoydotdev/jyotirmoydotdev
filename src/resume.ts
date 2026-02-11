@@ -239,7 +239,7 @@ export const Resume: ResumeType = {
       link: "http://kvsangathan.nic.in/",
       start: "Apr 2020",
       end: "Feb 2021",
-      description: "",
+      description: "Graduated with a 75%.",
       bullets: [
         "Achieved 75% in the Science stream with a focus on computer science and practical applications."
       ],

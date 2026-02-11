@@ -16,8 +16,6 @@ import { Resume } from "@/resume";
 import Markdown from 'react-markdown'
 import ProjectCard from "@/components/project-card";
 import EducationCard from "@/components/education-card";
-import { blogs } from "@/data";
-import { BlogCard } from "@/components/blog-card";
 import Image from "next/image";
 
 const baloo = localFont({
@@ -63,7 +61,7 @@ export default function Home() {
         </div>
         <div className=" items-center h-full flex justify-center py-4">
           <div className="flex sm:flex-row flex-col-reverse gap-4 items-center justify-end">
-            <Image alt="profile photo" src={"/pic.jpg"} unoptimized width={240} height={240} className="rounded-3xl"/>
+            <Image alt="profile photo" src={"/pic.jpg"} unoptimized width={240} height={240} className="rounded-3xl" />
             <div className="flex flex-row sm:flex-col gap-2">
               {Resume.links.map((link, i) => (
                 <Button
@@ -171,24 +169,6 @@ export default function Home() {
           {
             Resume.educations.map((education, i) => (
               <EducationCard education={education} key={i} />
-            ))
-          }
-        </div>
-      </div>
-
-      <div className="pt-8" id="blogs">
-        <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
-          <div className=" flex gap-1"><span>Latest</span><span>Blogs</span></div>
-          <div className="flex w-full justify-end py-4">
-            <Button variant={'link'} size={'default'} asChild>
-              <Link href={'/blogs'}>View all <ArrowRight className=" size-5" /> </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
-          {
-            blogs.slice(0, 3).map((blog, i) => (
-              <BlogCard blog={blog} key={i} />
             ))
           }
         </div>

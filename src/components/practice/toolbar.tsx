@@ -55,7 +55,7 @@ export function Toolbar<TData>({ table, random }: DataTableToolbarProps<TData>) 
                 isMobile ? (
                     <Button
                         onClick={() => {
-                            router.push(`/leetcode/${random}`)
+                            router.push(`/practice/${random}`)
                         }}
                         disabled={random == "" ? true : false}
                         size={'icon'} variant={'secondary'} className="flex gap-3 text-green-600 dark:text-green-400 items-center font-bold">
@@ -64,7 +64,7 @@ export function Toolbar<TData>({ table, random }: DataTableToolbarProps<TData>) 
                 ) : (
                     <Button
                         onClick={() => {
-                            router.push(`/leetcode/${random}`)
+                            router.push(`/practice/${random}`)
                         }}
                         disabled={random == "" ? true : false}
                         size={'sm'} variant={'secondary'} className="flex gap-3 text-green-600 dark:text-green-400 items-center font-bold">

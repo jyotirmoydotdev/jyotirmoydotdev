@@ -1,163 +1,897 @@
-import { ArrowDown, ArrowRight, ArrowUp, File, Folder, Github, Instagram, Linkedin, User2Icon } from "lucide-react"
-import { BiLogoGmail } from "react-icons/bi"
+import { ArrowDown, ArrowRight, ArrowUp, Files, Folders } from "lucide-react"
 import { IconType } from "react-icons/lib"
-import { SiLeetcode } from "react-icons/si"
-// import { SiAdventofcode } from "react-icons/si"
+import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
+import { RiGeminiFill } from "react-icons/ri";
+import { LuBookText, LuFileCode2 } from "react-icons/lu"
+import { TbSmartHome } from "react-icons/tb";
 
 export const sidebar_data = {
   logo: "/logo.png",
   navMain: [
+    // {
+    //   title: "About",
+    //   url: "/",
+    //   icon: User2Icon,
+    //   isActive: true,
+    // },
     {
-      title: "About",
+      title: "Home",
       url: "/",
-      icon: User2Icon,
-      isActive: true,
+      icon: TbSmartHome,
+      isActive: false,
     },
     {
       title: "Blogs",
       url: "/blogs",
-      icon: File,
+      icon: Files,
       isActive: false,
     },
-    // {
-    //   title: "Leetcode",
-    //   url: "/leetcode",
-    //   icon: SiLeetcode,
-    //   isActive: false,
-    // },
     {
       title: "Projects",
       url: "/projects",
-      icon: Folder,
+      icon: Folders,
       isActive: false,
     },
-    // {
-    //   title: "Advent Of Code",
-    //   url: "/leetcode",
-    //   icon: SiAdventofcode,
-    //   isActive: false,
-    // },
-    // {
-    //   title: "Videos",
-    //   url: "/video",
-    //   icon: Video,
-    //   isActive: false,
-    // },
-  ],
-  links: [
     {
-      url: 'mailto:jyotirmoydotdev@gmail.com',
-      name: 'Gmail | Jyotirmoy Barman | jyotirmoydotdev@gmail.com',
-      social: 'Gmail',
-      icon: BiLogoGmail
+      title: "Practice",
+      url: "/practice",
+      icon: LuFileCode2,
+      isActive: false,
     },
     {
-      url: 'https://x.com/jyotirmoydotdev',
-      name: 'x | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Twitter',
-      icon: RiTwitterXLine
-    },
-    {
-      url: 'https://github.com/jyotirmoydotdev',
-      name: 'Github | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Github',
-      icon: Github
-    },
-    {
-      url: 'https://linkedin.com/in/jyotirmoydotdev',
-      name: 'Linkedin | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Linkedin',
-      icon: Linkedin
-    },
-    {
-      url: 'https://leetcode.com/jyotirmoydotdev',
-      name: 'Leetcode | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Leetcode',
-      icon: SiLeetcode
-    },
-    {
-      url: 'https://www.instagram.com/Jyotirmoydotdev',
-      name: 'Instagram | Jyotirmoy Barman | @jyotirmoydotdev',
-      social: 'Instagram',
-      icon: Instagram
+      title: "Courses",
+      url: "/courses",
+      icon: LuBookText,
+      isActive: false,
     }
   ]
 }
 
-export const about = [
-  {
-    title: "About",
-    url: "/"
-  },
-  {
-    title: "Experiences",
-    url: "/#experiences"
-  },
-  {
-    title: "Projects",
-    url: "/#projects"
-  },
-  {
-    title: "Educations",
-    url: "/#educations"
-  },
-  {
-    title: "Blogs",
-    url: "/#blogs"
-  }
+export const alltags = [
+  { label: "Array", value: "Array" },
+  { label: "String", value: "String" },
+  { label: "Hash Table", value: "Hash Table" },
+  { label: "Dynamic Programming", value: "Dynamic Programming" },
+  { label: "Math", value: "Math" },
+  { label: "Sorting", value: "Sorting" },
+  { label: "Greedy", value: "Greedy" },
+  { label: "Depth-First Search", value: "Depth-First Search" },
+  { label: "Database", value: "Database" },
+  { label: "Binary Search", value: "Binary Search" },
+  { label: "Matrix", value: "Matrix" },
+  { label: "Tree", value: "Tree" },
+  { label: "Breadth-First Search", value: "Breadth-First Search" },
+  { label: "Bit Manipulation", value: "Bit Manipulation" },
+  { label: "Two Pointers", value: "Two Pointers" },
+  { label: "Prefix Sum", value: "Prefix Sum" },
+  { label: "Heap (Priority Queue)", value: "Heap (Priority Queue)" },
+  { label: "Binary Tree", value: "Binary Tree" },
+  { label: "Simulation", value: "Simulation" },
+  { label: "Stack", value: "Stack" },
+  { label: "Graph", value: "Graph" },
+  { label: "Counting", value: "Counting" },
+  { label: "Sliding Window", value: "Sliding Window" },
+  { label: "Design", value: "Design" },
+  { label: "Backtracking", value: "Backtracking" },
+  { label: "Enumeration", value: "Enumeration" },
+  { label: "Union Find", value: "Union Find" },
+  { label: "Linked List", value: "Linked List" },
+  { label: "Ordered Set", value: "Ordered Set" },
+  { label: "Number Theory", value: "Number Theory" },
+  { label: "Monotonic Stack", value: "Monotonic Stack" },
+  { label: "Trie", value: "Trie" },
+  { label: "Segment Tree", value: "Segment Tree" },
+  { label: "Bitmask", value: "Bitmask" },
+  { label: "Queue", value: "Queue" },
+  { label: "Divide and Conquer", value: "Divide and Conquer" },
+  { label: "Recursion", value: "Recursion" },
+  { label: "Combinatorics", value: "Combinatorics" },
+  { label: "Binary Indexed Tree", value: "Binary Indexed Tree" },
+  { label: "Geometry", value: "Geometry" },
+  { label: "Binary Search Tree", value: "Binary Search Tree" },
+  { label: "Hash Function", value: "Hash Function" },
+  { label: "Memoization", value: "Memoization" },
+  { label: "String Matching", value: "String Matching" },
+  { label: "Topological Sort", value: "Topological Sort" },
+  { label: "Shortest Path", value: "Shortest Path" },
+  { label: "Rolling Hash", value: "Rolling Hash" },
+  { label: "Game Theory", value: "Game Theory" },
+  { label: "Interactive", value: "Interactive" },
+  { label: "Data Stream", value: "Data Stream" },
+  { label: "Monotonic Queue", value: "Monotonic Queue" },
+  { label: "Brainteaser", value: "Brainteaser" },
+  { label: "Randomized", value: "Randomized" },
+  { label: "Merge Sort", value: "Merge Sort" },
+  { label: "Doubly-Linked List", value: "Doubly-Linked List" },
+  { label: "Counting Sort", value: "Counting Sort" },
+  { label: "Iterator", value: "Iterator" },
+  { label: "Concurrency", value: "Concurrency" },
+  { label: "Probability and Statistics", value: "Probability and Statistics" },
+  { label: "Quickselect", value: "Quickselect" },
+  { label: "Suffix Array", value: "Suffix Array" },
+  { label: "Bucket Sort", value: "Bucket Sort" },
+  { label: "Minimum Spanning Tree", value: "Minimum Spanning Tree" },
+  { label: "Line Sweep", value: "Line Sweep" },
+  { label: "Shell", value: "Shell" },
+  { label: "Reservoir Sampling", value: "Reservoir Sampling" },
+  { label: "Strongly Connected Component", value: "Strongly Connected Component" },
+  { label: "Eulerian Circuit", value: "Eulerian Circuit" },
+  { label: "Radix Sort", value: "Radix Sort" },
+  { label: "Rejection Sampling", value: "Rejection Sampling" },
+  { label: "Biconnected Component", value: "Biconnected Component" },
 ]
 
-export type projectType = {
-  icon: null | IconType,
-  title: string,
-  description: string,
-  url: string,
-  externalUrl: string | null,
-  source: string | null,
-  tags: string[]
-}
-
-export const projects: projectType[] = [
+export const difficulties = [
   {
-    icon: null,
-    title: "Rushlane: Food-in and Grocery",
-    description: "A Food Delivery application build for Rushlane Technologies",
-    url: "/projects/rushlane",
-    externalUrl: null,
-    source: null,
-    tags: ["Food Delivery App", "Cross Platform App"]
+    label: "Easy",
+    value: "Easy",
+    iconColour: "text-green-500",
+    icon: <ArrowDown className={`mr-2 h-4 w-4  text-green-500`} />
   },
   {
-    icon: null,
-    title: "Vendogen",
-    description: "A full business software that is built for the next generation entrepreneurs.",
-    url: "/projects/vendogen",
-    externalUrl: "https://vendogen.com",
-    source: null,
-    tags: ["Go", "Next.js"]
+    label: "Medium",
+    value: "Medium",
+    iconColour: "text-yellow-500",
+    icon: <ArrowRight className={`mr-2 h-4 w-4  text-yellow-500`} />
   },
   {
-    icon: null,
-    title: "Openfy",
-    description: "Openfy is a self-hosted e-commerce platform built with Go and Gin.",
-    url: "/projects/openfy",
-    externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/openfy",
-    tags: ["Go", "Gin"]
+    label: "Hard",
+    value: "Hard",
+    iconColour: "text-red-500",
+    icon: <ArrowUp className={`mr-2 h-4 w-4 text-red-500`} />
   },
-  {
-    icon: null,
-    title: "Snippetbox",
-    description: "Snippetbox is a web application developed in Go that allows users to create, view, and share text snippets.",
-    url: "/projects/snippetbox",
-    externalUrl: null,
-    source: "https://github.com/jyotirmoydotdev/snippetbox",
-    tags: ["Golang", "Go tmpl"]
-  }
 ]
 
-import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
-import { RiGeminiFill, RiTwitterXLine } from "react-icons/ri";
+export const practices: practiceType[] = [
+  {
+    id: "LC0001",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Two Sum",
+    titleSlug: "two-sum",
+    topicTags: [
+      "Array",
+      "Hash Table"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Brute Force',
+      'Hash Map',
+      'Explanation'
+    ]
+  },
+  {
+    id: "LC1415",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "The k-th Lexicographical String of All Happy Strings of Length n",
+    titleSlug: "the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
+    topicTags: [
+      "String",
+      "Backtracking",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Combinatorics',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC1752",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Check if Array Is Sorted and Rotated",
+    titleSlug: "check-if-array-is-sorted-and-rotated",
+    topicTags: [
+      "Array"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Approach',
+        'Example Walkthrough',
+        'Complexity Analysis'
+      ]
+    ]
+  },
+  {
+    id: "LC1790",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Check if One String Swap Can Make Strings Equal",
+    titleSlug: "check-if-one-string-swap-can-make-strings-equal",
+    topicTags: [
+      "Hash Table",
+      "String",
+      "Counting",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Check Length Equality and Immediate Equality',
+        'Using Hash Maps and a Counter',
+        'Loop Through the Strings',
+        'Verify Character Frequencies'
+      ],
+      'Complexity Analysis'
+    ]
+  },
+  {
+    id: "LC1800",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Maximum Ascending Subarray Sum",
+    titleSlug: "maximum-ascending-subarray-sum",
+    topicTags: [
+      "Array"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Approach',
+        'Example Walkthrough',
+        'Complexity Analysis'
+      ]
+    ]
+  },
+  {
+    id: "LC1910",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Remove All Occurrences of a Substring",
+    titleSlug: "remove-all-occurrences-of-a-substring",
+    topicTags: [
+      "String",
+      "Stack",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Stack',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC3151",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Special Array I",
+    titleSlug: "special-array-i",
+    topicTags: [
+      "Array"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Approach',
+        'Example Walkthrough',
+        'Complexity Analysis'
+      ]
+    ]
+  },
+  {
+    id: "LC3105",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Longest Strictly Increasing or Strictly Decreasing Subarray",
+    titleSlug: "longest-strictly-increasing-or-strictly-decreasing-subarray",
+    topicTags: [
+      "Array"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Approach',
+        'Example Walkthrough',
+        'Complexity Analysis'
+      ]
+    ]
+  },
+  {
+    id: "LC1726",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Tuple with Same Product",
+    titleSlug: "tuple-with-same-product",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Counting"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Counting Products',
+        'Iterating Over Pairs',
+        'Calculating the Result',
+        'Return the Result'
+      ],
+      'Complexity Analysis'
+    ]
+  },
+  {
+    id: "LC3160",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Find the Number of Distinct Colors Among the Balls",
+    titleSlug: "find-the-number-of-distinct-colors-among-the-balls",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Simulation"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        'Initial Setup',
+        'Processing Each Query',
+      ],
+      'Complexity Analysis'
+    ]
+  },
+  {
+    id: "LC2364",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Count Number of Bad Pairs",
+    titleSlug: "count-number-of-bad-pairs",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Math",
+      "Counting"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      'The Key Observation',
+      'Step-by-Step Explanation',
+      'Complexity Analysis'
+    ]
+  },
+  {
+    id: "LC3174",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Clear Digits",
+    titleSlug: "clear-digits",
+    topicTags: [
+      "String",
+      "Stack",
+      "Simulation"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Solution',
+      'Explanation',
+      [
+        '1. Iteration and Stack Building',
+        '2. Edge Case Handling',
+        '3. Example Walkthrough',
+      ],
+      'Complexity Analysis'
+    ]
+  },
+  {
+    id: "LC2342",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Max Sum of a Pair With Equal Sum of Digits",
+    titleSlug: "max-sum-of-a-pair-with-equal-sum-of-digits",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Sorting",
+      "Heap (Priority Queue)",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Store Maximum Value',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC3065",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Minimum Operations to Exceed Threshold Value I",
+    titleSlug: "minimum-operations-to-exceed-threshold-value-i",
+    topicTags: [
+      "Array",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC3438",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Find Valid Pair of Adjacent Digits in String",
+    titleSlug: "find-valid-pair-of-adjacent-digits-in-string",
+    topicTags: [
+      "Hash Table",
+      "String",
+      "Counting",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2460",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Apply Operations to an Array",
+    titleSlug: "apply-operations-to-an-array",
+    topicTags: [
+      "Array",
+      "Two Pointers",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Brute Force Simulation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'One Pass',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC1757",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Recyclable and Low Fat Products",
+    titleSlug: "recyclable-and-low-fat-products",
+    topicTags: [
+      "Database",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Selecting rows based on conditions',
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2570",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Merge Two 2D Arrays by Summing Values",
+    titleSlug: "merge-two-2d-arrays-by-summing-values",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Two Pointers",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach 1: Hash Map',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Approach 2: Two Pointers',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2161",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Partition Array According to Given Pivot",
+    titleSlug: "partition-array-according-to-given-pivot",
+    topicTags: [
+      "Array",
+      "Two Pointers",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach 1: Dynamic Slices',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC1780",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Check if Number is a Sum of Powers of Three",
+    titleSlug: "check-if-number-is-a-sum-of-powers-of-three",
+    topicTags: [
+      "Math"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Ternary Representation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2579",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Count Total Number of Colored Cells",
+    titleSlug: "count-total-number-of-colored-cells",
+    topicTags: [
+      "Math"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Mathematical Formula',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2356",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Number of Unique Subjects Taught by Each Teacher",
+    titleSlug: "number-of-unique-subjects-taught-by-each-teacher",
+    topicTags: [
+      "Database"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Grouping and Counting Unique Subjects',
+      [
+        'Intuition',
+        'Algorithm',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2965",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Find Missing and Repeated Values",
+    titleSlug: "find-missing-and-repeated-values",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Math",
+      "Matrix",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Hash Map Counting',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2206",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Divide Array Into Equal Pairs",
+    titleSlug: "divide-array-into-equal-pairs",
+    topicTags: [
+      "Array",
+      "Hash Table",
+      "Bit Manipulation",
+      "Counting"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Hash Map',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC3417",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Zigzag Grid Traversal With Skip",
+    titleSlug: "zigzag-grid-traversal-with-skip",
+    topicTags: [
+      "Array",
+      "Matrix",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Traversal With Skip',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2427",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Number of Common Factors",
+    titleSlug: "number-of-common-factors",
+    topicTags: [
+      "Math",
+      "Enumeration",
+      "Number Theory",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Brute Force Iteration',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2303",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Calculate Amount Paid in Taxes",
+    titleSlug: "calculate-amount-paid-in-taxes",
+    topicTags: [
+      "Array",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Iterative Simulation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC1688",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Count of Matches in Tournament",
+    titleSlug: "count-of-matches-in-tournament",
+    topicTags: [
+      "Math",
+      "Simulation",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Simulation',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2644",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Find the Maximum Divisibility Score",
+    titleSlug: "find-the-maximum-divisibility-score",
+    topicTags: [
+      "Array",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Brute Force with Optimization',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC2140",
+    difficulty: "Medium",
+    isFavor: false,
+    status: 'Done',
+    title: "Solving Questions With Brainpower",
+    titleSlug: "solving-questions-with-brainpower",
+    topicTags: [
+      "Array",
+      "Dynamic Programming"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Dynamic Programming',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  },
+  {
+    id: "LC0344",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Reverse String",
+    titleSlug: "reverse-string",
+    topicTags: [
+      "Two Pointers",
+      "String",
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Approach: Two-Pointer Technique',
+      [
+        'Intuition',
+        'Algorithm',
+        'Complexity Analysis',
+      ],
+      'Wrap up'
+    ]
+  }
+]
 
 export const blogCategories: { icon: IconType, classname: string, label: string, value: string }[] = [
   { icon: FaTerminal, classname: "fill-green-500", label: "Backend", value: "backend" },
@@ -167,15 +901,6 @@ export const blogCategories: { icon: IconType, classname: string, label: string,
   { icon: FaCode, classname: "fill-blue-500", label: "Frontend", value: "frontend" },
 ]
 
-export type blogsType = {
-  title: string,
-  description: string,
-  titleSlug: string,
-  date: string,
-  category: string,
-  content: (string | string[])[],
-}
-
 export const blogs: blogsType[] = [
   {
     title: "How to Change the Default Permission String for the Location-Access Alert in Expo",
@@ -183,7 +908,7 @@ export const blogs: blogsType[] = [
     titleSlug: "how-to-change-the-default-permission-string-for-the-location-access-alert-in-expo",
     date: "Jul 19, 2025",
     category: 'frontend',
-    content:[
+    content: [
       'The Problem',
       'The Fix: Clean Prebuild + EAS Build',
       'Why This Works',
@@ -491,8 +1216,17 @@ export const blogs: blogsType[] = [
   },
 ]
 
-export type leetcodeType = {
-  id: number,
+export type blogsType = {
+  title: string,
+  description: string,
+  titleSlug: string,
+  date: string,
+  category: string,
+  content: (string | string[])[],
+}
+
+export type practiceType = {
+  id: string,
   difficulty: ("Easy" | "Medium" | "Hard"),
   isFavor: boolean,
   status: ("Done" | "Attempt" | "Unattempt"),
@@ -503,942 +1237,3 @@ export type leetcodeType = {
   hasVideoSolution: boolean,
   content: (string | string[])[]
 }
-
-export const alltags = [
-  { label: "Array", value: "Array" },
-  { label: "String", value: "String" },
-  { label: "Hash Table", value: "Hash Table" },
-  { label: "Dynamic Programming", value: "Dynamic Programming" },
-  { label: "Math", value: "Math" },
-  { label: "Sorting", value: "Sorting" },
-  { label: "Greedy", value: "Greedy" },
-  { label: "Depth-First Search", value: "Depth-First Search" },
-  { label: "Database", value: "Database" },
-  { label: "Binary Search", value: "Binary Search" },
-  { label: "Matrix", value: "Matrix" },
-  { label: "Tree", value: "Tree" },
-  { label: "Breadth-First Search", value: "Breadth-First Search" },
-  { label: "Bit Manipulation", value: "Bit Manipulation" },
-  { label: "Two Pointers", value: "Two Pointers" },
-  { label: "Prefix Sum", value: "Prefix Sum" },
-  { label: "Heap (Priority Queue)", value: "Heap (Priority Queue)" },
-  { label: "Binary Tree", value: "Binary Tree" },
-  { label: "Simulation", value: "Simulation" },
-  { label: "Stack", value: "Stack" },
-  { label: "Graph", value: "Graph" },
-  { label: "Counting", value: "Counting" },
-  { label: "Sliding Window", value: "Sliding Window" },
-  { label: "Design", value: "Design" },
-  { label: "Backtracking", value: "Backtracking" },
-  { label: "Enumeration", value: "Enumeration" },
-  { label: "Union Find", value: "Union Find" },
-  { label: "Linked List", value: "Linked List" },
-  { label: "Ordered Set", value: "Ordered Set" },
-  { label: "Number Theory", value: "Number Theory" },
-  { label: "Monotonic Stack", value: "Monotonic Stack" },
-  { label: "Trie", value: "Trie" },
-  { label: "Segment Tree", value: "Segment Tree" },
-  { label: "Bitmask", value: "Bitmask" },
-  { label: "Queue", value: "Queue" },
-  { label: "Divide and Conquer", value: "Divide and Conquer" },
-  { label: "Recursion", value: "Recursion" },
-  { label: "Combinatorics", value: "Combinatorics" },
-  { label: "Binary Indexed Tree", value: "Binary Indexed Tree" },
-  { label: "Geometry", value: "Geometry" },
-  { label: "Binary Search Tree", value: "Binary Search Tree" },
-  { label: "Hash Function", value: "Hash Function" },
-  { label: "Memoization", value: "Memoization" },
-  { label: "String Matching", value: "String Matching" },
-  { label: "Topological Sort", value: "Topological Sort" },
-  { label: "Shortest Path", value: "Shortest Path" },
-  { label: "Rolling Hash", value: "Rolling Hash" },
-  { label: "Game Theory", value: "Game Theory" },
-  { label: "Interactive", value: "Interactive" },
-  { label: "Data Stream", value: "Data Stream" },
-  { label: "Monotonic Queue", value: "Monotonic Queue" },
-  { label: "Brainteaser", value: "Brainteaser" },
-  { label: "Randomized", value: "Randomized" },
-  { label: "Merge Sort", value: "Merge Sort" },
-  { label: "Doubly-Linked List", value: "Doubly-Linked List" },
-  { label: "Counting Sort", value: "Counting Sort" },
-  { label: "Iterator", value: "Iterator" },
-  { label: "Concurrency", value: "Concurrency" },
-  { label: "Probability and Statistics", value: "Probability and Statistics" },
-  { label: "Quickselect", value: "Quickselect" },
-  { label: "Suffix Array", value: "Suffix Array" },
-  { label: "Bucket Sort", value: "Bucket Sort" },
-  { label: "Minimum Spanning Tree", value: "Minimum Spanning Tree" },
-  { label: "Line Sweep", value: "Line Sweep" },
-  { label: "Shell", value: "Shell" },
-  { label: "Reservoir Sampling", value: "Reservoir Sampling" },
-  { label: "Strongly Connected Component", value: "Strongly Connected Component" },
-  { label: "Eulerian Circuit", value: "Eulerian Circuit" },
-  { label: "Radix Sort", value: "Radix Sort" },
-  { label: "Rejection Sampling", value: "Rejection Sampling" },
-  { label: "Biconnected Component", value: "Biconnected Component" },
-]
-
-export const difficulties = [
-  {
-    label: "Easy",
-    value: "Easy",
-    iconColour: "text-green-500",
-    icon: <ArrowDown className={`mr-2 h-4 w-4  text-green-500`} />
-  },
-  {
-    label: "Medium",
-    value: "Medium",
-    iconColour: "text-yellow-500",
-    icon: <ArrowRight className={`mr-2 h-4 w-4  text-yellow-500`} />
-  },
-  {
-    label: "Hard",
-    value: "Hard",
-    iconColour: "text-red-500",
-    icon: <ArrowUp className={`mr-2 h-4 w-4 text-red-500`} />
-  },
-]
-
-export const leetcodes: leetcodeType[] = [
-  {
-    id: 1,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Two Sum",
-    titleSlug: "two-sum",
-    topicTags: [
-      "Array",
-      "Hash Table"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Brute Force',
-      'Hash Map',
-      'Explanation'
-    ]
-  },
-  {
-    id: 1415,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "The k-th Lexicographical String of All Happy Strings of Length n",
-    titleSlug: "the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
-    topicTags: [
-      "String",
-      "Backtracking",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Combinatorics',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 1752,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Check if Array Is Sorted and Rotated",
-    titleSlug: "check-if-array-is-sorted-and-rotated",
-    topicTags: [
-      "Array"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Approach',
-        'Example Walkthrough',
-        'Complexity Analysis'
-      ]
-    ]
-  },
-  {
-    id: 1790,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Check if One String Swap Can Make Strings Equal",
-    titleSlug: "check-if-one-string-swap-can-make-strings-equal",
-    topicTags: [
-      "Hash Table",
-      "String",
-      "Counting",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Check Length Equality and Immediate Equality',
-        'Using Hash Maps and a Counter',
-        'Loop Through the Strings',
-        'Verify Character Frequencies'
-      ],
-      'Complexity Analysis'
-    ]
-  },
-  {
-    id: 1800,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Maximum Ascending Subarray Sum",
-    titleSlug: "maximum-ascending-subarray-sum",
-    topicTags: [
-      "Array"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Approach',
-        'Example Walkthrough',
-        'Complexity Analysis'
-      ]
-    ]
-  },
-  {
-    id: 1910,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Remove All Occurrences of a Substring",
-    titleSlug: "remove-all-occurrences-of-a-substring",
-    topicTags: [
-      "String",
-      "Stack",
-      "Simulation",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Stack',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 3151,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Special Array I",
-    titleSlug: "special-array-i",
-    topicTags: [
-      "Array"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Approach',
-        'Example Walkthrough',
-        'Complexity Analysis'
-      ]
-    ]
-  },
-  {
-    id: 3105,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Longest Strictly Increasing or Strictly Decreasing Subarray",
-    titleSlug: "longest-strictly-increasing-or-strictly-decreasing-subarray",
-    topicTags: [
-      "Array"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Approach',
-        'Example Walkthrough',
-        'Complexity Analysis'
-      ]
-    ]
-  },
-  {
-    id: 1726,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Tuple with Same Product",
-    titleSlug: "tuple-with-same-product",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Counting"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Counting Products',
-        'Iterating Over Pairs',
-        'Calculating the Result',
-        'Return the Result'
-      ],
-      'Complexity Analysis'
-    ]
-  },
-  {
-    id: 3160,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Find the Number of Distinct Colors Among the Balls",
-    titleSlug: "find-the-number-of-distinct-colors-among-the-balls",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Simulation"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        'Initial Setup',
-        'Processing Each Query',
-      ],
-      'Complexity Analysis'
-    ]
-  },
-  {
-    id: 2364,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Count Number of Bad Pairs",
-    titleSlug: "count-number-of-bad-pairs",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Math",
-      "Counting"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      'The Key Observation',
-      'Step-by-Step Explanation',
-      'Complexity Analysis'
-    ]
-  },
-  {
-    id: 3174,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Clear Digits",
-    titleSlug: "clear-digits",
-    topicTags: [
-      "String",
-      "Stack",
-      "Simulation"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Solution',
-      'Explanation',
-      [
-        '1. Iteration and Stack Building',
-        '2. Edge Case Handling',
-        '3. Example Walkthrough',
-      ],
-      'Complexity Analysis'
-    ]
-  },
-  {
-    id: 2342,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Max Sum of a Pair With Equal Sum of Digits",
-    titleSlug: "max-sum-of-a-pair-with-equal-sum-of-digits",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Sorting",
-      "Heap (Priority Queue)",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Store Maximum Value',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 3065,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Minimum Operations to Exceed Threshold Value I",
-    titleSlug: "minimum-operations-to-exceed-threshold-value-i",
-    topicTags: [
-      "Array",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 3438,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Find Valid Pair of Adjacent Digits in String",
-    titleSlug: "find-valid-pair-of-adjacent-digits-in-string",
-    topicTags: [
-      "Hash Table",
-      "String",
-      "Counting",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2460,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Apply Operations to an Array",
-    titleSlug: "apply-operations-to-an-array",
-    topicTags: [
-      "Array",
-      "Two Pointers",
-      "Simulation",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Brute Force Simulation',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'One Pass',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 1757,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Recyclable and Low Fat Products",
-    titleSlug: "recyclable-and-low-fat-products",
-    topicTags: [
-      "Database",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Selecting rows based on conditions',
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2570,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Merge Two 2D Arrays by Summing Values",
-    titleSlug: "merge-two-2d-arrays-by-summing-values",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Two Pointers",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach 1: Hash Map',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Approach 2: Two Pointers',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2161,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Partition Array According to Given Pivot",
-    titleSlug: "partition-array-according-to-given-pivot",
-    topicTags: [
-      "Array",
-      "Two Pointers",
-      "Simulation",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach 1: Dynamic Slices',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 1780,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Check if Number is a Sum of Powers of Three",
-    titleSlug: "check-if-number-is-a-sum-of-powers-of-three",
-    topicTags: [
-      "Math"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Ternary Representation',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2579,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Count Total Number of Colored Cells",
-    titleSlug: "count-total-number-of-colored-cells",
-    topicTags: [
-      "Math"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Mathematical Formula',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2356,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Number of Unique Subjects Taught by Each Teacher",
-    titleSlug: "number-of-unique-subjects-taught-by-each-teacher",
-    topicTags: [
-      "Database"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Grouping and Counting Unique Subjects',
-      [
-        'Intuition',
-        'Algorithm',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2965,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Find Missing and Repeated Values",
-    titleSlug: "find-missing-and-repeated-values",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Math",
-      "Matrix",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Hash Map Counting',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2206,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Divide Array Into Equal Pairs",
-    titleSlug: "divide-array-into-equal-pairs",
-    topicTags: [
-      "Array",
-      "Hash Table",
-      "Bit Manipulation",
-      "Counting"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Hash Map',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 3417,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Zigzag Grid Traversal With Skip",
-    titleSlug: "zigzag-grid-traversal-with-skip",
-    topicTags: [
-      "Array",
-      "Matrix",
-      "Simulation",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Traversal With Skip',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2427,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Number of Common Factors",
-    titleSlug: "number-of-common-factors",
-    topicTags: [
-      "Math",
-      "Enumeration",
-      "Number Theory",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Brute Force Iteration',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2303,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Calculate Amount Paid in Taxes",
-    titleSlug: "calculate-amount-paid-in-taxes",
-    topicTags: [
-      "Array",
-      "Simulation",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Iterative Simulation',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 1688,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Count of Matches in Tournament",
-    titleSlug: "count-of-matches-in-tournament",
-    topicTags: [
-      "Math",
-      "Simulation",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Simulation',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2644,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Find the Maximum Divisibility Score",
-    titleSlug: "find-the-maximum-divisibility-score",
-    topicTags: [
-      "Array",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Brute Force with Optimization',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 2140,
-    difficulty: "Medium",
-    isFavor: false,
-    status: 'Done',
-    title: "Solving Questions With Brainpower",
-    titleSlug: "solving-questions-with-brainpower",
-    topicTags: [
-      "Array",
-      "Dynamic Programming"
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Dynamic Programming',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  },
-  {
-    id: 344,
-    difficulty: "Easy",
-    isFavor: false,
-    status: 'Done',
-    title: "Reverse String",
-    titleSlug: "reverse-string",
-    topicTags: [
-      "Two Pointers",
-      "String",
-    ],
-    hasSolution: true,
-    hasVideoSolution: false,
-    content: [
-      'Question',
-      'Approach: Two-Pointer Technique',
-      [
-        'Intuition',
-        'Algorithm',
-        'Complexity Analysis',
-      ],
-      'Wrap up'
-    ]
-  }
-]
-
-export type videoType = {
-  id: string,
-  imgUrl: string,
-  title: string,
-  description: string,
-  date: string
-}
-
-export const video: videoType[] = [
-  // {
-  //   "id": "tOASWm8I7sk",
-  //   "imgUrl": "https://i.ytimg.com/vi/tOASWm8I7sk/default.jpg",
-  //   "title": "2116. Check if a Parentheses String Can Be Valid - Go",
-  //   "description": "",
-  //   "date": "2025-01-12T17:01:47Z"
-  // },
-  // {
-  //   "id": "D_cfXKdYu4M",
-  //   "imgUrl": "https://i.ytimg.com/vi/D_cfXKdYu4M/default.jpg",
-  //   "title": "1400. Construct K Palindrome Strings - Go",
-  //   "description": "00:00 Code explanation (tried) 06:15 Code Implementation.",
-  //   "date": "2025-01-11T17:52:26Z"
-  // },
-  // {
-  //   "id": "5XfjayX8HAE",
-  //   "imgUrl": "https://i.ytimg.com/vi/5XfjayX8HAE/default.jpg",
-  //   "title": "916. Word Subsets - Go",
-  //   "description": "",
-  //   "date": "2025-01-10T15:57:53Z"
-  // },
-  // {
-  //   "id": "X2vwqQNiJks",
-  //   "imgUrl": "https://i.ytimg.com/vi/X2vwqQNiJks/default.jpg",
-  //   "title": "2185. Counting Words With a Given Prefix - Go",
-  //   "description": "Tried to explain the solution, I know it is is not good but trying to improve.",
-  //   "date": "2025-01-09T18:52:49Z"
-  // },
-  // {
-  //   "id": "oe4PYLTGVTY",
-  //   "imgUrl": "https://i.ytimg.com/vi/oe4PYLTGVTY/default.jpg",
-  //   "title": "3042  Count Prefix and Suffix Pairs I - Go",
-  //   "description": "",
-  //   "date": "2025-01-08T15:02:38Z"
-  // }
-];
-
-export type experienceType = {
-  position: string,
-  company: string,
-  companyUrl: string,
-  description: string,
-  tags: string[],
-  startDate: string,
-  endDate: string,
-  location: string,
-}
-
-export const experience: experienceType[] = [
-  {
-    position: "Technical Associat",
-    company: "Rushlane Technologies",
-    companyUrl: "https://www.rushlane.in",
-    description:
-      "Lead the development and maintenance of Rushlane's food delivery mobile app and restaurant dashboard. As an early-stage startup team member, I also contributed to management, planning, and cross-functional collaboration.",
-    tags: ["Software Engineering", "Management"],
-    startDate: "April 2025",
-    endDate: "Present",
-    location: "Tura, Meghalaya, India",
-  },
-  {
-    position: "Ethereum Engineer",
-    company: "Loreum DAO",
-    companyUrl: "https://www.loreum.org",
-    description:
-      "Developed decentralized applications for the Loreum platform using React, TypeScript, and GraphQL. Collaborated with a distributed team to deliver efficient, user-friendly blockchain solutions and smart contracts.",
-    tags: ["Ethereum", "TypeScript", "Solidity", "GraphQL"],
-    startDate: "Jan 2024",
-    endDate: "Apr 2024",
-    location: "Remote",
-  },
-  {
-    position: "Technical Writer",
-    company: "DAO Times",
-    companyUrl: "https://daotimes.com",
-    description:
-      "Researched and authored articles on DeFi and NFTs, working closely with editors to produce clear, engaging, and informative content for the DAO Times audience.",
-    tags: ["Article Research", "Proposal Summaries", "Editing and Proofreading"],
-    startDate: "Mar 2023",
-    endDate: "June 2023",
-    location: "Remote",
-  }
-]
