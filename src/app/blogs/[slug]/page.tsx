@@ -7,7 +7,7 @@ export default async function Page({
     params: Promise<{ slug: string }>
 }) {
     const slug = (await params).slug
-    const { default: Blog } = await import(`@/markdown/${slug}.mdx`)
+    const { default: Blog } = await import(`@/markdown/blogs/${slug}.mdx`)
     return (
         <div className="relative">
             <div className='p-4 gap-4 flex flex-row justify-center pl-4 sm:pl-8'>
