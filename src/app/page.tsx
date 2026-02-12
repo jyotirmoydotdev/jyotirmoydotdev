@@ -17,6 +17,7 @@ import Markdown from 'react-markdown'
 import ProjectCard from "@/components/project-card";
 import EducationCard from "@/components/education-card";
 import Image from "next/image";
+import pic from "../../public/pic.jpg";
 
 const baloo = localFont({
   src: "../fonts/Baloo2-VariableFont_wght.ttf",
@@ -61,7 +62,7 @@ export default function Home() {
         </div>
         <div className=" items-center h-full flex justify-center py-4">
           <div className="flex sm:flex-row flex-col-reverse gap-4 items-center justify-end">
-            <Image alt="profile photo" src={"/pic.jpg"} unoptimized width={240} height={240} className="rounded-3xl" />
+            <Image alt="profile photo" src={pic}  placeholder='blur' width={240} height={240} className="rounded-3xl" />
             <div className="flex flex-row sm:flex-col gap-2">
               {Resume.links.map((link, i) => (
                 <Button

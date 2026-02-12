@@ -45,7 +45,7 @@ export function BlogCard({ blog }: BlogCardProps) {
               <div className=" py-1 px-2 rounded-md bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60">{blog.date}</div>
               <Tooltip>
                 <TooltipTrigger>
-                  <div className=" py-1 px-2 aspect-square inline-flex items-center rounded-full bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60"><Icon /></div>
+                  <div className=" py-1 px-2 aspect-square inline-flex items-center rounded-lg bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60"><Icon /></div>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{category.label}</p>

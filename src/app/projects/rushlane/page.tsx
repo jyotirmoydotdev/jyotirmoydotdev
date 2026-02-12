@@ -3,20 +3,26 @@ import React from 'react'
 import { FaGooglePlay } from "react-icons/fa6";
 import { FaApple } from "react-icons/fa";
 import Link from 'next/link';
+import rushlanelogo from '../../../../public/image/rushlane-logo.png'
+import rushlane1 from '../../../../public/image/rushlane-1.png'
+import rushlane2 from '../../../../public/image/rushlane-2.png'
+import rushlane3 from '../../../../public/image/rushlane-3.png'
+import rushlane4 from '../../../../public/image/rushlane-4.png'
+import rushlane5 from '../../../../public/image/rushlane-5.png'
 
 function Page() {
   const images = [
-    '/image/rushlane-1.png',
-    '/image/rushlane-2.png',
-    '/image/rushlane-3.png',
-    '/image/rushlane-4.png',
-    '/image/rushlane-5.png',
+    rushlane1,
+    rushlane2,
+    rushlane3,
+    rushlane4,
+    rushlane5,
   ]
   return (
     <div className='max-w-3xl mx-auto p-4'>
       <div className="flex sm:flex-row">
         <div className="flex flex-row justify-center items-center">
-          <Image src={"/image/rushlane-logo.png"} width={100} height={100} alt='rushlane logo' className=' rounded-2xl aspect-square' />
+          <Image src={rushlanelogo} placeholder='blur' width={100} height={100} alt='rushlane logo' className=' rounded-2xl aspect-square' />
         </div>
         <div className="flex flex-col">
           <h1 className="text-lg sm:text-2xl font-bold ml-4">Rushlane: Food-in & Grocery</h1>
@@ -45,7 +51,7 @@ function Page() {
       </div>
       <div className="flex-row overflow-scroll no-scrollbar flex gap-4 mt-8">
         {images.map((src, index) => (
-          <Image key={index} src={src} width={333} height={592} alt={`Rushlane screenshot ${index + 1}`} className="rounded-xl shadow-md" />
+          <Image key={index}  placeholder='blur' src={src} width={333} height={592} alt={`Rushlane screenshot ${index + 1}`} className="rounded-xl shadow-md" />
         ))}
       </div>
       <div className="">
