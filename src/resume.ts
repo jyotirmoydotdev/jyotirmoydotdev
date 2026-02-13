@@ -1,5 +1,5 @@
-import { FiGithub } from "react-icons/fi";
-import { FaGolang, FaXTwitter } from "react-icons/fa6"
+import { FiCpu, FiGithub } from "react-icons/fi";
+import { FaAws, FaGitAlt, FaGolang, FaXTwitter } from "react-icons/fa6"
 import { FiLinkedin } from "react-icons/fi";
 import { IconType } from "react-icons/lib"
 import { FaDocker, FaReact } from "react-icons/fa";
@@ -9,7 +9,9 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { GoPerson } from "react-icons/go";
 import { BiLogoGmail } from "react-icons/bi";
 import { LuPhone } from "react-icons/lu";
-import { SiSolidity } from "react-icons/si";
+import { SiArduino, SiDocker, SiExpo, SiGithub, SiJavascript, SiPostman, SiPython, SiRailway, SiReact, SiSolidity, SiTypescript, SiVercel } from "react-icons/si";
+import { TbBrandGolang, TbBrandNextjs, TbBrandReactNative, TbSql } from "react-icons/tb";
+import { BsApp } from "react-icons/bs";
 
 export interface ResumeType {
   title: string,
@@ -46,6 +48,13 @@ export interface ResumeType {
     bullets: string[],
     tags: string[],
   }[],
+  skills: {
+    title: string,
+    tags: {
+      label: string,
+      icon: IconType | null,
+    }[]
+  }[],
   educations: {
     title: string,
     subTitle: string,
@@ -55,10 +64,6 @@ export interface ResumeType {
     description: string,
     bullets: string[],
     tags: string[],
-  }[],
-  skills: {
-    title: string,
-    tags: string[]
   }[],
   projects: {
     status: "Concept" | "In Progress" | "Production" | "Archive"
@@ -249,20 +254,102 @@ export const Resume: ResumeType = {
   skills: [
     {
       title: "Programming Language",
-      tags: ["Solidity", "JavaScript", "Typescript", "Golang", "C++", "Python", "HTML", "CSS", "SQL"]
+      tags: [
+        {
+          label: "Golang",
+          icon: TbBrandGolang,
+        },
+        {
+          label: "Typescript",
+          icon: SiTypescript,
+        },
+        {
+          label: "JavaScript",
+          icon: SiJavascript,
+        },
+        {
+          label: "Python",
+          icon: SiPython,
+        },
+        {
+          label: "Solidity",
+          icon: SiSolidity,
+        },
+        {
+          label: "SQL",
+          icon: TbSql,
+        }
+      ]
     },
     {
       title: "Libraries & Frameworks",
-      tags: ["React", "Next.js", "React Native", "Gin", "TailwindCss"]
+      tags: [
+        {
+          label: "React",
+          icon: SiReact,
+        },
+        {
+          label: "React Native",
+          icon: TbBrandReactNative,
+        },
+        {
+          label: "Next.js",
+          icon: TbBrandNextjs
+        },
+        {
+          label: "Expo",
+          icon: SiExpo,
+        },
+        {
+          label: "PostgreSQL",
+          icon: BiLogoPostgresql
+        },
+      ]
     },
     {
-      title: "Tools & Platforms",
-      tags: ["Postgres", "Git", "GitHub", "Vercel", "Docker", "Figma", "AWS", "Postman", "Supabase"]
+      title: "Infrastructure & Deployment",
+      tags: [
+        {
+          label: "Git",
+          icon: FaGitAlt,
+        },
+        {
+          label: "Github",
+          icon: SiGithub
+        },
+        {
+          label: "Docker",
+          icon: SiDocker,
+        },
+        {
+          label: "AWS",
+          icon: FaAws
+        },
+        {
+          label: "Vercel",
+          icon: SiVercel,
+        },
+        {
+          label: "Railway",
+          icon: SiRailway
+        },
+        {
+          label: "Postman",
+          icon: SiPostman
+        },
+        {
+          label: "Arduino",
+          icon: SiArduino
+        }
+      ]
     },
     {
-      title: "Methodologies",
-      tags: ["Agile Development", "RESTful API Design", "Test-Driven Development(TDD)"]
-    }
+      title: "Specializations",
+      tags: [
+        { label: "Backend Development", icon: FiCpu },
+        { label: "Mobile Development", icon: BsApp }
+      ]
+    },
   ],
   projects: [
     {
@@ -299,7 +386,7 @@ export const Resume: ResumeType = {
       link: "https://vendogen.com",
       source: null,
       bullets: [
-        "A multi-tenant, domain-driven, modular monolith platform with capability-based enablement that empowers businesses of all types to launch, connect, and collaborate within a shared ecosystem—leveraging AI-enabled features to drive scalable, exponential growth."
+        "A multi-tenant, domain-driven, modular monolith platform with capability-based enablement that empowers businesses of all types to launch, connect, and collaborate within a shared ecosystem—leveraging AI-enabled features to drive scalabel, exponential growth."
       ],
       tags: ["Golang", "Next.js"]
     },

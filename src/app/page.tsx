@@ -62,7 +62,7 @@ export default function Home() {
         </div>
         <div className=" items-center h-full flex justify-center py-4">
           <div className="flex sm:flex-row flex-col-reverse gap-4 items-center justify-end">
-            <Image alt="profile photo" src={pic}  placeholder='blur' width={240} height={240} className="rounded-3xl" />
+            <Image alt="profile photo" src={pic} placeholder='blur' width={240} height={240} className="rounded-3xl" />
             <div className="flex flex-row sm:flex-col gap-2">
               {Resume.links.map((link, i) => (
                 <Button
@@ -136,6 +136,32 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <div className="pt-8" id="skills">
+        <div className="text-lg font-bold py-2 text-orange-400">
+          Skills
+        </div>
+        <Separator />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {
+            Resume.skills.map((skill, index) => (
+              <div className="p-2" key={index}>
+                <div className="py-2 font-semibold">{skill.title}</div>
+                <div className="flex flex-row gap-2 flex-wrap">
+                  {
+                    skill.tags.map((tag, index) => (
+                      <div className="flex flex-row gap-2 px-3 py-1 bg-gray-200/50 dark:bg-gray-600/50 hover:bg-gray-300/50 hover:dark:bg-gray-700/50 justify-center items-center rounded-md dark:text-gray-300 text-gray-600 border" key={index}>
+                        {tag.icon && <tag.icon />}
+                        <span className="text-sm font-semibold">{tag.label}</span>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
 
       <div className="pt-8" id="projects">
         <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
