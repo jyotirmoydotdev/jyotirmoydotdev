@@ -21,6 +21,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import { sidebar_data as data } from "@/data"
 import { Resume } from "@/resume";
+import { usePathname } from "next/navigation";
 
 const baloo = localFont({
   src: '../fonts/Baloo2-VariableFont_wght.ttf',
@@ -30,6 +31,10 @@ const baloo = localFont({
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { openMobile, setOpenMobile } = useSidebar()
+  const path = usePathname()
+  function isActiveFunc(pathname: string, path: string) {
+    return path === "/" ? pathname === "/" : (path.startsWith(pathname) && pathname !== "/");
+  }
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -45,7 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             {
               data.navMain.map((item, i) => (
-                <SidebarMenuButton onClick={() => setOpenMobile(!openMobile)} key={i} tooltip={item.title} asChild>
+                <SidebarMenuButton isActive={isActiveFunc(item.url, path)} onClick={() => setOpenMobile(!openMobile)} key={i} tooltip={item.title} asChild>
                   <Link href={item.url} className=" flex justify-between group/link">
                     <div className=" flex gap-2 items-center">
                       <item.icon className=" size-4" />
