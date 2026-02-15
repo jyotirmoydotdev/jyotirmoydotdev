@@ -9,7 +9,7 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { GoPerson } from "react-icons/go";
 import { BiLogoGmail } from "react-icons/bi";
 import { LuPhone } from "react-icons/lu";
-import { SiArduino, SiDocker, SiExpo, SiGithub, SiJavascript, SiPostman, SiPython, SiRailway, SiReact, SiSolidity, SiTypescript, SiVercel } from "react-icons/si";
+import { SiArduino, SiDocker, SiExpo, SiGithub, SiJavascript, SiMongodb, SiPostman, SiPython, SiRailway, SiReact, SiSolidity, SiTypescript, SiVercel } from "react-icons/si";
 import { TbBrandGolang, TbBrandNextjs, TbBrandReactNative, TbSql } from "react-icons/tb";
 import { BsApp } from "react-icons/bs";
 
@@ -304,6 +304,10 @@ export const Resume: ResumeType = {
           label: "PostgreSQL",
           icon: BiLogoPostgresql
         },
+        {
+          label: "MongoDB",
+          icon: SiMongodb,
+        }
       ]
     },
     {
