@@ -404,7 +404,7 @@ export const Resume: ResumeType = {
       bullets: [
         "Sentence 1"
       ],
-      tags: ["Golang, Go Tmpl"]
+      tags: ["Golang", "Go Tmpl"]
     }
   ]
 }

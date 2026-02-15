@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import localFont from "next/font/local";
@@ -136,6 +136,20 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <div className="pt-8" id="educations">
+        <div className="text-lg font-bold pt-6 pb-4 text-orange-400">
+          Educations
+        </div>
+        <Separator />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          {
+            Resume.educations.map((education, i) => (
+              <EducationCard education={education} key={i} />
+            ))
+          }
+        </div>
+      </div>
+
       <div className="pt-8" id="skills">
         <div className="text-lg font-bold py-2 text-orange-400">
           Skills
@@ -166,40 +180,15 @@ export default function Home() {
       <div className="pt-8" id="projects">
         <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
           Projects
-          <div className="flex w-full justify-end py-4">
-            <Button
-              variant={"link"}
-              className="text-white"
-              size={"default"}
-              asChild
-            >
-              <Link href={"/projects"}>
-                View all <ArrowRight className=" size-5" />{" "}
-              </Link>
-            </Button>
-          </div>
         </div>
         {/* <Separator /> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-          {Resume.projects.slice(0, 3).map((project, i) => (
+          {Resume.projects.map((project, i) => (
             <ProjectCard project={project} key={i} />
           ))}
         </div>
       </div>
 
-      <div className="pt-8" id="educations">
-        {/* <Separator /> */}
-        <div className="text-lg font-bold pt-6 pb-4 text-orange-400">
-          Educations
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-          {
-            Resume.educations.map((education, i) => (
-              <EducationCard education={education} key={i} />
-            ))
-          }
-        </div>
-      </div>
 
       <div className=" sticky bottom-4 flex justify-end w-full">
         {isMobile ? (
