@@ -22,25 +22,12 @@ const Page = () => {
     });
   };
   const filterBlog = filterBlogs()
-  const handlePageChange = (pageNumber: number) => {setCurrentPage(pageNumber); }; 
-  const indexOfLastBlog = currentPage * blogsPerPage; 
-  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage; 
+  const handlePageChange = (pageNumber: number) => { setCurrentPage(pageNumber); };
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = filterBlog.slice(indexOfFirstBlog, indexOfLastBlog);
   return (
     <div className="sm:p-4 relative max-w-7xl mx-auto">
-      {/* <div className=" bg-sidebar p-3 sm:p-6 mb-0 sm:mb-4 flex justify-between items-center border-sidebar-border border"> */}
-      {/*     <div className="flex flex-col"> */}
-      {/*         <div className=" text-base sm:text-2xl font-semibold mb-2"> */}
-      {/*             Blogs */}
-      {/*         </div> */}
-      {/*         <div className="max-w-[553px] mb-2 text-muted-foreground text-xs sm:text-base"> */}
-      {/*             Discover insightful blogs covering backend development, Golang expertise, system design strategies, and more, delivering practical tips, industry trends, and expert perspectives to fuel your growth. */}
-      {/*         </div> */}
-      {/*     </div> */}
-      {/*     <div className="p-2 hidden sm:block"> */}
-      {/*         <File className="size-[3rem] stroke-orange-500" /> */}
-      {/*     </div> */}
-      {/* </div> */}
       <div className="flex flex-row justify-between items-center px-2 py-2 mb-4">
         <div className=" flex flex-col sm:flex-row gap-4 items-center">
           <Input value={search} onChange={(e) => setSearch(e.target.value)} className='h-8 w-full sm:w-4/5 lg:w-[250px] bg-[#fafafa] dark:bg-[#18181b] border-orange-500' placeholder='Search blogs...' />
@@ -69,11 +56,11 @@ const Page = () => {
             </div>
           </div>
         </div>
-          <div className="flex gap-2 items-center">
-            <div className="px-1 text-gray-500 text-sm font-semibold">{currentPage} / {Math.ceil(filterBlog.length/blogsPerPage)}</div>
-            <button disabled={currentPage<=1} onClick={() => handlePageChange(currentPage-1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronLeft className=' stroke-gray-400' /></button>
-            <button disabled={currentPage>=Math.ceil(filterBlog.length/blogsPerPage)} onClick={() => handlePageChange(currentPage+1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronRight className=' stroke-gray-400' /> </button>
-          </div>
+        <div className="flex gap-2 items-center">
+          <div className="px-1 text-gray-500 text-sm font-semibold">{currentPage} / {Math.ceil(filterBlog.length / blogsPerPage)}</div>
+          <button disabled={currentPage <= 1} onClick={() => handlePageChange(currentPage - 1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronLeft className=' stroke-gray-400' /></button>
+          <button disabled={currentPage >= Math.ceil(filterBlog.length / blogsPerPage)} onClick={() => handlePageChange(currentPage + 1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronRight className=' stroke-gray-400' /> </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
         {/* <SidebarOptInForm /> */}

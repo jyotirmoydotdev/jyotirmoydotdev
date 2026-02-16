@@ -1,19 +1,13 @@
-import { ArrowDown, ArrowRight, ArrowUp, Files, Folders } from "lucide-react"
+import { ArrowDown, ArrowRight, ArrowUp, Files, Folders, User2Icon } from "lucide-react"
 import { IconType } from "react-icons/lib"
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
 import { RiGeminiFill } from "react-icons/ri";
-import { LuBookText, LuFileCode2 } from "react-icons/lu"
+import { LuBookText, LuFileCode2, LuMail } from "react-icons/lu"
 import { TbSmartHome } from "react-icons/tb";
 
 export const sidebar_data = {
   logo: "/logo.png",
   navMain: [
-    // {
-    //   title: "About",
-    //   url: "/",
-    //   icon: User2Icon,
-    //   isActive: true,
-    // },
     {
       title: "Home",
       url: "/",
@@ -44,6 +38,20 @@ export const sidebar_data = {
       icon: LuBookText,
       isActive: false,
     }
+  ],
+  bottomMain: [
+    {
+      title: "About",
+      url: "/about",
+      icon: User2Icon,
+      isActive: false,
+    },
+    {
+      title: "Subscribe",
+      url: "/subscribe",
+      icon: LuMail,
+      isActive: false,
+    },
   ]
 }
 

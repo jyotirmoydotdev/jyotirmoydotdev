@@ -7,8 +7,7 @@ import { RiNextjsFill } from "react-icons/ri";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { BiLogoTypescript } from "react-icons/bi";
 import { GoPerson } from "react-icons/go";
-import { BiLogoGmail } from "react-icons/bi";
-import { LuPhone } from "react-icons/lu";
+import { LuMail, LuPhone } from "react-icons/lu";
 import { SiArduino, SiDocker, SiExpo, SiGithub, SiJavascript, SiMongodb, SiPostman, SiPython, SiRailway, SiReact, SiSolidity, SiTypescript, SiVercel } from "react-icons/si";
 import { TbBrandGolang, TbBrandNextjs, TbBrandReactNative, TbSql } from "react-icons/tb";
 import { BsApp } from "react-icons/bs";
@@ -40,7 +39,7 @@ export interface ResumeType {
     link: string,
     location: string,
     duration: {
-      type: "Full-time" | "Part-time" | "Self-Employed" | "Freelance" | "Internship" | "Trainee"
+      type: string,
       start: string,
       end: string,
     }[]
@@ -114,7 +113,7 @@ export const Resume: ResumeType = {
   ],
   resumeLinks: [
     {
-      icon: BiLogoGmail,
+      icon: LuMail,
       title: "Mail",
       label: "jyotirmoydotdev@gmail.com",
       link: "mailto:jyotirmoydotdev@gmail.com"
@@ -134,7 +133,7 @@ export const Resume: ResumeType = {
   ],
   links: [
     {
-      icon: BiLogoGmail,
+      icon: LuMail,
       title: "Mail",
       label: "jyotirmoydotdev@gmail.com",
       link: "mailto:jyotirmoydotdev@gmail.com"
@@ -166,7 +165,7 @@ export const Resume: ResumeType = {
       location: "Tura, Meghalaya, India",
       duration: [
         {
-          type: "Full-time",
+          type: "Technical Associate, Full-time",
           start: "Jun 2025",
           end: "Present",
         },
@@ -190,7 +189,7 @@ export const Resume: ResumeType = {
       location: "Remote",
       duration: [
         {
-          type: "Freelance",
+          type: "Ethereum Engineer, Freelance",
           start: "Jan 2024",
           end: "Apr 2024 (4 mos)",
         }
@@ -210,7 +209,7 @@ export const Resume: ResumeType = {
       location: "Remote",
       duration: [
         {
-          type: "Freelance",
+          type: "Technical Writer, Freelance",
           start: "Mar 2023",
           end: "June 2023 (4 mos)",
         }
@@ -360,7 +359,7 @@ export const Resume: ResumeType = {
       status: "Production",
       title: "Rushlane: Food-in & Grocery",
       subTitle: "A Food Delivery application.",
-      path: "/projects/rushlane",
+      path: "/about/projects/rushlane",
       link: null,
       source: null,
       bullets: [
@@ -386,7 +385,7 @@ export const Resume: ResumeType = {
       status: "Concept",
       title: "Vendogen",
       subTitle: "A full business software that is built for the next generation entrepreneurs.",
-      path: "/projects/vendogen",
+      path: "/about/projects/vendogen",
       link: "https://vendogen.com",
       source: null,
       bullets: [
