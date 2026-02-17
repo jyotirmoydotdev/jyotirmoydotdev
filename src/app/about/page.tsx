@@ -95,10 +95,10 @@ export default function Home() {
                 <div className="">
                   {exp.duration.map((item, index) => (
                     <div className="pb-2" key={index}>
-                      <div className="text-gray-500 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">
+                      <div className="text-gray-500 group-hover/exp:text-orange-500  transition-all">
                         {item.start} - {item.end}
                       </div>
-                      <div className="text-gray-500 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">{item.type}</div>
+                      <div className="text-gray-500 group-hover/exp:text-gray-500  transition-all">{item.type}</div>
                     </div>
                   ))
                   }
@@ -106,7 +106,7 @@ export default function Home() {
 
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row gap-2 items-center">
-                    <div className="flex gap-2 items-center py-2 group-hover/exp:text-orange-500 group-hover/exp:italic transition-all">
+                    <div className="flex gap-2 items-center py-2 group-hover/exp:text-orange-500 transition-all">
                       <span className="underline underline-offset-2">{exp.title}</span>,<span className="font-bold">{exp.subTitle}</span>
                       <ArrowUpRight className="size-5" />
                     </div>

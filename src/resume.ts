@@ -159,6 +159,25 @@ export const Resume: ResumeType = {
   ],
   experiences: [
     {
+      title: "Innovation Trainer",
+      subTitle: "The Learning Zone",
+      link: "http://thelearningzoneghy.in/",
+      location: "Tura, Meghalaya, India",
+      duration: [
+        {
+          type: "Innovation Trainer, Full-time",
+          start: "Feb 2026",
+          end: "Present"
+        }
+      ],
+      description: "A school partnership STEM/Innovation lab provider.",
+      bullets: [
+        "Deliver structured computer science and innovation curriculum to school students, including practical training in Arduino, electronics, and project-based STEM learning.",
+        "Conduct assessments and guide students in designing, building, and presenting technology-driven projects to foster problem-solving and computational thinking skills."
+      ],
+      tags: ["Robotics", "Teaching", "Innovation"]
+    },
+    {
       title: "Technical Associate",
       subTitle: "Rushlane Technologies",
       link: "https://rushlane.net",
@@ -167,7 +186,7 @@ export const Resume: ResumeType = {
         {
           type: "Technical Associate, Full-time",
           start: "Jun 2025",
-          end: "Present",
+          end: "Feb 2026 (9 mos)",
         },
         {
           type: "Internship",
