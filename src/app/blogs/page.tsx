@@ -56,11 +56,6 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="flex gap-2 items-center">
-          <div className="px-1 text-gray-500 text-sm font-semibold">{currentPage} / {Math.ceil(filterBlog.length / blogsPerPage)}</div>
-          <button disabled={currentPage <= 1} onClick={() => handlePageChange(currentPage - 1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronLeft className=' stroke-gray-400' /></button>
-          <button disabled={currentPage >= Math.ceil(filterBlog.length / blogsPerPage)} onClick={() => handlePageChange(currentPage + 1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronRight className=' stroke-gray-400' /> </button>
-        </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
         {/* <SidebarOptInForm /> */}
@@ -70,6 +65,12 @@ const Page = () => {
           ))
         }
       </div>
+      <div className="flex justify-end gap-2 items-center py-4">
+        <div className="px-1 text-gray-500 text-sm font-semibold">{currentPage} / {Math.ceil(filterBlog.length / blogsPerPage)}</div>
+        <button disabled={currentPage <= 1} onClick={() => handlePageChange(currentPage - 1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronLeft className=' stroke-gray-400' /></button>
+        <button disabled={currentPage >= Math.ceil(filterBlog.length / blogsPerPage)} onClick={() => handlePageChange(currentPage + 1)} className=" rounded-lg border border-gray-300 dark:border-gray-700 p-1 hover:dark:bg-gray-600/50 hover:bg-gray-300/50 transition-colors"> <ChevronRight className=' stroke-gray-400' /> </button>
+      </div>
+
     </div>
   )
 }
