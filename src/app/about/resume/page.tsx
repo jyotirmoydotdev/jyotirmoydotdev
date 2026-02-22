@@ -1,15 +1,11 @@
 'use client'
 
-import React from 'react';
-import { PDFViewer } from '@react-pdf/renderer';
-import ResumePage from '@/components/resume-page';
+import dynamic from 'next/dynamic'
 
-function Page() {
-  return (
-    < PDFViewer height={"100%"} >
-      <ResumePage />
-    </PDFViewer >
-  )
+const ResumePDF = dynamic(() => import('@/components/resume-pdf'), {
+  ssr: false,
+})
+
+export default function ResumePage() {
+  return <ResumePDF />
 }
-
-export default Page

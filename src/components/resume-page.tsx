@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Link } from '@react-pdf/renderer';
 import { Resume } from '@/resume';
