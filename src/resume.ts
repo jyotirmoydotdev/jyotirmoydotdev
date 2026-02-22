@@ -80,7 +80,7 @@ export const Resume: ResumeType = {
   title: "Jyotirmoy Barman",
   role: "Software Engineer",
   subTitle: "Bringing Ideas to live",
-  summary: "I'm a software developer with **1+ years of experience** working with **Go, Solidity, Next.js, and React Native**. I've built and shipped a **production-ready application** used by a real company, which taught me how to build software that actually matters. I'm highly quality-driven, if something doesn't meet my standards, I refactor it or start over. I learn fast, take full ownership of my work, and always give **100% effort**. Outside of code, I love traveling and exploring nature because for me, travel isn't about checklists, it's about experiences.",
+  summary: "I'm a software developer with 1+ years of experience working with **Go, Solidity, Next.js, and React Native**. I've built and shipped a production-ready application used by a real company, which taught me how to build software that actually matters. I'm highly quality-driven, if something doesn't meet my standards, I refactor it or start over. I learn fast, take full ownership of my work, and always give 100% effort. Outside of code, I love traveling and exploring nature because for me, travel isn't about checklists, it's about experiences.",
   techStack: [
     {
       icon: FaGolang,

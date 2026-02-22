@@ -1245,3 +1245,17 @@ export type practiceType = {
   hasVideoSolution: boolean,
   content: (string | string[])[]
 }
+
+export type projectType = {
+  title: string,
+  subtitle: string,
+  imageurl: string,
+  description: string,
+  difficulty: string,
+  learn: string[],
+  skills: string[],
+  prerequisites: string[],
+  technologies: {icon: IconType, lable: string}[]
+  tasks: {title: string, subtasks: {title: string, url: string}[]}[]
+}
+

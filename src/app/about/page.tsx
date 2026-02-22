@@ -18,6 +18,7 @@ import ProjectCard from "@/components/project-card";
 import EducationCard from "@/components/education-card";
 import Image from "next/image";
 import pic from "../../../public/pic.jpg";
+import { LuFileText } from "react-icons/lu";
 
 const baloo = localFont({
   src: "../../fonts/Baloo2-VariableFont_wght.ttf",
@@ -61,9 +62,20 @@ export default function Home() {
           </div>
         </div>
         <div className=" items-center h-full flex justify-center py-4">
-          <div className="flex sm:flex-row flex-col-reverse gap-4 items-center justify-end">
-            <Image alt="profile photo" src={pic} placeholder='blur' width={240} height={240} className="rounded-3xl" />
-            <div className="flex flex-row sm:flex-col gap-2">
+          <div className="flex flex-row gap-4 items-center justify-end">
+            <div className=" flex flex-col items-center ">
+              <Image alt="profile photo" src={pic} placeholder='blur' width={240} height={240} className="rounded-3xl shadow-gray-500 dark:shadow-gray-800 shadow-md" />
+              <Button
+                size={"sm"}
+                className=" absolute bottom-0 sm:bottom-3 rounded-lg bg-orange-500 hover:bg-orange-600 backdrop-blur-md text-white "
+                asChild
+              >
+                <Link href={"/about/resume"} >
+                  <LuFileText className=" size-2" strokeWidth={1.5} />View Resume
+                </Link>
+              </Button>
+            </div>
+            <div className="flex flex-col gap-2">
               {Resume.links.map((link, i) => (
                 <Button
                   key={i}
@@ -189,19 +201,8 @@ export default function Home() {
         </div>
       </div>
 
-
       <div className=" sticky bottom-4 flex justify-end w-full">
-        {isMobile ? (
-          <Button
-            size={"sm"}
-            className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white"
-            asChild
-          >
-            <Link href={"/resume.pdf"} target="_blank">
-              <ArrowDown className=" size-3" /> View Full Resume
-            </Link>
-          </Button>
-        ) : (
+        {!isMobile && (
           <TooltipProvider delayDuration={50}>
             <Tooltip>
               <TooltipTrigger>
@@ -210,13 +211,13 @@ export default function Home() {
                   className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white"
                   asChild
                 >
-                  <Link href={"/resume.pdf"} target="_blank">
+                  <Link href={"/about/resume"} >
                     <ArrowDown />
                   </Link>
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="left">
-                <p>View Full Resume</p>
+                <p>View Resume</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
