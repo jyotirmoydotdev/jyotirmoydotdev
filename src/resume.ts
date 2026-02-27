@@ -65,7 +65,7 @@ export interface ResumeType {
     tags: string[],
   }[],
   projects: {
-    status: "Concept" | "In Progress" | "Production" | "Archive"
+    status: "Concept" | "In Progress" | "Production" | "Archive" | "Beginner" | "Intermediate" | "Advance"
     title: string,
     subTitle: string,
     path: string | null,
@@ -375,7 +375,7 @@ export const Resume: ResumeType = {
   ],
   projects: [
     {
-      status: "Production",
+      status: "Advance",
       title: "Rushlane: Food-in & Grocery",
       subTitle: "A Food Delivery application.",
       path: "/about/projects/rushlane",
