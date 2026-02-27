@@ -375,7 +375,7 @@ export const Resume: ResumeType = {
   ],
   projects: [
     {
-      status: "Advance",
+      status: "Production",
       title: "Rushlane: Food-in & Grocery",
       subTitle: "A Food Delivery application.",
       path: "/about/projects/rushlane",

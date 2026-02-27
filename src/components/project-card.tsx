@@ -13,21 +13,21 @@ function ProjectCard({ project }: { project: ProjectType }) {
   function getStatusClass(status: ProjectStatusType) {
     switch (status) {
       case "Beginner":
-        return "bg-green-200/50 dark:text-green-500/50 text-green-700 dark:text-green-100"
+        return "bg-green-200/50 dark:bg-green-700/50 text-green-700 dark:text-green-50"
       case "Intermediate":
-        return "bg-yellow-200/50 dark:text-yellow-500/50 text-yellow-700 dark:text-yellow-100"
+        return "bg-yellow-200/50 dark:bg-yellow-700/50 text-yellow-700 dark:text-yellow-50"
       case "Advance":
-        return "bg-red-200/50 dark:bg-red-500/50 text-red-700 dark:text-red-100"
+        return "bg-red-200/50 dark:bg-red-700/50 text-red-700 dark:text-red-50"
       case "Concept":
-        return "bg-yellow-200/50 dark:text-yellow-500/50 text-yellow-700 dark:text-yellow-100"
+        return "bg-yellow-200/50 dark:bg-yellow-700/50 text-yellow-700 dark:text-yellow-50"
       case "In Progress":
-        return "bg-blue-200/50 dark:text-blue-500/50 text-blue-700 dark:text-blue-100"
+        return "bg-blue-200/50 dark:bg-blue-700/50 text-blue-700 dark:text-blue-50"
       case "Production":
-        return "bg-green-200/50 dark:text-green-500/50 text-green-700 dark:text-green-100"
+        return "bg-green-200/50 dark:bg-green-700/50 text-green-700 dark:text-green-50"
       case "Archive":
-        return "bg-gray-200/50 dark:text-gray-500/50 text-gray-700 dark:text-gray-100"
+        return "bg-gray-200/50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-50"
       default:
-        return "bg-gray-200/50 dark:text-gray-500/50 text-gray-700 dark:text-gray-100"
+        return "bg-gray-200/50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-50"
     }
   }
   return (
