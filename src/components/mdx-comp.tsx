@@ -205,7 +205,7 @@ export const Complex = ({t,s}:{t:string,s:string}) => {
       case 'n^2':
         return 'N²'
       default:
-        return ''
+        return c
     }
   }
   return (

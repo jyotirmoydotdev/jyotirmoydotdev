@@ -152,6 +152,25 @@ export const difficulties = [
 
 export const practices: practiceType[] = [
   {
+    id: "LC0088",
+    difficulty: "Easy",
+    isFavor: false,
+    status: 'Done',
+    title: "Merge Sorted Array",
+    titleSlug: "merge-sorted-array",
+    topicTags: [
+      "Array",
+      "Two Pointers",
+      "Sorting"
+    ],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: [
+      'Question',
+      'Solution',
+    ]
+  },
+  {
     id: "LC0001",
     difficulty: "Easy",
     isFavor: false,
@@ -1255,7 +1274,7 @@ export type projectType = {
   learn: string[],
   skills: string[],
   prerequisites: string[],
-  technologies: {icon: IconType, lable: string}[]
-  tasks: {title: string, subtasks: {title: string, url: string}[]}[]
+  technologies: { icon: IconType, lable: string }[]
+  tasks: { title: string, subtasks: { title: string, url: string }[] }[]
 }
 
