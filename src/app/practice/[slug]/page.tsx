@@ -1,6 +1,9 @@
 import Content from "@/components/practice/content"
+import { parseMdxContent } from "@/components/autocontent"
 import { practices } from "@/data"
 import { ArrowUpRight } from "lucide-react"
+import { readFile } from "node:fs/promises"
+import path from "node:path"
 
 export default async function Page({
     params,
@@ -9,6 +12,9 @@ export default async function Page({
 }) {
     const slug = (await params).slug
     const { default: Practice } = await import(`@/markdown/practice/${slug}.mdx`)
+    const mdxPath = path.join(process.cwd(), `src/markdown/practice/${slug}.mdx`)
+    const mdxSource = await readFile(mdxPath, "utf-8")
+    const practiceContent = parseMdxContent(mdxSource)
     const practiceindex = practices.findIndex((practice) => practice.titleSlug === slug);
     const practice = practices[practiceindex]
     if (!practice){
@@ -42,7 +48,7 @@ export default async function Page({
                         <Practice />
                     </div>
                 </div>
-                <Content practiceContent={practice.content} practiceDataIndex={practiceindex} />
+                <Content practiceContent={practiceContent} practiceDataIndex={practiceindex} />
             </div>
         </div>
     )
