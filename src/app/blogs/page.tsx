@@ -27,12 +27,12 @@ const Page = () => {
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = filterBlog.slice(indexOfFirstBlog, indexOfLastBlog);
   return (
-    <div className="sm:p-4 relative max-w-7xl mx-auto">
-      <div className="flex flex-row justify-between items-center px-2 py-2 mb-4">
-        <div className=" flex flex-col sm:flex-row gap-4 items-center">
+    <div className="relative max-w-7xl mx-auto">
+      <div className="flex flex-row justify-between items-center px-2 py-2">
+        <div className=" flex flex-col sm:flex-row gap-4 items-center pt-2 px-2">
           <Input value={search} onChange={(e) => setSearch(e.target.value)} className='h-8 w-full sm:w-4/5 lg:w-[250px] bg-[#fafafa] dark:bg-[#18181b] border-orange-500' placeholder='Search blogs...' />
           <div className="grid">
-            <div className="flex gap-2 sm:gap-4 overflow-x-scroll no-scrollbar font-semibold text-muted-foreground text-xs ">
+            <div className=" -mx-4 pl-4 flex gap-2 sm:gap-4 overflow-x-scroll no-scrollbar font-semibold text-muted-foreground text-xs ">
               <button onClick={() => setCategory("")} className={cn("flex py-2 px-4 bg-sidebar rounded-lg items-center border border-sidebar-border space-x-2 text-nowrap", category === "" && " border-orange-500")}>
                 <File className={cn("size-4 ")} />
                 <span>All</span>
@@ -57,7 +57,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 sm:p-4">
         {/* <SidebarOptInForm /> */}
         {
           currentBlogs.map((blog, i) => (

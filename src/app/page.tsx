@@ -7,19 +7,17 @@ import { blogs } from "@/data";
 import { BlogCard } from "@/components/blog-card";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import React from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Home() {
-  const isMobile = useIsMobile();
   const [currentPage, setCurrentPage] = React.useState(1);
-  const blogsPerPage = isMobile ? 1 : 3;
+  const blogsPerPage = 3;
   const handlePageChange = (pageNumber: number) => { setCurrentPage(pageNumber); };
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
   return (
-    <div className="p-4 h-full dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] ">
+    <div className="p-2 sm:p-4 h-full dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] ">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-2 sm:gap-x-2">
           <ProflieCard
