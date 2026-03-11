@@ -13,7 +13,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Resume } from "@/resume";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown";
 import ProjectCard from "@/components/project-card";
 import EducationCard from "@/components/education-card";
 import Image from "next/image";
@@ -49,29 +49,36 @@ export default function Home() {
             </div>
           </header>
           <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
-            <Markdown>
-              {Resume.summary}
-            </Markdown>
+            <Markdown>{Resume.summary}</Markdown>
           </div>
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start sm:gap-6 items-center">
-            {
-              Resume.techStack.map((item, index) => (
-                <item.icon key={index} className="hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500" />
-              ))
-            }
+            {Resume.techStack.map((item, index) => (
+              <item.icon
+                key={index}
+                className="hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"
+              />
+            ))}
           </div>
         </div>
         <div className=" items-center h-full flex justify-center py-4">
           <div className="flex flex-row gap-4 items-center justify-end">
             <div className=" flex flex-col items-center ">
-              <Image alt="profile photo" src={pic} placeholder='blur' width={240} height={240} className="rounded-3xl shadow-gray-500 dark:shadow-gray-800 shadow-md" />
+              <Image
+                alt="profile photo"
+                src={pic}
+                placeholder="blur"
+                width={240}
+                height={240}
+                className="rounded-3xl shadow-gray-500 dark:shadow-gray-800 shadow-md"
+              />
               <Button
                 size={"sm"}
                 className=" absolute bottom-0 sm:bottom-3 rounded-lg bg-orange-500 hover:bg-orange-600 backdrop-blur-md text-white "
                 asChild
               >
-                <Link href={"/about/resume"} >
-                  <LuFileText className=" size-2" strokeWidth={1.5} />View Resume
+                <Link href={"/about/resume"}>
+                  <LuFileText className=" size-2" strokeWidth={1.5} />
+                  View Resume
                 </Link>
               </Button>
             </div>
@@ -84,7 +91,11 @@ export default function Home() {
                   className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative"
                   asChild
                 >
-                  <Link href={link.link} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={link.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
                     <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
                   </Link>
@@ -102,34 +113,55 @@ export default function Home() {
         <Separator />
         <div className="flex flex-col gap-6 pt-6">
           {Resume.experiences.map((exp, i) => (
-            <Link key={i} href={exp.link} className="group/exp" target="_blank" rel="noopener noreferrer">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 group-hover/exp:bg-accent/40 p-2 transition-all">
+            <Link
+              key={i}
+              href={exp.link}
+              className="group/exp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 group-hover/exp:bg-accent/40 p-2 transition-all">
                 <div className="">
                   {exp.duration.map((item, index) => (
                     <div className="pb-2" key={index}>
                       <div className="text-gray-500 group-hover/exp:text-orange-500  transition-all">
                         {item.start} - {item.end}
                       </div>
-                      <div className="text-gray-500 group-hover/exp:text-gray-500  transition-all">{item.type}</div>
+                      <div className="text-gray-500 group-hover/exp:text-gray-500  transition-all">
+                        {item.type}
+                      </div>
                     </div>
-                  ))
-                  }
+                  ))}
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-wrap sm:flex-row gap-2 items-center">
+                    <div className="items-center group-hover/exp:text-orange-500 transition-all">
+                      <span className="underline underline-offset-2">
+                        {exp.title}
+                      </span>,
+                    </div>
                     <div className="flex gap-2 items-center py-2 group-hover/exp:text-orange-500 transition-all">
-                      <span className="underline underline-offset-2">{exp.title}</span>,<span className="font-bold">{exp.subTitle}</span>
+                      <span className="font-bold">{exp.subTitle}</span>
                       <ArrowUpRight className="size-5" />
                     </div>
                     <div className="px-2 pt-1 text-xs rounded-lg bg-muted/50 text-gray-700 dark:text-gray-300 w-fit">
                       {exp.location}
                     </div>
                   </div>
-                  <div className="text-gray-500 group-hover/exp:text-gray-700 dark:group-hover/exp:text-gray-400">{exp.description}</div>
+                  <div className="text-gray-500 group-hover/exp:text-gray-700 dark:group-hover/exp:text-gray-400">
+                    {exp.description}
+                  </div>
                   <div className="flex flex-col gap-2">
                     {exp.bullets.map((bullet, index) => (
-                      <Markdown className={"dark:group-hover/exp:text-gray-200 dark:text-gray-300 text-gray-600 group-hover/exp:text-gray-800"} key={index}>{bullet}</Markdown>
+                      <Markdown
+                        className={
+                          "dark:group-hover/exp:text-gray-200 dark:text-gray-300 text-gray-600 group-hover/exp:text-gray-800"
+                        }
+                        key={index}
+                      >
+                        {bullet}
+                      </Markdown>
                     ))}
                   </div>
                   <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
@@ -154,40 +186,34 @@ export default function Home() {
         </div>
         <Separator />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-          {
-            Resume.educations.map((education, i) => (
-              <EducationCard education={education} key={i} />
-            ))
-          }
+          {Resume.educations.map((education, i) => (
+            <EducationCard education={education} key={i} />
+          ))}
         </div>
       </div>
 
       <div className="pt-8" id="skills">
-        <div className="text-lg font-bold py-2 text-orange-400">
-          Skills
-        </div>
+        <div className="text-lg font-bold py-2 text-orange-400">Skills</div>
         {/* <Separator /> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {
-            Resume.skills.map((skill, index) => (
-              <div className="p-2" key={index}>
-                <div className="py-2 font-semibold">{skill.title}</div>
-                <div className="flex flex-row gap-2 flex-wrap">
-                  {
-                    skill.tags.map((tag, index) => (
-                      <div className="flex flex-row gap-2 px-3 py-1 bg-gray-200/50 dark:bg-gray-600/50 hover:bg-gray-300/50 hover:dark:bg-gray-700/50 justify-center items-center rounded-md dark:text-gray-300 text-gray-600 border" key={index}>
-                        {tag.icon && <tag.icon />}
-                        <span className="text-sm font-semibold">{tag.label}</span>
-                      </div>
-                    ))
-                  }
-                </div>
+          {Resume.skills.map((skill, index) => (
+            <div className="p-2" key={index}>
+              <div className="py-2 font-semibold">{skill.title}</div>
+              <div className="flex flex-row gap-2 flex-wrap">
+                {skill.tags.map((tag, index) => (
+                  <div
+                    className="flex flex-row gap-2 px-3 py-1 bg-gray-200/50 dark:bg-gray-600/50 hover:bg-gray-300/50 hover:dark:bg-gray-700/50 justify-center items-center rounded-md dark:text-gray-300 text-gray-600 border"
+                    key={index}
+                  >
+                    {tag.icon && <tag.icon />}
+                    <span className="text-sm font-semibold">{tag.label}</span>
+                  </div>
+                ))}
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
       </div>
-
 
       <div className="pt-8" id="projects">
         <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
@@ -211,7 +237,7 @@ export default function Home() {
                   className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white"
                   asChild
                 >
-                  <Link href={"/about/resume"} >
+                  <Link href={"/about/resume"}>
                     <ArrowDown />
                   </Link>
                 </Button>
