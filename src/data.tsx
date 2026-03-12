@@ -11,6 +11,7 @@ import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
 import { RiGeminiFill } from "react-icons/ri";
 import { LuBookText, LuFileCode2, LuMail } from "react-icons/lu";
 import { TbSmartHome } from "react-icons/tb";
+import { UUID } from "crypto";
 
 export const sidebar_data = {
   logo: "/logo.png",
@@ -162,7 +163,8 @@ export const difficulties = [
 
 export const practices: practiceType[] = [
   {
-    id: "LC0088",
+    id: "E02DD495-8A06-4F75-9517-8EF7D74A2097",
+    exid: "LC0088",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -174,7 +176,8 @@ export const practices: practiceType[] = [
     content: ["Question", "Solution"],
   },
   {
-    id: "LC0001",
+    id: "CD6A55E6-8785-43E8-9E64-AAEF215DD00A",
+    exid: "LC0001",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -186,7 +189,8 @@ export const practices: practiceType[] = [
     content: ["Brute Force", "Hash Map", "Explanation"],
   },
   {
-    id: "LC1415",
+    id: "BB12023F-488C-488C-A55C-313E04CD4AF2",
+    exid: "LC1415",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -204,7 +208,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1752",
+    id: "E82C250C-F4DC-48CE-8E9C-FB9B2C7F2361",
+    exid: "LC1752",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -220,7 +225,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1790",
+    id: "DD9511E7-4B5C-4A4C-A32E-19544E6DB68F",
+    exid: "LC1790",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -242,7 +248,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1800",
+    id: "CE6325CC-A893-471C-998B-99D5134B59E4",
+    exid: "LC1800",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -258,7 +265,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1910",
+    id: "9C038F58-7EA4-404B-9D5B-8B355732F1AC",
+    exid: "LC1910",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -275,7 +283,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3151",
+    id: "667B93AB-9E3B-402B-B6C0-9D6C62FA177E",
+    exid: "LC3151",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -291,7 +300,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3105",
+    id: "64593DE5-F5DA-4908-8039-F5DC30958C55",
+    exid: "LC3105",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -307,7 +317,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1726",
+    id: "366597DD-58C2-4849-AF4B-A0B87EB7134C",
+    exid: "LC1726",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -329,7 +340,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3160",
+    id: "EB8C4460-6767-47C2-95AD-127475ED0469",
+    exid: "LC3160",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -346,7 +358,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2364",
+    id: "DBF51A2B-50DC-45DD-88EA-8A0B5C4D0361",
+    exid: "LC2364",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -364,7 +377,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3174",
+    id: "081E6BCE-0C83-44B7-B792-B068D8F9A4A8",
+    exid: "LC3174",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -385,7 +399,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2342",
+    id: "2075189F-EDDF-44AD-BA42-8468B9F8F683",
+    exid: "LC2342",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -402,7 +417,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3065",
+    id: "0A0FE867-CC6C-42D1-AC7A-D4120B2E2288",
+    exid: "LC3065",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -419,7 +435,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3438",
+    id: "F0C431CA-C10D-447F-B371-1E60C4848D0D",
+    exid: "LC3438",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -436,7 +453,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2460",
+    id: "60A2200F-FEED-422A-8653-8079131EE819",
+    exid: "LC2460",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -455,7 +473,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1757",
+    id: "CD536EF3-7D4B-4643-88B9-6568B43A6CE0",
+    exid: "LC1757",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -467,7 +486,8 @@ export const practices: practiceType[] = [
     content: ["Question", "Selecting rows based on conditions", "Wrap up"],
   },
   {
-    id: "LC2570",
+    id: "A8CE6AB8-4921-4717-BBE5-9D28A8AF27AC",
+    exid: "LC2570",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -486,7 +506,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2161",
+    id: "288F628B-A8EA-47FF-B58F-C7864CC75307",
+    exid: "LC2161",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -503,7 +524,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1780",
+    id: "54434067-1175-418F-AE0D-3B793E860121",
+    exid: "LC1780",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -520,7 +542,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2579",
+    id: "B028C06D-1C38-4EA7-8FF5-8AE020BD7D5C",
+    exid: "LC2579",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -537,7 +560,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2356",
+    id: "C73027B3-6621-478C-8458-1B430B15BBC0",
+    exid: "LC2356",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -554,7 +578,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2965",
+    id: "E18D5159-7FD1-4F73-B2E4-3DFE529D3C27",
+    exid: "LC2965",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -571,7 +596,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2206",
+    id: "91343EB7-919B-4634-84EA-3D90EFC8EC31",
+    exid: "LC2206",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -588,7 +614,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC3417",
+    id: "075F9465-8938-4C00-BF56-B09319813EAB",
+    exid: "LC3417",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -605,7 +632,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2427",
+    id: "C096230A-B4A7-4BF5-A65B-32D7B5991F97",
+    exid: "LC2427",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -622,7 +650,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2303",
+    id: "6CFB0055-BB34-4B08-BDD7-CF1EE12CE6C7",
+    exid: "LC2303",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -639,7 +668,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC1688",
+    id: "A00E1F5C-F023-4D32-9975-E82CA7D23F31",
+    exid: "LC1688",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -656,7 +686,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2644",
+    id: "0F38B20D-E083-4CC2-AB3A-0F3C2901CFE1",
+    exid: "LC2644",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -673,7 +704,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC2140",
+    id: "8359C781-9958-4FC8-AC4B-4B4D25902821",
+    exid: "LC2140",
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -690,7 +722,8 @@ export const practices: practiceType[] = [
     ],
   },
   {
-    id: "LC0344",
+    id: "25AFE42F-996F-426E-8419-F6CB7E32DF49",
+    exid: "LC0344",
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -743,6 +776,7 @@ export const blogCategories: {
 
 export const blogs: blogsType[] = [
   {
+    id: "ED951E39-1C6E-42DA-A842-53806580F2EA",
     title:
       "How to Change the Default Permission String for the Location-Access Alert in Expo",
     description:
@@ -759,6 +793,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "E6837422-93A6-431D-AA66-DAEC1D9F4D7B",
     title: "Run Stable Diffusion on Your MacBook M1 Using Python",
     description:
       "Turn your MacBook M1 into an art machine with Python, watch your words come to life in vivid images!",
@@ -778,6 +813,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "68ADEA00-C482-465C-BFBC-B5B3392CA274",
     title: "Build your Golang Proxy Server",
     description:
       "Learn to build a robust Go proxy server supporting HTTP and HTTPS, complete with health checks and detailed logging.",
@@ -811,6 +847,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "3984BC66-D909-4074-BA7A-B7D6B07E7CBF",
     title: "Simple way to run deepseek-r1 Locally",
     description:
       "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool.",
@@ -820,6 +857,7 @@ export const blogs: blogsType[] = [
     content: ["Installation", "Usages", "Wrap up"],
   },
   {
+    id: "C19F6ABB-2DBD-47B1-AF6A-F02584029CD3",
     title: "Learn basics of SQLite",
     description:
       "SQLite is a lightweight, serverless, and self-contained relational database management system. It's often used in applications that need a local database.",
@@ -839,6 +877,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "1B2D0884-6D5E-4A12-8CC5-160CA6B858DD",
     title: "Building a JSON Validation Pipeline with Go and Gin",
     description:
       "Imagine a scenario where we're transmitting crucial data from our website to a database. However, before this information is stored",
@@ -858,6 +897,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "1F529938-65A4-48DA-82C1-D39917CB46E1",
     title: "Use Gin Web Framework to build your server",
     description:
       "Let's build a simple web service using the Go programming language and the Gin web framework. We will define a basic web server that listens for incoming HTTP requests and responds with JSON data.",
@@ -873,6 +913,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "0ADA1327-7E22-477F-8B14-FFCCAE439697",
     title: "How to interact with Smart Contract?",
     description:
       "This article will teach you how to interact with a smart contract in the Ethereum blockchain, starting this article we first need to install some dependencies in our computer.",
@@ -889,6 +930,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "5B0C1002-0A2F-43C4-B3A8-F20A4DFAC9F3",
     title: "Fetch Balance from Ethereum Blockchain",
     description:
       "To Fetch the balance of an account in the Ethereum blockchain first we need to install some dependencies on our computer.",
@@ -905,6 +947,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "676B16D3-35F3-40EA-80E9-3A02635E35A6",
     title: "Blockchain Storage",
     description:
       "Learn about IPFS(InterPlanetary File System) and how we store data on blockchain. The blockchain contains some data, such as transactions or other information,",
@@ -922,6 +965,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "10017BA2-D476-4BEF-8621-6E6B109CEF02",
     title: "Cryptography",
     description:
       "Cryptography is a huge topic and constantly evolving as the internet get advances. Here I will explain the topics that will help you understand blockchain better.",
@@ -944,6 +988,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "78BE0B8A-B0B2-49A2-BDCA-FB4B745F6B7A",
     title: "Decentralization with Blockchain",
     description:
       "How does the internet works? How the internet is centralized? What is Decentralization? Why it matters? Applications and uses of blockchain?",
@@ -960,6 +1005,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "B81ECCB3-E4C8-4DA9-8BB6-C744171747C7",
     title: "Blockchain Structure",
     description:
       "Understand how a blockchain work and what makes a blockchain. Today we are going to see how a blockchain work.",
@@ -977,6 +1023,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "EE437D7B-055E-485B-985B-CD9DD302E866",
     title: "What is Blockchain?",
     description:
       "Blockchain is a distributed ledger (ok but what this really mean ?). Let me explain it !",
@@ -990,6 +1037,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "0710C2D0-D1B1-4993-A3D0-BDD88805A31A",
     title: "Set up Tailwind in your Project",
     description:
       "Tailwind CSS is a utility class framework that helps you make a responsive web design. In this article, I will teach you, how to set up a tailwind in the project.",
@@ -999,6 +1047,7 @@ export const blogs: blogsType[] = [
     content: ["Play CDN ( Method 1)", "Tailwind CLI ( Method 2 )"],
   },
   {
+    id: "F980A89E-C9D9-4FFA-AFCC-FB053F0D610F",
     title: "Git for Termux",
     description:
       "As the internet says git is a version control to track the code changes and there is not any second thought. I am not going to explain it in detail, If you want to read more",
@@ -1016,6 +1065,7 @@ export const blogs: blogsType[] = [
     ],
   },
   {
+    id: "CA130AF4-E18A-436C-AAEF-AD87861D98FC",
     title: "Tmux for Termux",
     description:
       "Have you ever wonder how to open multiple sessions in a singel screen in termux. Here is a solution, an open source terminal multiplexer for Linux or Unix operating systems.",
@@ -1025,6 +1075,7 @@ export const blogs: blogsType[] = [
     content: ["Installation", "Basic command"],
   },
   {
+    id: "F857DDBC-A889-4EBC-B0B9-B3B00B816283",
     title: "What is Cmatrix",
     description:
       "Want to see some animation in termux you can install cmatrix. Cmatrix shows cool matrix scrolling lines animation in terminal , you probably have seen in the Sci-fi movies.",
@@ -1036,6 +1087,7 @@ export const blogs: blogsType[] = [
 ];
 
 export type blogsType = {
+  id: UUID;
   title: string;
   description: string;
   titleSlug: string;
@@ -1045,7 +1097,8 @@ export type blogsType = {
 };
 
 export type practiceType = {
-  id: string;
+  id: UUID;
+  exid: string;
   difficulty: "Easy" | "Medium" | "Hard";
   isFavor: boolean;
   status: "Done" | "Attempt" | "Unattempt";
@@ -1058,6 +1111,7 @@ export type practiceType = {
 };
 
 export type projectType = {
+  id: UUID;
   status:
     | "Concept"
     | "In Progress"
@@ -1073,10 +1127,12 @@ export type projectType = {
   source: string | null;
   bullets: string[];
   tags: string[];
+  tasks: { id: UUID; title: string; titleSlug: string }[];
 };
 
 export const projects: projectType[] = [
   {
+    id: "7CF81AFA-D1CC-46B6-83B5-4309ADD993B6",
     status: "Beginner",
     title: "Blink LED using Arduino",
     subTitle:
@@ -1086,5 +1142,17 @@ export const projects: projectType[] = [
     source: null,
     bullets: [],
     tags: ["Arduino", "IoT", "Electronics", "Microcontroller"],
+    tasks: [
+      {
+        id: "C317ED1A-1010-4543-AE40-AC7A0A6C995E",
+        title: "Introduction",
+        titleSlug: "introduction",
+      },
+      {
+        id: "D2353471-C30B-459A-B4DE-BA641DB9DC7D",
+        title: "Prerequisites",
+        titleSlug: "prerequisites",
+      },
+    ],
   },
 ];

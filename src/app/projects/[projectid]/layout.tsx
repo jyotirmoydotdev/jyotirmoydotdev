@@ -17,19 +17,8 @@ export const metadata: Metadata = {
   },
 };
 
-const Layout = ({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: { slug: string };
-}) => {
-  return (
-    <div className=" max-w-6xl mx-auto flex flex-row ">
-      <h1>Slug: {params.slug}</h1>
-      {children}
-    </div>
-  );
+const Layout = ({ children }: { children: ReactNode }) => {
+  return <div className=" max-w-6xl mx-auto flex flex-row ">{children}</div>;
 };
 
 export default Layout;

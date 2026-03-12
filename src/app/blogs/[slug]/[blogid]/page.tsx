@@ -20,11 +20,11 @@ export default async function Page({
     ...blogs.slice(0, (blogindex + 1) % blogs.length),
   ]
     .slice(0, 3)
-    .map(({ title, description, date, titleSlug }) => ({
+    .map(({ id, title, description, date, titleSlug }) => ({
       title: title,
       subTitle: description,
       footer: date,
-      url: titleSlug,
+      url: "/blogs/" + titleSlug + "/" + id,
     }));
   return (
     <div className="relative">
@@ -45,4 +45,3 @@ export function generateStaticParams() {
 }
 
 export const dynamicParams = false;
-

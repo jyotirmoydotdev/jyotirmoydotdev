@@ -1,21 +1,23 @@
-import { blogCategories } from '@/data';
-import { Calendar } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
+import { blogCategories } from "@/data";
+import { Calendar } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { UUID } from "crypto";
 
 export type blogsType = {
-  title: string,
-  description: string,
-  titleSlug: string,
-  date: string,
-  category: string,
-  content: (string | string[])[],
+  id: UUID;
+  title: string;
+  description: string;
+  titleSlug: string;
+  date: string;
+  category: string;
+  content: (string | string[])[];
 };
 
 type BlogCardProps = {
@@ -34,18 +36,22 @@ export function BlogCard({ blog }: BlogCardProps) {
 
   return (
     <Link
-      href={`/blogs/${blog.titleSlug}`}
+      href={`/blogs/${blog.titleSlug}/${blog.id}`}
       className="flex flex-col justify-between gap-4 p-4 group/project w-full sm:bg-accent/40 border-b sm:border hover:border-orange-50/20 hover:bg-accent/50 sm:hover:scale-105 transition-all rounded-none sm:rounded-xl"
     >
       <TooltipProvider>
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">
             <div className="flex gap-2 items-center">
-              <Calendar className='dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors size-4' />
-              <div className=" py-1 px-2 rounded-md bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60">{blog.date}</div>
+              <Calendar className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors size-4" />
+              <div className=" py-1 px-2 rounded-md bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60">
+                {blog.date}
+              </div>
               <Tooltip>
                 <TooltipTrigger>
-                  <div className=" py-1 px-2 aspect-square inline-flex items-center rounded-lg bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60"><Icon /></div>
+                  <div className=" py-1 px-2 aspect-square inline-flex items-center rounded-lg bg-muted/90 dark:bg-muted/50 text-xs text-black/60 dark:text-white/60">
+                    <Icon />
+                  </div>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{category.label}</p>

@@ -24,11 +24,11 @@ export default async function Page({
     ...practices.slice(0, (practiceindex + 1) % practices.length),
   ]
     .slice(0, 3)
-    .map(({ title, difficulty, titleSlug }) => ({
-      title: title,
-      subTitle: null,
-      footer: difficulty,
-      url: titleSlug,
+    .map(({ id, exid, title, difficulty, titleSlug }) => ({
+      title: exid + " - " + difficulty,
+      subTitle: title,
+      footer: null,
+      url: "/practice/" + titleSlug + "/" + id,
     }));
 
   return (
@@ -36,7 +36,7 @@ export default async function Page({
       <div className="p-4 gap-4 flex flex-row justify-center pl-4 sm:pl-8">
         <div className=" max-w-xl">
           <div className=" text-2xl font-bold font-sans">
-            <span>{practice.id}.</span> <span>{practice.title}</span>
+            <span>{practice.exid}.</span> <span>{practice.title}</span>
           </div>
           <div className="flex gap-2 pt-4 flex-wrap">
             <span
