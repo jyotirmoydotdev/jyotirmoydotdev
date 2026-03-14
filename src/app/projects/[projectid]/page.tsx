@@ -1,29 +1,21 @@
-// import Content from "@/components/content";
-import { blogs } from "@/data";
+import ProjectDetailSection from "@/components/project-detail-section";
+import { Separator } from "@/components/ui/separator";
+import { projects } from "@/data";
+import React from "react";
+import { FaRegCircle } from "react-icons/fa6";
+// import { MdOutlineTaskAlt } from "react-icons/md";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ projectid: string }>;
 }) {
-  const slug = (await params).slug;
-  const { default: Blog } = await import(`@/markdown/${slug}.mdx`);
+  // const [expand, setExpand] = React.useState(false);
+  const id = (await params).projectid;
+  const data = projects.find(
+    (project) => project.id.toLowerCase() == id.toLowerCase(),
+  );
   return (
-    <div className="relative">
-      <div className="p-4 gap-4 flex flex-row justify-center pl-4 sm:pl-8">
-        <div className=" w-[92vw] md:max-w-[578.4px] prose dark:prose-invert ">
-          <Blog />
-        </div>
-        {/* <Content /> */}
-      </div>
-    </div>
+    <div className="p-4">{data && <ProjectDetailSection data={data} />}</div>
   );
 }
-
-export function generateStaticParams() {
-  return blogs.flatMap((blog) => {
-    return { slug: blog.titleSlug };
-  });
-}
-
-export const dynamicParams = false;

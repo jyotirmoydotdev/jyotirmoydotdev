@@ -1110,7 +1110,7 @@ export type practiceType = {
   content: (string | string[])[];
 };
 
-export type projectType = {
+export type ProjectType = {
   id: UUID;
   status:
     | "Concept"
@@ -1122,6 +1122,8 @@ export type projectType = {
     | "Advance";
   title: string;
   subTitle: string;
+  description: string;
+  imageurl: string | null;
   path: string | null;
   link: string | null;
   source: string | null;
@@ -1130,14 +1132,17 @@ export type projectType = {
   tasks: { id: UUID; title: string; titleSlug: string }[];
 };
 
-export const projects: projectType[] = [
+export const projects: ProjectType[] = [
   {
     id: "7CF81AFA-D1CC-46B6-83B5-4309ADD993B6",
     status: "Beginner",
     title: "Blink LED using Arduino",
     subTitle:
       "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
-    path: "/projects/project",
+    description:
+      "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming. A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming. A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
+    imageurl: null,
+    path: "/projects/7CF81AFA-D1CC-46B6-83B5-4309ADD993B6",
     link: null,
     source: null,
     bullets: [],
