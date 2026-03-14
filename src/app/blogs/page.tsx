@@ -2,7 +2,7 @@
 
 import { blogs } from "@/data";
 import React from "react";
-import { ChevronLeft, ChevronRight, File } from "lucide-react";
+import { File } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
