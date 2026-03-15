@@ -39,12 +39,12 @@ export default function ProjectDetailSection({ data }: { data: ProjectType }) {
       </div>
       <div className="pb-4">
         <div className="text-2xl font-bold mb-2">Project Tasks</div>
-        <div className="border flex flex-col gap-2 p-2 max-w-2xl ">
+        <div className="flex flex-col gap-2 px-2 py-3 max-w-2xl bg-gray-100 dark:bg-[#18181b] rounded-lg border">
           {data.tasks.map((task, index) => (
             <Link
               href={"/projects/" + data.id + "/tasks/" + task.id}
               key={index}
-              className="border-b  hover:bg-gray-200/50 hover:dark:bg-gray-500/50 py-1 px-2 flex gap-2 items-center"
+              className=" rounded-md  hover:bg-gray-200/50 hover:dark:bg-gray-500/50 py-1.5 px-2 flex gap-2 items-center"
             >
               <FaRegCircle />{" "}
               <span>

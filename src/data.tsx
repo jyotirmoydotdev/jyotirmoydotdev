@@ -1140,7 +1140,7 @@ export const projects: ProjectType[] = [
     subTitle:
       "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
     description:
-      "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming. A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming. A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
+      "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
     imageurl: null,
     path: "/projects/7CF81AFA-D1CC-46B6-83B5-4309ADD993B6",
     link: null,

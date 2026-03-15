@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  return <div className=" max-w-4xl mx-auto">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default Layout;
