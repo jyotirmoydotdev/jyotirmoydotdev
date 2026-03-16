@@ -4,6 +4,7 @@ import { ProjectType } from "@/data";
 import { Separator } from "./ui/separator";
 import { FaRegCircle } from "react-icons/fa6";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProjectDetailSection({ data }: { data: ProjectType }) {
   return (
@@ -29,7 +30,7 @@ export default function ProjectDetailSection({ data }: { data: ProjectType }) {
           </div>
         </div>
         <div className="p-2 sm:p-4">
-          {data.imageurl && <div className="bg-gray-500 aspect-video "></div>}
+          {data.imageurl && <Image src={data.imageurl} width={500} height={500} alt="Project Image" className="bg-gray-500 aspect-video rounded-lg "></Image>}
         </div>
       </div>
       <Separator />
