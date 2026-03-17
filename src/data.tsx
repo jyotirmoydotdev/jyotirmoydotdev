@@ -1129,7 +1129,7 @@ export type ProjectType = {
   source: string | null;
   bullets: string[];
   tags: string[];
-  tasks: { id: UUID; title: string; titleSlug: string }[];
+  tasks: { id: UUID; title: string; subtitle: string }[];
 };
 
 export const projects: ProjectType[] = [
@@ -1139,8 +1139,7 @@ export const projects: ProjectType[] = [
     title: "Blink LED using Arduino",
     subTitle:
       "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
-    description:
-      "A beginner-friendly Arduino project that demonstrates how to control an LED using digital output pins and basic Arduino programming.",
+    description: `This project introduces beginners to the fundamentals of electronics and programming using Arduino. Students will learn how to control LEDs through simple code and gradually build more complex lighting patterns.Starting with a single LED, learners will understand how Arduino interacts with hardware using digital signals. As the course progresses, they will expand their knowledge by controlling multiple LEDs, adjusting timing, and creating dynamic effects such as running lights and reverse sequences. The project also introduces basic input handling by integrating a push button, allowing users to control LED behavior interactively.`,
     imageurl: "/image/blinklight.webp",
     path: "/projects/7CF81AFA-D1CC-46B6-83B5-4309ADD993B6",
     link: null,
@@ -1150,13 +1149,43 @@ export const projects: ProjectType[] = [
     tasks: [
       {
         id: "C317ED1A-1010-4543-AE40-AC7A0A6C995E",
-        title: "Introduction",
-        titleSlug: "introduction",
+        title: "Setup & Overview",
+        subtitle:
+          "This task prepares students for the course by introducing the goal, required tools, and basic setup. It ensures everything is ready before starting hands-on tasks.",
       },
       {
         id: "D2353471-C30B-459A-B4DE-BA641DB9DC7D",
-        title: "Prerequisites",
-        titleSlug: "prerequisites",
+        title: "Blink One LED",
+        subtitle:
+          "Create your first Arduino program to blink a single LED ON and OFF repeatedly.",
+      },
+      {
+        id: "E7E632B8-F66F-403C-87D4-91DAE104951E",
+        title: "Change Blink Speed",
+        subtitle: "Modify the blinking speed by adjusting delay timing.",
+      },
+      {
+        id: "80A81E71-2860-4D25-9E30-96E8A5F5FE51",
+        title: "Blink Three LEDs Together",
+        subtitle:
+          "Control multiple LEDs at the same time using different pins.",
+      },
+      {
+        id: "CC1EEF59-49C2-4540-9CC5-FBF9D66A5C73",
+        title: "Blink LEDs in Sequence (Running Light)",
+        subtitle:
+          "Create a running light effect where LEDs turn ON one after another.",
+      },
+      {
+        id: "EC177498-2C8D-4705-A768-9AA72CE76A98",
+        title: "Reverse Sequence",
+        subtitle: "Make LEDs move forward and backward in a loop.",
+      },
+      {
+        id: "AB0C7131-3932-47D7-B783-F616FD4E6EE4",
+        title: "Button Control (Optional Upgrade)",
+        subtitle:
+          "Use a push button to control LED behavior (like turning ON only when pressed).",
       },
     ],
   },

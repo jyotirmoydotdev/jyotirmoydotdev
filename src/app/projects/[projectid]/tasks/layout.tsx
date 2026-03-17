@@ -36,7 +36,7 @@ const Layout = async ({
         variant="sidebar"
         side="right"
         collapsible="none"
-        className={`top-[5.5rem] sticky rounded-lg hidden sm:block p-2 pl-4 border`}
+        className={`top-[5.3rem] sticky rounded-lg hidden sm:block p-2 pl-4 border`}
       >
         <SidebarHeader className=" border-b px-0">
           <Link

@@ -46,7 +46,7 @@ export default async function Page({
 
   return (
     <div className="relative">
-      <div className="p-4 gap-4 flex flex-row justify-center pl-4 sm:pl-8">
+      <div className="p-4 gap-4 flex flex-row justify-center pl-4">
         <div className="w-[92vw] md:max-w-[578.4px] prose dark:prose-invert">
           <TaskMarkdown />
         </div>

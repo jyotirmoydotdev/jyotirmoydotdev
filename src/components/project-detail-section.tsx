@@ -5,6 +5,7 @@ import { Separator } from "./ui/separator";
 import { FaRegCircle } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
+import Markdown from "react-markdown";
 
 export default function ProjectDetailSection({ data }: { data: ProjectType }) {
   return (
@@ -30,26 +31,39 @@ export default function ProjectDetailSection({ data }: { data: ProjectType }) {
           </div>
         </div>
         <div className="p-2 sm:p-4">
-          {data.imageurl && <Image src={data.imageurl} width={500} height={500} alt="Project Image" className="bg-gray-500 aspect-video rounded-lg "></Image>}
+          {data.imageurl && (
+            <Image
+              src={data.imageurl}
+              width={500}
+              height={500}
+              alt="Project Image"
+              className="bg-gray-500 aspect-video rounded-lg "
+            ></Image>
+          )}
         </div>
       </div>
       <Separator />
       <div className="flex flex-col gap-2 py-4">
         <div className="text-2xl font-bold">Project Description</div>
-        <p>{data.description}</p>
+        <Markdown>{data.description}</Markdown>
       </div>
       <div className="pb-4">
-        <div className="text-2xl font-bold mb-2">Project Tasks</div>
+        <div className="text-2xl font-bold mb-4">Project Tasks</div>
         <div className="flex flex-col gap-2 px-2 py-3 max-w-2xl bg-gray-100 dark:bg-[#18181b] rounded-lg border">
           {data.tasks.map((task, index) => (
             <Link
               href={"/projects/" + data.id + "/tasks/" + task.id}
               key={index}
-              className=" rounded-md  hover:bg-gray-200/50 hover:dark:bg-gray-500/50 py-1.5 px-2 flex gap-2 items-center"
+              className=" rounded-md  hover:bg-gray-200/50 hover:dark:bg-gray-500/50 py-1.5 px-2 flex flex-col gap-2"
             >
-              <FaRegCircle />{" "}
-              <span>
-                Task {index}: {task.title}
+              <div className="flex flex-row gap-3 items-center">
+                <FaRegCircle />{" "}
+                <span>
+                  Task {index}: {task.title}
+                </span>
+              </div>
+              <span className="ml-7 text-sm text-gray-500">
+                {task.subtitle}
               </span>
             </Link>
           ))}
