@@ -37,7 +37,7 @@ export function BlogCard({ blog }: BlogCardProps) {
   return (
     <Link
       href={`/blogs/${blog.titleSlug}/${blog.id}`}
-      className="flex flex-col justify-between gap-4 p-4 group/project w-full sm:bg-accent/40 border-b sm:border hover:border-orange-50/20 hover:bg-accent/50 sm:hover:scale-105 transition-all rounded-none sm:rounded-xl"
+      className="flex flex-col justify-between gap-4 p-4 group/project w-full sm:bg-accent/40 border-b sm:border hover:dark:border-orange-50/20 hover:border-orange-200 hover:bg-accent/50 sm:hover:scale-105 transition-all rounded-none sm:rounded-xl"
     >
       <TooltipProvider>
         <div className="flex flex-col gap-4">
