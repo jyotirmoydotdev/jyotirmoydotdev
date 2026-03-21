@@ -64,11 +64,11 @@ const ResumePage = () => (
 
       <View style={styles.mainSection}>
         <View style={styles.leftSection}>
-          <Text></Text>
+          <Text> </Text>
         </View>
 
         <View style={styles.rightSection}>
-          <Text></Text>
+          <Text> </Text>
         </View>
       </View>
     </Page>
