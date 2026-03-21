@@ -1,1 +1,91 @@
-# Setup & Overview
+---
+title: "Task 0: Setup & Overview"
+id: "C317ED1A-1010-4543-AE40-AC7A0A6C995E"
+---
+
+import {ImageBox} from "@/components/imagebox"
+
+# Task 0: Setup & Overview
+---
+## Objective
+
+In this task, you will prepare everything needed to start your Arduino journey.  
+By the end of this lesson, you will:
+
+- Understand what Arduino is
+- Set up the Arduino IDE
+- Connect your Arduino board to your computer
+- Get ready for your first LED project
+
+## What is Arduino?
+
+Arduino is a small programmable board (microcontroller) that can control electronic components like LEDs, sensors, and motors.
+
+Think of it as a **tiny computer** that you can program to interact with the real world.
+
+## Components Required
+
+Make sure you have the following:
+
+<div className="flex flex-row gap-2 flex-wrap">
+<ImageBox title="Arduino Board Uno" src="/image/arduinoUnoR3.png"/>
+<ImageBox title="USB Cable" src="/image/usbStandardA.png"/>
+<ImageBox title="Breadboard" src="/image/breadboardSmall.png"/>
+<ImageBox title="LED" src="/image/led.png"/>
+<ImageBox title="220Ω Resistor" src="/image/resistor.png"/>
+<ImageBox title="Jumper Wires" src="/image/wire.png"/>
+<ImageBox title="Computer/Laptop" src="/image/laptop.png"/>
+</div>
+
+## Install Arduino IDE
+
+1. Go to the official Arduino website  
+2. Download the Arduino IDE for your operating system  
+3. Install it like any normal software  
+
+## Connect Your Arduino
+
+1. Plug your Arduino into your computer using a USB cable  
+2. Open the Arduino IDE  
+3. Go to:
+
+
+```
+Tools → Board → Select your Arduino board (e.g., Arduino Uno)
+
+```
+
+4. Then select the port:
+
+
+```
+Tools → Port → Select the correct COM/USB port
+
+```
+
+## Test Your Setup (Optional but Recommended)
+
+Upload a basic example:
+
+1. Go to:
+
+```
+File → Examples → Basics → Blink
+
+```
+
+2. Click **Upload**
+
+If everything is correct, the built-in LED on your Arduino should start blinking
+
+## Common Issues
+
+- **Port not showing?** Try reconnecting the USB cable  
+- **Upload failed?** Check if the correct board is selected  
+- **LED not blinking?** Ensure proper connection  
+
+## What’s Next?
+
+Now that your setup is ready, you’re all set to build your first project:
+
+**Next Task: Blink One LED**
