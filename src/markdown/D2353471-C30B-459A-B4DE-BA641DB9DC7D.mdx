@@ -1,0 +1,80 @@
+---
+title: "Task 1: Blink One LED"
+id: "D2353471-C30B-459A-B4DE-BA641DB9DC7D"
+---
+
+## Task 1: Blink One LED
+
+In this task, you will write your first Arduino program to blink an LED ON and OFF repeatedly.  
+This introduces digital output and basic timing in Arduino.
+
+## Components Required
+
+- Arduino Board (Uno/Nano)
+- LED
+- 220 ohm resistor
+- Breadboard
+- Jumper wires
+
+## Circuit Diagram
+
+![](/image/blinkledcircuitdiagram.webp)
+
+## Circuit Explanation
+
+- Connect the **long leg (positive)** of the LED to **pin 13** of Arduino  
+- Connect the **short leg (negative)** of the LED to one end of the resistor  
+- Connect the other end of the resistor to **GND**
+
+The resistor is important to limit current and protect the LED.
+
+## Arduino Code
+
+```cpp
+void setup() {
+  pinMode(13, OUTPUT); // Set pin 13 as output
+}
+
+void loop() {
+  digitalWrite(13, HIGH); // Turn LED ON
+  delay(1000);            // Wait for 1 second
+
+  digitalWrite(13, LOW);  // Turn LED OFF
+  delay(1000);            // Wait for 1 second
+}
+````
+
+## Code Explanation
+
+* `pinMode(13, OUTPUT)` sets pin 13 as an output pin
+* `digitalWrite(13, HIGH)` turns the LED ON
+* `digitalWrite(13, LOW)` turns the LED OFF
+* `delay(1000)` pauses the program for 1 second
+
+The loop runs continuously, so the LED keeps blinking.
+
+## How to Upload
+
+1. Connect your Arduino to the computer
+2. Open Arduino IDE
+3. Paste the code
+4. Select the correct board and port
+5. Click Upload
+
+## Expected Output
+
+The LED connected to pin 13 will:
+
+* Turn ON for 1 second
+* Turn OFF for 1 second
+* Repeat continuously
+
+## Common Mistakes
+
+* LED not glowing: Check polarity (long leg to pin 13)
+* No blinking: Ensure correct board and port are selected
+* LED too dim or not working: Check resistor connection
+
+## Next Step
+
+In the next task, you will change the blinking speed by modifying the delay time.
