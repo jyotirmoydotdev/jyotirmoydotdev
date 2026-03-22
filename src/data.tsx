@@ -163,6 +163,19 @@ export const difficulties = [
 
 export const practices: practiceType[] = [
   {
+    id: "F55F2E2F-78E9-40CB-B23B-C8CB0741EC8C",
+    exid: "LC0027",
+    difficulty: "Easy",
+    isFavor: false,
+    status: "Done",
+    title: "Remove Element",
+    titleSlug: "remove-element",
+    topicTags: ["Array","Two Pointers"],
+    hasSolution: true,
+    hasVideoSolution: false,
+    content: ["Question", "Solution"],
+  },
+  {
     id: "E02DD495-8A06-4F75-9517-8EF7D74A2097",
     exid: "LC0088",
     difficulty: "Easy",
