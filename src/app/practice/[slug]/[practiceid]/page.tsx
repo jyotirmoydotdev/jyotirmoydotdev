@@ -59,7 +59,7 @@ export default async function Page({
               </span>
             ))}
             <a
-              href={`https://practice.com/problems/${practice.titleSlug}/description/`}
+              href={`https://leetcode.com/problems/${practice.titleSlug}/description/`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-1.5 text-sm py-0.5 rounded-md bg-sidebar-accent"

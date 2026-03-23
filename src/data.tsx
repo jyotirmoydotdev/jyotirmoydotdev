@@ -161,23 +161,40 @@ export const difficulties = [
   },
 ];
 
+export type practiceType = {
+  id: UUID;
+  prefix: string;
+  exid: number;
+  difficulty: "Easy" | "Medium" | "Hard";
+  isFavor: boolean;
+  status: "Done" | "Attempt" | "Unattempt";
+  title: string;
+  titleSlug: string;
+  topicTags: string[];
+  hasSolution: boolean;
+  hasVideoSolution: boolean;
+  content: (string | string[])[];
+};
+
 export const practices: practiceType[] = [
   {
     id: "F55F2E2F-78E9-40CB-B23B-C8CB0741EC8C",
-    exid: "LC0027",
+    prefix: "LC",
+    exid: 27,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
     title: "Remove Element",
     titleSlug: "remove-element",
-    topicTags: ["Array","Two Pointers"],
+    topicTags: ["Array", "Two Pointers"],
     hasSolution: true,
     hasVideoSolution: false,
     content: ["Question", "Solution"],
   },
   {
     id: "E02DD495-8A06-4F75-9517-8EF7D74A2097",
-    exid: "LC0088",
+    prefix: "LC",
+    exid: 88,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -190,7 +207,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "CD6A55E6-8785-43E8-9E64-AAEF215DD00A",
-    exid: "LC0001",
+    prefix: "LC",
+    exid: 1,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -203,7 +221,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "BB12023F-488C-488C-A55C-313E04CD4AF2",
-    exid: "LC1415",
+    prefix: "LC",
+    exid: 1415,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -222,7 +241,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "E82C250C-F4DC-48CE-8E9C-FB9B2C7F2361",
-    exid: "LC1752",
+    prefix: "LC",
+    exid: 1752,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -239,7 +259,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "DD9511E7-4B5C-4A4C-A32E-19544E6DB68F",
-    exid: "LC1790",
+    prefix: "LC",
+    exid: 1790,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -262,7 +283,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "CE6325CC-A893-471C-998B-99D5134B59E4",
-    exid: "LC1800",
+    prefix: "LC",
+    exid: 1800,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -279,7 +301,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "9C038F58-7EA4-404B-9D5B-8B355732F1AC",
-    exid: "LC1910",
+    prefix: "LC",
+    exid: 1910,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -297,7 +320,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "667B93AB-9E3B-402B-B6C0-9D6C62FA177E",
-    exid: "LC3151",
+    prefix: "LC",
+    exid: 3151,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -314,7 +338,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "64593DE5-F5DA-4908-8039-F5DC30958C55",
-    exid: "LC3105",
+    prefix: "LC",
+    exid: 3105,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -331,7 +356,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "366597DD-58C2-4849-AF4B-A0B87EB7134C",
-    exid: "LC1726",
+    prefix: "LC",
+    exid: 1726,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -354,7 +380,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "EB8C4460-6767-47C2-95AD-127475ED0469",
-    exid: "LC3160",
+    prefix: "LC",
+    exid: 3160,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -372,7 +399,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "DBF51A2B-50DC-45DD-88EA-8A0B5C4D0361",
-    exid: "LC2364",
+    prefix: "LC",
+    exid: 2364,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -391,7 +419,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "081E6BCE-0C83-44B7-B792-B068D8F9A4A8",
-    exid: "LC3174",
+    prefix: "LC",
+    exid: 3174,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -413,7 +442,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "2075189F-EDDF-44AD-BA42-8468B9F8F683",
-    exid: "LC2342",
+    prefix: "LC",
+    exid: 2342,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -431,7 +461,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "0A0FE867-CC6C-42D1-AC7A-D4120B2E2288",
-    exid: "LC3065",
+    prefix: "LC",
+    exid: 3065,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -449,7 +480,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "F0C431CA-C10D-447F-B371-1E60C4848D0D",
-    exid: "LC3438",
+    prefix: "LC",
+    exid: 3438,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -467,7 +499,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "60A2200F-FEED-422A-8653-8079131EE819",
-    exid: "LC2460",
+    prefix: "LC",
+    exid: 2460,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -487,7 +520,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "CD536EF3-7D4B-4643-88B9-6568B43A6CE0",
-    exid: "LC1757",
+    prefix: "LC",
+    exid: 1757,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -500,7 +534,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "A8CE6AB8-4921-4717-BBE5-9D28A8AF27AC",
-    exid: "LC2570",
+    prefix: "LC",
+    exid: 2570,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -520,7 +555,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "288F628B-A8EA-47FF-B58F-C7864CC75307",
-    exid: "LC2161",
+    prefix: "LC",
+    exid: 2161,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -538,7 +574,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "54434067-1175-418F-AE0D-3B793E860121",
-    exid: "LC1780",
+    prefix: "LC",
+    exid: 1780,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -556,7 +593,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "B028C06D-1C38-4EA7-8FF5-8AE020BD7D5C",
-    exid: "LC2579",
+    prefix: "LC",
+    exid: 2579,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -574,7 +612,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "C73027B3-6621-478C-8458-1B430B15BBC0",
-    exid: "LC2356",
+    prefix: "LC",
+    exid: 2356,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -592,7 +631,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "E18D5159-7FD1-4F73-B2E4-3DFE529D3C27",
-    exid: "LC2965",
+    prefix: "LC",
+    exid: 2965,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -610,7 +650,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "91343EB7-919B-4634-84EA-3D90EFC8EC31",
-    exid: "LC2206",
+    prefix: "LC",
+    exid: 2206,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -628,7 +669,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "075F9465-8938-4C00-BF56-B09319813EAB",
-    exid: "LC3417",
+    prefix: "LC",
+    exid: 3417,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -646,7 +688,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "C096230A-B4A7-4BF5-A65B-32D7B5991F97",
-    exid: "LC2427",
+    prefix: "LC",
+    exid: 2427,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -664,7 +707,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "6CFB0055-BB34-4B08-BDD7-CF1EE12CE6C7",
-    exid: "LC2303",
+    prefix: "LC",
+    exid: 2303,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -682,7 +726,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "A00E1F5C-F023-4D32-9975-E82CA7D23F31",
-    exid: "LC1688",
+    prefix: "LC",
+    exid: 1688,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -700,7 +745,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "0F38B20D-E083-4CC2-AB3A-0F3C2901CFE1",
-    exid: "LC2644",
+    prefix: "LC",
+    exid: 2644,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -718,7 +764,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "8359C781-9958-4FC8-AC4B-4B4D25902821",
-    exid: "LC2140",
+    prefix: "LC",
+    exid: 2140,
     difficulty: "Medium",
     isFavor: false,
     status: "Done",
@@ -736,7 +783,8 @@ export const practices: practiceType[] = [
   },
   {
     id: "25AFE42F-996F-426E-8419-F6CB7E32DF49",
-    exid: "LC0344",
+    prefix: "LC",
+    exid: 344,
     difficulty: "Easy",
     isFavor: false,
     status: "Done",
@@ -1109,20 +1157,6 @@ export type blogsType = {
   content: (string | string[])[];
 };
 
-export type practiceType = {
-  id: UUID;
-  exid: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  isFavor: boolean;
-  status: "Done" | "Attempt" | "Unattempt";
-  title: string;
-  titleSlug: string;
-  topicTags: string[];
-  hasSolution: boolean;
-  hasVideoSolution: boolean;
-  content: (string | string[])[];
-};
-
 export type ProjectType = {
   id: UUID;
   status:
@@ -1205,7 +1239,16 @@ export const projects: ProjectType[] = [
 ];
 
 export const urlshort = new Map<string, string>([
-  ["class5", "https://docs.google.com/document/d/1j0mQvybUF-w393RdZ7Drhpps3FvGf59klgtdn8UotO0/edit?usp=share_link"],
-  ["class6", "https://docs.google.com/document/d/1cZGdnWY_t6Ck_J_4WGI8RGmqaaYHz5EDvyGNlqy2Big/edit?usp=share_link"],
-  ["class7", "https://docs.google.com/document/d/1r1nAO4kIiw6psiMPpMuzUpz2TSFl_5oYyq5ZkJ5MIwo/edit?usp=share_link"]
+  [
+    "class5",
+    "https://docs.google.com/document/d/1j0mQvybUF-w393RdZ7Drhpps3FvGf59klgtdn8UotO0/edit?usp=share_link",
+  ],
+  [
+    "class6",
+    "https://docs.google.com/document/d/1cZGdnWY_t6Ck_J_4WGI8RGmqaaYHz5EDvyGNlqy2Big/edit?usp=share_link",
+  ],
+  [
+    "class7",
+    "https://docs.google.com/document/d/1r1nAO4kIiw6psiMPpMuzUpz2TSFl_5oYyq5ZkJ5MIwo/edit?usp=share_link",
+  ],
 ]);
