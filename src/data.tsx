@@ -1203,3 +1203,9 @@ export const projects: ProjectType[] = [
     ],
   },
 ];
+
+export const urlshort = new Map<string, string>([
+  ["class5", "https://docs.google.com/document/d/1j0mQvybUF-w393RdZ7Drhpps3FvGf59klgtdn8UotO0/edit?usp=share_link"],
+  ["class6", "https://docs.google.com/document/d/1cZGdnWY_t6Ck_J_4WGI8RGmqaaYHz5EDvyGNlqy2Big/edit?usp=share_link"],
+  ["class7", "https://docs.google.com/document/d/1r1nAO4kIiw6psiMPpMuzUpz2TSFl_5oYyq5ZkJ5MIwo/edit?usp=share_link"]
+]);

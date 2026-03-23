@@ -45,7 +45,7 @@ export default function Home() {
           <div className="p-1 mt-4">
             <div className="flex flex-row justify-between items-center py-3">
               <div className="text-xl font-bold ">Latest Practice Question</div>
-              <Link href={"/practie"} className="text-sm">
+              <Link href={"/practice"} className="text-sm">
                 View all
               </Link>
             </div>
