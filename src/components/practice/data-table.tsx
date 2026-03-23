@@ -47,12 +47,14 @@ export function DataTable<TData, TValue>({
     hasSolution: !isMobile,
     titleSlug: !isMobile,
   });
-  const [sorting, setSorting] = useState<SortingState>([
+  const [sorting, setSorting] = useState<SortingState>(
+    [
     {
-      id: "id",
+      id: "exid",
       desc: false,
     },
-  ]);
+  ]
+  );
   const table = useReactTable({
     data,
     columns,
@@ -109,9 +111,9 @@ export function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row, index) => (
                 <TableRow
-                  key={row.id}
+                  key={index}
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => {
                     router.push(
