@@ -1251,4 +1251,8 @@ export const urlshort = new Map<string, string>([
     "class7",
     "https://docs.google.com/document/d/1r1nAO4kIiw6psiMPpMuzUpz2TSFl_5oYyq5ZkJ5MIwo/edit?usp=share_link",
   ],
+    [
+      "gimp",
+      "https://fixthephoto.com/online-gimp-editor.html"
+    ]
 ]);
