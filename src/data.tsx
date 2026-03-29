@@ -1206,34 +1206,34 @@ export const projects: ProjectType[] = [
         subtitle:
           "Create your first Arduino program to blink a single LED ON and OFF repeatedly.",
       },
-      {
-        id: "E7E632B8-F66F-403C-87D4-91DAE104951E",
-        title: "Change Blink Speed",
-        subtitle: "Modify the blinking speed by adjusting delay timing.",
-      },
-      {
-        id: "80A81E71-2860-4D25-9E30-96E8A5F5FE51",
-        title: "Blink Three LEDs Together",
-        subtitle:
-          "Control multiple LEDs at the same time using different pins.",
-      },
-      {
-        id: "CC1EEF59-49C2-4540-9CC5-FBF9D66A5C73",
-        title: "Blink LEDs in Sequence (Running Light)",
-        subtitle:
-          "Create a running light effect where LEDs turn ON one after another.",
-      },
-      {
-        id: "EC177498-2C8D-4705-A768-9AA72CE76A98",
-        title: "Reverse Sequence",
-        subtitle: "Make LEDs move forward and backward in a loop.",
-      },
-      {
-        id: "AB0C7131-3932-47D7-B783-F616FD4E6EE4",
-        title: "Button Control (Optional Upgrade)",
-        subtitle:
-          "Use a push button to control LED behavior (like turning ON only when pressed).",
-      },
+      // {
+      //   id: "E7E632B8-F66F-403C-87D4-91DAE104951E",
+      //   title: "Change Blink Speed",
+      //   subtitle: "Modify the blinking speed by adjusting delay timing.",
+      // },
+      // {
+      //   id: "80A81E71-2860-4D25-9E30-96E8A5F5FE51",
+      //   title: "Blink Three LEDs Together",
+      //   subtitle:
+      //     "Control multiple LEDs at the same time using different pins.",
+      // },
+      // {
+      //   id: "CC1EEF59-49C2-4540-9CC5-FBF9D66A5C73",
+      //   title: "Blink LEDs in Sequence (Running Light)",
+      //   subtitle:
+      //     "Create a running light effect where LEDs turn ON one after another.",
+      // },
+      // {
+      //   id: "EC177498-2C8D-4705-A768-9AA72CE76A98",
+      //   title: "Reverse Sequence",
+      //   subtitle: "Make LEDs move forward and backward in a loop.",
+      // },
+      // {
+      //   id: "AB0C7131-3932-47D7-B783-F616FD4E6EE4",
+      //   title: "Button Control (Optional Upgrade)",
+      //   subtitle:
+      //     "Use a push button to control LED behavior (like turning ON only when pressed).",
+      // },
     ],
   },
 ];
