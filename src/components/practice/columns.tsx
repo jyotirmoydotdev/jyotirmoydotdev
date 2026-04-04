@@ -14,6 +14,15 @@ import {
 
 export const columns: ColumnDef<practiceType>[] = [
   {
+    accessorKey: "id",
+    header: ({}) => (
+      <></>
+    ),
+    cell: ({}) => {
+      return <></>
+    }
+  },
+  {
     accessorKey: "exid",
     header: ({ column }) => (
       <ColumnHeader className="pl-4" column={column} title="No." />

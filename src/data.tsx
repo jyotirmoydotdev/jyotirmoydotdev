@@ -173,10 +173,24 @@ export type practiceType = {
   topicTags: string[];
   hasSolution: boolean;
   hasVideoSolution: boolean;
-  content: (string | string[])[];
+  content?: (string | string[])[];
 };
 
 export const practices: practiceType[] = [
+  {
+    id: "100025F8-974B-4F24-ADF4-7B42439EB5B1",
+    prefix: "LC",
+    exid: 189,
+    difficulty: "Medium",
+    isFavor: false,
+    status: "Done",
+    title: "Rotate Array",
+    titleSlug: "rotate-array",
+    topicTags: ["Array","Math","Two Pointers"],
+    hasSolution: true ,
+    hasVideoSolution: false,
+
+  },
   {
     id: "F55F2E2F-78E9-40CB-B23B-C8CB0741EC8C",
     prefix: "LC",

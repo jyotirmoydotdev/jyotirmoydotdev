@@ -46,6 +46,7 @@ export function DataTable<TData, TValue>({
     topicTags: !isMobile,
     hasSolution: !isMobile,
     titleSlug: !isMobile,
+    id: false
   });
   const [sorting, setSorting] = useState<SortingState>(
     [
@@ -83,6 +84,7 @@ export function DataTable<TData, TValue>({
         topicTags: !isMobile,
         hasSolution: !isMobile,
         titleSlug: !isMobile,
+        id: false
       });
     }
   }, [isMobile]);
@@ -117,7 +119,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => {
                     router.push(
-                      `/practice/${row.getValue("titleSlug")}/${row.getValue("id")}}`,
+                      `/practice/${row.getValue("titleSlug")}/${row.getValue("id")}`,
                     );
                   }}
                   className=" cursor-pointer"
