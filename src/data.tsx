@@ -178,6 +178,19 @@ export type practiceType = {
 
 export const practices: practiceType[] = [
   {
+    id: "E1C0F9FF-A4AF-4EB4-AD7C-A4BA7F041D1D",
+    prefix: "LC",
+    exid: 121,
+    difficulty: "Easy",
+    isFavor: false,
+    status: "Done",
+    title: "Best Time to Buy and Sell Stock",
+    titleSlug: "best-time-to-buy-and-sell-stock",
+    topicTags: ["Array","Dynamic Programming"],
+    hasSolution: true,
+    hasVideoSolution: false,
+  },
+  {
     id: "100025F8-974B-4F24-ADF4-7B42439EB5B1",
     prefix: "LC",
     exid: 189,

@@ -1,0 +1,17 @@
+## Single Pass Greedy Approach (Tracking Minimum Price)
+
+```go
+func maxProfit(prices []int) int {
+    res, low := 0, prices[0]
+    for _, price := range prices {
+        if price < low {
+            low = price
+        }
+        res = max(res, price - low)
+    }
+    return res
+}
+```
+
+- Time Complexity: `O(n)`
+- Space Complexity: `O(1)`
