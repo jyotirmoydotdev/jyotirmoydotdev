@@ -938,7 +938,7 @@ export const blogs: blogsType[] = [
     id: "3984BC66-D909-4074-BA7A-B7D6B07E7CBF",
     title: "Simple way to run deepseek-r1 Locally",
     description:
-      "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool.",
+      "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool. ",
     titleSlug: "simple-way-to-run-deepseek-r1-locally",
     date: "Feb 4, 2025",
     category: "ai-machine-learning",
