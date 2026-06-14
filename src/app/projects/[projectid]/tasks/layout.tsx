@@ -58,7 +58,7 @@ const Layout = async ({
                       key={index}
                       className={`py-1 px-2 rounded-md hover:bg-gray-700/50 transition-all`}
                     >
-                      Task {index}: {task.title}
+                      {task.title}
                     </Link>
                   ))}
                 </div>

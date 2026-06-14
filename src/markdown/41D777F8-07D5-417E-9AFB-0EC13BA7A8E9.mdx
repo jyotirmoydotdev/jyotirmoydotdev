@@ -1,0 +1,42 @@
+---
+title: "Sequential LED Blink"
+id: "41D777F8-07D5-417E-9AFB-0EC13BA7A8E9"
+---
+
+## <u>Sequential LED Blink</u>
+
+In the previous chapter, we learned how to blink a single LED on and off every second. In this task, we will learn how to control multiple LEDs and make them blink in a sequence.
+
+## Circuit Diagram
+
+![](/image/sequence-led-blink-circuit-diagram.png)
+
+- Step 1: Connect the Arduino `GND` pin to the negative (-) power rail of the breadboard.
+- Step 2: Connect the positive (+) leg of LED 1 to Digital `Pin 13`. Connect the negative (-) leg to a 220Ω resistor, then connect the resistor to the negative (-) power rail.
+- Step 3: Connect the positive (+) leg of LED 2 to Digital `Pin 12`. Connect the negative (-) leg to a 220Ω resistor, then connect the resistor to the negative (-) power rail.
+- Step 4: Connect the positive (+) leg of LED 3 to Digital `Pin 11`. Connect the negative (-) leg to a 220Ω resistor, then connect the resistor to the negative (-) power rail.
+
+## Arduino Code
+
+```cpp
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+}
+void loop()
+{
+  digitalWrite(13, HIGH);
+  delay(50); // Wait for 50 millisecond(s)
+  digitalWrite(13, LOW);
+  digitalWrite(12, HIGH);
+  delay(50); // Wait for 50 millisecond(s)
+  digitalWrite(12, LOW);
+  digitalWrite(11, HIGH);
+  delay(50); // Wait for 50 millisecond(s)
+  digitalWrite(11, LOW);
+}
+```
+
+## Code Explanation

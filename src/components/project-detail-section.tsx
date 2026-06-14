@@ -59,7 +59,7 @@ export default function ProjectDetailSection({ data }: { data: ProjectType }) {
               <div className="flex flex-row gap-3 items-center">
                 <FaRegCircle />{" "}
                 <span>
-                  Task {index}: {task.title}
+                  {task.title}
                 </span>
               </div>
               <span className="ml-7 text-sm text-gray-500">

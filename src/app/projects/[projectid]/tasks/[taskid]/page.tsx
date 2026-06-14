@@ -37,9 +37,9 @@ export default async function Page({
     ...tasks?.slice(0, (taskindex + 1) % tasks.length),
   ]
     .slice(0, 3)
-    .map(({ id, title }, i) => ({
-      title: "Task " + i,
-      subTitle: title,
+    .map(({ id, title, subtitle }, _) => ({
+      title: title,
+      subTitle: subtitle,
       footer: null,
       url: "/projects/" + pid + "/tasks/" + id,
     }));

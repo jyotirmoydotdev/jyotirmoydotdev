@@ -186,7 +186,7 @@ export const practices: practiceType[] = [
     status: "Done",
     title: "Best Time to Buy and Sell Stock",
     titleSlug: "best-time-to-buy-and-sell-stock",
-    topicTags: ["Array","Dynamic Programming"],
+    topicTags: ["Array", "Dynamic Programming"],
     hasSolution: true,
     hasVideoSolution: false,
   },
@@ -199,10 +199,9 @@ export const practices: practiceType[] = [
     status: "Done",
     title: "Rotate Array",
     titleSlug: "rotate-array",
-    topicTags: ["Array","Math","Two Pointers"],
-    hasSolution: true ,
+    topicTags: ["Array", "Math", "Two Pointers"],
+    hasSolution: true,
     hasVideoSolution: false,
-
   },
   {
     id: "F55F2E2F-78E9-40CB-B23B-C8CB0741EC8C",
@@ -1224,43 +1223,20 @@ export const projects: ProjectType[] = [
       {
         id: "C317ED1A-1010-4543-AE40-AC7A0A6C995E",
         title: "Setup & Overview",
-        subtitle:
-          "This task prepares students for the course by introducing the goal, required tools, and basic setup. It ensures everything is ready before starting hands-on tasks.",
+        subtitle: "Set up the required components and IDE.",
       },
       {
         id: "D2353471-C30B-459A-B4DE-BA641DB9DC7D",
-        title: "Blink One LED",
+        title: "Blink a Single LED",
         subtitle:
-          "Create your first Arduino program to blink a single LED ON and OFF repeatedly.",
+          "Write an Arduino program to blink an LED on and off repeatedly.",
       },
-      // {
-      //   id: "E7E632B8-F66F-403C-87D4-91DAE104951E",
-      //   title: "Change Blink Speed",
-      //   subtitle: "Modify the blinking speed by adjusting delay timing.",
-      // },
-      // {
-      //   id: "80A81E71-2860-4D25-9E30-96E8A5F5FE51",
-      //   title: "Blink Three LEDs Together",
-      //   subtitle:
-      //     "Control multiple LEDs at the same time using different pins.",
-      // },
-      // {
-      //   id: "CC1EEF59-49C2-4540-9CC5-FBF9D66A5C73",
-      //   title: "Blink LEDs in Sequence (Running Light)",
-      //   subtitle:
-      //     "Create a running light effect where LEDs turn ON one after another.",
-      // },
-      // {
-      //   id: "EC177498-2C8D-4705-A768-9AA72CE76A98",
-      //   title: "Reverse Sequence",
-      //   subtitle: "Make LEDs move forward and backward in a loop.",
-      // },
-      // {
-      //   id: "AB0C7131-3932-47D7-B783-F616FD4E6EE4",
-      //   title: "Button Control (Optional Upgrade)",
-      //   subtitle:
-      //     "Use a push button to control LED behavior (like turning ON only when pressed).",
-      // },
+      {
+        id: "41D777F8-07D5-417E-9AFB-0EC13BA7A8E9",
+        title: "Sequential LED Blink",
+        subtitle:
+          "Create a running light effect by turning LEDs on one after another.",
+      },
     ],
   },
 ];
@@ -1278,8 +1254,5 @@ export const urlshort = new Map<string, string>([
     "class7",
     "https://docs.google.com/document/d/1r1nAO4kIiw6psiMPpMuzUpz2TSFl_5oYyq5ZkJ5MIwo/edit?usp=share_link",
   ],
-    [
-      "gimp",
-      "https://fixthephoto.com/online-gimp-editor.html"
-    ]
+  ["gimp", "https://fixthephoto.com/online-gimp-editor.html"],
 ]);
