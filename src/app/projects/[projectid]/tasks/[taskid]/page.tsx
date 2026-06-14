@@ -37,7 +37,7 @@ export default async function Page({
     ...tasks?.slice(0, (taskindex + 1) % tasks.length),
   ]
     .slice(0, 3)
-    .map(({ id, title, subtitle }, _) => ({
+    .map(({ id, title, subtitle }) => ({
       title: title,
       subTitle: subtitle,
       footer: null,
