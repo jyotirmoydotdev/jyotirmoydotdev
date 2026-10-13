@@ -1,9 +1,10 @@
 'use client'
 
 import { ResumeType } from "@/resume";
-import { ExternalLink, Folder, Github } from "lucide-react";
+import { ExternalLink, Folder } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { BsGithub } from "react-icons/bs";
 
 type ProjectType = ResumeType["projects"][number]
 type ProjectStatusType = ResumeType["projects"][number]["status"]
@@ -51,7 +52,7 @@ function ProjectCard({ project }: { project: ProjectType }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors" />
+              <BsGithub className="dark:group-hover/project:text-orange-50 group-hover/project:text-orange-950 hover:stroke-orange-500 transition-colors" />
             </Link>
           )}
           {project.link && (

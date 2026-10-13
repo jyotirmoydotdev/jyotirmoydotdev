@@ -137,13 +137,13 @@ export default function Home() {
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-wrap sm:flex-row gap-2 items-center">
                     <div className="items-center group-hover/exp:text-orange-500 transition-all">
-                      <span className="underline underline-offset-2">
+                      <span className="font-bold">
                         {exp.title}
                       </span>,
                     </div>
-                    <div className="flex gap-2 items-center py-2 group-hover/exp:text-orange-500 transition-all">
-                      <span className="font-bold">{exp.subTitle}</span>
-                      <ArrowUpRight className="size-5" />
+                    <div className="flex gap-1 items-center py-2 group-hover/exp:text-orange-500 transition-all">
+                      <span className="text-sm">{exp.subTitle}</span>
+                      <ArrowUpRight className="size-4" />
                     </div>
                     <div className="px-2 pt-1 text-xs rounded-lg bg-muted/50 text-gray-700 dark:text-gray-300 w-fit">
                       {exp.location}

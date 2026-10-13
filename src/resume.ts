@@ -159,7 +159,7 @@ export const Resume: ResumeType = {
   ],
   experiences: [
     {
-      title: "Innovation Trainer",
+      title: "Robotics Instructor",
       subTitle: "The Learning Zone",
       link: "http://thelearningzoneghy.in/",
       location: "Tura, Meghalaya, India",
@@ -175,10 +175,10 @@ export const Resume: ResumeType = {
         "Deliver structured computer science and innovation curriculum to school students, including practical training in Arduino, electronics, and project-based STEM learning.",
         "Conduct assessments and guide students in designing, building, and presenting technology-driven projects to foster problem-solving and computational thinking skills."
       ],
-      tags: ["Robotics", "Teaching", "Innovation"]
+      tags: ["Robotics", "C++", "Python"]
     },
     {
-      title: "Technical Associate",
+      title: "Mobile Application Developer",
       subTitle: "Rushlane Technologies",
       link: "https://rushlane.net",
       location: "Tura, Meghalaya, India",
@@ -199,7 +199,7 @@ export const Resume: ResumeType = {
         "Led the development and ongoing maintenance of Rushlane’s food delivery mobile app and restaurant dashboard.",
         "As an early-stage startup team member, contributed to management, planning, and cross-functional collaboration across product, design, and operations."
       ],
-      tags: ["Mobile Development", "Management", "Field Operations"]
+      tags: ["Mobile Development", "Expo", "React Native"]
     },
     {
       title: "Ethereum Engineer",
