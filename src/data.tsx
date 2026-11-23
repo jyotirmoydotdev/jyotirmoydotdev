@@ -4,7 +4,6 @@ import {
   ArrowUp,
   Files,
   Folders,
-  User2Icon,
 } from "lucide-react";
 import { IconType } from "react-icons/lib";
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
@@ -48,12 +47,12 @@ export const sidebar_data = {
     },
   ],
   bottomMain: [
-    {
-      title: "About",
-      url: "/about",
-      icon: User2Icon,
-      isActive: false,
-    },
+    // {
+    //   title: "About",
+    //   url: "/about",
+    //   icon: User2Icon,
+    //   isActive: false,
+    // },
     {
       title: "Subscribe",
       url: "/subscribe",

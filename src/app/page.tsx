@@ -1,103 +1,260 @@
 "use client";
 
-import pic from "@/../public/pic.jpg";
-import ProflieCard from "@/components/profile-card";
-import GraphCard from "@/components/graph-card";
-import { blogs, practices, projects } from "@/data";
-import { BlogCard } from "@/components/blog-card";
-import React from "react";
+import { Separator } from "@/components/ui/separator";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { FileCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import localFont from "next/font/local";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Resume } from "@/resume";
+import Markdown from "react-markdown";
 import ProjectCard from "@/components/project-card";
+import EducationCard from "@/components/education-card";
+import Image from "next/image";
+import pic from "../../public/pic2.jpg";
+import { LuFileText } from "react-icons/lu";
+
+const baloo = localFont({
+  src: "../fonts/Baloo2-VariableFont_wght.ttf",
+  weight: "800",
+  display: "swap",
+});
 
 export default function Home() {
-  const latestBlogs = blogs.slice(0, 3);
-  const latestPractie = practices.slice(0, 3);
-  const latestProjects = projects.slice(0, 3);
-
+  const isMobile = useIsMobile();
   return (
-    <div className="p-2 sm:p-4 h-full dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] ">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-2 sm:gap-x-2">
-          <ProflieCard
-            pic={pic}
-            name="Jyotirmoy Barman"
-            email="Jyotirmoydotdev@gmail.com"
-            subtitle="Software Engineer"
-            className=""
-          />
-          <GraphCard className="col-span-2" />
-        </div>
-        <div className="flex flex-col ">
-          <div className="p-1 mt-4">
-            <div className="flex flex-row justify-between items-center py-3">
-              <div className="text-xl font-bold ">Latest Blogs</div>
-              <Link href={"/blogs"} className="text-sm">
-                View all
-              </Link>
+    <div className="p-4 relative max-w-8xl mx-auto dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] border-x">
+      <div className="grid grid-cols-1 md:grid-cols-2 relative">
+        <div className="">
+          <header className="flex flex-col gap-2">
+            <div
+              className={`text-4xl sm:text-6xl text-orange-400 font-extrabold ${baloo.className}`}
+            >
+              {Resume.title}
             </div>
-            <div className=" grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
-              {latestBlogs.map((blog, index) => (
-                <BlogCard blog={blog} key={index} />
+            <div className="flex gap-2 flex-wrap items-center">
+              <span className="text-lg sm:text-2xl font-semibold text-gray-700 dark:text-gray-300">
+                {Resume.role}
+              </span>
+              {"/"}
+              <span className="text-sm sm:text-lg text-gray-500">
+                {Resume.subTitle}
+              </span>
+            </div>
+          </header>
+          <div className="py-4 text-sm sm:text-base dark:text-gray-300 text-gray-700">
+            <Markdown>{Resume.summary}</Markdown>
+          </div>
+          <div className="flex flex-wrap gap-3 justify-center sm:justify-start sm:gap-6 items-center">
+            {Resume.techStack.map((item, index) => (
+              <item.icon
+                key={index}
+                className="hover:rotate-45 transition-all size-[2rem] sm:size-[3rem] fill-gray-400 dark:fill-gray-500"
+              />
+            ))}
+          </div>
+        </div>
+        <div className=" items-center h-full flex justify-center py-4">
+          <div className="flex flex-row gap-4 items-center justify-end">
+            <div className=" flex flex-col items-center ">
+              <Image
+                alt="profile photo"
+                src={pic}
+                placeholder="blur"
+                width={240}
+                height={240}
+                className="rounded-3xl shadow-gray-500 dark:shadow-gray-800 shadow-md"
+              />
+              <Button
+                size={"sm"}
+                className=" absolute bottom-0 sm:bottom-3 rounded-lg bg-orange-500 hover:bg-orange-600 backdrop-blur-md text-white "
+                asChild
+              >
+                <Link href={"/resume"}>
+                  <LuFileText className=" size-2" strokeWidth={1.5} />
+                  View Resume
+                </Link>
+              </Button>
+            </div>
+            <div className="flex flex-col gap-2">
+              {Resume.links.map((link, i) => (
+                <Button
+                  key={i}
+                  variant={"outline"}
+                  size={"icon"}
+                  className="group/link hover:bg-muted/80 rounded-lg bg-muted size-8 relative"
+                  asChild
+                >
+                  <Link
+                    href={link.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <link.icon className="scale-100 group-hover/link:scale-0 transition-all" />
+                    <ArrowUpRight className="absolute scale-0 group-hover/link:scale-100 transition-all" />
+                  </Link>
+                </Button>
               ))}
             </div>
           </div>
-          <div className="p-1 mt-4">
-            <div className="flex flex-row justify-between items-center py-3">
-              <div className="text-xl font-bold ">Latest Practice Question</div>
-              <Link href={"/practice"} className="text-sm">
-                View all
-              </Link>
-            </div>
-            <div className=" grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
-              {latestPractie.map((practice, index) => (
-                <Link
-                  href={"/practice/" + practice.titleSlug + "/" + practice.id}
-                  key={index}
-                  className="flex flex-col justify-between gap-4 p-4 group/project w-full sm:bg-accent/40 border-b sm:border hover:dark:border-orange-50/20 hover:border-orange-200 hover:bg-accent/50 sm:hover:scale-105 transition-all rounded-none sm:rounded-xl"
-                >
-                  <div className="flex flex-col gap-4">
-                    <div className="flex flex-row gap-2 items-center">
-                      <span className="font-semibold">{practice.exid}</span>
-                      <FileCheck size={18} className="stroke-blue-400" />
-                      <span
-                        className={`text-sm font-semibold
-                      ${practice.difficulty === "Easy" ? "text-green-500" : practice.difficulty === "Medium" ? "text-yellow-500" : "text-red-500"}
-                      `}
-                      >
-                        {practice.difficulty}
-                      </span>
+        </div>
+      </div>
+
+      <div className="pt-8" id="experiences">
+        <div className="text-lg font-bold py-2 text-orange-400">
+          Experiences
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-6 pt-6">
+          {Resume.experiences.map((exp, i) => (
+            <Link
+              key={i}
+              href={exp.link}
+              className="group/exp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 group-hover/exp:bg-accent/40 p-2 transition-all">
+                <div className="">
+                  {exp.duration.map((item, index) => (
+                    <div className="pb-2" key={index}>
+                      <div className="text-gray-500 group-hover/exp:text-orange-500  transition-all">
+                        {item.start} - {item.end}
+                      </div>
+                      <div className="text-gray-500 group-hover/exp:text-gray-500  transition-all">
+                        {item.type}
+                      </div>
                     </div>
-                    <div className="font-black text-lg">{practice.title}</div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-wrap sm:flex-row gap-2 items-center">
+                    <div className="items-center group-hover/exp:text-orange-500 transition-all">
+                      <span className="font-bold">{exp.title}</span>,
+                    </div>
+                    <div className="flex gap-1 items-center py-2 group-hover/exp:text-orange-500 transition-all">
+                      {exp.logo != "" && (
+                        <Image
+                          className="w-4 h-4 bg-white rounded-sm"
+                          width={16}
+                          height={16}
+                          src={exp.logo}
+                          alt={exp.subTitle}
+                        ></Image>
+                      )}
+                      <span className="text-sm">{exp.subTitle}</span>
+                      <ArrowUpRight className="size-4" />
+                    </div>
+                    <div className="px-2 pt-1 text-xs rounded-lg bg-muted/50 text-gray-700 dark:text-gray-300 w-fit">
+                      {exp.location}
+                    </div>
                   </div>
-                  <div className=" flex flex-row gap-2">
-                    {practice.topicTags.map((tag, index2) => (
+                  <div className="text-gray-500 group-hover/exp:text-gray-700 dark:group-hover/exp:text-gray-400">
+                    {exp.description}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {exp.bullets.map((bullet, index) => (
+                      <Markdown
+                        className={
+                          "dark:group-hover/exp:text-gray-200 dark:text-gray-300 text-gray-600 group-hover/exp:text-gray-800"
+                        }
+                        key={index}
+                      >
+                        {bullet}
+                      </Markdown>
+                    ))}
+                  </div>
+                  <div className="flex gap-2 text-sm py-2 text-black/50 dark:text-white/50">
+                    {exp.tags.map((tag, index) => (
                       <div
-                        key={index2}
-                        className="bg-gray-500/50 text-xs rounded-md px-1.5 py-1"
+                        key={index}
+                        className="px-2 py-1 rounded-lg bg-muted/50"
                       >
                         {tag}
                       </div>
                     ))}
                   </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="p-1 mt-4">
-            <div className="flex flex-row justify-between items-center py-3">
-              <div className="text-xl font-bold ">Latest Projects</div>
-              <Link href={"/projects"} className="text-sm">
-                View all
-              </Link>
-            </div>
-            <div className=" grid grid-cols-1 sm:grid-cols-3 gap-4 relative">
-              {latestProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
-              ))}
-            </div>
-          </div>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
+      </div>
+      <div className="pt-8" id="educations">
+        <div className="text-lg font-bold pt-6 pb-4 text-orange-400">
+          Educations
+        </div>
+        <Separator />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          {Resume.educations.map((education, i) => (
+            <EducationCard education={education} key={i} />
+          ))}
+        </div>
+      </div>
+
+      <div className="pt-8" id="skills">
+        <div className="text-lg font-bold py-2 text-orange-400">Skills</div>
+        {/* <Separator /> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {Resume.skills.map((skill, index) => (
+            <div className="p-2" key={index}>
+              <div className="py-2 font-semibold">{skill.title}</div>
+              <div className="flex flex-row gap-2 flex-wrap">
+                {skill.tags.map((tag, index) => (
+                  <div
+                    className="flex flex-row gap-2 px-3 py-1 bg-gray-200/50 dark:bg-gray-600/50 hover:bg-gray-300/50 hover:dark:bg-gray-700/50 justify-center items-center rounded-md dark:text-gray-300 text-gray-600 border"
+                    key={index}
+                  >
+                    {tag.icon && <tag.icon />}
+                    <span className="text-sm font-semibold">{tag.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="pt-8" id="projects">
+        <div className="text-lg text-orange-400 font-bold py-2 inline-flex justify-between items-center w-full">
+          Projects
+        </div>
+        {/* <Separator /> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2 ">
+          {Resume.projects.map((project, i) => (
+            <ProjectCard project={project} key={i} />
+          ))}
+        </div>
+      </div>
+
+      <div className=" sticky bottom-4 flex justify-end w-full">
+        {!isMobile && (
+          <TooltipProvider delayDuration={50}>
+            <Tooltip>
+              <TooltipTrigger>
+                <Button
+                  size={"icon"}
+                  className=" rounded-lg bg-orange-500/60 hover:bg-orange-600/60 backdrop-blur-md text-white"
+                  asChild
+                >
+                  <Link href={"/resume"}>
+                    <ArrowDown />
+                  </Link>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">
+                <p>View Resume</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
       </div>
     </div>
   );
