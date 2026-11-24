@@ -1046,6 +1046,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "10017BA2-D476-4BEF-8621-6E6B109CEF02",
+    thumbnail: "/image/cryptobanner.webp",
     title: "Cryptography",
     description:
       "Cryptography is a huge topic and constantly evolving as the internet get advances. Here I will explain the topics that will help you understand blockchain better.",
