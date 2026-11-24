@@ -9,11 +9,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { UUID } from "crypto";
+import Image from "next/image";
 
 export type blogsType = {
   id: UUID;
   title: string;
   description: string;
+  thumbnail?: string;
   titleSlug: string;
   date: string;
   category: string;
@@ -37,8 +39,28 @@ export function BlogCard({ blog }: BlogCardProps) {
   return (
     <Link
       href={`/blogs/${blog.titleSlug}/${blog.id}`}
-      className="flex flex-col justify-between gap-4 p-4 group/project w-full sm:bg-accent/40 border-b sm:border hover:dark:border-orange-50/20 hover:border-orange-200 hover:bg-accent/50 sm:hover:scale-105 transition-all rounded-none sm:rounded-xl"
+      className="flex flex-col justify-between gap-4 p-4 group/project w-full sm:bg-accent/40 border-b sm:border hover:dark:border-orange-50/20 hover:border-orange-200 hover:bg-accent/50 sm:hover:scale-105 transition-all rounded-none sm:rounded-xl [corner-shape]"
     >
+      <div className="">
+        {blog.thumbnail ? (
+          <Image
+            alt=""
+            className="w-full rounded-md"
+            width={100}
+            height={100}
+            src={blog.thumbnail}
+          ></Image>
+        ) : (
+          <Image
+            alt=""
+            className="w-full rounded-md"
+            width={100}
+            height={100}
+            src={"/image/defaultbanner.webp"}
+          ></Image>
+        )}
+      </div>
+
       <TooltipProvider>
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">

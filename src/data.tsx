@@ -1,10 +1,4 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-  Files,
-  Folders,
-} from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUp, Files, Folders } from "lucide-react";
 import { IconType } from "react-icons/lib";
 import { FaTerminal, FaEthereum, FaCode } from "react-icons/fa";
 import { RiGeminiFill } from "react-icons/ri";
@@ -1163,6 +1157,7 @@ export const blogs: blogsType[] = [
   {
     id: "F857DDBC-A889-4EBC-B0B9-B3B00B816283",
     title: "What is Cmatrix",
+    thumbnail: "/image/banner1.webp",
     description:
       "Want to see some animation in termux you can install cmatrix. Cmatrix shows cool matrix scrolling lines animation in terminal , you probably have seen in the Sci-fi movies.",
     titleSlug: "what-is-cmatrix",
@@ -1176,6 +1171,7 @@ export type blogsType = {
   id: UUID;
   title: string;
   description: string;
+  thumbnail?: string;
   titleSlug: string;
   date: string;
   category: string;
