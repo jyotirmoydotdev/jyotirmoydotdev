@@ -45,17 +45,17 @@ export function BlogCard({ blog }: BlogCardProps) {
         {blog.thumbnail ? (
           <Image
             alt=""
-            className="w-full rounded-md"
-            width={100}
-            height={100}
+            className="w-full aspect-video rounded-md"
+            width={500}
+            height={500}
             src={blog.thumbnail}
           ></Image>
         ) : (
           <Image
             alt=""
-            className="w-full rounded-md"
-            width={100}
-            height={100}
+            className="w-full aspect-video rounded-md"
+            width={500}
+            height={500}
             src={"/image/defaultbanner.webp"}
           ></Image>
         )}

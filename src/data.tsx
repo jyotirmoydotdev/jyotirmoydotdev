@@ -1072,6 +1072,7 @@ export const blogs: blogsType[] = [
     title: "Decentralization with Blockchain",
     description:
       "How does the internet works? How the internet is centralized? What is Decentralization? Why it matters? Applications and uses of blockchain?",
+    thumbnail: "/image/decen.webp",
     titleSlug: "decentralization-with-blockchain",
     date: "Feb 17, 2023",
     category: "blockchain",
@@ -1086,6 +1087,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "B81ECCB3-E4C8-4DA9-8BB6-C744171747C7",
+    thumbnail: "/image/blockchainstructure.webp",
     title: "Blockchain Structure",
     description:
       "Understand how a blockchain work and what makes a blockchain. Today we are going to see how a blockchain work.",
@@ -1104,6 +1106,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "EE437D7B-055E-485B-985B-CD9DD302E866",
+    thumbnail: "/image/blockchainbanner.webp",
     title: "What is Blockchain?",
     description:
       "Blockchain is a distributed ledger (ok but what this really mean ?). Let me explain it !",
@@ -1118,6 +1121,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "0710C2D0-D1B1-4993-A3D0-BDD88805A31A",
+    thumbnail: "/image/bannertailwind.webp",
     title: "Set up Tailwind in your Project",
     description:
       "Tailwind CSS is a utility class framework that helps you make a responsive web design. In this article, I will teach you, how to set up a tailwind in the project.",
@@ -1131,6 +1135,7 @@ export const blogs: blogsType[] = [
     title: "Git for Termux",
     description:
       "As the internet says git is a version control to track the code changes and there is not any second thought. I am not going to explain it in detail, If you want to read more",
+    thumbnail: "/image/banner3.webp",
     titleSlug: "git-for-termux",
     date: "Jan 26, 2022",
     category: "backend",
@@ -1149,6 +1154,7 @@ export const blogs: blogsType[] = [
     title: "Tmux for Termux",
     description:
       "Have you ever wonder how to open multiple sessions in a singel screen in termux. Here is a solution, an open source terminal multiplexer for Linux or Unix operating systems.",
+    thumbnail: "/image/tmuxbanner.webp",
     titleSlug: "tmux-for-termux",
     date: "Dec 19, 2021",
     category: "backend",
