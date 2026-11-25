@@ -1028,6 +1028,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "676B16D3-35F3-40EA-80E9-3A02635E35A6",
+    thumbnail: "/image/blockchainstorage.webp",
     title: "Blockchain Storage",
     description:
       "Learn about IPFS(InterPlanetary File System) and how we store data on blockchain. The blockchain contains some data, such as transactions or other information,",
