@@ -978,6 +978,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "1F529938-65A4-48DA-82C1-D39917CB46E1",
+    thumbnail: "/image/gin.webp",
     title: "Use Gin Web Framework to build your server",
     description:
       "Let's build a simple web service using the Go programming language and the Gin web framework. We will define a basic web server that listens for incoming HTTP requests and responds with JSON data.",
@@ -994,6 +995,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "0ADA1327-7E22-477F-8B14-FFCCAE439697",
+    thumbnail: "/image/contract.webp",
     title: "How to interact with Smart Contract?",
     description:
       "This article will teach you how to interact with a smart contract in the Ethereum blockchain, starting this article we first need to install some dependencies in our computer.",
@@ -1011,6 +1013,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "5B0C1002-0A2F-43C4-B3A8-F20A4DFAC9F3",
+    thumbnail: "/image/ethereum.webp",
     title: "Fetch Balance from Ethereum Blockchain",
     description:
       "To Fetch the balance of an account in the Ethereum blockchain first we need to install some dependencies on our computer.",
