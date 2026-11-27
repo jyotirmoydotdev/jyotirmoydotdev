@@ -857,6 +857,7 @@ export const blogCategories: {
 export const blogs: blogsType[] = [
   {
     id: "ED951E39-1C6E-42DA-A842-53806580F2EA",
+    thumbnail: "/image/defaultlocation.webp",
     title:
       "How to Change the Default Permission String for the Location-Access Alert in Expo",
     description:
@@ -872,8 +873,10 @@ export const blogs: blogsType[] = [
       "Wrap up",
     ],
   },
+
   {
     id: "E6837422-93A6-431D-AA66-DAEC1D9F4D7B",
+    thumbnail: "/image/stable.webp",
     title: "Run Stable Diffusion on Your MacBook M1 Using Python",
     description:
       "Turn your MacBook M1 into an art machine with Python, watch your words come to life in vivid images!",
@@ -894,6 +897,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "68ADEA00-C482-465C-BFBC-B5B3392CA274",
+    thumbnail: "/image/proxy.webp",
     title: "Build your Golang Proxy Server",
     description:
       "Learn to build a robust Go proxy server supporting HTTP and HTTPS, complete with health checks and detailed logging.",
@@ -928,6 +932,7 @@ export const blogs: blogsType[] = [
   },
   {
     id: "3984BC66-D909-4074-BA7A-B7D6B07E7CBF",
+    thumbnail: "/image/deepseekr1.webp",
     title: "Simple way to run deepseek-r1 Locally",
     description:
       "Learn how to install and use DeepSeek-R1, a lightweight, distilled AI model, with the open-source Ollama tool. ",
@@ -937,7 +942,29 @@ export const blogs: blogsType[] = [
     content: ["Installation", "Usages", "Wrap up"],
   },
   {
+    id: "1B2D0884-6D5E-4A12-8CC5-160CA6B858DD",
+    thumbnail: "/image/jsonpipeline.webp",
+    title: "Building a JSON Validation Pipeline with Go and Gin",
+    description:
+      "Imagine a scenario where we're transmitting crucial data from our website to a database. However, before this information is stored",
+    titleSlug: "building-a-json-validation-pipeline-with-go-and-gin",
+    date: "Aug 25 2023",
+    category: "backend",
+    content: [
+      "Full Code",
+      "Import Statements",
+      "Data Structures",
+      "Main Function main()",
+      "Router Function Router()",
+      "ValidateBook Handler Function",
+      "Reflection and Validation",
+      "Test Using Thunder Client",
+      "Test With CURL",
+    ],
+  },
+  {
     id: "C19F6ABB-2DBD-47B1-AF6A-F02584029CD3",
+    thumbnail: "/image/sqlitebanner.webp",
     title: "Learn basics of SQLite",
     description:
       "SQLite is a lightweight, serverless, and self-contained relational database management system. It's often used in applications that need a local database.",
@@ -954,26 +981,6 @@ export const blogs: blogsType[] = [
       "Deleting Data",
       "Closing the Database",
       "Conclusion",
-    ],
-  },
-  {
-    id: "1B2D0884-6D5E-4A12-8CC5-160CA6B858DD",
-    title: "Building a JSON Validation Pipeline with Go and Gin",
-    description:
-      "Imagine a scenario where we're transmitting crucial data from our website to a database. However, before this information is stored",
-    titleSlug: "building-a-json-validation-pipeline-with-go-and-gin",
-    date: "Aug 19, 2023",
-    category: "backend",
-    content: [
-      "Full Code",
-      "Import Statements",
-      "Data Structures",
-      "Main Function main()",
-      "Router Function Router()",
-      "ValidateBook Handler Function",
-      "Reflection and Validation",
-      "Test Using Thunder Client",
-      "Test With CURL",
     ],
   },
   {
